@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Email Test</title>
+</head>
+<body>
+  <p>If static-only, you won’t see an email here:</p>
+  <div id="email-container"></div>
+  <script>
+    // simulate an email injected only by JS
+    const codes = [117,115,101,114,64,106,115,102,97,108,108,98,97,99,107,46,101,120,97,109,112,108,101];
+    const email = String.fromCharCode(...codes);
+    document.getElementById("email-container").textContent = email;
+  </script>
+</body>
+</html>
