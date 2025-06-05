@@ -1,0 +1,11 @@
+requests>=2.0
+pandas>=1.0
+beautifulsoup4>=4.8
+google-api-python-client>=1.12
+rapidfuzz>=3.0
+tldextract>=3.0
+playwright>=1.8
+aiohttp>=3.7
+python-dotenv>=1.0
+urllib3>=1.26
+idna>=3.0
