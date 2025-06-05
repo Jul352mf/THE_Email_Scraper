@@ -1,3 +1,4 @@
+
 # THE Email Scraper
 
 This project is an email discovery tool that looks up company domains via Google search and extracts email addresses from the discovered pages. It is designed around several cooperating modules:
@@ -53,3 +54,23 @@ python cli.py companies.xlsx results.xlsx --workers 8 --process-pdfs
 ```
 
 The program will create `results.xlsx` with discovered domains and emails while logging progress to a timestamped log file.
+=======
+# Email Scraper
+
+This project contains a collection of modules under the `scraper` package.
+
+## Usage
+
+Ensure the repository root is on your `PYTHONPATH` so that the `scraper`
+package can be imported:
+
+```bash
+export PYTHONPATH=$(pwd)
+python -m scraper.cli --help
+```
+
+Alternatively you can run the package directly:
+
+```bash
+python -m scraper
+```
