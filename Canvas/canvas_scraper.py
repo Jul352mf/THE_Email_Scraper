@@ -6,6 +6,7 @@ from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
+from playwright.sync_api import sync_playwright
 
 log = logging.getLogger(__name__)
 
@@ -16,26 +17,31 @@ class CanvasScraper:
         self.base_url = base_url.rstrip('/')
         self.session = requests.Session()
 
-    def login(self, email: str, password: str) -> bool:
-        """Attempt to login using the standard Canvas login form."""
+    def login(self, email: str, password: str, *, headless: bool = True) -> bool:
+        """Log in using Playwright to execute any required JavaScript."""
         login_url = f"{self.base_url}/login"
-        resp = self.session.get(login_url)
-        if resp.status_code != 200:
-            log.error("Failed to load login page: %s", resp.status_code)
-            return False
-        soup = BeautifulSoup(resp.text, "html.parser")
-        form = soup.find("form")
-        if not form:
-            log.error("Login form not found")
-            return False
-        data = {inp.get("name"): inp.get("value", "") for inp in form.find_all("input") if inp.get("name")}
-        data.update({"UserName": email, "Password": password})
-        action = form.get("action")
-        action = urljoin(login_url, action)
-        resp = self.session.post(action, data=data)
-        if resp.status_code != 200:
-            log.error("Login failed: %s", resp.status_code)
-            return False
+        with sync_playwright() as p:
+            browser = p.firefox.launch(headless=headless)
+            page = browser.new_page()
+            page.goto(login_url, wait_until="networkidle")
+            page.fill("#userNameInput", email)
+            page.fill("#passwordInput", password)
+            page.click("#submitButton")
+            page.wait_for_load_state("networkidle")
+
+            if "login" in page.url:
+                log.error("Login failed: still on login page")
+                browser.close()
+                return False
+
+            for cookie in page.context.cookies():
+                self.session.cookies.set(
+                    cookie["name"],
+                    cookie["value"],
+                    domain=cookie.get("domain"),
+                    path=cookie.get("path", "/"),
+                )
+            browser.close()
         return True
 
     def scrape_course(self, course_id: str, output_dir: str) -> List[str]:
@@ -117,6 +123,7 @@ def main(argv: List[str] | None = None) -> None:
     parser.add_argument("--email", default=os.environ.get("CANVAS_EMAIL"))
     parser.add_argument("--password", default=os.environ.get("CANVAS_PASSWORD"))
     parser.add_argument("--demo", action="store_true", help="Run parser demo")
+    parser.add_argument("--headful", action="store_true", help="Show browser during login")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO)
@@ -129,7 +136,7 @@ def main(argv: List[str] | None = None) -> None:
         parser.error("--email, --password, and --course-id required for real mode")
 
     scraper = CanvasScraper(args.base_url)
-    if not scraper.login(args.email, args.password):
+    if not scraper.login(args.email, args.password, headless=not args.headful):
         parser.error("Login failed")
 
     scraper.scrape_course(args.course_id, args.output_dir)

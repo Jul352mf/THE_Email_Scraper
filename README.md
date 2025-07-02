@@ -61,5 +61,10 @@ To download PDFs from a Canvas course you can use the `Canvas` module. Either se
 ```bash
 python -m Canvas.canvas_scraper --course-id 23482 --output-dir out --email you@example.com --password yourpass
 ```
+The scraper uses [Playwright](https://playwright.dev/) with Firefox to handle the Canvas login page. After installing requirements run:
 
-Use `--demo` to run against the HTML files in the repository without making network requests.
+```bash
+playwright install firefox
+```
+
+Use `--demo` to run against the HTML files in the repository without making network requests. Pass `--headful` if you want to see the login browser window.
