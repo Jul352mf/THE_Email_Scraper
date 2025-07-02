@@ -53,3 +53,13 @@ python cli.py companies.xlsx results.xlsx --workers 8 --process-pdfs
 ```
 
 The program will create `results.xlsx` with discovered domains and emails while logging progress to a timestamped log file.
+
+## Canvas scraper
+
+To download PDFs from a Canvas course you can use the `Canvas` module. Either set `CANVAS_EMAIL` and `CANVAS_PASSWORD` environment variables or provide them via command line:
+
+```bash
+python -m Canvas.canvas_scraper --course-id 23482 --output-dir out --email you@example.com --password yourpass
+```
+
+Use `--demo` to run against the HTML files in the repository without making network requests.

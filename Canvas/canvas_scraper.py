@@ -1,3 +1,4 @@
+import argparse
 import logging
 import os
 from typing import List, Tuple
@@ -36,6 +37,21 @@ class CanvasScraper:
             log.error("Login failed: %s", resp.status_code)
             return False
         return True
+
+    def scrape_course(self, course_id: str, output_dir: str) -> List[str]:
+        """Download all PDFs linked from a course's module pages."""
+        html = self.fetch_modules_page(course_id)
+        module_links = self.parse_module_links(html, self.base_url)
+        downloaded: List[str] = []
+        for link in module_links:
+            resp = self.session.get(link)
+            resp.raise_for_status()
+            pdfs = self.parse_pdf_links(resp.text, self.base_url)
+            for url, title in pdfs:
+                path = self.download_file(url, output_dir)
+                log.info("Downloaded %s -> %s", title, path)
+                downloaded.append(path)
+        return downloaded
 
     def fetch_modules_page(self, course_id: str) -> str:
         url = f"{self.base_url}/courses/{course_id}/modules"
@@ -93,6 +109,31 @@ def _demo() -> None:
         print(" -", title, "->", url)
 
 
-if __name__ == "__main__":
+def main(argv: List[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description="Download PDFs from Canvas")
+    parser.add_argument("--base-url", default="https://learning.unisg.ch")
+    parser.add_argument("--course-id", help="Course ID for Canvas")
+    parser.add_argument("--output-dir", default="downloads")
+    parser.add_argument("--email", default=os.environ.get("CANVAS_EMAIL"))
+    parser.add_argument("--password", default=os.environ.get("CANVAS_PASSWORD"))
+    parser.add_argument("--demo", action="store_true", help="Run parser demo")
+    args = parser.parse_args(argv)
+
     logging.basicConfig(level=logging.INFO)
-    _demo()
+
+    if args.demo:
+        _demo()
+        return
+
+    if not (args.email and args.password and args.course_id):
+        parser.error("--email, --password, and --course-id required for real mode")
+
+    scraper = CanvasScraper(args.base_url)
+    if not scraper.login(args.email, args.password):
+        parser.error("Login failed")
+
+    scraper.scrape_course(args.course_id, args.output_dir)
+
+
+if __name__ == "__main__":
+    main()
