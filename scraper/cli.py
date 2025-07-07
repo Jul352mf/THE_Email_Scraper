@@ -23,6 +23,10 @@ import pandas as pd
 from scraper.config import config, ConfigurationError
 from scraper.orchestrator import orchestrator
 from scraper.browser_service import get_browser_service
+from scraper.domain_scorer import domain_scorer
+from scraper.google_search import google_client
+from scraper.http import normalise_domain
+from scraper.domain_summary import summarize_domain
 
 
 # Initialize logger
@@ -105,7 +109,13 @@ class CLI:
             "--config",
             help="Path to custom .env configuration file"
         )
-        
+
+        parser.add_argument(
+            "--bulk-domain-summary",
+            action="store_true",
+            help="Collect page summaries for each domain instead of emails"
+        )
+
         return parser
     
     def validate_environment(self) -> bool:
@@ -250,6 +260,7 @@ class CLI:
         log.info("Max pages: %d", args.max_pages)
         log.info("Process PDFs: %s", args.process_pdfs)
         log.info("Save domain only: %s", args.save_domain_only)
+        log.info("Bulk domain summary: %s", args.bulk_domain_summary)
         
         # Update configuration from command-line arguments
         config.domain_score_threshold = args.domain_threshold
@@ -285,7 +296,13 @@ class CLI:
         except Exception as e:
             log.error("Failed to load input file: %s", e)
             return False
-            
+
+        if args.bulk_domain_summary:
+            success = self._run_bulk_summary(companies, args)
+            browser_service.shutdown()
+            browser_service.join()
+            return success
+
         # Initialize tracking
         start_time = time.time()
         orchestrator.reset_stats()
@@ -368,8 +385,39 @@ class CLI:
         )
         log.info("Saved %d rows -> %s", len(df_out), args.output_file)
         log.info("Verbose log -> %s", Path(logfile).resolve())
-        
+
         return True
+
+    def _run_bulk_summary(self, companies: List[str], args: argparse.Namespace) -> bool:
+        """Collect domain summaries for a list of companies."""
+        results = []
+        for company in companies:
+            try:
+                search_results = google_client.search_with_fallback(company)
+                if not search_results:
+                    log.warning("No Google results for %s", company)
+                    continue
+                score, link = domain_scorer.find_best_domain(company, search_results)
+                if score < config.domain_score_threshold:
+                    log.info("Domain score too low (%d < %d) for %s", score, config.domain_score_threshold, company)
+                    continue
+                domain = normalise_domain(link)
+                info = summarize_domain(domain, max_pages=args.max_pages)
+                info["company"] = company
+                results.append(info)
+                log.info("Summarized %s (%d pages)", domain, info["page_count"])
+            except Exception as exc:
+                log.error("Summary error for %s: %s", company, exc)
+
+        try:
+            import json
+            with open(args.output_file, "w", encoding="utf-8") as f:
+                json.dump(results, f, ensure_ascii=False, indent=2)
+            log.info("Saved summary -> %s", args.output_file)
+            return True
+        except Exception as e:
+            log.error("Failed to save summary file: %s", e)
+            return False
     
     def run(self, args: Optional[List[str]] = None) -> int:
         """

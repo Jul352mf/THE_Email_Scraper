@@ -225,6 +225,32 @@ class SitemapParser:
         log.debug("Priority URL extraction for %s finished in %.2f s – %d URLs", domain, elapsed, len(priority))
         return priority, used
 
+    def get_all_urls(self, domain: str) -> Tuple[List[str], bool]:
+        """Return all URLs found in the domain's sitemaps."""
+        all_urls: List[str] = []
+        dedup: Set[str] = set()
+
+        sitemap_urls = list(self.discover_sitemaps(domain))
+        used = bool(sitemap_urls)
+        for sm_url in sitemap_urls:
+            canon = canonicalise(sm_url)
+            content = self._sitemap_cache.get(canon)
+            if content is None:
+                resp = http_client.safe_get(sm_url, retry_count=2)
+                if not resp:
+                    continue
+                content = resp.content
+                self._sitemap_cache[canon] = content
+            try:
+                for u in self.parse_sitemap(content, config.max_urls_per_sitemap):
+                    if u not in dedup:
+                        all_urls.append(u)
+                        dedup.add(u)
+            except SitemapError as err:
+                log.warning("Error parsing %s – %s", sm_url, err)
+
+        return all_urls, used
+
     def clear_cache(self) -> None:
         self._processed_sitemaps.clear()
         self._sitemap_cache.clear()
