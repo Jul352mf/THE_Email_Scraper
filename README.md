@@ -53,3 +53,7 @@ python cli.py companies.xlsx results.xlsx --workers 8 --process-pdfs
 ```
 
 The program will create `results.xlsx` with discovered domains and emails while logging progress to a timestamped log file.
+
+To gather page summaries instead of emails, pass the `--bulk-domain-summary` flag. If your spreadsheet includes an optional `Domain` column, the tool will use that domain directly and skip the Google lookup step.
+
+For details on the JSON format produced by this mode, see [docs/BULK_SUMMARY.md](docs/BULK_SUMMARY.md).
