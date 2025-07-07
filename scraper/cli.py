@@ -293,12 +293,24 @@ class CLI:
             df = pd.read_excel(args.input_file)
             companies = [c for c in df["Company"].astype(str) if c.strip()]
             log.info("Loaded %d companies from %s", len(companies), args.input_file)
+
+            bulk_pairs: List[Tuple[str, str]] = []
+            if args.bulk_domain_summary:
+                has_domain = "Domain" in df.columns
+                for _, row in df.iterrows():
+                    company = str(row.get("Company", "")).strip()
+                    if not company:
+                        continue
+                    domain = ""
+                    if has_domain:
+                        domain = str(row.get("Domain", "")).strip()
+                    bulk_pairs.append((company, domain))
         except Exception as e:
             log.error("Failed to load input file: %s", e)
             return False
 
         if args.bulk_domain_summary:
-            success = self._run_bulk_summary(companies, args)
+            success = self._run_bulk_summary(bulk_pairs or [(c, "") for c in companies], args)
             browser_service.shutdown()
             browser_service.join()
             return success
@@ -388,20 +400,23 @@ class CLI:
 
         return True
 
-    def _run_bulk_summary(self, companies: List[str], args: argparse.Namespace) -> bool:
+    def _run_bulk_summary(self, items: List[Tuple[str, str]], args: argparse.Namespace) -> bool:
         """Collect domain summaries for a list of companies."""
         results = []
-        for company in companies:
+        for company, domain in items:
             try:
-                search_results = google_client.search_with_fallback(company)
-                if not search_results:
-                    log.warning("No Google results for %s", company)
-                    continue
-                score, link = domain_scorer.find_best_domain(company, search_results)
-                if score < config.domain_score_threshold:
-                    log.info("Domain score too low (%d < %d) for %s", score, config.domain_score_threshold, company)
-                    continue
-                domain = normalise_domain(link)
+                if domain:
+                    domain = normalise_domain(domain)
+                else:
+                    search_results = google_client.search_with_fallback(company)
+                    if not search_results:
+                        log.warning("No Google results for %s", company)
+                        continue
+                    score, link = domain_scorer.find_best_domain(company, search_results)
+                    if score < config.domain_score_threshold:
+                        log.info("Domain score too low (%d < %d) for %s", score, config.domain_score_threshold, company)
+                        continue
+                    domain = normalise_domain(link)
                 info = summarize_domain(domain, max_pages=args.max_pages)
                 info["company"] = company
                 results.append(info)
