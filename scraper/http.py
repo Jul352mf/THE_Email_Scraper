@@ -20,9 +20,11 @@ import re
 from threading import local
 import threading
 import time
-from typing import Any, Callable, Dict, Optional
+from typing import Any, Callable, Dict, Optional, Tuple
+from dataclasses import dataclass
 from urllib.parse import urlparse, urlunparse, urljoin
 import random
+from enum import Enum
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -42,6 +44,44 @@ logging.getLogger("urllib3.connectionpool").setLevel(logging.ERROR)
 
 _thread_local = local()
 _domain_buckets: dict[str, TokenBucket] = {}
+
+
+class AccessMethod(Enum):
+    """Different ways to access a domain."""
+    HTTPS = "https"
+    HTTP = "http"
+    HTTPS_WWW = "https_www"
+    HTTP_WWW = "http_www"
+
+
+@dataclass
+class DomainPattern:
+    """Cache successful access patterns for domains."""
+    domain: str
+    method: AccessMethod
+    verified: bool = False
+    last_checked: float = 0.0
+    
+    def build_url(self, path: str = "") -> str:
+        """Build URL using this domain pattern."""
+        if self.method == AccessMethod.HTTPS:
+            base = f"https://{self.domain}"
+        elif self.method == AccessMethod.HTTP:
+            base = f"http://{self.domain}"
+        elif self.method == AccessMethod.HTTPS_WWW:
+            base = f"https://www.{self.domain}"
+        elif self.method == AccessMethod.HTTP_WWW:
+            base = f"http://www.{self.domain}"
+        else:
+            base = f"https://{self.domain}"  # fallback
+        
+        if path:
+            return urljoin(base, path.lstrip("/"))
+        return base
+
+
+# Domain pattern cache
+_domain_patterns: Dict[str, DomainPattern] = {}
 
 
 # ---------------------------------------------------------------------------
@@ -187,12 +227,114 @@ class HttpClient:
 
     def __init__(self) -> None:
         self.stats = Counter()
+        self.domain_patterns = _domain_patterns
         if self.DEBUG and not os.path.exists(self.DEBUG_DIR):
             try:
                 os.makedirs(self.DEBUG_DIR, exist_ok=True)
             except Exception as exc:
                 log.warning("Failed to create debug dir %s: %s", self.DEBUG_DIR, exc)
                 self.DEBUG = False
+
+    def probe_domain_access(self, domain: str) -> Optional[DomainPattern]:
+        """
+        Probe different access methods for a domain and cache the working pattern.
+        
+        Args:
+            domain: Domain to probe (should be normalized, without www or protocol)
+            
+        Returns:
+            DomainPattern if successful access method found, None otherwise
+        """
+        # Check if we already have a cached pattern
+        if domain in self.domain_patterns:
+            pattern = self.domain_patterns[domain]
+            # Refresh pattern if it's been a while (24 hours)
+            if time.time() - pattern.last_checked < 86400:  # 24 hours
+                log.debug("Using cached domain pattern for %s: %s", domain, pattern.method.value)
+                return pattern
+        
+        log.info("Probing domain access methods for: %s", domain)
+        
+        # Try different access methods in order of preference
+        methods_to_try = [
+            (AccessMethod.HTTPS, f"https://{domain}"),
+            (AccessMethod.HTTPS_WWW, f"https://www.{domain}"),
+            (AccessMethod.HTTP, f"http://{domain}"),
+            (AccessMethod.HTTP_WWW, f"http://www.{domain}"),
+        ]
+        
+        for method, test_url in methods_to_try:
+            log.debug("Trying %s access method: %s", method.value, test_url)
+            
+            try:
+                # Use HEAD request for faster probing
+                response = self._probe_url(test_url)
+                if response and response.ok:
+                    pattern = DomainPattern(
+                        domain=domain,
+                        method=method,
+                        verified=True,
+                        last_checked=time.time()
+                    )
+                    self.domain_patterns[domain] = pattern
+                    log.info("✓ Found working access method for %s: %s", domain, method.value)
+                    return pattern
+            except Exception as e:
+                log.debug("Access method %s failed for %s: %s", method.value, domain, e)
+                continue
+        
+        # If no method worked, cache failure to avoid repeated probes
+        pattern = DomainPattern(
+            domain=domain,
+            method=AccessMethod.HTTPS,  # default fallback
+            verified=False,
+            last_checked=time.time()
+        )
+        self.domain_patterns[domain] = pattern
+        log.warning("✗ No working access method found for %s", domain)
+        return None
+
+    def _probe_url(self, url: str) -> Optional[requests.Response]:
+        """
+        Probe a URL with HEAD request, bypassing normal retry logic.
+        
+        Args:
+            url: URL to probe
+            
+        Returns:
+            Response object if successful, None otherwise
+        """
+        parsed = urlparse(url)
+        domain = normalise_domain(parsed.netloc)
+        sess = _session_mgr.session(domain)
+        
+        try:
+            # Quick HEAD request with short timeout
+            response = sess.head(
+                url,
+                allow_redirects=True,
+                timeout=(5, 10),  # Short timeout for probing
+                verify=not config.insecure_ssl
+            )
+            return response
+        except Exception:
+            return None
+
+    def get_optimized_url(self, domain: str, path: str = "") -> Optional[str]:
+        """
+        Get the optimized URL for a domain using cached access patterns.
+        
+        Args:
+            domain: Normalized domain
+            path: Optional path to append
+            
+        Returns:
+            Optimized URL if pattern exists, None otherwise
+        """
+        pattern = self.domain_patterns.get(domain)
+        if pattern and pattern.verified:
+            return pattern.build_url(path)
+        return None
 
     def safe_get(
         self,
@@ -209,6 +351,14 @@ class HttpClient:
             log.warning("Skipping invalid URL: %s", url)
             self.stats["skipped_urls"] += 1
             return None
+        
+        # Try to use optimized URL if we have domain patterns
+        parsed = urlparse(url)
+        domain = normalise_domain(parsed.netloc)
+        optimized_url = self.get_optimized_url(domain, parsed.path)
+        if optimized_url and optimized_url != url:
+            log.debug("Using optimized URL: %s -> %s", url, optimized_url)
+            url = optimized_url
 
         # Blocked patterns (domains/extensions) from env
         blocked = {
@@ -338,47 +488,53 @@ class HttpClient:
                         log.warning(
                             "SSL-off retry failed for %s: %s", url, e2
                         )
-                # www-prefix fallback
-                parsed_retry = urlparse(url)
-                host_retry = parsed_retry.netloc
-                if not host_retry.startswith("www."):
-                    fallback = urlunparse(
-                        parsed_retry._replace(netloc="www." + host_retry)
-                    )
-                    log.info("Retrying with www-prefix: %s", fallback)
-                    try:
-                        response = request_fn(
-                            fallback,
-                            allow_redirects=True,
-                            timeout=timeout,
-                            headers=hdrs,
-                            verify=not config.insecure_ssl,
+                
+                # Skip fallbacks if we have a verified domain pattern
+                pattern = self.domain_patterns.get(domain)
+                if pattern and pattern.verified:
+                    log.debug("Skipping fallbacks for %s - using verified pattern", domain)
+                else:
+                    # www-prefix fallback
+                    parsed_retry = urlparse(url)
+                    host_retry = parsed_retry.netloc
+                    if not host_retry.startswith("www."):
+                        fallback = urlunparse(
+                            parsed_retry._replace(netloc="www." + host_retry)
                         )
-                        if response and response.ok:
-                            url = fallback
-                            break
-                    except Exception as e2:
-                        log.warning(
-                            "www-prefix retry failed for %s: %s", fallback, e2
-                        )
-                # http scheme fallback
-                if parsed_retry.scheme == "https":
-                    http_url = urlunparse(parsed_retry._replace(scheme="http"))
-                    log.info("Retrying with HTTP: %s", http_url)
-                    try:
-                        response = request_fn(
-                            http_url,
-                            allow_redirects=True,
-                            timeout=timeout,
-                            headers=hdrs,
-                        )
-                        if response and response.ok:
-                            url = http_url
-                            break
-                    except Exception as e3:
-                        log.warning(
-                            "HTTP fallback failed for %s: %s", http_url, e3
-                        )
+                        log.info("Retrying with www-prefix: %s", fallback)
+                        try:
+                            response = request_fn(
+                                fallback,
+                                allow_redirects=True,
+                                timeout=timeout,
+                                headers=hdrs,
+                                verify=not config.insecure_ssl,
+                            )
+                            if response and response.ok:
+                                url = fallback
+                                break
+                        except Exception as e2:
+                            log.warning(
+                                "www-prefix retry failed for %s: %s", fallback, e2
+                            )
+                    # http scheme fallback
+                    if parsed_retry.scheme == "https":
+                        http_url = urlunparse(parsed_retry._replace(scheme="http"))
+                        log.info("Retrying with HTTP: %s", http_url)
+                        try:
+                            response = request_fn(
+                                http_url,
+                                allow_redirects=True,
+                                timeout=timeout,
+                                headers=hdrs,
+                            )
+                            if response and response.ok:
+                                url = http_url
+                                break
+                        except Exception as e3:
+                            log.warning(
+                                "HTTP fallback failed for %s: %s", http_url, e3
+                            )
                 if attempt < retry_count - 1:
                     time.sleep(retry_delay * (2 ** attempt))
             except requests.RequestException as err:

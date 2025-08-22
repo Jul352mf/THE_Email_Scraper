@@ -127,10 +127,21 @@ class EmailExtractor:
     def clean_email(self, email: str) -> str:
         log.debug("Attempting to clean %r", email)
         email = email.strip()
+        
+        # Filter out empty strings early
+        if not email:
+            log.debug("Rejecting empty email string")
+            raise EmailValidationError("Empty email string")
+            
         if email.lower().startswith("mailto:"):
             log.debug("Stripping mailto: prefix from %r", email)
             email = email[len("mailto:"):]
-        email = email.split("?", 1)[0]
+        email = email.split("?", 1)[0].strip()
+        
+        # Check again after processing
+        if not email:
+            log.debug("Rejecting email string that became empty after processing")
+            raise EmailValidationError("Email string became empty after processing")
 
         try:
             user, host = email.rsplit('@', 1)
@@ -208,8 +219,8 @@ class EmailExtractor:
             page_text = soup.get_text(separator=" ")
             page_text = self.deobfuscate_emails(page_text)
             for match in EMAIL_RE.finditer(page_text):
-                raw = match.group(0)
-                if raw in seen_raw:
+                raw = match.group(0).strip()
+                if not raw or raw in seen_raw:
                     continue
                 seen_raw.add(raw)
                 try:
@@ -225,8 +236,8 @@ class EmailExtractor:
             for anchor in soup.find_all("a", href=True):
                 href = anchor["href"]
                 if href.lower().startswith("mailto:"):
-                    raw = href.split(":", 1)[1].split("?", 1)[0]
-                    if raw in seen_raw:
+                    raw = href.split(":", 1)[1].split("?", 1)[0].strip()
+                    if not raw or raw in seen_raw:
                         continue
                     seen_raw.add(raw)
                     try:
@@ -266,7 +277,10 @@ class EmailExtractor:
             # Extract emails using regex
             for match in EMAIL_RE.finditer(text):
                 try:
-                    email = self.clean_email(match.group(0))
+                    raw_email = match.group(0).strip()
+                    if not raw_email:
+                        continue
+                    email = self.clean_email(raw_email)
                     if self.is_valid_email(email):
                         hits.add(email)
                 except Exception as e:

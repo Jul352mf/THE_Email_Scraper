@@ -103,7 +103,8 @@ class Crawler:
         if seed_response is not None:
             start_url = seed_response.url
         else:
-            start_url = f"https://{domain}"
+            # Use optimized URL if available
+            start_url = http_client.get_optimized_url(domain) or f"https://{domain}"
         canon_start = self._canonicalize_url(start_url)
         with self._lock:
             self._seen_urls.add(canon_start)

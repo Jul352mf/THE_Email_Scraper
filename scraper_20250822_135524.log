@@ -1,0 +1,10 @@
+2025-08-22 13:55:24,769 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 13:55:24,770 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 13:55:24,770 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 13:55:24,771 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 13:55:24,771 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 13:55:24,771 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 13:55:24,771 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 13:55:24,772 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 13:55:24,972 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 13:55:24,972 | INFO    | scraper.orchestrator | Phase 1: Collecting domains for 9 companies

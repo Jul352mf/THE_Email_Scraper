@@ -291,29 +291,22 @@ class CLI:
         orchestrator.reset_stats()
         all_rows: List[Dict[str, str]] = []
 
-        # Process companies in parallel
-        executor = ThreadPoolExecutor(max_workers=config.max_workers)
-        futures = {executor.submit(orchestrator.process_company, c): c for c in companies}
-        
+        # Process companies with concurrent domain processing
         try:
-            for fut in as_completed(futures):
-                company = futures[fut]
-                try:
-                    stats, rows = fut.result()
-                    orchestrator.global_stats.update(stats)
-                    all_rows.extend(rows)
-                except Exception as e:
-                    log.error("Error processing company %s: %s", company, e)
+            stats, rows = orchestrator.process_companies_concurrent(companies)
+            orchestrator.global_stats.update(stats)
+            all_rows.extend(rows)
         except KeyboardInterrupt:
-            log.warning("Interrupted by user; shutting down threads")
-            executor.shutdown(wait=False)
+            log.warning("Interrupted by user; shutting down")
+            return False
+        except Exception as e:
+            log.error("Error in concurrent processing: %s", e)
             return False
         
         finally:
             browser_service.shutdown()
             browser_service.join()
             log.info("BrowserService: shutdown complete")
-            executor.shutdown(wait=True)
 
         # Create output DataFrame
         df_out = pd.DataFrame(all_rows, columns=["Company", "Domain", "Email"]).drop_duplicates()

@@ -54,7 +54,12 @@ class SitemapParser:
         # standard sitemap filenames
         for host in hosts:
             for fname in config.sitemap_filenames:
-                url = f"https://{host}/{fname}"
+                # Try to use optimized URL if available
+                optimized_base = http_client.get_optimized_url(host.removeprefix("www."))
+                if optimized_base:
+                    url = f"{optimized_base.rstrip('/')}/{fname}"
+                else:
+                    url = f"https://{host}/{fname}"
                 canon = canonicalise(url)
                 if canon in self._processed_sitemaps or not validate_url(url):
                     continue
@@ -81,7 +86,12 @@ class SitemapParser:
 
         # robots.txt fallback
         if not found:
-            robots_url = f"https://{naked}/robots.txt"
+            # Use optimized URL for robots.txt
+            optimized_base = http_client.get_optimized_url(naked)
+            if optimized_base:
+                robots_url = f"{optimized_base.rstrip('/')}/robots.txt"
+            else:
+                robots_url = f"https://{naked}/robots.txt"
             rob = http_client.safe_get(robots_url, retry_count=2)
             if rob:
                 for line in rob.text.splitlines():
@@ -153,6 +163,8 @@ class SitemapParser:
                 return
 
             threads = min(len(nested_urls), 4)
+            if threads == 0:
+                return  # No nested URLs to process
             log.debug("Parallel-fetching %d nested sitemaps via %d threads", len(nested_urls), threads)
             with ThreadPoolExecutor(max_workers=threads) as pool:
                 futures = {pool.submit(http_client.safe_get, url, retry_count=2): url for url in nested_urls}
@@ -210,7 +222,8 @@ class SitemapParser:
             return urls
 
         # parallel-fetch and parse
-        with ThreadPoolExecutor(max_workers=min(len(sitemap_urls), 4 or 1)) as pool:
+        max_workers = max(1, min(len(sitemap_urls), 4))
+        with ThreadPoolExecutor(max_workers=max_workers) as pool:
             futures = {pool.submit(_process_sitemap, url): url for url in sitemap_urls}
             for fut in as_completed(futures):
                 for u in fut.result():
