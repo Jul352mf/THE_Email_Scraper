@@ -1,9 +1,0 @@
-2025-08-22 14:39:41,377 | INFO    | scraper.cli          | Email scraper starting
-2025-08-22 14:39:41,378 | INFO    | scraper.cli          | Input file: test_companies.csv
-2025-08-22 14:39:41,378 | INFO    | scraper.cli          | Output file: results.xlsx
-2025-08-22 14:39:41,379 | INFO    | scraper.cli          | Workers: 16
-2025-08-22 14:39:41,379 | INFO    | scraper.cli          | Domain threshold: 65
-2025-08-22 14:39:41,379 | INFO    | scraper.cli          | Max pages: 30
-2025-08-22 14:39:41,380 | INFO    | scraper.cli          | Process PDFs: False
-2025-08-22 14:39:41,381 | INFO    | scraper.cli          | Save domain only: False
-2025-08-22 14:39:41,382 | ERROR   | scraper.cli          | Input validation failed: Input file not found: test_companies.csv

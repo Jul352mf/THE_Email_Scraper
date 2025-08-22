@@ -1,0 +1,9 @@
+2025-08-22 16:47:44,315 | ERROR   | scraper.cli          | Unhandled exception: cannot import name 'initialize_formatter' from 'scraper.output_formatter' (C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\output_formatter.py)
+Traceback (most recent call last):
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 561, in run
+    success = self.scrape_companies(parsed_args)
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 380, in scrape_companies
+    logfile = self.setup_logging(args.verbose, args.log_dir)
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 275, in setup_logging
+    from scraper.output_formatter import initialize_formatter
+ImportError: cannot import name 'initialize_formatter' from 'scraper.output_formatter' (C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\output_formatter.py)

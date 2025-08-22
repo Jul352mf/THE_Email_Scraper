@@ -8,33 +8,45 @@ validation, and security features.
 import logging
 import re
 import os
-from typing import Set, Optional, List, Pattern
+from typing import Set, Optional, List, Pattern, Dict, Any
 
 import idna
 from bs4 import BeautifulSoup
 
 from scraper.config import config
 from scraper.http_client import http_client
+from scraper.regex_cache import get_compiled_pattern, get_cache_stats
 
 # Initialize logger
 log = logging.getLogger(__name__)
 
-# Regular expressions for email extraction
-EMAIL_RE = re.compile(
-    r"(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,63}(?![A-Z0-9._%+-])"
-)
-MAILTO_RE = re.compile(r"(?i)mailto:")
+# Use cached regex patterns for better performance
+def get_email_regex() -> Pattern:
+    """Get cached email regex pattern."""
+    return get_compiled_pattern(
+        r"(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,63}(?![A-Z0-9._%+-])"
+    )
 
+def get_mailto_regex() -> Pattern:
+    """Get cached mailto regex pattern.""" 
+    return get_compiled_pattern(r"mailto:", re.IGNORECASE)
 
-_OBF_EMAIL = re.compile(
-    r"""
-    (?P<user>[A-Za-z0-9._%+-]+)              # local-part
-    \s*(?:\[\s*at\s*\]|\(\s*at\s*\)|\bat\b)\s*  # obfuscated “at”
-    (?P<host>(?:[A-Za-z0-9-]+                  # domain labels
-        (?:\s*(?:\[\s*dot\s*\]|\(\s*dot\s*\)|\bdot\b)\s*[A-Za-z0-9-]+)+))  # one or more obf-dot + label
-    """,
-    re.IGNORECASE | re.VERBOSE,
-)
+def get_obfuscated_email_regex() -> Pattern:
+    """Get cached obfuscated email regex pattern."""
+    return get_compiled_pattern(
+        r"""
+        (?P<user>[A-Za-z0-9._%+-]+)              # local-part
+        \s*(?:\[\s*at\s*\]|\(\s*at\s*\)|\bat\b)\s*  # obfuscated "at"
+        (?P<host>(?:[A-Za-z0-9-]+                  # domain labels
+            (?:\s*(?:\[\s*dot\s*\]|\(\s*dot\s*\)|\bdot\b)\s*[A-Za-z0-9-]+)+))  # one or more obf-dot + label
+        """,
+        re.IGNORECASE | re.VERBOSE
+    )
+
+# Backward compatibility - lazily evaluated
+EMAIL_RE = None
+MAILTO_RE = None  
+_OBF_EMAIL = None
 
 class EmailValidationError(Exception):
     """Exception raised for email validation errors."""
@@ -44,7 +56,7 @@ class EmailExtractor:
     """Enhanced email extractor with improved validation and security features."""
     
     def __init__(self):
-        """Initialize the email extractor with validation patterns."""
+        """Initialize the email extractor with cached validation patterns."""
         
         # Additional validation patterns
         self.domain_blacklist: Set[str] = {
@@ -52,21 +64,20 @@ class EmailExtractor:
             "yourcompany.com", "company.com", "localhost"
         }
         
-        # Suspicious patterns that might indicate fake emails
+        # Use cached patterns for better performance
         self.suspicious_patterns: List[Pattern] = [
-            re.compile(r"(?i)noreply@"),
-            re.compile(r"(?i)donotreply@"),
-            re.compile(r"(?i)no-reply@"),
-            re.compile(r"(?i)webmaster@"),
-            re.compile(r"(?i)hostmaster@"),
-            re.compile(r"(?i)postmaster@"),
+            get_compiled_pattern(r"noreply@", re.IGNORECASE),
+            get_compiled_pattern(r"donotreply@", re.IGNORECASE),
+            get_compiled_pattern(r"no-reply@", re.IGNORECASE),
+            get_compiled_pattern(r"webmaster@", re.IGNORECASE),
+            get_compiled_pattern(r"hostmaster@", re.IGNORECASE),
+            get_compiled_pattern(r"postmaster@", re.IGNORECASE),
         ]
         
-                # New: really-bad patterns
+        # Drop patterns using cached compilation
         self._drop_patterns: List[Pattern] = [
-            # re.compile(r"%"),                                  # percent-encoded
-            re.compile(r"\.(?:png|jpe?g|gif)$", re.I),         # asset filenames
-            re.compile(r"^[0-9a-f]{20,}$", re.I),              # long hex local-parts
+            get_compiled_pattern(r"\.(?:png|jpe?g|gif)$", re.IGNORECASE),  # asset filenames
+            get_compiled_pattern(r"^[0-9a-f]{20,}$", re.IGNORECASE),       # long hex local-parts
         ]
     
     def is_valid_email(self, email: str) -> bool:
@@ -124,6 +135,10 @@ class EmailExtractor:
             log.debug("Email validation error for %r: %s", email, e)
             return False
     
+    def get_regex_performance_stats(self) -> Dict[str, Any]:
+        """Get regex cache performance statistics."""
+        return get_cache_stats()
+    
     def clean_email(self, email: str) -> str:
         log.debug("Attempting to clean %r", email)
         email = email.strip()
@@ -174,7 +189,7 @@ class EmailExtractor:
             host = re.sub(r'\s*\.\s*', '.', host)
             return f"{user}@{host}"
         # only replace where the full pattern matches
-        return _OBF_EMAIL.sub(_repl, text)
+        return get_obfuscated_email_regex().sub(_repl, text)
     
     def extract_from_url(self, url: str) -> Set[str]:
         """
@@ -218,7 +233,7 @@ class EmailExtractor:
             # 1) Extract from visible text only
             page_text = soup.get_text(separator=" ")
             page_text = self.deobfuscate_emails(page_text)
-            for match in EMAIL_RE.finditer(page_text):
+            for match in get_email_regex().finditer(page_text):
                 raw = match.group(0).strip()
                 if not raw or raw in seen_raw:
                     continue
@@ -275,7 +290,7 @@ class EmailExtractor:
         
         try:
             # Extract emails using regex
-            for match in EMAIL_RE.finditer(text):
+            for match in get_email_regex().finditer(text):
                 try:
                     raw_email = match.group(0).strip()
                     if not raw_email:

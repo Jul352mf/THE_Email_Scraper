@@ -1,9 +1,29 @@
-import uuid, logging
-from multiprocessing import Process, Event, Queue, Manager, TimeoutError
+import uuid
+import logging
+from multiprocessing import Process, Event, TimeoutError
 from queue import Empty
-from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 
 log = logging.getLogger(__name__)
+
+# Import process manager for zombie prevention
+try:
+    from scraper.process_manager import register_process, unregister_process
+    PROCESS_MANAGER_AVAILABLE = True
+except ImportError:
+    PROCESS_MANAGER_AVAILABLE = False
+    log.debug("Process manager not available - zombie cleanup may be limited")
+
+# Graceful Playwright import with fallback
+try:
+    from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    log.warning(
+        "Playwright not available. Install with: "
+        "pip install playwright && playwright install"
+    )
+    PLAYWRIGHT_AVAILABLE = False
+    PWTimeout = Exception  # Fallback exception type
 
 
 # these four must exist before _ensure_comm() ever runs
@@ -12,14 +32,16 @@ _requests = None
 _responses = None
 _browser_service = None
 
+
 def _ensure_comm():
     global _manager, _requests, _responses
     if _manager is None:
         from multiprocessing import Manager, Queue
-        _manager   = Manager()
-        _requests  = Queue()
+        _manager = Manager()
+        _requests = Queue()
         _responses = _manager.dict()
 
+        
 def get_browser_service():
     global _browser_service
     _ensure_comm()
@@ -30,6 +52,11 @@ def get_browser_service():
             ignore_https_errors=True
         )
         _browser_service.start()
+        
+        # Register process for cleanup tracking
+        if PROCESS_MANAGER_AVAILABLE:
+            register_process(_browser_service)
+            log.debug("Registered BrowserService with process manager")
     return _browser_service
 
 
@@ -69,10 +96,43 @@ class BrowserService(Process):
         self._stop_event = Event()
 
     def run(self):
-        playwright = sync_playwright().start()
-        browser = playwright.chromium.launch(headless=True)
-        context = browser.new_context(ignore_https_errors=self.ignore_https_errors)
-        log.info("BrowserService started")
+        """
+        Main browser process loop. Gracefully handles missing Playwright
+        or browser binaries by logging warnings and returning empty strings.
+        """
+        if not PLAYWRIGHT_AVAILABLE:
+            log.error(
+                "BrowserService cannot start: Playwright not available. "
+                "Install with: pip install playwright && playwright install"
+            )
+            self._handle_requests_gracefully()
+            return
+
+        try:
+            playwright = sync_playwright().start()
+        except Exception as e:
+            log.error(
+                "Failed to start Playwright: %s. "
+                "Try running: playwright install", e
+            )
+            self._handle_requests_gracefully()
+            return
+
+        try:
+            browser = playwright.chromium.launch(headless=True)
+        except Exception as e:
+            log.error(
+                "Failed to launch browser: %s. "
+                "Browser binaries missing. Run: playwright install", e
+            )
+            playwright.stop()
+            self._handle_requests_gracefully()
+            return
+
+        context = browser.new_context(
+            ignore_https_errors=self.ignore_https_errors
+        )
+        log.info("BrowserService started successfully")
 
         try:
             while not self._stop_event.is_set():
@@ -110,6 +170,30 @@ class BrowserService(Process):
             playwright.stop()
             log.info("BrowserService shutdown complete")
 
+    def _handle_requests_gracefully(self):
+        """
+        Handle incoming render requests when Playwright is unavailable
+        by returning empty strings and logging warnings.
+        """
+        log.info(
+            "BrowserService running in fallback mode - "
+            "JS rendering disabled"
+        )
+        while not self._stop_event.is_set():
+            try:
+                request_id, url = self._requests.get(timeout=0.5)
+            except Empty:
+                continue
+            if url is None:  # shutdown sentinel
+                break
+
+            resp_q = self._responses.get(request_id)
+            if resp_q:
+                log.debug(
+                    "JS rendering unavailable for %s - returning empty", url
+                )
+                resp_q.put("")
+
     def render(self, url, timeout=None):
         if timeout is None:
             timeout = self.render_timeout + self.idle_timeout
@@ -128,5 +212,11 @@ class BrowserService(Process):
             self._responses.pop(req_id, None)
 
     def shutdown(self):
+        """Shutdown the browser service gracefully."""
         self._stop_event.set()
         self._requests.put((None, None))
+        
+        # Unregister from process manager
+        if PROCESS_MANAGER_AVAILABLE:
+            unregister_process(self)
+            log.debug("Unregistered BrowserService from process manager")

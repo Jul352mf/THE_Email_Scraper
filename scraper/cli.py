@@ -2,7 +2,7 @@
 Enhanced CLI module with improved error handling and user interface.
 
 This module provides a robust command-line interface with proper error handling,
-input validation, and logging features.
+input validation, and clean output formatting.
 """
 import argparse
 import logging
@@ -24,6 +24,17 @@ from scraper.config import config, ConfigurationError
 from scraper.orchestrator import orchestrator
 from scraper.browser_service import get_browser_service
 from scraper.batch_processor import batch_processor
+from scraper.performance_optimizer import get_performance_report
+from scraper.progress_tracker import (
+    initialize_progress_tracker, finalize_progress_tracker
+)
+
+# Import process manager for zombie prevention
+try:
+    from scraper.process_manager import setup_signal_handlers, check_for_zombies, cleanup_all_processes
+    PROCESS_MANAGER_AVAILABLE = True
+except ImportError:
+    PROCESS_MANAGER_AVAILABLE = False
 
 
 # Initialize logger
@@ -40,6 +51,11 @@ class CLI:
     def __init__(self):
         """Initialize the CLI."""
         self.parser = self._create_parser()
+        
+        # Set up process management for zombie prevention
+        if PROCESS_MANAGER_AVAILABLE:
+            setup_signal_handlers()
+            log.debug("Process management initialized")
     
     def _create_parser(self) -> argparse.ArgumentParser:
         """
@@ -251,22 +267,28 @@ class CLI:
         timestamp = time.strftime('%Y%m%d_%H%M%S')
         logfile = os.path.join(log_dir, f"scraper_{timestamp}.log")
         
-        # Set log level
-        level = logging.DEBUG if verbose else logging.INFO
+        # Set log level for file logging
+        file_level = logging.DEBUG if verbose else logging.INFO
         
-        # Configure logging
+        # Configure file logging only - console output handled by formatter
+        console_handler = (logging.StreamHandler(sys.stdout) if verbose
+                           else logging.NullHandler())
         logging.basicConfig(
-            level=level,
+            level=file_level,
             format="%(asctime)s | %(levelname)-7s | %(name)-20s | %(message)s",
             handlers=[
                 logging.FileHandler(logfile, encoding="utf-8"),
-                logging.StreamHandler(sys.stdout)
+                console_handler
             ]
         )
         
         # Set lower level for external libraries
         logging.getLogger("requests").setLevel(logging.WARNING)
         logging.getLogger("googleapiclient").setLevel(logging.WARNING)
+        
+        # Initialize the clean output formatter
+        from scraper.output_formatter import initialize_formatter
+        initialize_formatter(verbose=verbose)
         
         return logfile
     
@@ -281,65 +303,92 @@ class CLI:
             True if successful, False otherwise
         """
         # Set up logging with log directory
-        logfile = self.setup_logging(args.verbose, args.log_dir)
+        self.setup_logging(args.verbose, args.log_dir)
         
+        # Get clean output formatter
+        from scraper.output_formatter import get_formatter
+        formatter = get_formatter()
+        
+        # Show startup info with clean formatting
+        config_info = {
+            'max_workers': args.workers,
+            'js_enabled': False,  # Batch mode typically doesn't use JS
+            'output_file': f"{args.output_dir}/*"
+        }
+        
+        # Count total files to process
+        import glob
+        input_files = glob.glob(os.path.join(args.input_dir, "*.csv"))
+        input_files.extend(glob.glob(os.path.join(args.input_dir, "*.xlsx")))
+        total_files = len(input_files)
+        
+        formatter.show_startup_info(total_files, config_info)
+        
+        # Log detailed info to file only
         log.info("Email scraper starting in batch mode")
         log.info("Input directory: %s", args.input_dir)
         log.info("Output directory: %s", args.output_dir)
         log.info("Log directory: %s", args.log_dir)
         log.info("Workers: %d", args.workers)
         
-        # Update configuration
+        # Update configuration with centralized worker management
         config.domain_score_threshold = args.domain_threshold
         config.max_fallback_pages = args.max_pages
         config.process_pdfs = args.process_pdfs
-        config.max_workers = args.workers
+        config.update_max_workers(args.workers)
         
         # Set orchestrator options
         orchestrator.set_options(save_domain_only=args.save_domain_only)
         
         # Validate environment
         if not self.validate_environment():
-            log.error("Environment validation failed")
+            formatter.show_error("Environment validation failed")
             return False
         
         # Set up batch processor
         global batch_processor
         from scraper.batch_processor import BatchProcessor
-        batch_processor = BatchProcessor(args.input_dir, args.output_dir, args.log_dir)
+        batch_processor = BatchProcessor(
+            args.input_dir, args.output_dir, args.log_dir)
         
         browser_service = get_browser_service()
         
         try:
-            # Process all files
+            # Process all files with progress updates
             results = batch_processor.process_all_files(verbose=args.verbose)
             
             if not results:
-                log.warning("No files were processed")
+                formatter.show_error("No files were processed")
                 return False
             
-            # Print summary
+            # Collect results for summary
             successful = sum(1 for r in results if r.get("success", False))
-            total_companies = sum(r.get("companies_processed", 0) for r in results)
-            total_results = sum(r.get("results_found", 0) for r in results)
             
-            log.info(f"\nBatch processing summary:")
-            log.info(f"Files processed: {successful}/{len(results)}")
-            log.info(f"Total companies: {total_companies}")
-            log.info(f"Total results: {total_results}")
+            # Show final summary instead of log.info messages
+            from scraper.output_formatter import show_final_summary
+            show_final_summary(f"{args.output_dir}/batch_results")
             
             return successful > 0
             
         except KeyboardInterrupt:
-            log.warning("Batch processing interrupted by user")
+            formatter.show_error("Processing interrupted by user")
+            # Clean up any zombie processes on interruption
+            if PROCESS_MANAGER_AVAILABLE:
+                cleanup_all_processes()
             return False
         except Exception as e:
-            log.error("Batch processing failed: %s", e)
+            formatter.show_error(f"Batch processing failed: {e}")
             return False
         finally:
             browser_service.shutdown()
             browser_service.join()
             log.info("BrowserService: shutdown complete")
+            
+            # Check for any remaining zombie processes
+            if PROCESS_MANAGER_AVAILABLE:
+                zombies = check_for_zombies()
+                if zombies:
+                    log.warning("Found and cleaned up %d zombie processes", len(zombies))
     
     def scrape_companies(self, args: argparse.Namespace) -> bool:
         """
@@ -371,7 +420,7 @@ class CLI:
         config.domain_score_threshold = args.domain_threshold
         config.max_fallback_pages = args.max_pages
         config.process_pdfs = args.process_pdfs
-        config.max_workers = args.workers
+        config.update_max_workers(args.workers)
         
         # Set orchestrator options
         orchestrator.set_options(save_domain_only=args.save_domain_only)
@@ -423,6 +472,10 @@ class CLI:
         orchestrator.reset_stats()
         all_rows: List[Dict[str, str]] = []
 
+        # Initialize progress tracker
+        show_progress = not args.verbose  # Hide progress bar in verbose mode to avoid conflicts
+        initialize_progress_tracker(len(companies), show_progress=show_progress)
+
         # Process companies with concurrent domain processing
         try:
             stats, rows = orchestrator.process_companies_concurrent(companies)
@@ -430,6 +483,9 @@ class CLI:
             all_rows.extend(rows)
         except KeyboardInterrupt:
             log.warning("Interrupted by user; shutting down")
+            # Clean up any zombie processes on interruption
+            if PROCESS_MANAGER_AVAILABLE:
+                cleanup_all_processes()
             return False
         except Exception as e:
             log.error("Error in concurrent processing: %s", e)
@@ -439,6 +495,15 @@ class CLI:
             browser_service.shutdown()
             browser_service.join()
             log.info("BrowserService: shutdown complete")
+            
+            # Check for any remaining zombie processes
+            if PROCESS_MANAGER_AVAILABLE:
+                zombies = check_for_zombies()
+                if zombies:
+                    log.warning("Found and cleaned up %d zombie processes", len(zombies))
+
+        # Finalize progress tracker
+        finalize_progress_tracker()
 
         # Create output DataFrame
         df_out = pd.DataFrame(all_rows, columns=["Company", "Domain", "Email"]).drop_duplicates()
@@ -456,6 +521,9 @@ class CLI:
         
         http_stats = http_client.stats
         
+        # Get performance monitoring report
+        perf_report = get_performance_report()
+        
         # collect all HTTP statuses ≥400
         error_stats = {
             k: v
@@ -470,7 +538,7 @@ class CLI:
         
         total_http_errors = sum(error_stats.values())
 
-        # now print the box
+        # now print the box with performance monitoring
         log.info(
             "\n+--------------------------------------------------+\n"
             "| RUN SUMMARY                                      |\n"
@@ -489,6 +557,14 @@ class CLI:
             f"| HTTP Requests   : {http_stats['total_requests']:>3}\n"
             f"| HTTP errors     : {total_http_errors:>3}\n"
             f"| No-response     : {no_response_count:>3}\n"
+            "+--------------------------------------------------+\n"
+            "| PERFORMANCE MONITORING                           |\n"
+            "+--------------------------------------------------+\n"
+            f"| Avg Request Time: {perf_report['average_request_time']:>6.3f} s\n"
+            f"| Requests/Second : {perf_report['requests_per_second']:>6.2f}\n"
+            f"| Cache Hit Rate  : {perf_report['cache_stats']['hit_rate_percent']:>6.1f}%\n"
+            f"| Cache Size      : {perf_report['cache_stats']['cache_size']:>3}\n"
+            f"| Suggested Workers: {perf_report['suggested_workers'] or 'optimal':>3}\n"
             "+--------------------------------------------------+"
         )
         log.info("Saved %d rows -> %s", len(df_out), args.output_file)

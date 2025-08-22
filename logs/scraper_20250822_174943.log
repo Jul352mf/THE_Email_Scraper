@@ -1,0 +1,82 @@
+2025-08-22 17:49:43,426 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 17:49:43,427 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 17:49:43,427 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 17:49:43,427 | INFO    | scraper.cli          | Workers: 32
+2025-08-22 17:49:43,427 | INFO    | scraper.cli          | Domain threshold: 50
+2025-08-22 17:49:43,427 | INFO    | scraper.cli          | Max pages: 50
+2025-08-22 17:49:43,427 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 17:49:43,427 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 17:49:43,428 | INFO    | scraper.config       | Updated max workers to 32
+2025-08-22 17:49:43,849 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 17:49:43,849 | INFO    | scraper.orchestrator | Reset orchestrator stats and cleared domain tracking cache
+2025-08-22 17:49:43,849 | INFO    | scraper.orchestrator | Phase 1: Collecting domains for 8 companies
+2025-08-22 17:49:45,858 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:49:48,272 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:49:50,605 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:49:52,925 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:49:55,224 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:49:57,445 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:49:59,722 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:50:02,222 | INFO    | scraper.google_search | Processing batch of 1 unique Google search queries
+2025-08-22 17:50:02,451 | INFO    | scraper.orchestrator | Phase 2: Batch probing 8 unique domains
+2025-08-22 17:50:02,451 | INFO    | scraper.orchestrator | Batch probing 8 domains for access patterns
+2025-08-22 17:50:02,452 | INFO    | scraper.thread_pool_manager | Created optimized thread pool with 32 workers
+2025-08-22 17:50:02,452 | INFO    | scraper.thread_pool_manager | Created global thread pool manager with 32 workers
+2025-08-22 17:50:02,452 | INFO    | scraper.http_client  | Probing domain access methods for: walter-schmidt-chemie.de
+2025-08-22 17:50:02,453 | INFO    | scraper.http_client  | Probing domain access methods for: worldfertilizer.com
+2025-08-22 17:50:02,453 | INFO    | scraper.http_client  | Probing domain access methods for: us.mitsuichemicals.com
+2025-08-22 17:50:02,454 | INFO    | scraper.http_client  | Probing domain access methods for: daf.com
+2025-08-22 17:50:02,455 | INFO    | scraper.http_client  | Probing domain access methods for: bpetrol.it
+2025-08-22 17:50:02,458 | INFO    | scraper.http_client  | Probing domain access methods for: eurodamjas.com
+2025-08-22 17:50:02,461 | INFO    | scraper.http_client  | Probing domain access methods for: synsol.ch
+2025-08-22 17:50:02,461 | INFO    | scraper.http_client  | Probing domain access methods for: speedyfuels.co.uk
+2025-08-22 17:50:02,974 | INFO    | scraper.http_client  | ✓ Found working access method for speedyfuels.co.uk: https
+2025-08-22 17:50:02,975 | INFO    | scraper.http_client  | ✓ Found working access method for eurodamjas.com: https
+2025-08-22 17:50:03,015 | INFO    | scraper.http_client  | ✓ Found working access method for bpetrol.it: https
+2025-08-22 17:50:03,029 | INFO    | scraper.http_client  | ✓ Found working access method for us.mitsuichemicals.com: https
+2025-08-22 17:50:03,039 | INFO    | scraper.http_client  | ✓ Found working access method for daf.com: https
+2025-08-22 17:50:03,366 | INFO    | scraper.http_client  | ✓ Found working access method for synsol.ch: https
+2025-08-22 17:50:04,910 | INFO    | scraper.http_client  | ✓ Found working access method for worldfertilizer.com: https_www
+2025-08-22 17:50:13,068 | INFO    | scraper.http_client  | ✓ Found working access method for walter-schmidt-chemie.de: https
+2025-08-22 17:50:13,068 | INFO    | scraper.orchestrator | Successfully probed 8/8 domains
+2025-08-22 17:50:13,068 | INFO    | scraper.orchestrator | Phase 3: Processing 8 companies with valid domains
+2025-08-22 17:50:13,068 | INFO    | scraper.orchestrator | Processing 8 companies with 8 concurrent workers
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company walter schmidt chemie gmbh: not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company henan xinlianxin fertilizer : not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company mitsui toatsu chemicals : not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company daf trucks: not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company petrol rete : not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company euro dam jas doo: not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company Synsol: not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | ERROR   | scraper.orchestrator | Error processing company speedy fuels: not enough values to unpack (expected 2, got 1)
+2025-08-22 17:50:13,069 | INFO    | scraper.orchestrator | Concurrent processing completed in 29.22 seconds
+2025-08-22 17:50:13,202 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 17:50:13,233 | INFO    | scraper.cli          | 
++--------------------------------------------------+
+| RUN SUMMARY                                      |
++--------------------------------------------------+
+| Leads           :   8
+| Domain found    :   0
+| No Google hits  :   0
+| Domain unclear  :   0
+| Sitemap used    :   0
+| With e-mail     :   0
+| Without e-mail  :   0
+| Google errors   :   0
+| Processing errors:   8
+| Unique e-mails  :   0
+| Runtime         :   29.4 s
+| HTTP Requests   :   0
+| HTTP errors     :   0
+| No-response     :   0
++--------------------------------------------------+
+| PERFORMANCE MONITORING                           |
++--------------------------------------------------+
+| Avg Request Time:  0.000 s
+| Requests/Second :   0.00
+| Cache Hit Rate  :    0.0%
+| Cache Size      :   0
+| Suggested Workers: optimal
++--------------------------------------------------+
+2025-08-22 17:50:13,233 | INFO    | scraper.cli          | Saved 0 rows -> results.xlsx
+2025-08-22 17:50:13,233 | INFO    | scraper.cli          | Verbose log -> C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\logs\scraper_20250822_174943.log

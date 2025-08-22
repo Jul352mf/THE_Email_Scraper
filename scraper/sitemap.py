@@ -163,10 +163,13 @@ class SitemapParser:
             if not nested_urls:
                 return
 
-            threads = min(len(nested_urls), 4)
+            from scraper.config import config
+            threads = config.worker_manager.get_workers_for_task(
+                "sitemap_download", len(nested_urls))
             if threads == 0:
                 return  # No nested URLs to process
-            log.debug("Parallel-fetching %d nested sitemaps via %d threads", len(nested_urls), threads)
+            log.debug("Parallel-fetching %d nested sitemaps via %d threads", 
+                     len(nested_urls), threads)
             with ThreadPoolExecutor(max_workers=threads) as pool:
                 futures = {pool.submit(http_client.safe_get, url, retry_count=2): url for url in nested_urls}
                 for fut in as_completed(futures):
@@ -222,8 +225,9 @@ class SitemapParser:
                 log.warning("Error parsing %s – %s", sm_url, err)
             return urls
 
-        # parallel-fetch and parse
-        max_workers = max(1, min(len(sitemap_urls), 4))
+        # Use worker manager for parallel sitemap processing
+        max_workers = config.worker_manager.get_workers_for_task(
+            "sitemap_download", len(sitemap_urls))
         with ThreadPoolExecutor(max_workers=max_workers) as pool:
             futures = {pool.submit(_process_sitemap, url): url for url in sitemap_urls}
             for fut in as_completed(futures):

@@ -2,12 +2,14 @@
 Enhanced configuration module with improved validation and security.
 
 This module provides a robust configuration system with validation,
-environment variable handling, and security features.
+environment variable handling, security features, and centralized worker
+management to prevent thread pool nesting.
 """
 
 import os
 import logging
 from typing import Dict, List, Any, Optional, Set
+from threading import Lock
 
 from dotenv import load_dotenv
 
@@ -40,6 +42,81 @@ MEDIUM_PRIORITY_PARTS = [
 class ConfigurationError(Exception):
     """Exception raised for configuration errors."""
     pass
+
+
+class WorkerManager:
+    """Centralized worker count management to prevent thread pool nesting."""
+    
+    def __init__(self, base_workers: int = 4):
+        """Initialize with base worker count."""
+        self._base_workers = max(1, base_workers)
+        self._allocation_lock = Lock()
+        self._active_pools: Dict[str, int] = {}
+        
+    @property
+    def base_workers(self) -> int:
+        """Get base worker count."""
+        return self._base_workers
+        
+    def set_base_workers(self, count: int):
+        """Set base worker count."""
+        self._base_workers = max(1, count)
+        
+    def get_workers_for_task(self, task_name: str,
+                             total_items: int = None) -> int:
+        """
+        Get optimal worker count for a specific task.
+        
+        Args:
+            task_name: Name of the task (for debugging/logging)
+            total_items: Number of items to process (optional)
+            
+        Returns:
+            Optimal worker count for the task
+        """
+        with self._allocation_lock:
+            # Different allocation strategies based on task
+            if task_name == "domain_probe":
+                # Light probing, use fewer workers
+                workers = min(self._base_workers // 2, 4)
+            elif task_name == "sitemap_download":
+                # Sitemap downloads, moderate workers
+                workers = min(4, total_items or self._base_workers)
+            elif task_name == "main_processing":
+                # Main processing gets most workers
+                workers = self._base_workers
+            elif task_name == "url_crawling":
+                # URL crawling within a domain, use fewer to avoid overwhelming
+                workers = min(self._base_workers // 3, 3)
+            else:
+                # Default allocation
+                workers = max(1, self._base_workers // 2)
+                
+            # Limit by available items if provided
+            if total_items is not None:
+                workers = min(workers, total_items)
+                
+            # Ensure minimum of 1 worker
+            workers = max(1, workers)
+            
+            # Track active allocations (for debugging)
+            self._active_pools[task_name] = workers
+            log.debug(f"Allocated {workers} workers for task: {task_name}")
+            
+            return workers
+    
+    def release_workers_for_task(self, task_name: str):
+        """Release workers allocated for a task."""
+        with self._allocation_lock:
+            if task_name in self._active_pools:
+                del self._active_pools[task_name]
+                log.debug(f"Released workers for task: {task_name}")
+    
+    def get_active_allocations(self) -> Dict[str, int]:
+        """Get current worker allocations for debugging."""
+        with self._allocation_lock:
+            return self._active_pools.copy()
+
 
 class Config:
     """Enhanced configuration class with validation and security features."""
@@ -74,6 +151,9 @@ class Config:
         
         # Threading and concurrency
         self.max_workers = self._parse_int("MAX_WORKERS", 4, 1, 64)
+        
+        # Initialize centralized worker manager
+        self.worker_manager = WorkerManager(self.max_workers)
         
         # Google API settings
         self.google_safe_interval = self._parse_float("GOOGLE_SAFE_INTERVAL", 0.8, 0.1, 10.0)
@@ -310,6 +390,20 @@ class Config:
         for key, value in config_dict.items():
             if hasattr(self, key):
                 setattr(self, key, value)
+                # Update worker manager if max_workers changed
+                if key == 'max_workers':
+                    self.worker_manager.set_base_workers(value)
+    
+    def update_max_workers(self, count: int) -> None:
+        """
+        Update max workers and sync with worker manager.
+        
+        Args:
+            count: New worker count
+        """
+        self.max_workers = max(1, count)
+        self.worker_manager.set_base_workers(self.max_workers)
+        log.info(f"Updated max workers to {self.max_workers}")
 
 # Create a global configuration instance
 config = Config()
