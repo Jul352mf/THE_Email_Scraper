@@ -1,222 +1,233 @@
-import uuid
+"""BrowserService (refactored)
+
+Thread-based, lazy, optional Playwright integration with fast fallback.
+
+Goals:
+* Avoid importing Playwright at module import time (graceful if missing).
+* Eliminate multiprocessing.Manager usage (Windows pickling overhead / hangs).
+* Provide the same external helper ``get_browser_service()`` returning a
+    singleton with ``render(url, timeout=None) -> str`` and ``shutdown()``.
+* If Playwright isn't installed or startup fails, service enters a disabled
+    mode where ``render`` returns "" quickly (caller can detect empty HTML).
+"""
+
+from __future__ import annotations
+
 import logging
-from multiprocessing import Process, Event, TimeoutError
-from queue import Empty
+import threading
+import asyncio
+from queue import Queue, Empty
+from typing import Optional
 
 log = logging.getLogger(__name__)
 
-# Import process manager for zombie prevention
-try:
-    from scraper.process_manager import register_process, unregister_process
-    PROCESS_MANAGER_AVAILABLE = True
-except ImportError:
-    PROCESS_MANAGER_AVAILABLE = False
-    log.debug("Process manager not available - zombie cleanup may be limited")
-
-# Graceful Playwright import with fallback
-try:
-    from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
-    PLAYWRIGHT_AVAILABLE = True
-except ImportError:
-    log.warning(
-        "Playwright not available. Install with: "
-        "pip install playwright && playwright install"
-    )
-    PLAYWRIGHT_AVAILABLE = False
-    PWTimeout = Exception  # Fallback exception type
+_browser_service = None  # singleton placeholder
+_LOCK = threading.Lock()
 
 
-# these four must exist before _ensure_comm() ever runs
-_manager = None
-_requests = None
-_responses = None
-_browser_service = None
+class BrowserService:
+    """Thread-backed renderer using Playwright (chromium) if available.
 
-
-def _ensure_comm():
-    global _manager, _requests, _responses
-    if _manager is None:
-        from multiprocessing import Manager, Queue
-        _manager = Manager()
-        _requests = Queue()
-        _responses = _manager.dict()
-
-        
-def get_browser_service():
-    global _browser_service
-    _ensure_comm()
-    if _browser_service is None:
-        _browser_service = BrowserService(
-            render_timeout=30.0,
-            idle_timeout=5.0,
-            ignore_https_errors=True
-        )
-        _browser_service.start()
-        
-        # Register process for cleanup tracking
-        if PROCESS_MANAGER_AVAILABLE:
-            register_process(_browser_service)
-            log.debug("Registered BrowserService with process manager")
-    return _browser_service
-
-
-def _render_page(page, url: str, nav_timeout: int, idle_timeout: int) -> str:
+    Not a ``multiprocessing.Process`` anymore; simpler, more portable.
+    The heavy lifting (Chromium) still runs out-of-process via Playwright.
     """
-    Navigate to `url` waiting up to nav_timeout ms for initial networkidle.
-    Then wait up to idle_timeout ms for a final networkidle.
-    Return whatever HTML is available.
-    """
-    try:
-        page.goto(
-            url,
-            wait_until="networkidle",
-            timeout=nav_timeout
-        )
-    except PWTimeout:
-        log.warning("networkidle nav timed out after %dms for %s", nav_timeout, url)
-    else:
-        try:
-            page.wait_for_load_state("networkidle", timeout=idle_timeout)
-        except PWTimeout:
-            log.debug("extra idle wait of %dms expired for %s", idle_timeout, url)
 
-    return page.content()
-
-class BrowserService(Process):
-    def __init__(self, render_timeout=60., idle_timeout=15., ignore_https_errors=True):
-        _ensure_comm()
-        super().__init__(daemon=True, name="BrowserService")
-        # Only primitives here
-        self.render_timeout     = render_timeout
-        self.idle_timeout       = idle_timeout
+    def __init__(
+        self,
+        render_timeout: float = 30.0,
+        idle_timeout: float = 5.0,
+        ignore_https_errors: bool = True,
+        headless: bool = True,
+        max_queue: int = 100,
+    ) -> None:
+        self.render_timeout = render_timeout
+        self.idle_timeout = idle_timeout
         self.ignore_https_errors = ignore_https_errors
-        # grab the shared, picklable objects
-        self._requests  = _requests
-        self._responses = _responses
-        self._stop_event = Event()
-
-    def run(self):
-        """
-        Main browser process loop. Gracefully handles missing Playwright
-        or browser binaries by logging warnings and returning empty strings.
-        """
-        if not PLAYWRIGHT_AVAILABLE:
-            log.error(
-                "BrowserService cannot start: Playwright not available. "
-                "Install with: pip install playwright && playwright install"
-            )
-            self._handle_requests_gracefully()
-            return
-
-        try:
-            playwright = sync_playwright().start()
-        except Exception as e:
-            log.error(
-                "Failed to start Playwright: %s. "
-                "Try running: playwright install", e
-            )
-            self._handle_requests_gracefully()
-            return
-
-        try:
-            browser = playwright.chromium.launch(headless=True)
-        except Exception as e:
-            log.error(
-                "Failed to launch browser: %s. "
-                "Browser binaries missing. Run: playwright install", e
-            )
-            playwright.stop()
-            self._handle_requests_gracefully()
-            return
-
-        context = browser.new_context(
-            ignore_https_errors=self.ignore_https_errors
+        self.headless = headless
+        self._requests: "Queue[tuple[str, str, float, float, Queue]]" = Queue(
+            max_queue
         )
-        log.info("BrowserService started successfully")
+        self._thread: Optional[threading.Thread] = None
+        self._stop = threading.Event()
+        self._ready = threading.Event()
+        self._disabled = False
+        self._disable_reason = ""
 
+    # ------------------------------ lifecycle ------------------------------
+    def start(self) -> None:
+        if self._thread and self._thread.is_alive():
+            return
+        self._thread = threading.Thread(
+            target=self._worker,
+            name="BrowserServiceWorker",
+            daemon=True,
+        )
+        self._thread.start()
+    # Wait a short time for readiness (Playwright init) but don't block
+    # forever.
+        self._ready.wait(timeout=5.0)
+        if not self._ready.is_set():
+            log.warning(
+                "BrowserService not ready after 5s; best-effort mode"
+            )
+
+    def shutdown(self) -> None:
+        self._stop.set()
+        if self._thread and self._thread.is_alive():
+            try:
+                self._requests.put_nowait(("__STOP__", "", 0, 0, Queue()))
+            except Exception:
+                pass
+            self._thread.join(timeout=5)
+        self._thread = None
+        log.info("BrowserService shutdown complete")
+
+    # ------------------------------ public API -----------------------------
+    def render(self, url: str, timeout: Optional[float] = None) -> str:
+        if self._disabled:
+            return ""
+        if not self._thread or not self._thread.is_alive():
+            self.start()
+        if self._disabled:
+            return ""
+        total_timeout = (
+            timeout
+            if timeout is not None
+            else (self.render_timeout + self.idle_timeout)
+        )
+        per_nav = int(self.render_timeout * 1000)
+        per_idle = int(self.idle_timeout * 1000)
+        resp_q: Queue = Queue(1)
         try:
-            while not self._stop_event.is_set():
+            self._requests.put(
+                (url, url, per_nav, per_idle, resp_q), timeout=0.1
+            )
+        except Exception:
+            log.warning(
+                "BrowserService queue full/closed; returning empty for %s", url
+            )
+            return ""
+        try:
+            return resp_q.get(timeout=total_timeout)
+        except Empty:
+            log.warning("BrowserService render timeout for %s", url)
+            return ""
+
+    async def render_async(
+        self, url: str, timeout: Optional[float] = None
+    ) -> str:
+        loop = asyncio.get_running_loop()
+        return await loop.run_in_executor(None, self.render, url, timeout)
+
+    def is_disabled(self) -> bool:
+        return self._disabled
+
+    def disable_reason(self) -> str:
+        return self._disable_reason
+
+    # ------------------------------ worker loop ----------------------------
+    def _worker(self) -> None:
+        try:
+            try:
+                from playwright.sync_api import (
+                    sync_playwright,
+                    TimeoutError as PWTimeout,
+                )  # type: ignore
+            except ImportError as e:  # Playwright not installed
+                self._disabled = True
+                self._disable_reason = f"playwright import failed: {e}"
+                log.info("BrowserService disabled (%s)", self._disable_reason)
+                self._ready.set()
+                return
+
+            pw = sync_playwright().start()
+            browser = pw.chromium.launch(headless=self.headless)
+            context = browser.new_context(
+                ignore_https_errors=self.ignore_https_errors
+            )
+            log.info("BrowserService started (thread mode)")
+            self._ready.set()
+
+            while not self._stop.is_set():
                 try:
-                    request_id, url = self._requests.get(timeout=0.5)
+                    key, url, nav_ms, idle_ms, resp_q = self._requests.get(
+                        timeout=0.5
+                    )
                 except Empty:
                     continue
-                if url is None:  # shutdown sentinel
+                if key == "__STOP__":
                     break
-
-                resp_q = self._responses.get(request_id)
-                if not resp_q:
-                    continue
-
-                page = browser.new_page()
+                page = context.new_page()
+                html = ""
                 try:
-                    html = _render_page(
-                        page,
-                        url,
-                        nav_timeout=int(self.render_timeout * 1_000),
-                        idle_timeout=int(self.idle_timeout * 1_000)
-                    )
-                    resp_q.put(html)
-                except PWTimeout:
-                    log.warning("Render timeout for %s", url)
-                    resp_q.put("")
+                    try:
+                        page.goto(
+                            url, wait_until="networkidle", timeout=nav_ms
+                        )
+                    except PWTimeout:
+                        log.debug("nav timeout after %dms for %s", nav_ms, url)
+                        try:
+                            page.goto(
+                                url,
+                                wait_until="domcontentloaded",
+                                timeout=max(1000, nav_ms // 2),
+                            )
+                        except Exception:
+                            pass
+                    else:
+                        try:
+                            page.wait_for_load_state(
+                                "networkidle", timeout=idle_ms
+                            )
+                        except PWTimeout:
+                            pass
+                    try:
+                        html = page.content() or ""
+                    except Exception as e:
+                        log.debug("page.content() failed for %s: %s", url, e)
+                        html = ""
+                    if not html.strip():
+                        try:
+                            html = page.evaluate(
+                                "() => document.documentElement.outerHTML"
+                            ) or ""
+                        except Exception:
+                            pass
+                    if not html.strip():
+                        log.info(
+                            "Empty HTML for %s (timeout/nav issues)",
+                            url,
+                        )
                 except Exception as e:
-                    log.error("Render error for %s: %s", url, e, exc_info=True)
-                    resp_q.put("")
+                    log.debug("Render error for %s: %s", url, e)
                 finally:
+                    try:
+                        resp_q.put_nowait(html)
+                    except Exception:
+                        pass
                     page.close()
+        except Exception as e:
+            self._disabled = True
+            self._disable_reason = f"startup failure: {e}"
+            log.warning(
+                "BrowserService disabled due to error: %s", e, exc_info=True
+            )
+            self._ready.set()
         finally:
-            context.close()
-            browser.close()
-            playwright.stop()
-            log.info("BrowserService shutdown complete")
-
-    def _handle_requests_gracefully(self):
-        """
-        Handle incoming render requests when Playwright is unavailable
-        by returning empty strings and logging warnings.
-        """
-        log.info(
-            "BrowserService running in fallback mode - "
-            "JS rendering disabled"
-        )
-        while not self._stop_event.is_set():
             try:
-                request_id, url = self._requests.get(timeout=0.5)
-            except Empty:
-                continue
-            if url is None:  # shutdown sentinel
-                break
+                if 'context' in locals():
+                    context.close()
+                if 'browser' in locals():
+                    browser.close()
+                if 'pw' in locals():
+                    pw.stop()
+            except Exception:
+                pass
 
-            resp_q = self._responses.get(request_id)
-            if resp_q:
-                log.debug(
-                    "JS rendering unavailable for %s - returning empty", url
-                )
-                resp_q.put("")
 
-    def render(self, url, timeout=None):
-        if timeout is None:
-            timeout = self.render_timeout + self.idle_timeout
-
-        req_id = str(uuid.uuid4())
-        resp_q = _manager.Queue(1)
-        self._responses[req_id] = resp_q
-        self._requests.put((req_id, url))
-
-        try:
-            return resp_q.get(timeout=timeout)
-        except (Empty, TimeoutError):
-            log.warning("Render() timeout for %s", url)
-            return ""
-        finally:
-            self._responses.pop(req_id, None)
-
-    def shutdown(self):
-        """Shutdown the browser service gracefully."""
-        self._stop_event.set()
-        self._requests.put((None, None))
-        
-        # Unregister from process manager
-        if PROCESS_MANAGER_AVAILABLE:
-            unregister_process(self)
-            log.debug("Unregistered BrowserService from process manager")
+def get_browser_service() -> 'BrowserService':
+    global _browser_service
+    with _LOCK:
+        if _browser_service is None:
+            _browser_service = BrowserService()
+    return _browser_service
