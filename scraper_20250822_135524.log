@@ -630,3 +630,63 @@
 2025-08-22 14:01:55,363 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap_index.xml
 2025-08-22 14:01:56,377 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap_index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap_index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237A862FC50>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
 2025-08-22 14:01:56,377 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap_index.xml
+2025-08-22 14:02:27,418 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap_index.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap_index.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237AAA00C00>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:02:58,459 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 14:02:59,473 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap-index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap-index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237AA500050>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:02:59,473 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 14:03:30,514 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap-index.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap-index.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237AAA01370>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:04:02,564 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 14:04:03,575 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap-index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap-index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237AA500F50>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:04:03,575 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 14:04:34,636 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap-index.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap-index.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237A858B460>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:05:05,687 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap1.xml
+2025-08-22 14:05:06,694 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap1.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap1.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237A862D1D0>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:05:06,694 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap1.xml
+2025-08-22 14:05:37,752 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap1.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap1.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237AAA01150>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:06:09,801 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap1.xml
+2025-08-22 14:06:10,809 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap1.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap1.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237A862CA50>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:06:10,809 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap1.xml
+2025-08-22 14:06:41,982 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap1.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap1.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237AAA009E0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:07:13,046 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/robots.txt
+2025-08-22 14:07:14,056 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/robots.txt: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /robots.txt (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237A862F9D0>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:07:14,056 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/robots.txt
+2025-08-22 14:07:45,091 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/robots.txt: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /robots.txt (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237AAA00270>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:08:17,136 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/robots.txt
+2025-08-22 14:08:18,199 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/robots.txt: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /robots.txt (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237AA501450>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:08:18,199 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/robots.txt
+2025-08-22 14:08:49,245 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/robots.txt: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /robots.txt (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237AAA01AE0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:08:49,245 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: bluetech00.gobizkorea.com
+2025-08-22 14:08:49,245 | INFO    | scraper.crawler      | Start crawl bluetech00.gobizkorea.com (limit=30, timeout=60s, workers=16)
+2025-08-22 14:09:20,274 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 14:09:21,295 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237A862C2D0>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:09:21,295 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 14:09:52,326 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237A858B8A0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:10:24,373 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 14:10:25,382 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000237A862DA90>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 14:10:25,383 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 14:10:56,425 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x00000237AAA01AE0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=10)'))
+2025-08-22 14:10:56,428 | INFO    | scraper.crawler      | Crawl of bluetech00.gobizkorea.com completed: 0 pages fetched, 1 unique URLs seen, 0 emails, 127.2 s
+2025-08-22 14:10:56,428 | INFO    | scraper.orchestrator | ✗ No emails found for bluetec haman
+2025-08-22 14:10:56,432 | INFO    | scraper.orchestrator | Concurrent processing completed in 931.46 seconds
+2025-08-22 14:10:56,583 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 14:10:56,610 | INFO    | scraper.cli          | 
++--------------------------------------------------+
+| RUN SUMMARY                                      |
++--------------------------------------------------+
+| Leads           :   9
+| Domain found    :   9
+| No Google hits  :   0
+| Domain unclear  :   0
+| Sitemap used    :   8
+| With e-mail     :   7
+| Without e-mail  :   2
+| Google errors   :   0
+| Processing errors:   0
+| Unique e-mails  :  11
+| Runtime         :  931.6 s
+| HTTP Requests   : 173
+| HTTP errors     :   0
+| No-response     :   8
++--------------------------------------------------+
+2025-08-22 14:10:56,610 | INFO    | scraper.cli          | Saved 11 rows -> results.xlsx
+2025-08-22 14:10:56,610 | INFO    | scraper.cli          | Verbose log -> C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper_20250822_135524.log

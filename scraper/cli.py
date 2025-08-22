@@ -23,6 +23,7 @@ import pandas as pd
 from scraper.config import config, ConfigurationError
 from scraper.orchestrator import orchestrator
 from scraper.browser_service import get_browser_service
+from scraper.batch_processor import batch_processor
 
 
 # Initialize logger
@@ -54,11 +55,13 @@ class CLI:
         
         parser.add_argument(
             "input_file",
-            help="Input Excel file with 'Company' column"
+            nargs='?',  # Make optional for batch mode
+            help="Input Excel/CSV file with 'Company' column"
         )
         
         parser.add_argument(
-            "output_file",
+            "output_file", 
+            nargs='?',  # Make optional for batch mode
             help="Output Excel file for results"
         )
         
@@ -106,6 +109,30 @@ class CLI:
             help="Path to custom .env configuration file"
         )
         
+        parser.add_argument(
+            "--batch",
+            action="store_true",
+            help="Process all files in input directory"
+        )
+        
+        parser.add_argument(
+            "--input-dir",
+            default="input",
+            help="Input directory for batch processing"
+        )
+        
+        parser.add_argument(
+            "--output-dir", 
+            default="output",
+            help="Output directory for results"
+        )
+        
+        parser.add_argument(
+            "--log-dir",
+            default="logs",
+            help="Log directory for processing logs"
+        )
+        
         return parser
     
     def validate_environment(self) -> bool:
@@ -137,12 +164,25 @@ class CLI:
             return False, f"Input file not found: {file_path}"
             
         # Check file extension
-        if not file_path.lower().endswith(('.xlsx', '.xls')):
-            return False, f"Input file must be Excel format (.xlsx or .xls): {file_path}"
+        if not file_path.lower().endswith(('.xlsx', '.xls', '.csv')):
+            return False, f"Input file must be Excel or CSV format (.xlsx, .xls, or .csv): {file_path}"
             
         # Try to load the file
         try:
-            df = pd.read_excel(file_path)
+            if file_path.lower().endswith('.csv'):
+                # Try different encodings for CSV
+                encodings = ['utf-8', 'utf-8-sig', 'latin1', 'cp1252']
+                df = None
+                for encoding in encodings:
+                    try:
+                        df = pd.read_csv(file_path, encoding=encoding)
+                        break
+                    except UnicodeDecodeError:
+                        continue
+                if df is None:
+                    return False, f"Could not read CSV file with any supported encoding: {file_path}"
+            else:
+                df = pd.read_excel(file_path)
             
             # Check for required columns
             if "Company" not in df.columns:
@@ -225,6 +265,77 @@ class CLI:
         
         return logfile
     
+    def process_batch(self, args: argparse.Namespace) -> bool:
+        """
+        Process all files in batch mode.
+        
+        Args:
+            args: Command-line arguments
+            
+        Returns:
+            True if successful, False otherwise
+        """
+        # Set up logging
+        logfile = self.setup_logging(args.verbose)
+        
+        log.info("Email scraper starting in batch mode")
+        log.info("Input directory: %s", args.input_dir)
+        log.info("Output directory: %s", args.output_dir) 
+        log.info("Log directory: %s", args.log_dir)
+        log.info("Workers: %d", args.workers)
+        
+        # Update configuration
+        config.domain_score_threshold = args.domain_threshold
+        config.max_fallback_pages = args.max_pages
+        config.process_pdfs = args.process_pdfs
+        config.max_workers = args.workers
+        
+        # Set orchestrator options
+        orchestrator.set_options(save_domain_only=args.save_domain_only)
+        
+        # Validate environment
+        if not self.validate_environment():
+            log.error("Environment validation failed")
+            return False
+        
+        # Set up batch processor
+        global batch_processor
+        from scraper.batch_processor import BatchProcessor
+        batch_processor = BatchProcessor(args.input_dir, args.output_dir, args.log_dir)
+        
+        browser_service = get_browser_service()
+        
+        try:
+            # Process all files
+            results = batch_processor.process_all_files(verbose=args.verbose)
+            
+            if not results:
+                log.warning("No files were processed")
+                return False
+            
+            # Print summary
+            successful = sum(1 for r in results if r.get("success", False))
+            total_companies = sum(r.get("companies_processed", 0) for r in results)
+            total_results = sum(r.get("results_found", 0) for r in results)
+            
+            log.info(f"\nBatch processing summary:")
+            log.info(f"Files processed: {successful}/{len(results)}")
+            log.info(f"Total companies: {total_companies}")
+            log.info(f"Total results: {total_results}")
+            
+            return successful > 0
+            
+        except KeyboardInterrupt:
+            log.warning("Batch processing interrupted by user")
+            return False
+        except Exception as e:
+            log.error("Batch processing failed: %s", e)
+            return False
+        finally:
+            browser_service.shutdown()
+            browser_service.join()
+            log.info("BrowserService: shutdown complete")
+    
     def scrape_companies(self, args: argparse.Namespace) -> bool:
         """
         Main function to scrape companies from an Excel file.
@@ -279,7 +390,23 @@ class CLI:
             
         # Load input file
         try:
-            df = pd.read_excel(args.input_file)
+            if args.input_file.lower().endswith('.csv'):
+                # Try different encodings for CSV
+                encodings = ['utf-8', 'utf-8-sig', 'latin1', 'cp1252']
+                df = None
+                for encoding in encodings:
+                    try:
+                        df = pd.read_csv(args.input_file, encoding=encoding)
+                        log.debug(f"Successfully read CSV with encoding {encoding}")
+                        break
+                    except UnicodeDecodeError:
+                        continue
+                if df is None:
+                    log.error("Could not read CSV file with any supported encoding")
+                    return False
+            else:
+                df = pd.read_excel(args.input_file)
+                
             companies = [c for c in df["Company"].astype(str) if c.strip()]
             log.info("Loaded %d companies from %s", len(companies), args.input_file)
         except Exception as e:
@@ -378,11 +505,25 @@ class CLI:
             # Parse arguments
             parsed_args = self.parser.parse_args(args)
             
-            # Run scraper
-            success = self.scrape_companies(parsed_args)
+            # Check if batch processing or single file
+            if parsed_args.batch:
+                success = self.process_batch(parsed_args)
+            else:
+                # Validate required arguments for single file mode
+                if not hasattr(parsed_args, 'input_file') or not parsed_args.input_file:
+                    log.error("Input file is required for single file mode")
+                    return 1
+                if not hasattr(parsed_args, 'output_file') or not parsed_args.output_file:
+                    log.error("Output file is required for single file mode")
+                    return 1
+                    
+                success = self.scrape_companies(parsed_args)
             
             return 0 if success else 1
             
+        except KeyboardInterrupt:
+            log.warning("Execution interrupted by user (Ctrl+C)")
+            return 1
         except Exception as e:
             log.error("Unhandled exception: %s", e, exc_info=True)
             return 1
