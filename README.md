@@ -1,70 +1,103 @@
-# THE Email Scraper
+# THE Email Scraper — Quickstart & Developer Guide
 
-This project is an email discovery tool that looks up company domains via Google search and extracts email addresses from the discovered pages. It is designed around several cooperating modules:
+Purpose
 
-- **`cli.py`** – command line interface parsing Excel files and orchestrating workers
-- **`google_search.py`** – wrapper around the Google Custom Search API
-- **`crawler.py`** and **`sitemap.py`** – fetch website pages and parse sitemaps
-- **`email_extractor.py`** and **`hybrid_email_extractor.py`** – extract and validate email addresses
-- **`orchestrator.py`** – coordinates the overall scraping process
+- Extract contact emails and related pages for a list of companies (Excel input). Supports static pages, sitemaps and dynamic pages using Playwright.
 
-The code requires **Python 3.10 or higher**.
+Prerequisites
 
-## Configuration
+- Python 3.10+ (project has been run with Python 3.13 in logs).
+- A virtual environment is strongly recommended.
 
-Configuration is read from environment variables (typically via a `.env` file).
-Two variables are **mandatory**:
+Canonical quickstart (cross-platform)
 
-- `GOOGLE_API_KEY` – Google API key used for Custom Search
-- `GOOGLE_CX_ID` – ID of the Google Custom Search Engine
+1. Create a virtual environment and activate it
 
-Many optional settings can be tuned; the defaults are taken from `config.py`:
+- POSIX (bash / zsh / macOS / Linux):
 
-- `MAX_WORKERS` – number of concurrent threads (default `4`)
-- `MAX_FALLBACK_PAGES` – maximum pages to crawl per domain (default `12`)
-- `PROCESS_PDFS` – set to `true` to inspect PDF files (default `false`)
-- `ALLOW_INSECURE_SSL` – allow invalid TLS certificates (default `false`)
-- `GOOGLE_SAFE_INTERVAL` – delay between Google API calls in seconds (default `0.8`)
-- `GOOGLE_MAX_RETRIES` – retry attempts for Google API failures (default `5`)
-- `DOMAIN_SCORE_THRESHOLD` – scoring threshold for valid domains (default `60`)
-- `MAX_REDIRECTS` – redirect limit for HTTP requests (default `5`)
-- `MAX_URL_LENGTH` – maximum URL length allowed (default `2000`)
-- `CONNECTION_TIMEOUT` / `READ_TIMEOUT` – HTTP timeouts in seconds (defaults `10`/`20`)
-- `MIN_CRAWL_DELAY` / `MAX_CRAWL_DELAY` – throttling delays in seconds (defaults `0.5`/`2.0`)
-- `PROXIES` – comma separated list of proxy servers
-- `MAX_URLS_PER_SITEMAP` – limit of `<loc>` entries parsed from each sitemap
-- `BLOCKED_DOMAINS` – comma separated list of domains to skip
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate
+    ```
 
-## Example `.env`
+- PowerShell (Windows):
 
-```dotenv
-GOOGLE_API_KEY=your-key
-GOOGLE_CX_ID=your-cx-id
+    ```powershell
+    python -m venv .venv
+    . .\.venv\Scripts\Activate.ps1
+    ```
+
+2. Install dependencies
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Install Playwright browsers (required for dynamic rendering)
+
+    ```bash
+    # inside the activated virtualenv
+    playwright install
+    ```
+
+    If you see errors like "Executable doesn't exist...", re-run this step inside the activated virtualenv.
+
+4. Configure environment (create a `.env` file in the project root)
+
+Minimum recommended variables:
+
+- `GOOGLE_API_KEY` and `GOOGLE_CX_ID` (for Google site search path)
+- `MAX_WORKERS`, `PROCESS_PDFS`, `DOMAIN_SCORE_THRESHOLD`, etc. — see `scraper/config.py` for defaults.
+
+5. Run the scraper
+
+    ```bash
+    # example usage
+    scraper test_input.xlsx results.xlsx
+    # or set environment overrides inline (POSIX)
+    MAX_WORKERS=8 scraper test_input.xlsx results.xlsx
+    # or (PowerShell)
+    $env:MAX_WORKERS=8; scraper test_input.xlsx results.xlsx
+    ```
+
+Expected flow (high level)
+
+- CLI reads Excel input -> Orchestrator scores & resolves domains -> static fetcher or Playwright BrowserService renders pages -> parsers extract emails (optionally from PDFs) -> results written to `results.xlsx`.
+
+Playwright note
+
+- Playwright is required for rendering/login flows (Canvas). After adding or updating Playwright, always run `playwright install` inside the activated virtualenv to download browser executables.
+
+Minimal `.env` example
+
+```text
+GOOGLE_API_KEY=your_key
+GOOGLE_CX_ID=your_cx
 MAX_WORKERS=8
-PROCESS_PDFS=true
+PROCESS_PDFS=False
 ```
 
-## Running the scraper
+Troubleshooting
 
-Invoke the CLI with an input Excel sheet containing a `Company` column and the desired output file:
+- Error: "Executable doesn't exist..." — run `playwright install` inside the activated virtualenv.
+- Missing Google keys — set `GOOGLE_API_KEY` and `GOOGLE_CX_ID` or use a non‑Google lookup path if available.
+- Windows multiprocessing issues with high worker counts — reduce `MAX_WORKERS` in `.env` or via the CLI.
 
-```bash
-python cli.py companies.xlsx results.xlsx --workers 8 --process-pdfs
-```
+Developer workflow
 
-The program will create `results.xlsx` with discovered domains and emails while logging progress to a timestamped log file.
+- Branch from `main` for features (e.g., `feature/canvas-scraper`).
+- Run formatting and linting (e.g., `black`, `flake8`) before committing.
+- Add unit tests with `pytest`; Playwright browser install is required in CI if tests rely on it.
+- For local debugging, set `LOGLEVEL=DEBUG` or run with a single-row `test_input.xlsx`.
 
-## Canvas scraper
+Config reference
 
-To download PDFs from a Canvas course you can use the `Canvas` module. Either set `CANVAS_EMAIL` and `CANVAS_PASSWORD` environment variables or provide them via command line:
+- Defaults and keys are in `scraper/config.py` (see the `Config` class). Important values: `MAX_WORKERS`, `PROCESS_PDFS`, `GOOGLE_API_KEY`, `GOOGLE_CX_ID`, `MAX_URLS_PER_SITEMAP`, timeouts and user agents.
 
-```bash
-python -m Canvas.canvas_scraper --course-id 23482 --output-dir out --email you@example.com --password yourpass
-```
-The scraper uses [Playwright](https://playwright.dev/) with Firefox to handle the Canvas login page. After installing requirements run:
+CI hints
 
-```bash
-playwright install firefox
-```
+- Ensure `playwright install` runs as a CI step and cache the downloaded browsers between runs to save time.
 
-Use `--demo` to run against the HTML files in the repository without making network requests. Pass `--headful` if you want to see the login browser window.
+Next steps
+
+- I can add `README.dev.md` with extended developer notes or create `scripts/dev_setup.ps1` to automate venv creation, dependency installation and `playwright install`.
