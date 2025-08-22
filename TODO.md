@@ -195,11 +195,12 @@ Legend
 - Commit message: `perf(orchestrator): add concurrent domain processing with ThreadPoolExecutor`
 - Result: Implemented 3-phase concurrent processing: domain collection, batch probing, and parallel domain processing. Added proper synchronization with global state tracking and early termination handling.
 
-### TASK-029 — Smarter Email Discovery Strategy (HIGH) [Open]
-- Files: `scraper/orchestrator.py`, `scraper/config.py`
+### TASK-029 — Smarter Email Discovery Strategy (HIGH) [Done]
+- Files: `scraper/orchestrator.py`, `scraper/config.py`, `scraper/smart_discovery.py`, `scraper/sitemap.py`
 - Contract: Prioritize "Contact", "About", "Team" pages; stop early when emails found; cache common email patterns per domain.
 - Smoke test: Verify contact pages are processed before generic pages; early stopping works when emails found on homepage.
 - Commit message: `perf(email): implement smart email discovery with page prioritization and early stopping`
+- Result: Implemented comprehensive smart discovery system with URL prioritization by contact relevance, early stopping when sufficient emails found, email pattern caching per domain, and email relevance filtering. Added configurable thresholds and smart discovery controls.
 
 ### TASK-030 — Content-Type Filtering (MEDIUM) [Open]
 - Files: `scraper/http.py`, `scraper/crawler.py`

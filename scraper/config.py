@@ -23,6 +23,20 @@ DEFAULT_PARTS = (
     "investor,procurement,suppliers,urea,adblue,europe,switzerland"
 )
 
+# High-priority parts for smart email discovery (ordered by priority)
+HIGH_PRIORITY_PARTS = [
+    "contact", "contacts", "kontakt", "contacto", "contato",
+    "about", "about-us", "aboutus", "uber-uns", "quienes-somos",
+    "team", "teams", "staff", "people", "leadership", "management",
+    "careers", "jobs", "employment", "work-with-us"
+]
+
+# Medium-priority parts
+MEDIUM_PRIORITY_PARTS = [
+    "impress", "impressum", "legal", "privacy", "terms",
+    "sales", "support", "help", "service", "customer-service"
+]
+
 class ConfigurationError(Exception):
     """Exception raised for configuration errors."""
     pass
@@ -67,6 +81,13 @@ class Config:
         
         # Domain scoring
         self.domain_score_threshold = self._parse_int("DOMAIN_SCORE_THRESHOLD", 60, 0, 100)
+        
+        # Smart email discovery settings
+        self.enable_smart_discovery = self._parse_bool("ENABLE_SMART_DISCOVERY", True)
+        self.enable_early_stopping = self._parse_bool("ENABLE_EARLY_STOPPING", True)
+        self.early_stop_threshold = self._parse_int("EARLY_STOP_THRESHOLD", 3, 1, 20)  # Stop after finding N emails
+        self.max_priority_pages = self._parse_int("MAX_PRIORITY_PAGES", 8, 1, 50)  # Limit priority pages to process
+        self.enable_email_pattern_cache = self._parse_bool("ENABLE_EMAIL_PATTERN_CACHE", True)
         
         # HTTP settings
         self.max_redirects = self._parse_int("MAX_REDIRECTS", 5, 0, 100)

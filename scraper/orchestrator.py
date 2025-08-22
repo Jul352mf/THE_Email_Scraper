@@ -21,6 +21,7 @@ from scraper.email_extractor import email_extractor
 from scraper.hybrid_email_extractor import hybrid_email_extractor
 from scraper.sitemap import sitemap_parser
 from scraper.crawler import crawler
+from scraper.smart_discovery import smart_discovery
 
 # Initialize logger
 log = logging.getLogger(__name__)
@@ -212,8 +213,9 @@ class Orchestrator:
             # Always save domain even if no emails found
             domain_row = {"Company": company, "Domain": domain}
             
-            # Initialize email set
+            # Initialize email set and processing counters
             emails = set()
+            pages_processed = 0
             
             # Fetch & cache the home page once, then extract from its HTML
             # Use optimized URL if available
@@ -221,13 +223,35 @@ class Orchestrator:
             try:
                 main_resp = http_client.safe_get(main_url, retry_count=2)
                 if main_resp:
+                    pages_processed += 1
                     try:
                         home_hits = self.hybrid_extractor.extract_from_response(main_resp)
                     except AttributeError:
                         # Fallback if extractor doesn't support response input
                         home_hits = self.hybrid_extractor.extract_from_url(main_url)
+                    
+                    # Filter and add relevant emails
+                    if config.enable_smart_discovery:
+                        home_hits = smart_discovery.filter_relevant_emails(home_hits, domain)
+                    
                     emails.update(home_hits)
-                    log.debug("Found %d emails on main page", len(home_hits))
+                    log.debug("Found %d emails on main page for %s", len(home_hits), domain)
+                    
+                    # Check for early stopping after homepage
+                    if smart_discovery.should_stop_early(emails, pages_processed):
+                        log.info("Early stopping after homepage for %s: found %d emails", domain, len(emails))
+                        stats["early_stop_homepage"] += 1
+                        if emails:
+                            stats["with_email"] += 1
+                            rows = [{"Company": company, "Domain": domain, "Email": e} for e in emails]
+                            log.info("✓ Found %d emails for %s (early stop)", len(emails), company)
+                        else:
+                            stats["without_email"] += 1
+                            log.info("✗ No emails found for %s (early stop)", company)
+                            if self.save_domain_only:
+                                rows = [domain_row]
+                        return stats, rows
+                        
             except Exception as e:
                 log.warning("Error fetching or parsing main page %s: %s", main_url, e)
             
@@ -240,13 +264,26 @@ class Orchestrator:
                 if priority_urls:
                     log.debug("Found %d priority URLs in sitemap", len(priority_urls))
                     
-                    # Process each priority URL
+                    # Process each priority URL with smart discovery
                     for url in set(priority_urls):
                         try:
+                            pages_processed += 1
                             url_emails = self.hybrid_extractor.extract_from_url(url)
+                            
+                            # Filter relevant emails if smart discovery enabled
+                            if config.enable_smart_discovery:
+                                url_emails = smart_discovery.filter_relevant_emails(url_emails, domain)
+                            
                             emails.update(url_emails)
                             if url_emails:
                                 log.debug("Found %d emails on %s", len(url_emails), url)
+                            
+                            # Check for early stopping after each priority page
+                            if smart_discovery.should_stop_early(emails, pages_processed):
+                                log.info("Early stopping after priority pages for %s: found %d emails", domain, len(emails))
+                                stats["early_stop_priority"] += 1
+                                break
+                                
                         except Exception as e:
                             log.warning("Error extracting emails from %s: %s", url, e)
                             
@@ -256,15 +293,23 @@ class Orchestrator:
             except Exception as e:
                 log.warning("Error processing sitemap for %s: %s", domain, e)
             
-            # If no emails found, try crawling
-            if not emails:
+            # If no emails found and early stopping not triggered, try crawling
+            if not emails and not smart_discovery.should_stop_early(emails, pages_processed):
                 log.info("No emails found in sitemap, attempting fallback crawl: %s", domain)
                 try:
                     crawl_emails = crawler.crawl_small(domain, seed_response=main_resp)
+                    
+                    # Filter relevant emails if smart discovery enabled
+                    if config.enable_smart_discovery:
+                        crawl_emails = smart_discovery.filter_relevant_emails(crawl_emails, domain)
+                    
                     emails.update(crawl_emails)
                     log.debug("Found %d emails from crawling", len(crawl_emails))
+                    stats["crawl_used"] += 1
                 except Exception as e:
                     log.warning("Error during crawling of %s: %s", domain, e)
+            elif emails:
+                log.info("Skipping crawl for %s: %d emails already found", domain, len(emails))
             
             # Create result rows
             if emails:

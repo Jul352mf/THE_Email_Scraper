@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 
 from scraper.config import config
 from scraper.http import http_client, canonicalise, validate_url
+from scraper.smart_discovery import smart_discovery
 
 log = logging.getLogger(__name__)
 
@@ -236,6 +237,12 @@ class SitemapParser:
 
         elapsed = time.time() - start
         log.debug("Priority URL extraction for %s finished in %.2f s – %d URLs", domain, elapsed, len(priority))
+        
+        # Apply smart prioritization if enabled
+        if config.enable_smart_discovery and priority:
+            priority = smart_discovery.prioritize_urls(priority)
+            log.debug("Applied smart prioritization to %d URLs", len(priority))
+        
         return priority, used
 
     def clear_cache(self) -> None:
