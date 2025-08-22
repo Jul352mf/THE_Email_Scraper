@@ -5,7 +5,7 @@ import re, base64, codecs, html
 from typing import Optional, Set
 from requests import Response
 
-from scraper.http import http_client
+from scraper.http_client import http_client
 from scraper.browser_service import get_browser_service
 from scraper.email_extractor import EmailExtractor, EmailValidationError
 

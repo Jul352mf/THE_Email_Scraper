@@ -14,7 +14,7 @@ import idna
 from bs4 import BeautifulSoup
 
 from scraper.config import config
-from scraper.http import http_client
+from scraper.http_client import http_client
 
 # Initialize logger
 log = logging.getLogger(__name__)

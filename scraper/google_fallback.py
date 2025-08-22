@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 
 from scraper.cache import google_cache
 from scraper.config import config
-from scraper.http import http_client, validate_url
+from scraper.http_client import http_client, validate_url
 
 # Initialize logger
 log = logging.getLogger(__name__)

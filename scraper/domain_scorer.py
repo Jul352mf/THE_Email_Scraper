@@ -13,7 +13,7 @@ from rapidfuzz import fuzz
 import tldextract
 
 from scraper.config import config
-from scraper.http import normalise_domain
+from scraper.http_client import normalise_domain
 
 # Initialize logger
 log = logging.getLogger(__name__)

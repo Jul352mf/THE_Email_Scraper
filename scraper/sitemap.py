@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from bs4 import BeautifulSoup
 
 from scraper.config import config
-from scraper.http import http_client, canonicalise, validate_url
+from scraper.http_client import http_client, canonicalise, validate_url
 from scraper.smart_discovery import smart_discovery
 
 log = logging.getLogger(__name__)

@@ -1,0 +1,764 @@
+2025-08-22 14:54:10,912 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 14:54:10,913 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 14:54:10,913 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 14:54:10,914 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 14:54:10,914 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 14:54:10,914 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 14:54:10,915 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 14:54:10,915 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 14:54:11,196 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 14:54:11,197 | INFO    | scraper.orchestrator | Phase 1: Collecting domains for 8 companies
+2025-08-22 14:54:17,007 | INFO    | scraper.orchestrator | Phase 2: Batch probing 8 unique domains
+2025-08-22 14:54:17,009 | INFO    | scraper.orchestrator | Batch probing 8 domains for access patterns
+2025-08-22 14:54:17,009 | INFO    | scraper.http_client  | Probing domain access methods for: walter-schmidt-chemie.de
+2025-08-22 14:54:17,010 | INFO    | scraper.http_client  | Probing domain access methods for: worldfertilizer.com
+2025-08-22 14:54:17,010 | INFO    | scraper.http_client  | Probing domain access methods for: us.mitsuichemicals.com
+2025-08-22 14:54:17,011 | INFO    | scraper.http_client  | Probing domain access methods for: daf.com
+2025-08-22 14:54:17,390 | INFO    | scraper.http_client  | ✓ Found working access method for us.mitsuichemicals.com: https
+2025-08-22 14:54:17,391 | INFO    | scraper.http_client  | Probing domain access methods for: bpetrol.it
+2025-08-22 14:54:17,567 | INFO    | scraper.http_client  | ✓ Found working access method for daf.com: https
+2025-08-22 14:54:17,567 | INFO    | scraper.http_client  | Probing domain access methods for: eurodamjas.com
+2025-08-22 14:54:17,821 | INFO    | scraper.http_client  | ✓ Found working access method for bpetrol.it: https
+2025-08-22 14:54:17,821 | INFO    | scraper.http_client  | Probing domain access methods for: synsol.ch
+2025-08-22 14:54:17,870 | INFO    | scraper.http_client  | ✓ Found working access method for eurodamjas.com: https
+2025-08-22 14:54:17,870 | INFO    | scraper.http_client  | Probing domain access methods for: speedyfuels.co.uk
+2025-08-22 14:54:18,147 | INFO    | scraper.http_client  | ✓ Found working access method for speedyfuels.co.uk: https
+2025-08-22 14:54:18,436 | INFO    | scraper.http_client  | ✓ Found working access method for worldfertilizer.com: https_www
+2025-08-22 14:54:18,658 | INFO    | scraper.http_client  | ✓ Found working access method for synsol.ch: https
+2025-08-22 14:54:27,571 | INFO    | scraper.http_client  | ✓ Found working access method for walter-schmidt-chemie.de: https
+2025-08-22 14:54:27,573 | INFO    | scraper.orchestrator | Phase 3: Processing 8 companies with valid domains
+2025-08-22 14:54:27,574 | INFO    | scraper.orchestrator | ✓ Processing domain: walter-schmidt-chemie.de (score: 89) for company: walter schmidt chemie gmbh
+2025-08-22 14:54:27,574 | INFO    | scraper.orchestrator | ✓ Processing domain: worldfertilizer.com (score: 80) for company: henan xinlianxin fertilizer 
+2025-08-22 14:54:27,575 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://walter-schmidt-chemie.de: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,575 | INFO    | scraper.orchestrator | ✓ Processing domain: us.mitsuichemicals.com (score: 88) for company: mitsui toatsu chemicals 
+2025-08-22 14:54:27,575 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,575 | INFO    | scraper.orchestrator | ✓ Processing domain: daf.com (score: 100) for company: daf trucks
+2025-08-22 14:54:27,575 | INFO    | scraper.orchestrator | ✓ Processing domain: bpetrol.it (score: 92) for company: petrol rete 
+2025-08-22 14:54:27,576 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,576 | INFO    | scraper.orchestrator | ✓ Processing domain: eurodamjas.com (score: 100) for company: euro dam jas doo
+2025-08-22 14:54:27,577 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://daf.com: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,578 | INFO    | scraper.orchestrator | ✓ Processing domain: synsol.ch (score: 100) for company: Synsol
+2025-08-22 14:54:27,579 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://bpetrol.it: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,579 | INFO    | scraper.orchestrator | ✓ Processing domain: speedyfuels.co.uk (score: 100) for company: speedy fuels
+2025-08-22 14:54:27,580 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,583 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://synsol.ch: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,585 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://speedyfuels.co.uk: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,785 | INFO    | scraper.http_client  | HTTP GET https://synsol.ch → 200
+2025-08-22 14:54:27,837 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/ (def from text)
+2025-08-22 14:54:27,837 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://synsol.ch/
+2025-08-22 14:54:27,837 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://synsol.ch/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:27,967 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk → 200
+2025-08-22 14:54:28,049 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 14:54:28,089 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/
+2025-08-22 14:54:28,090 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com → 200
+2025-08-22 14:54:28,090 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com → 200
+2025-08-22 14:54:28,124 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 14:54:28,161 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://eurodamjas.com/
+2025-08-22 14:54:28,179 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/
+2025-08-22 14:54:28,180 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,223 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com → 200
+2025-08-22 14:54:28,255 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/ (def from text)
+2025-08-22 14:54:28,256 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.worldfertilizer.com/
+2025-08-22 14:54:28,256 | INFO    | scraper.http_client  | HTTP GET https://daf.com → 200
+2025-08-22 14:54:28,256 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,345 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 14:54:28,379 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/sites-landing
+2025-08-22 14:54:28,381 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it → 200
+2025-08-22 14:54:28,436 | INFO    | scraper.email_extractor |   2 emails on https://www.bpetrol.it/ (def from text)
+2025-08-22 14:54:28,436 | INFO    | scraper.http_client  | HTTP HEAD https://synsol.ch/sitemap.xml → 200
+2025-08-22 14:54:28,436 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 emails in https://www.bpetrol.it/
+2025-08-22 14:54:28,437 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://synsol.ch/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,437 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://bpetrol.it/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,468 | INFO    | scraper.http_client  | HTTP GET https://synsol.ch/sitemap.xml → 200
+2025-08-22 14:54:28,468 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://synsol.ch/sitemap.xml (0.63s)
+2025-08-22 14:54:28,470 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://synsol.ch/wp-sitemap-posts-page-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,470 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://synsol.ch/wp-sitemap-users-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,476 | INFO    | scraper.http_client  | HTTP HEAD https://www.worldfertilizer.com/sitemap.xml → 200
+2025-08-22 14:54:28,476 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,524 | INFO    | scraper.http_client  | HTTP GET https://synsol.ch/wp-sitemap-posts-page-1.xml → 200
+2025-08-22 14:54:28,534 | INFO    | scraper.http_client  | HTTP HEAD https://eurodamjas.com/sitemap.xml → 200
+2025-08-22 14:54:28,534 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,557 | INFO    | scraper.http_client  | HTTP GET https://synsol.ch/wp-sitemap-users-1.xml → 200
+2025-08-22 14:54:28,559 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://synsol.ch/urea/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,586 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/sitemap.xml → 200
+2025-08-22 14:54:28,586 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.worldfertilizer.com/sitemap.xml (0.33s)
+2025-08-22 14:54:28,587 | INFO    | scraper.http_client  | HTTP GET https://synsol.ch/urea/ → 200
+2025-08-22 14:54:28,627 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/urea/ (def from text)
+2025-08-22 14:54:28,628 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://synsol.ch/urea/
+2025-08-22 14:54:28,628 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://synsol.ch/privacy-policy-of-synsol-ag/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,649 | INFO    | scraper.http_client  | HTTP GET https://synsol.ch/privacy-policy-of-synsol-ag/ → 200
+2025-08-22 14:54:28,666 | INFO    | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from text)
+2025-08-22 14:54:28,680 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-22 14:54:28,681 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-22 14:54:28,848 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/sitemap.xml → 200
+2025-08-22 14:54:28,849 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://eurodamjas.com/sitemap.xml (0.67s)
+2025-08-22 14:54:28,852 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-posts-post-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,853 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-posts-page-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,854 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-posts-cspt-portfolio-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,858 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-posts-cspt-service-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:28,986 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,181 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-posts-page-1.xml → 200
+2025-08-22 14:54:29,181 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-posts-cspt-team-member-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,192 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-portfolio-1.xml → 200
+2025-08-22 14:54:29,193 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-posts-cspt-testimonial-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,213 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-service-1.xml → 200
+2025-08-22 14:54:29,214 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-taxonomies-category-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,298 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/ → 200
+2025-08-22 14:54:29,323 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/ (def from text)
+2025-08-22 14:54:29,323 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/
+2025-08-22 14:54:29,324 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,349 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-team-member-1.xml → 200
+2025-08-22 14:54:29,349 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-taxonomies-cspt-portfolio-category-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,365 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-testimonial-1.xml → 200
+2025-08-22 14:54:29,365 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/wp-sitemap-users-1.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,384 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-taxonomies-category-1.xml → 200
+2025-08-22 14:54:29,514 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-taxonomies-cspt-portfolio-category-1.xml → 200
+2025-08-22 14:54:29,533 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-users-1.xml → 200
+2025-08-22 14:54:29,670 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/ → 200
+2025-08-22 14:54:29,691 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/ (def from text)
+2025-08-22 14:54:29,691 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/
+2025-08-22 14:54:29,691 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:29,992 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/ → 200
+2025-08-22 14:54:30,009 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/ (def from text)
+2025-08-22 14:54:30,009 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/
+2025-08-22 14:54:30,010 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,254 | INFO    | scraper.http_client  | HTTP HEAD https://bpetrol.it/sitemap.xml → 200
+2025-08-22 14:54:30,254 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://bpetrol.it/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,392 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/ → 200
+2025-08-22 14:54:30,414 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/ (def from text)
+2025-08-22 14:54:30,414 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/
+2025-08-22 14:54:30,414 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,631 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 14:54:30,668 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://speedyfuels.co.uk/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,751 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/ → 200
+2025-08-22 14:54:30,768 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/ (def from text)
+2025-08-22 14:54:30,769 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/
+2025-08-22 14:54:30,769 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/privacy/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,830 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it/sitemap.xml → 200
+2025-08-22 14:54:30,830 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://bpetrol.it/sitemap.xml (2.39s)
+2025-08-22 14:54:30,832 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.bpetrol.it/post-sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,833 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.bpetrol.it/page-sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,833 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.bpetrol.it/3d-flip-book-sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,834 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.bpetrol.it/category-sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:30,921 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/privacy/ → 200
+2025-08-22 14:54:30,978 | INFO    | scraper.email_extractor |   2 emails on https://www.worldfertilizer.com/privacy/ (def from text)
+2025-08-22 14:54:30,979 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 on https://www.worldfertilizer.com/privacy/
+2025-08-22 14:54:30,980 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/tag/urea-news/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,139 | INFO    | scraper.http_client  | HTTP HEAD https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 14:54:31,150 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://speedyfuels.co.uk/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,151 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/tag/urea-news/ → 200
+2025-08-22 14:54:31,168 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/tag/urea-news/ (def from text)
+2025-08-22 14:54:31,169 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/tag/urea-news/
+2025-08-22 14:54:31,169 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,383 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it/page-sitemap.xml → 200
+2025-08-22 14:54:31,383 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.bpetrol.it/post_tag-sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,457 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it/category-sitemap.xml → 200
+2025-08-22 14:54:31,478 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/ → 200
+2025-08-22 14:54:31,494 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/ (def from text)
+2025-08-22 14:54:31,494 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/
+2025-08-22 14:54:31,495 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,535 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it/3d-flip-book-sitemap.xml → 200
+2025-08-22 14:54:31,593 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it/post_tag-sitemap.xml → 200
+2025-08-22 14:54:31,600 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 14:54:31,600 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://speedyfuels.co.uk/sitemap.xml (0.93s)
+2025-08-22 14:54:31,603 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/post-sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,603 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/page-sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,628 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it/post-sitemap.xml → 200
+2025-08-22 14:54:31,675 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/post-sitemap.xml → 200
+2025-08-22 14:54:31,713 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.bpetrol.it/privacy-policy/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,756 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/page-sitemap.xml → 200
+2025-08-22 14:54:31,772 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/contact-us/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,822 | INFO    | scraper.http_client  | HTTP GET https://bpetrol.it/privacy-policy/ → 200
+2025-08-22 14:54:31,848 | INFO    | scraper.email_extractor |   3 emails on https://www.bpetrol.it/privacy-policy/ (def from text)
+2025-08-22 14:54:31,849 | INFO    | scraper.hybrid_email_extractor | Static pass found 3 on https://www.bpetrol.it/privacy-policy/
+2025-08-22 14:54:31,849 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/ → 200
+2025-08-22 14:54:31,849 | INFO    | scraper.orchestrator | Used sitemap for bpetrol.it
+2025-08-22 14:54:31,863 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/ (def from text)
+2025-08-22 14:54:31,863 | INFO    | scraper.orchestrator | Skipping crawl for bpetrol.it: 3 emails already found
+2025-08-22 14:54:31,864 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/
+2025-08-22 14:54:31,864 | INFO    | scraper.orchestrator | ✓ Found 3 emails for petrol rete 
+2025-08-22 14:54:31,864 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:31,914 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/contact-us/ → 200
+2025-08-22 14:54:31,941 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.speedyfuels.co.uk/contact-us/
+2025-08-22 14:54:31,942 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/guides/adblue-guide/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:32,030 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/guides/adblue-guide/ → 200
+2025-08-22 14:54:32,100 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/adblue-guide/ (def from text)
+2025-08-22 14:54:32,134 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/guides/adblue-guide/
+2025-08-22 14:54:32,134 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/guides/adblue-guide/
+2025-08-22 14:54:32,215 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/ → 200
+2025-08-22 14:54:32,241 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/ (def from text)
+2025-08-22 14:54:32,249 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/
+2025-08-22 14:54:32,256 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/contact/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:32,332 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/contact/ → 200
+2025-08-22 14:54:32,340 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/contact/ (def from text)
+2025-08-22 14:54:32,340 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/contact/
+2025-08-22 14:54:32,341 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:32,681 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/ → 200
+2025-08-22 14:54:32,693 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/ (def from text)
+2025-08-22 14:54:32,694 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/
+2025-08-22 14:54:32,695 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:33,124 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 14:54:33,179 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:33,181 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/ → 200
+2025-08-22 14:54:33,204 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/ (def from text)
+2025-08-22 14:54:33,205 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/
+2025-08-22 14:54:33,205 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:33,524 | INFO    | scraper.http_client  | HTTP HEAD https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 14:54:33,525 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:33,642 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/ → 200
+2025-08-22 14:54:33,665 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/ (def from text)
+2025-08-22 14:54:33,665 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/
+2025-08-22 14:54:33,665 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:33,782 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 14:54:33,782 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://us.mitsuichemicals.com/sitemap.xml (0.60s)
+2025-08-22 14:54:33,798 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/siteinfo/privacy/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:33,982 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/ → 200
+2025-08-22 14:54:34,000 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/ (def from text)
+2025-08-22 14:54:34,000 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/
+2025-08-22 14:54:34,001 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:34,326 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/ → 200
+2025-08-22 14:54:34,346 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/ (def from text)
+2025-08-22 14:54:34,346 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/
+2025-08-22 14:54:34,347 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:34,514 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/siteinfo/privacy/index.htm → 200
+2025-08-22 14:54:34,580 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm (def from text)
+2025-08-22 14:54:34,654 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm
+2025-08-22 14:54:34,654 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/siteinfo/privacy/index.htm
+2025-08-22 14:54:34,673 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/ → 200
+2025-08-22 14:54:34,698 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/ (def from text)
+2025-08-22 14:54:34,698 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/
+2025-08-22 14:54:34,699 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:35,017 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/ → 200
+2025-08-22 14:54:35,034 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/ (def from text)
+2025-08-22 14:54:35,034 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/
+2025-08-22 14:54:35,034 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:35,281 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 14:54:35,330 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://daf.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:35,479 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/ → 200
+2025-08-22 14:54:35,502 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/ (def from text)
+2025-08-22 14:54:35,502 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/
+2025-08-22 14:54:35,502 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:35,687 | INFO    | scraper.http_client  | HTTP HEAD https://daf.com/sitemap.xml → 200
+2025-08-22 14:54:35,688 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://daf.com/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:35,729 | INFO    | scraper.http_client  | HTTP GET https://daf.com/sitemap.xml → 200
+2025-08-22 14:54:35,730 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://daf.com/sitemap.xml (0.40s)
+2025-08-22 14:54:35,731 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:35,732 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/nl-nl/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:35,820 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/sitemap.xml → 200
+2025-08-22 14:54:35,937 | INFO    | scraper.http_client  | HTTP GET https://daf.com/nl-nl/sitemap.xml → 200
+2025-08-22 14:54:35,983 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/board-of-management: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:36,238 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/board-of-management → 200
+2025-08-22 14:54:36,271 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/board-of-management (def from text)
+2025-08-22 14:54:36,306 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/board-of-management
+2025-08-22 14:54:36,307 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/board-of-management
+2025-08-22 14:54:36,426 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/ → 200
+2025-08-22 14:54:36,447 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/ (def from text)
+2025-08-22 14:54:36,447 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/
+2025-08-22 14:54:36,447 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:36,757 | INFO    | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from text)
+2025-08-22 14:54:36,758 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/ → 200
+2025-08-22 14:54:36,771 | INFO    | scraper.orchestrator | Used sitemap for synsol.ch
+2025-08-22 14:54:36,784 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/ (def from text)
+2025-08-22 14:54:36,784 | INFO    | scraper.orchestrator | Skipping crawl for synsol.ch: 1 emails already found
+2025-08-22 14:54:36,784 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/
+2025-08-22 14:54:36,784 | INFO    | scraper.orchestrator | ✓ Found 1 emails for Synsol
+2025-08-22 14:54:36,785 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:37,126 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/ → 200
+2025-08-22 14:54:37,145 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/ (def from text)
+2025-08-22 14:54:37,146 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/
+2025-08-22 14:54:37,146 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:37,528 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/ → 200
+2025-08-22 14:54:37,553 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/ (def from text)
+2025-08-22 14:54:37,553 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/
+2025-08-22 14:54:37,553 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:37,891 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/ → 200
+2025-08-22 14:54:37,902 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/ (def from text)
+2025-08-22 14:54:37,902 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/
+2025-08-22 14:54:37,903 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:38,129 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 14:54:38,146 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 14:54:38,160 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 14:54:38,292 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/adblue-guide/ (def from text)
+2025-08-22 14:54:38,326 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/about-us/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:38,339 | INFO    | scraper.http_client  | HTTP GET https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/ → 200
+2025-08-22 14:54:38,351 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/ (def from text)
+2025-08-22 14:54:38,351 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/
+2025-08-22 14:54:38,351 | INFO    | scraper.orchestrator | Used sitemap for worldfertilizer.com
+2025-08-22 14:54:38,351 | INFO    | scraper.orchestrator | Skipping crawl for worldfertilizer.com: 2 emails already found
+2025-08-22 14:54:38,352 | INFO    | scraper.orchestrator | ✓ Found 2 emails for henan xinlianxin fertilizer 
+2025-08-22 14:54:38,529 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/about-us/ → 200
+2025-08-22 14:54:38,636 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from text)
+2025-08-22 14:54:38,685 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/about-us/
+2025-08-22 14:54:38,686 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/about-us/
+2025-08-22 14:54:41,283 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm (def from text)
+2025-08-22 14:54:41,363 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/contact/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:41,618 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 14:54:41,656 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 14:54:41,681 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 14:54:41,682 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 14:54:43,277 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/board-of-management (def from text)
+2025-08-22 14:54:43,315 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:43,476 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf → 200
+2025-08-22 14:54:43,514 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf (def from text)
+2025-08-22 14:54:43,559 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf
+2025-08-22 14:54:43,559 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf
+2025-08-22 14:54:45,053 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 14:54:45,071 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://walter-schmidt-chemie.de/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:46,669 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from text)
+2025-08-22 14:54:46,700 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/fuel-suppliers/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:46,908 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/fuel-suppliers/ → 200
+2025-08-22 14:54:46,988 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/fuel-suppliers/ (def from text)
+2025-08-22 14:54:47,027 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/fuel-suppliers/
+2025-08-22 14:54:47,028 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/fuel-suppliers/
+2025-08-22 14:54:49,130 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 14:54:49,170 | INFO    | scraper.orchestrator | Used sitemap for us.mitsuichemicals.com
+2025-08-22 14:54:49,170 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: us.mitsuichemicals.com
+2025-08-22 14:54:49,170 | INFO    | scraper.crawler      | Start crawl us.mitsuichemicals.com (limit=30, timeout=60s, workers=16)
+2025-08-22 14:54:49,171 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:49,409 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com → 200
+2025-08-22 14:54:49,466 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 14:54:49,540 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:49,797 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/index.htm → 200
+2025-08-22 14:54:49,842 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 14:54:49,882 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/index.htm
+2025-08-22 14:54:51,216 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf (def from text)
+2025-08-22 14:54:51,266 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:51,564 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions → 200
+2025-08-22 14:54:51,624 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions (def from text)
+2025-08-22 14:54:51,679 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions
+2025-08-22 14:54:51,679 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions
+2025-08-22 14:54:52,905 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/fuel-suppliers/ (def from text)
+2025-08-22 14:54:52,948 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:53,136 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/commercial-fuel-suppliers-uk/ → 200
+2025-08-22 14:54:53,214 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ (def from text)
+2025-08-22 14:54:53,272 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/
+2025-08-22 14:54:53,272 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/
+2025-08-22 14:54:54,039 | INFO    | scraper.http_client  | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 14:54:54,039 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://walter-schmidt-chemie.de/sitemap.xml: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:56,470 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 14:54:56,562 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/contact/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:56,805 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 14:54:56,830 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 14:54:56,875 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/corporate/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:57,119 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/corporate/index.htm → 200
+2025-08-22 14:54:57,153 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 14:54:57,198 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/index.htm
+2025-08-22 14:54:57,858 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 14:54:57,858 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (12.79s)
+2025-08-22 14:54:58,054 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions (def from text)
+2025-08-22 14:54:58,088 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-history/past-and-present: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:58,130 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/produkte/adblue/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:58,288 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-history/past-and-present → 200
+2025-08-22 14:54:58,322 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/past-and-present (def from text)
+2025-08-22 14:54:58,361 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history/past-and-present
+2025-08-22 14:54:58,362 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history/past-and-present
+2025-08-22 14:54:59,162 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 14:54:59,171 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 14:54:59,181 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 14:54:59,181 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 14:54:59,525 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ (def from text)
+2025-08-22 14:54:59,557 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/products/adblue/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:54:59,757 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/products/adblue/ → 200
+2025-08-22 14:54:59,824 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 14:54:59,856 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/products/adblue/
+2025-08-22 14:54:59,856 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/adblue/
+2025-08-22 14:55:02,316 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 14:55:02,410 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/corporate/overview/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:02,663 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/corporate/overview/index.htm → 200
+2025-08-22 14:55:02,698 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 14:55:02,722 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/overview/index.htm
+2025-08-22 14:55:04,579 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/past-and-present (def from text)
+2025-08-22 14:55:04,628 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-worldwide: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:04,907 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-worldwide → 200
+2025-08-22 14:55:04,953 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide (def from text)
+2025-08-22 14:55:05,003 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide
+2025-08-22 14:55:05,003 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide
+2025-08-22 14:55:06,912 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 14:55:06,921 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/einkaufsbedingungen.pdf: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:06,922 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/agb.pdf: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:06,922 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:07,258 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 14:55:07,275 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 14:55:07,291 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 14:55:07,291 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 14:55:08,424 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 14:55:08,456 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/privacy-policy/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:08,665 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/privacy-policy/ → 200
+2025-08-22 14:55:08,709 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.speedyfuels.co.uk/privacy-policy/
+2025-08-22 14:55:08,709 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://cdn.speedyfuels.co.uk/wp-content/uploads/2021/03/AdBlue-Tanks-2.png: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:08,710 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://cdn.speedyfuels.co.uk/wp-content/uploads/2021/03/adblue.jpg: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:08,710 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:08,778 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/news/common-misconceptions-about-hvo/ → 200
+2025-08-22 14:55:08,847 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ (def from text)
+2025-08-22 14:55:08,887 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/
+2025-08-22 14:55:08,887 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/
+2025-08-22 14:55:10,819 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 14:55:10,885 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:11,129 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm → 200
+2025-08-22 14:55:11,162 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 14:55:11,185 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm
+2025-08-22 14:55:13,612 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide (def from text)
+2025-08-22 14:55:13,651 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:13,927 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability → 200
+2025-08-22 14:55:13,967 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability (def from text)
+2025-08-22 14:55:14,006 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability
+2025-08-22 14:55:14,006 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability
+2025-08-22 14:55:15,241 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 14:55:15,270 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/impressum.html: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:15,518 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 14:55:15,531 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 14:55:15,531 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 14:55:15,532 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:16,599 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html → 200
+2025-08-22 14:55:16,613 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 14:55:16,625 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 14:55:16,626 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 14:55:17,013 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ (def from text)
+2025-08-22 14:55:17,060 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:18,455 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ → 200
+2025-08-22 14:55:18,518 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ (def from text)
+2025-08-22 14:55:18,548 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/
+2025-08-22 14:55:18,548 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/
+2025-08-22 14:55:19,912 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 14:55:19,981 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/corporate/legacy/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:20,230 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/corporate/legacy/index.htm → 200
+2025-08-22 14:55:20,257 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 14:55:20,281 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/legacy/index.htm
+2025-08-22 14:55:21,897 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability (def from text)
+2025-08-22 14:55:22,044 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/contact: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:22,210 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/contact → 200
+2025-08-22 14:55:22,286 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact (def from text)
+2025-08-22 14:55:22,376 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/contact
+2025-08-22 14:55:22,376 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/contact
+2025-08-22 14:55:24,261 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 14:55:24,272 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:24,530 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/produkte/adblue/adblue.html → 200
+2025-08-22 14:55:24,540 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 14:55:24,567 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 14:55:24,568 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 14:55:25,921 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ (def from text)
+2025-08-22 14:55:25,951 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:26,159 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ → 200
+2025-08-22 14:55:26,236 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ (def from text)
+2025-08-22 14:55:26,271 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/
+2025-08-22 14:55:26,271 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/
+2025-08-22 14:55:28,465 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 14:55:28,538 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/mca/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:29,210 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/wp-sitemap-posts-post-1.xml → 200
+2025-08-22 14:55:29,212 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/usluge/adblue/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:29,298 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/mca/index.htm → 200
+2025-08-22 14:55:29,322 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 14:55:29,357 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mca/2024/index.htm
+2025-08-22 14:55:29,563 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/usluge/adblue/ → 200
+2025-08-22 14:55:29,572 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/usluge/adblue/
+2025-08-22 14:55:29,572 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/kontakt/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:29,840 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/kontakt/ → 200
+2025-08-22 14:55:29,851 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/kontakt/
+2025-08-22 14:55:29,852 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/about-us-01/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:30,037 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact (def from text)
+2025-08-22 14:55:30,080 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/innovation: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:30,157 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/about-us-01/ → 200
+2025-08-22 14:55:30,181 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/about-us-01/
+2025-08-22 14:55:30,181 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eurodamjas.com/about-us-02/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:30,209 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/innovation → 302
+2025-08-22 14:55:30,484 | INFO    | scraper.http_client  | HTTP GET https://eurodamjas.com/about-us-02/ → 200
+2025-08-22 14:55:30,502 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/about-us-02/
+2025-08-22 14:55:30,502 | INFO    | scraper.orchestrator | Used sitemap for eurodamjas.com
+2025-08-22 14:55:30,503 | INFO    | scraper.orchestrator | Skipping crawl for eurodamjas.com: 1 emails already found
+2025-08-22 14:55:30,503 | INFO    | scraper.orchestrator | ✓ Found 1 emails for euro dam jas doo
+2025-08-22 14:55:31,295 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/innovation → 302
+2025-08-22 14:55:31,296 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/innovation (def from text)
+2025-08-22 14:55:31,296 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/innovation
+2025-08-22 14:55:31,297 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/innovation
+2025-08-22 14:55:31,519 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 14:55:31,531 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:31,790 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html → 200
+2025-08-22 14:55:31,800 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 14:55:31,811 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 14:55:31,811 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 14:55:33,127 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ (def from text)
+2025-08-22 14:55:33,157 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://cdn.speedyfuels.co.uk/wp-content/uploads/2021/04/Red-Diesel-FAQ-Contact.jpg: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:33,157 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://cdn.speedyfuels.co.uk/wp-content/uploads/2021/10/About-Speedy-scaled.jpg: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:33,157 | INFO    | scraper.orchestrator | Used sitemap for speedyfuels.co.uk
+2025-08-22 14:55:33,157 | INFO    | scraper.orchestrator | Skipping crawl for speedyfuels.co.uk: 2 emails already found
+2025-08-22 14:55:33,157 | INFO    | scraper.orchestrator | ✓ Found 2 emails for speedy fuels
+2025-08-22 14:55:35,586 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 14:55:35,640 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/mci/mci-news/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:36,409 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/mci/mci-news/index.htm → 200
+2025-08-22 14:55:36,471 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 14:55:36,532 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm
+2025-08-22 14:55:36,534 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/innovation (def from text)
+2025-08-22 14:55:36,534 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:36,785 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing → 200
+2025-08-22 14:55:36,826 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing (def from text)
+2025-08-22 14:55:36,865 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing
+2025-08-22 14:55:36,865 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing
+2025-08-22 14:55:37,970 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 14:55:37,980 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:38,241 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 14:55:38,250 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 14:55:38,261 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 14:55:38,262 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 14:55:41,198 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 14:55:41,295 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/service/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:41,549 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/service/index.htm → 200
+2025-08-22 14:55:41,602 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 14:55:41,643 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/index.htm
+2025-08-22 14:55:43,463 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing (def from text)
+2025-08-22 14:55:43,502 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-worldwide/production-locations: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:43,838 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-worldwide/production-locations → 200
+2025-08-22 14:55:43,889 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/production-locations (def from text)
+2025-08-22 14:55:43,940 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide/production-locations
+2025-08-22 14:55:43,941 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide/production-locations
+2025-08-22 14:55:45,086 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 14:55:45,100 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:45,534 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ → 200
+2025-08-22 14:55:45,536 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 14:55:45,537 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 14:55:45,538 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 14:55:47,993 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 14:55:48,150 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://us.mitsuichemicals.com/service/life_healthcare/index.htm: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:48,411 | INFO    | scraper.http_client  | HTTP GET https://us.mitsuichemicals.com/service/life_healthcare/index.htm → 200
+2025-08-22 14:55:48,621 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/life_healthcare/index.htm (def from text)
+2025-08-22 14:55:48,651 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/life_healthcare/index.htm
+2025-08-22 14:55:49,487 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/production-locations (def from text)
+2025-08-22 14:55:49,529 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:49,985 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-circularity/circular-products → 200
+2025-08-22 14:55:50,040 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products (def from text)
+2025-08-22 14:55:50,084 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products
+2025-08-22 14:55:50,084 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products
+2025-08-22 14:55:51,578 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 14:55:51,586 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.walter-schmidt-chemie.de/kontakt/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:52,975 | INFO    | scraper.http_client  | HTTP GET https://walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 14:55:52,986 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 14:55:52,998 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 14:55:52,998 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 14:55:54,248 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/life_healthcare/index.htm (def from text)
+2025-08-22 14:55:54,323 | INFO    | scraper.crawler      | Crawl of us.mitsuichemicals.com completed: 11 pages fetched, 92 unique URLs seen, 0 emails, 65.2 s
+2025-08-22 14:55:54,323 | INFO    | scraper.orchestrator | ✗ No emails found for mitsui toatsu chemicals 
+2025-08-22 14:55:56,316 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products (def from text)
+2025-08-22 14:55:56,353 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes: Session.request() got multiple values for argument 'method'
+2025-08-22 14:55:56,772 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-circularity/circular-processes → 200
+2025-08-22 14:55:56,826 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes (def from text)
+2025-08-22 14:55:56,867 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes
+2025-08-22 14:55:56,867 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes
+2025-08-22 14:55:58,423 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 14:55:58,435 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 14:55:58,436 | INFO    | scraper.orchestrator | Skipping crawl for walter-schmidt-chemie.de: 1 emails already found
+2025-08-22 14:55:58,436 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 14:56:00,117 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes (def from text)
+2025-08-22 14:56:00,155 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:00,460 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines → 200
+2025-08-22 14:56:00,509 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines (def from text)
+2025-08-22 14:56:00,559 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines
+2025-08-22 14:56:00,559 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines
+2025-08-22 14:56:02,448 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines (def from text)
+2025-08-22 14:56:02,482 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-worldwide/dealer-network: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:02,743 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-worldwide/dealer-network → 200
+2025-08-22 14:56:02,793 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/dealer-network (def from text)
+2025-08-22 14:56:02,836 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide/dealer-network
+2025-08-22 14:56:02,836 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide/dealer-network
+2025-08-22 14:56:05,161 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/dealer-network (def from text)
+2025-08-22 14:56:05,197 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-history: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:05,442 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-history → 200
+2025-08-22 14:56:05,506 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history (def from text)
+2025-08-22 14:56:05,549 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history
+2025-08-22 14:56:05,550 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history
+2025-08-22 14:56:07,862 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history (def from text)
+2025-08-22 14:56:07,896 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/quality: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:08,123 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/quality → 200
+2025-08-22 14:56:08,158 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/quality (def from text)
+2025-08-22 14:56:08,188 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/quality
+2025-08-22 14:56:08,188 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/quality
+2025-08-22 14:56:09,897 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/quality (def from text)
+2025-08-22 14:56:09,932 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/care-for-people: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:10,231 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/care-for-people → 200
+2025-08-22 14:56:10,288 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/care-for-people (def from text)
+2025-08-22 14:56:10,328 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/care-for-people
+2025-08-22 14:56:10,329 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/care-for-people
+2025-08-22 14:56:11,835 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/care-for-people (def from text)
+2025-08-22 14:56:11,867 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities-: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:12,372 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities- → 200
+2025-08-22 14:56:12,416 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities- (def from text)
+2025-08-22 14:56:12,456 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities-
+2025-08-22 14:56:12,457 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities-
+2025-08-22 14:56:14,125 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities- (def from text)
+2025-08-22 14:56:14,165 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-history/clever-solutions: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:14,430 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-history/clever-solutions → 200
+2025-08-22 14:56:14,471 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/clever-solutions (def from text)
+2025-08-22 14:56:14,503 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history/clever-solutions
+2025-08-22 14:56:14,503 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history/clever-solutions
+2025-08-22 14:56:16,749 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/clever-solutions (def from text)
+2025-08-22 14:56:16,777 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:17,031 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-worldwide/world-class-technology → 200
+2025-08-22 14:56:17,075 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology (def from text)
+2025-08-22 14:56:17,184 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology
+2025-08-22 14:56:17,185 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology
+2025-08-22 14:56:19,347 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology (def from text)
+2025-08-22 14:56:19,377 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:19,656 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/daf-environmental-policy → 200
+2025-08-22 14:56:19,688 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy (def from text)
+2025-08-22 14:56:19,719 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy
+2025-08-22 14:56:19,719 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy
+2025-08-22 14:56:21,914 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy (def from text)
+2025-08-22 14:56:21,944 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-circularity: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:22,288 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-circularity → 200
+2025-08-22 14:56:22,333 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity (def from text)
+2025-08-22 14:56:22,369 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-circularity
+2025-08-22 14:56:22,370 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-circularity
+2025-08-22 14:56:24,695 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity (def from text)
+2025-08-22 14:56:24,724 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:26,022 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/sustainability/environment-emission-reduction → 200
+2025-08-22 14:56:26,067 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction (def from text)
+2025-08-22 14:56:26,116 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction
+2025-08-22 14:56:26,117 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction
+2025-08-22 14:56:28,789 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction (def from text)
+2025-08-22 14:56:28,820 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/facts-and-figures: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:29,203 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/facts-and-figures → 200
+2025-08-22 14:56:29,255 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/facts-and-figures (def from text)
+2025-08-22 14:56:29,296 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/facts-and-figures
+2025-08-22 14:56:29,296 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/facts-and-figures
+2025-08-22 14:56:30,896 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/facts-and-figures (def from text)
+2025-08-22 14:56:30,923 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf/daf-history/timeline: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:32,291 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf/daf-history/timeline → 200
+2025-08-22 14:56:32,344 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/timeline (def from text)
+2025-08-22 14:56:32,394 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history/timeline
+2025-08-22 14:56:32,394 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history/timeline
+2025-08-22 14:56:34,780 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/timeline (def from text)
+2025-08-22 14:56:34,814 | INFO    | scraper.orchestrator | Used sitemap for daf.com
+2025-08-22 14:56:34,814 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: daf.com
+2025-08-22 14:56:34,815 | INFO    | scraper.crawler      | Start crawl daf.com (limit=30, timeout=60s, workers=16)
+2025-08-22 14:56:34,815 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/sites-landing: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:35,154 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/sites-landing → 200
+2025-08-22 14:56:35,189 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 14:56:35,257 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://parts.daf.com/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:35,839 | INFO    | scraper.http_client  | HTTP GET https://parts.daf.com/ → 200
+2025-08-22 14:56:35,933 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/ (def from text)
+2025-08-22 14:56:35,946 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://parts.daf.com/en-gb/
+2025-08-22 14:56:38,249 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/ (def from text)
+2025-08-22 14:56:38,276 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://eportal.daf.com/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:40,022 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/news-and-media: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:40,337 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/news-and-media → 200
+2025-08-22 14:56:40,405 | INFO    | scraper.email_extractor |   1 emails on https://www.daf.com/en/news-and-media (def from text)
+2025-08-22 14:56:40,405 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.daf.com/en/news-and-media
+2025-08-22 14:56:40,448 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/suppliers: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:40,889 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/suppliers → 200
+2025-08-22 14:56:40,930 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/suppliers (def from text)
+2025-08-22 14:56:40,967 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/suppliers
+2025-08-22 14:56:41,619 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/suppliers (def from text)
+2025-08-22 14:56:41,659 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/working-at-daf: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:42,178 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/working-at-daf → 200
+2025-08-22 14:56:42,238 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf (def from text)
+2025-08-22 14:56:42,280 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/working-at-daf
+2025-08-22 14:56:44,196 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf (def from text)
+2025-08-22 14:56:44,303 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:44,780 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en → 200
+2025-08-22 14:56:44,853 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from text)
+2025-08-22 14:56:44,913 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en
+2025-08-22 14:56:47,357 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from text)
+2025-08-22 14:56:47,524 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/nl-nl: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:47,800 | INFO    | scraper.http_client  | HTTP GET https://daf.com/nl-nl → 200
+2025-08-22 14:56:47,854 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from text)
+2025-08-22 14:56:47,900 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/nl-nl
+2025-08-22 14:56:49,915 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from text)
+2025-08-22 14:56:49,987 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/dealer-locator-page: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:50,240 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/dealer-locator-page → 200
+2025-08-22 14:56:50,268 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/dealer-locator-page (def from text)
+2025-08-22 14:56:50,288 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/dealer-locator-page
+2025-08-22 14:56:57,485 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/dealer-locator-page (def from text)
+2025-08-22 14:56:57,906 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com.au: Session.request() got multiple values for argument 'method'
+2025-08-22 14:56:59,309 | INFO    | scraper.http_client  | HTTP GET https://www.daf.com.au → 200
+2025-08-22 14:56:59,343 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.au/ (def from text)
+2025-08-22 14:56:59,367 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com.au/
+2025-08-22 14:57:05,243 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.au/ (def from text)
+2025-08-22 14:57:05,337 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com.tw?MarketCode=TW: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:06,480 | INFO    | scraper.http_client  | HTTP GET https://www.daf.com.tw?MarketCode=TW → 200
+2025-08-22 14:57:06,491 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.tw/?MarketCode=TW (def from text)
+2025-08-22 14:57:06,499 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com.tw/?MarketCode=TW
+2025-08-22 14:57:07,253 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://readytogo.daf.com/en: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:07,692 | INFO    | scraper.http_client  | HTTP GET https://readytogo.daf.com/en → 200
+2025-08-22 14:57:07,717 | INFO    | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from text)
+2025-08-22 14:57:07,732 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://readytogo.daf.com/en
+2025-08-22 14:57:10,469 | INFO    | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from text)
+2025-08-22 14:57:10,507 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/driver-information/driver-manuals: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:10,885 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/driver-information/driver-manuals → 200
+2025-08-22 14:57:10,940 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/driver-information/driver-manuals (def from text)
+2025-08-22 14:57:10,980 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/driver-information/driver-manuals
+2025-08-22 14:57:14,237 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/driver-information/driver-manuals (def from text)
+2025-08-22 14:57:14,465 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://rmi.daf.com: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:14,720 | INFO    | scraper.http_client  | HTTP GET https://rmi.daf.com → 200
+2025-08-22 14:57:14,759 | INFO    | scraper.email_extractor |   0 emails on https://rmi.daf.com/en (def from text)
+2025-08-22 14:57:14,791 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://rmi.daf.com/en
+2025-08-22 14:57:16,742 | INFO    | scraper.email_extractor |   0 emails on https://rmi.daf.com/en (def from text)
+2025-08-22 14:57:16,796 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://pti.daf.com: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:16,982 | INFO    | scraper.http_client  | HTTP GET https://pti.daf.com → 200
+2025-08-22 14:57:17,002 | INFO    | scraper.email_extractor |   0 emails on https://pti.daf.com/ (def from text)
+2025-08-22 14:57:17,020 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://pti.daf.com/
+2025-08-22 14:57:18,549 | INFO    | scraper.email_extractor |   0 emails on https://pti.daf.com/ (def from text)
+2025-08-22 14:57:18,587 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/about-daf: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:18,728 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/about-daf → 200
+2025-08-22 14:57:18,773 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf (def from text)
+2025-08-22 14:57:18,840 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/products-and-services: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:19,416 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/products-and-services → 200
+2025-08-22 14:57:19,477 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/products-and-services (def from text)
+2025-08-22 14:57:19,533 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/products-and-services
+2025-08-22 14:57:21,843 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/products-and-services (def from text)
+2025-08-22 14:57:21,982 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/contact: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:22,141 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/contact → 200
+2025-08-22 14:57:22,201 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact (def from text)
+2025-08-22 14:57:22,319 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/contact/pems-testing-service-contact-page: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:22,576 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/contact/pems-testing-service-contact-page → 200
+2025-08-22 14:57:22,616 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact/pems-testing-service-contact-page (def from text)
+2025-08-22 14:57:22,650 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/contact/pems-testing-service-contact-page
+2025-08-22 14:57:24,807 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact/pems-testing-service-contact-page (def from text)
+2025-08-22 14:57:24,874 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/legal/code-of-conduct: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:25,178 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/legal/code-of-conduct → 200
+2025-08-22 14:57:25,215 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/code-of-conduct (def from text)
+2025-08-22 14:57:25,249 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/legal/code-of-conduct
+2025-08-22 14:57:27,624 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/code-of-conduct (def from text)
+2025-08-22 14:57:27,701 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/working-at-daf/onboarding: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:28,057 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/working-at-daf/onboarding → 200
+2025-08-22 14:57:28,093 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf/onboarding (def from text)
+2025-08-22 14:57:28,130 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/working-at-daf/onboarding
+2025-08-22 14:57:29,751 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf/onboarding (def from text)
+2025-08-22 14:57:29,807 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://rmi.daf.com/: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:29,807 | WARNING | scraper.http_client  | Redirect loop detected – already visited https://rmi.daf.com/
+2025-08-22 14:57:29,808 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/legal/legal-notice: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:30,041 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/legal/legal-notice → 200
+2025-08-22 14:57:30,070 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/legal-notice (def from text)
+2025-08-22 14:57:30,104 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/legal/legal-notice
+2025-08-22 14:57:32,871 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/legal-notice (def from text)
+2025-08-22 14:57:32,953 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/legal/privacy-statement: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:33,129 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/legal/privacy-statement → 200
+2025-08-22 14:57:33,195 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/privacy-statement (def from text)
+2025-08-22 14:57:33,251 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.daf.com/en/legal/privacy-statement
+2025-08-22 14:57:33,297 | ERROR   | scraper.performance_optimizer | Optimized request failed for https://www.daf.com/en/legal/general-conditions: Session.request() got multiple values for argument 'method'
+2025-08-22 14:57:33,889 | INFO    | scraper.http_client  | HTTP GET https://daf.com/en/legal/general-conditions → 200
+2025-08-22 14:57:33,935 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/general-conditions (def from text)
+2025-08-22 14:57:33,974 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/legal/general-conditions
+2025-08-22 14:57:35,937 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/general-conditions (def from text)
+2025-08-22 14:57:36,026 | INFO    | scraper.crawler      | Crawl of daf.com completed: 23 pages fetched, 390 unique URLs seen, 2 emails, 61.2 s
+2025-08-22 14:57:36,026 | INFO    | scraper.orchestrator | ✓ Found 2 emails for daf trucks
+2025-08-22 14:57:36,032 | INFO    | scraper.orchestrator | Concurrent processing completed in 204.83 seconds
+2025-08-22 14:57:36,199 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 14:57:36,235 | INFO    | scraper.cli          | 
++--------------------------------------------------+
+| RUN SUMMARY                                      |
++--------------------------------------------------+
+| Leads           :   8
+| Domain found    :   8
+| No Google hits  :   0
+| Domain unclear  :   0
+| Sitemap used    :   8
+| With e-mail     :   7
+| Without e-mail  :   1
+| Google errors   :   0
+| Processing errors:   0
+| Unique e-mails  :  12
+| Runtime         :  205.0 s
+| HTTP Requests   : 157
+| HTTP errors     :   0
+| No-response     :   1
++--------------------------------------------------+
+2025-08-22 14:57:36,236 | INFO    | scraper.cli          | Saved 12 rows -> results.xlsx
+2025-08-22 14:57:36,237 | INFO    | scraper.cli          | Verbose log -> C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper_20250822_145410.log

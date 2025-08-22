@@ -64,7 +64,7 @@ class Config:
         ]
         
         # Page limits and quotas
-        self.max_fallback_pages = self._parse_int("MAX_FALLBACK_PAGES", 12, 1, 500)
+        self.max_fallback_pages = self._parse_int("MAX_FALLBACK_PAGES", 50, 1, 500)
         
         # PDF processing
         self.process_pdfs = self._parse_bool("PROCESS_PDFS", False)
@@ -83,11 +83,19 @@ class Config:
         self.domain_score_threshold = self._parse_int("DOMAIN_SCORE_THRESHOLD", 60, 0, 100)
         
         # Smart email discovery settings
-        self.enable_smart_discovery = self._parse_bool("ENABLE_SMART_DISCOVERY", True)
-        self.enable_early_stopping = self._parse_bool("ENABLE_EARLY_STOPPING", True)
-        self.early_stop_threshold = self._parse_int("EARLY_STOP_THRESHOLD", 3, 1, 20)  # Stop after finding N emails
-        self.max_priority_pages = self._parse_int("MAX_PRIORITY_PAGES", 8, 1, 50)  # Limit priority pages to process
-        self.enable_email_pattern_cache = self._parse_bool("ENABLE_EMAIL_PATTERN_CACHE", True)
+        self.enable_smart_discovery = self._parse_bool(
+            "ENABLE_SMART_DISCOVERY", True)
+        # Disabled to find ALL emails per company
+        self.enable_early_stopping = self._parse_bool(
+            "ENABLE_EARLY_STOPPING", False)
+        # Much higher threshold
+        self.early_stop_threshold = self._parse_int(
+            "EARLY_STOP_THRESHOLD", 100, 1, 1000)
+        # Increased for more thorough search
+        self.max_priority_pages = self._parse_int(
+            "MAX_PRIORITY_PAGES", 25, 1, 100)
+        self.enable_email_pattern_cache = self._parse_bool(
+            "ENABLE_EMAIL_PATTERN_CACHE", True)
         
         # HTTP settings
         self.max_redirects = self._parse_int("MAX_REDIRECTS", 5, 0, 100)

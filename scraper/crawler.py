@@ -8,7 +8,7 @@ from urllib.parse import urljoin, urlparse, parse_qsl, urlencode, urlunparse
 from bs4 import BeautifulSoup
 
 from scraper.config import config
-from scraper.http import http_client, normalise_domain, validate_url
+from scraper.http_client import http_client, normalise_domain, validate_url
 from scraper.hybrid_email_extractor import hybrid_email_extractor
 
 # Initialize logger

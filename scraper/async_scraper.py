@@ -10,7 +10,7 @@ from playwright.async_api import async_playwright, Page, TimeoutError as PWTimeo
 import aiohttp
 
 from scraper.email_extractor import EmailExtractor, EmailValidationError
-from scraper.http import http_client
+from scraper.http_client import http_client
 
 log = logging.getLogger(__name__)
 

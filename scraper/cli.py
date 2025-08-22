@@ -14,7 +14,7 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
-from scraper.http import http_client
+from scraper.http_client import http_client
 import asyncio
 from scraper.async_scraper import main as async_main
 

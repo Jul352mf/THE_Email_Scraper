@@ -136,9 +136,11 @@ class SmartEmailDiscovery:
                     len(current_emails), config.early_stop_threshold)
             return True
         
-        # Stop if we've processed many pages without finding emails
-        if total_processed >= 5 and len(current_emails) == 0:
-            log.info("Early stopping: no emails found after %d pages", total_processed)
+        # Only stop if we've processed MANY pages without finding emails
+        # Changed from 5 to 15 to be less aggressive
+        if total_processed >= 15 and len(current_emails) == 0:
+            log.info("Early stopping: no emails found after %d pages",
+                     total_processed)
             return True
         
         return False

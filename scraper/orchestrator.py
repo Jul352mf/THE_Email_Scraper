@@ -14,7 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import queue
 
 from scraper.config import config
-from scraper.http import normalise_domain, http_client
+from scraper.http_client import normalise_domain, http_client
 from scraper.google_search import google_client, GoogleApiError, RateLimitExceededError
 from scraper.domain_scorer import domain_scorer
 from scraper.email_extractor import email_extractor

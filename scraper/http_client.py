@@ -36,6 +36,15 @@ import urllib3
 from urllib3.exceptions import InsecureRequestWarning
 from collections import Counter
 
+# Import performance optimizations
+try:
+    from scraper.performance_optimizer import (
+        connection_pool, optimize_request, resource_monitor
+    )
+    PERFORMANCE_OPTIMIZATIONS_AVAILABLE = True
+except ImportError:
+    PERFORMANCE_OPTIMIZATIONS_AVAILABLE = False
+
 log = logging.getLogger(__name__)
 
 # suppress urllib3 warnings once at module top
@@ -263,6 +272,19 @@ class HttpClient:
             (AccessMethod.HTTP_WWW, f"http://www.{domain}"),
         ]
         
+        # Try request batching for domain probing if available
+        if PERFORMANCE_OPTIMIZATIONS_AVAILABLE:
+            try:
+                from scraper.performance_optimizer import request_batcher
+                return self._probe_domain_batch(
+                    domain, methods_to_try, request_batcher
+                )
+            except Exception as e:
+                log.debug(
+                    "Batch probing failed for %s, falling back: %s", domain, e
+                )
+        
+        # Fallback to sequential probing
         for method, test_url in methods_to_try:
             log.debug("Trying %s access method: %s", method.value, test_url)
             
@@ -292,6 +314,76 @@ class HttpClient:
         )
         self.domain_patterns[domain] = pattern
         log.warning("✗ No working access method found for %s", domain)
+        return None
+
+    def _probe_domain_batch(self, domain: str, methods_to_try: list,
+                            request_batcher) -> Optional[DomainPattern]:
+        """
+        Probe domain using batch requests for better performance.
+        
+        Args:
+            domain: Domain to probe
+            methods_to_try: List of (AccessMethod, URL) tuples to try
+            request_batcher: Batch request handler
+            
+        Returns:
+            DomainPattern if successful access method found, None otherwise
+        """
+        successful_method = None
+        results = {}
+        
+        def create_callback(method):
+            """Create callback for a specific method."""
+            def callback(response):
+                nonlocal successful_method
+                if response and response.ok:
+                    results[method] = True
+                    if successful_method is None:
+                        successful_method = method
+                else:
+                    results[method] = False
+            return callback
+        
+        # Add all probe requests to batch
+        for method, test_url in methods_to_try:
+            callback = create_callback(method)
+            request_batcher.add_request(
+                test_url,
+                callback=callback,
+                method='HEAD',
+                timeout=5
+            )
+        
+        # Wait for batch completion (with timeout)
+        start_time = time.time()
+        max_wait = 30
+        while (len(results) < len(methods_to_try) and
+               time.time() - start_time < max_wait):
+            time.sleep(0.1)
+        
+        # Find the first successful method in order of preference
+        for method, test_url in methods_to_try:
+            if results.get(method):
+                pattern = DomainPattern(
+                    domain=domain,
+                    method=method,
+                    verified=True,
+                    last_checked=time.time()
+                )
+                self.domain_patterns[domain] = pattern
+                log.info("✓ Found working access method for %s: %s",
+                         domain, method.value)
+                return pattern
+        
+        # If no method worked, cache failure
+        pattern = DomainPattern(
+            domain=domain,
+            method=AccessMethod.HTTPS,
+            verified=False,
+            last_checked=time.time()
+        )
+        self.domain_patterns[domain] = pattern
+        log.warning("✗ No working access method found for %s (batch)", domain)
         return None
 
     def _probe_url(self, url: str) -> Optional[requests.Response]:
@@ -351,6 +443,27 @@ class HttpClient:
             log.warning("Skipping invalid URL: %s", url)
             self.stats["skipped_urls"] += 1
             return None
+        
+        # Try performance optimizations first
+        if PERFORMANCE_OPTIMIZATIONS_AVAILABLE:
+            try:
+                # Create kwargs for optimized request
+                opt_kwargs = {'timeout': timeout}
+                if headers:
+                    opt_kwargs['headers'] = headers
+                
+                optimized_response = optimize_request(url, **opt_kwargs)
+                if optimized_response:
+                    log.debug("Using optimized request for: %s", url)
+                    self.stats["total_requests"] += 1
+                    status_key = f"status_{optimized_response.status_code}"
+                    self.stats[status_key] += 1
+                    return optimized_response
+            except Exception as e:
+                log.debug(
+                    "Performance optimization failed for %s, falling back: %s",
+                    url, e
+                )
         
         # Try to use optimized URL if we have domain patterns
         parsed = urlparse(url)
@@ -584,6 +697,54 @@ class HttpClient:
             log.debug("Saved debug dump for %s → %s", url, fname)
         except Exception as exc:
             log.warning("Failed to save debug dump for %s: %s", url, exc)
+
+    def get_performance_stats(self) -> Dict[str, Any]:
+        """
+        Get comprehensive performance statistics including HTTP client stats
+        and performance monitor data.
+        """
+        stats = {
+            'http_client': self.stats.copy(),
+            'domain_patterns': len(self.domain_patterns),
+            'cached_patterns': sum(
+                1 for p in self.domain_patterns.values() if p.verified
+            )
+        }
+        
+        # Add performance optimizer stats if available
+        if PERFORMANCE_OPTIMIZATIONS_AVAILABLE:
+            try:
+                from scraper.performance_optimizer import get_performance_stats
+                optimizer_stats = get_performance_stats()
+                stats.update(optimizer_stats)
+            except Exception as e:
+                log.debug("Failed to get performance optimizer stats: %s", e)
+        
+        return stats
+    
+    def clear_performance_cache(self) -> None:
+        """Clear performance-related caches."""
+        # Clear domain patterns cache
+        cleared_patterns = len(self.domain_patterns)
+        self.domain_patterns.clear()
+        log.info("Cleared %d cached domain patterns", cleared_patterns)
+        
+        # Reset HTTP client stats
+        self.stats = Counter()
+        log.info("Reset HTTP client statistics")
+        
+        # Clear performance optimizer caches if available
+        if PERFORMANCE_OPTIMIZATIONS_AVAILABLE:
+            try:
+                from scraper.performance_optimizer import (
+                    cleanup_performance_resources
+                )
+                cleanup_performance_resources()
+                log.info("Cleared performance optimization caches")
+            except Exception as e:
+                log.debug(
+                    "Failed to clear performance optimizer caches: %s", e
+                )
 
 
 def normalise_domain(url: str) -> str:
