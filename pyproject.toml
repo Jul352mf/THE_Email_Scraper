@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "the-email-scraper"
+version = "0.0.1"
+description = "Email discovery scraper"
+authors = [ {name = "Julian Schoenbeck", email = "julian.schoenbeck@hotmail.com"} ]
+
+[project.scripts]
+scraper = "scraper.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["scraper*"]

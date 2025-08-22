@@ -1,0 +1,107 @@
+2025-08-22 10:07:05,331 INFO Starting google_stress run
+2025-08-22 10:07:05,599 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.26824259757995605}
+2025-08-22 10:07:05,874 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.27471160888671875}
+2025-08-22 10:07:06,302 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.42778921127319336}
+2025-08-22 10:07:07,032 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2293257713317871}
+2025-08-22 10:07:07,461 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.4147334098815918}
+2025-08-22 10:07:07,715 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2540621757507324}
+2025-08-22 10:07:08,479 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.26258158683776855}
+2025-08-22 10:07:08,786 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.3068501949310303}
+2025-08-22 10:07:09,018 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.23179388046264648}
+2025-08-22 10:07:09,817 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.29830360412597656}
+2025-08-22 10:07:10,053 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2365715503692627}
+2025-08-22 10:07:10,332 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.27846527099609375}
+2025-08-22 10:07:11,098 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2650332450866699}
+2025-08-22 10:07:11,368 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2705399990081787}
+2025-08-22 10:07:11,634 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2651534080505371}
+2025-08-22 10:07:12,431 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.29702138900756836}
+2025-08-22 10:07:12,697 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.26598286628723145}
+2025-08-22 10:07:12,939 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.24125242233276367}
+2025-08-22 10:07:13,741 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.3019874095916748}
+2025-08-22 10:07:14,014 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.27249574661254883}
+2025-08-22 10:07:14,285 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.27116823196411133}
+2025-08-22 10:07:15,009 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.22376370429992676}
+2025-08-22 10:07:15,255 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.24535632133483887}
+2025-08-22 10:07:15,529 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.27405500411987305}
+2025-08-22 10:07:16,295 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2653841972351074}
+2025-08-22 10:07:16,563 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.26865053176879883}
+2025-08-22 10:07:16,837 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.273221492767334}
+2025-08-22 10:07:17,759 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.4216477870941162}
+2025-08-22 10:07:18,015 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.25572705268859863}
+2025-08-22 10:07:18,235 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.21995258331298828}
+2025-08-22 10:07:18,990 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2551543712615967}
+2025-08-22 10:07:19,231 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2404954433441162}
+2025-08-22 10:07:19,524 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2931666374206543}
+2025-08-22 10:07:20,230 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.20524382591247559}
+2025-08-22 10:07:20,524 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2931327819824219}
+2025-08-22 10:07:20,746 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.22200369834899902}
+2025-08-22 10:07:21,489 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.24254655838012695}
+2025-08-22 10:07:21,897 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.4084892272949219}
+2025-08-22 10:07:22,206 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.30909252166748047}
+2025-08-22 10:07:22,973 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.26557254791259766}
+2025-08-22 10:07:23,241 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.26839637756347656}
+2025-08-22 10:07:23,470 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.22797274589538574}
+2025-08-22 10:07:24,193 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.22344422340393066}
+2025-08-22 10:07:24,466 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2722890377044678}
+2025-08-22 10:07:24,752 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2762012481689453}
+2025-08-22 10:07:25,481 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.22801756858825684}
+2025-08-22 10:07:25,723 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2422490119934082}
+2025-08-22 10:07:25,982 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.258206844329834}
+2025-08-22 10:07:26,724 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.24120354652404785}
+2025-08-22 10:07:27,009 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.28562355041503906}
+2025-08-22 10:07:27,322 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.31217479705810547}
+2025-08-22 10:07:28,088 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2656867504119873}
+2025-08-22 10:07:28,338 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.24996519088745117}
+2025-08-22 10:07:28,653 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.3152282238006592}
+2025-08-22 10:07:29,399 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.24516630172729492}
+2025-08-22 10:07:29,660 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.26110243797302246}
+2025-08-22 10:07:29,950 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.289933443069458}
+2025-08-22 10:07:30,689 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2379772663116455}
+2025-08-22 10:07:30,985 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2966470718383789}
+2025-08-22 10:07:31,252 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.26634860038757324}
+2025-08-22 10:07:31,987 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.23442363739013672}
+2025-08-22 10:07:32,237 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2501380443572998}
+2025-08-22 10:07:32,493 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.25531744956970215}
+2025-08-22 10:07:33,278 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2849593162536621}
+2025-08-22 10:07:33,766 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.48781800270080566}
+2025-08-22 10:07:34,083 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.3166630268096924}
+2025-08-22 10:07:34,854 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2702021598815918}
+2025-08-22 10:07:35,090 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.23549294471740723}
+2025-08-22 10:07:35,345 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.25505852699279785}
+2025-08-22 10:07:36,113 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.26682257652282715}
+2025-08-22 10:07:36,373 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.25994873046875}
+2025-08-22 10:07:36,615 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.24158549308776855}
+2025-08-22 10:07:37,397 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2821810245513916}
+2025-08-22 10:07:37,655 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.25778937339782715}
+2025-08-22 10:07:37,887 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2318260669708252}
+2025-08-22 10:07:38,604 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.21665644645690918}
+2025-08-22 10:07:39,120 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.5157597064971924}
+2025-08-22 10:07:39,372 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.25185561180114746}
+2025-08-22 10:07:40,109 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.23595929145812988}
+2025-08-22 10:07:40,363 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.25421929359436035}
+2025-08-22 10:07:40,619 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2557210922241211}
+2025-08-22 10:07:41,364 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2444148063659668}
+2025-08-22 10:07:41,658 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.29428887367248535}
+2025-08-22 10:07:41,901 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.24253511428833008}
+2025-08-22 10:07:42,855 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.45372509956359863}
+2025-08-22 10:07:43,104 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2490863800048828}
+2025-08-22 10:07:43,349 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2447524070739746}
+2025-08-22 10:07:44,109 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.2591118812561035}
+2025-08-22 10:07:44,370 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.26050734519958496}
+2025-08-22 10:07:44,602 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.23185133934020996}
+2025-08-22 10:07:45,385 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.28212523460388184}
+2025-08-22 10:07:45,816 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.43093156814575195}
+2025-08-22 10:07:46,113 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2975785732269287}
+2025-08-22 10:07:46,822 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.20860528945922852}
+2025-08-22 10:07:47,158 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.3360018730163574}
+2025-08-22 10:07:47,423 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2638998031616211}
+2025-08-22 10:07:48,153 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.22991180419921875}
+2025-08-22 10:07:48,409 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.25553035736083984}
+2025-08-22 10:07:48,653 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2442641258239746}
+2025-08-22 10:07:49,416 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 0.26197314262390137}
+2025-08-22 10:07:49,680 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.2633547782897949}
+2025-08-22 10:07:49,939 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2588918209075928}
+2025-08-22 10:07:51,731 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 1.2919421195983887}
+2025-08-22 10:07:51,978 INFO RESULT {"query": "daf trucks n.v.", "ok": true, "items": 3, "err": null, "time": 0.24750685691833496}
+2025-08-22 10:07:52,237 INFO RESULT {"query": "speedy fuels", "ok": true, "items": 3, "err": null, "time": 0.2584359645843506}
+2025-08-22 10:07:56,039 INFO RESULT {"query": "bluetec haman co.; ltd.", "ok": true, "items": 3, "err": null, "time": 3.3009984493255615}

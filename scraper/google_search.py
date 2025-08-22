@@ -3,8 +3,9 @@ import threading
 import time
 from typing import List, Dict, Any, Optional, Callable
 
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 from scraper.config import config, API_KEY, CX_ID
 
@@ -35,20 +36,36 @@ class GoogleSearchClient:
     
     def _initialize_service(self) -> None:
         """
-        Initialize the Google API service with error handling.
+        Initialize the requests session for Google API calls.
         """
         with self._init_lock:
             if self._service is not None:
                 return
             try:
-                self._service = build(
-                    "customsearch", 
-                    "v1", 
-                    developerKey=API_KEY, 
-                    cache_discovery=False
+                # Create a requests session with proper retry configuration
+                session = requests.Session()
+                
+                # Configure retry strategy
+                retry_strategy = Retry(
+                    total=3,
+                    status_forcelist=[429, 500, 502, 503, 504],
+                    backoff_factor=1
                 )
+                
+                adapter = HTTPAdapter(max_retries=retry_strategy)
+                session.mount("http://", adapter)
+                session.mount("https://", adapter)
+                
+                # Configure SSL verification
+                session.verify = not config.insecure_ssl
+                
+                # Set reasonable timeout
+                session.timeout = (10, 30)  # (connect, read)
+                
+                self._service = session
+                log.info("Google API requests session initialized")
             except Exception as e:
-                msg = f"Failed to initialize Google API service: {e}"
+                msg = f"Failed to initialize Google API session: {e}"
                 log.error(msg)
                 raise GoogleApiError(msg)
     
@@ -94,21 +111,48 @@ class GoogleSearchClient:
         for attempt in range(config.google_max_retries):
             try:
                 self._respect_rate()
-                resp = (
-                    self._service.cse()
-                        .list(q=full_q, cx=CX_ID, num=num_results)
-                        .execute()
+                
+                # Make direct API call using requests
+                params = {
+                    'q': full_q,
+                    'cx': CX_ID,
+                    'key': API_KEY,
+                    'num': num_results,
+                    'alt': 'json'
+                }
+                
+                response = self._service.get(
+                    'https://customsearch.googleapis.com/customsearch/v1',
+                    params=params,
+                    timeout=(10, 30)
                 )
-                items = resp.get("items", [])
+                
+                # Handle HTTP errors
+                if response.status_code in (403, 429):
+                    backoff = backoff * 2
+                    log.warning(
+                        "Google quota %s – sleeping %ds (attempt %d/%d)",
+                        response.status_code, backoff, attempt+1, config.google_max_retries
+                    )
+                    time.sleep(backoff)
+                    continue
+                
+                response.raise_for_status()
+                
+                # Parse JSON response
+                resp_data = response.json()
+                items = resp_data.get("items", [])
+                
                 if callback and items:
                     try:
                         callback(items)
                     except Exception as cb_e:
                         log.error("Callback error: %s", cb_e)
+                
                 return items
 
-            except HttpError as he:
-                status = getattr(he.resp, 'status', None)
+            except requests.exceptions.HTTPError as he:
+                status = he.response.status_code if he.response else None
                 # quota exceeded
                 if status in (403, 429):
                     backoff = backoff * 2
@@ -118,21 +162,26 @@ class GoogleSearchClient:
                     )
                     time.sleep(backoff)
                     continue
-                log.error("Google API error (status %s): %s", status, he)
+                log.error("Google API HTTP error (status %s): %s", status, he)
                 raise GoogleApiError(he)
 
-            except Exception as e:
-                # if it's a network / read timeout, retry
-                # httplib2 (used under the hood) or socket.timeouts will appear here
-                if attempt < config.google_max_retries - 1 and "timed out" in str(e).lower():
+            except (requests.exceptions.ConnectionError, 
+                    requests.exceptions.Timeout,
+                    requests.exceptions.SSLError) as e:
+                # Network, timeout, or SSL errors - retry
+                if attempt < config.google_max_retries - 1:
                     wait = 2 ** attempt
                     log.warning(
-                        "Google search timed out on '%s' (attempt %d/%d), retrying in %ds",
-                        query, attempt+1, config.google_max_retries, wait
+                        "Google search network error on '%s' (attempt %d/%d), retrying in %ds: %s",
+                        query, attempt+1, config.google_max_retries, wait, e
                     )
                     time.sleep(wait)
                     continue
-
+                
+                log.error("Google search network error after retries: %s", e)
+                raise GoogleApiError(e)
+                
+            except Exception as e:
                 log.error("Unexpected error in Google search: %s", e)
                 raise GoogleApiError(e)
 

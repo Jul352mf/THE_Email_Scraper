@@ -1,0 +1,191 @@
+2025-08-22 12:15:55,135 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 12:15:55,137 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 12:15:55,137 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 12:15:55,137 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 12:15:55,138 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 12:15:55,138 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 12:15:55,138 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 12:15:55,138 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 12:15:55,311 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 12:15:55,312 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 12:15:55,312 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer 
+2025-08-22 12:15:55,319 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals 
+2025-08-22 12:15:55,320 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman
+2025-08-22 12:15:55,320 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks
+2025-08-22 12:15:55,321 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete 
+2025-08-22 12:15:55,322 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 12:15:55,322 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 12:15:55,323 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 12:15:55,978 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 12:15:56,405 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL] internal error (_ssl.c:2648)
+2025-08-22 12:15:56,405 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 12:15:56,407 | ERROR   | scraper.google_search | Search failed with fallback: [SSL] internal error (_ssl.c:2648)
+2025-08-22 12:15:56,407 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 12:15:56,407 | WARNING | scraper.orchestrator | No Google search results for: bluetec haman
+2025-08-22 12:15:56,407 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals 
+2025-08-22 12:15:56,428 | INFO    | scraper.orchestrator | ✓ Found domain: speedyfuels.co.uk (score: 100)
+2025-08-22 12:15:56,760 | INFO    | scraper.http         | HTTP GET https://speedyfuels.co.uk → 200
+2025-08-22 12:15:56,820 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 12:15:56,905 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/
+2025-08-22 12:15:58,548 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 12:15:59,033 | INFO    | scraper.http         | HTTP HEAD https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 12:15:59,482 | INFO    | scraper.http         | HTTP GET https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 12:15:59,483 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://speedyfuels.co.uk/sitemap.xml (0.91s)
+2025-08-22 12:15:59,529 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/post-sitemap.xml → 200
+2025-08-22 12:15:59,669 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/page-sitemap.xml → 200
+2025-08-22 12:15:59,792 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ → 200
+2025-08-22 12:15:59,851 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ (def from text)
+2025-08-22 12:15:59,875 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/
+2025-08-22 12:15:59,875 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/
+2025-08-22 12:16:01,402 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ (def from text)
+2025-08-22 12:16:01,528 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/fuel-suppliers/ → 200
+2025-08-22 12:16:01,582 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/fuel-suppliers/ (def from text)
+2025-08-22 12:16:01,610 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/fuel-suppliers/
+2025-08-22 12:16:01,610 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/fuel-suppliers/
+2025-08-22 12:16:02,993 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/fuel-suppliers/ (def from text)
+2025-08-22 12:16:03,135 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/guides/adblue-guide/ → 200
+2025-08-22 12:16:03,202 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/adblue-guide/ (def from text)
+2025-08-22 12:16:03,247 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/guides/adblue-guide/
+2025-08-22 12:16:03,247 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/guides/adblue-guide/
+2025-08-22 12:16:04,779 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/adblue-guide/ (def from text)
+2025-08-22 12:16:04,913 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ → 200
+2025-08-22 12:16:04,968 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ (def from text)
+2025-08-22 12:16:04,995 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/
+2025-08-22 12:16:04,996 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/
+2025-08-22 12:16:06,322 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ (def from text)
+2025-08-22 12:16:06,448 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/about-us/ → 200
+2025-08-22 12:16:06,501 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from text)
+2025-08-22 12:16:06,527 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/about-us/
+2025-08-22 12:16:06,527 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/about-us/
+2025-08-22 12:16:08,247 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from text)
+2025-08-22 12:16:08,387 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/privacy-policy/ → 200
+2025-08-22 12:16:08,420 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.speedyfuels.co.uk/privacy-policy/
+2025-08-22 12:16:08,475 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/contact-us/ → 200
+2025-08-22 12:16:08,499 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.speedyfuels.co.uk/contact-us/
+2025-08-22 12:16:08,552 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ → 200
+2025-08-22 12:16:08,605 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ (def from text)
+2025-08-22 12:16:08,629 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/
+2025-08-22 12:16:08,629 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/
+2025-08-22 12:16:10,217 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ (def from text)
+2025-08-22 12:16:10,344 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ → 200
+2025-08-22 12:16:10,403 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ (def from text)
+2025-08-22 12:16:10,427 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/
+2025-08-22 12:16:10,428 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/
+2025-08-22 12:16:11,958 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ (def from text)
+2025-08-22 12:16:12,100 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/adblue/ → 200
+2025-08-22 12:16:12,154 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 12:16:12,192 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/products/adblue/
+2025-08-22 12:16:12,193 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/adblue/
+2025-08-22 12:16:13,692 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 12:16:13,722 | INFO    | scraper.orchestrator | Used sitemap for speedyfuels.co.uk
+2025-08-22 12:16:13,722 | INFO    | scraper.orchestrator | ✓ Found 2 emails for speedy fuels
+2025-08-22 12:16:39,545 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 12:16:39,561 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 12:16:39,571 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 12:16:41,423 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 12:16:56,169 | WARNING | scraper.google_search | Google search timed out on 'Synsol' (attempt 1/5), retrying in 1s
+2025-08-22 12:16:56,450 | WARNING | scraper.google_search | Google search timed out on 'euro dam jas doo' (attempt 1/5), retrying in 1s
+2025-08-22 12:16:56,450 | WARNING | scraper.google_search | Google search timed out on 'petrol rete ' (attempt 1/5), retrying in 1s
+2025-08-22 12:16:56,450 | WARNING | scraper.google_search | Google search timed out on 'daf trucks' (attempt 1/5), retrying in 1s
+2025-08-22 12:16:56,451 | WARNING | scraper.google_search | Google search timed out on 'henan xinlianxin fertilizer ' (attempt 1/5), retrying in 1s
+2025-08-22 12:16:57,937 | INFO    | scraper.orchestrator | ✓ Found domain: synsol.ch (score: 100)
+2025-08-22 12:16:58,226 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,227 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,227 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,227 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,227 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,227 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,228 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,228 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:16:58,228 | WARNING | scraper.orchestrator | No Google search results for: petrol rete 
+2025-08-22 12:16:58,228 | WARNING | scraper.orchestrator | No Google search results for: euro dam jas doo
+2025-08-22 12:16:58,229 | WARNING | scraper.orchestrator | No Google search results for: henan xinlianxin fertilizer 
+2025-08-22 12:16:58,229 | WARNING | scraper.orchestrator | No Google search results for: daf trucks
+2025-08-22 12:16:59,212 | INFO    | scraper.http         | HTTP GET https://synsol.ch → 200
+2025-08-22 12:16:59,286 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/ (def from text)
+2025-08-22 12:16:59,286 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://synsol.ch/
+2025-08-22 12:17:00,365 | INFO    | scraper.http         | HTTP HEAD https://www.synsol.ch/sitemap.xml → 200
+2025-08-22 12:17:00,417 | INFO    | scraper.http         | HTTP GET https://www.synsol.ch/sitemap.xml → 200
+2025-08-22 12:17:00,417 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.synsol.ch/sitemap.xml (1.13s)
+2025-08-22 12:17:00,648 | INFO    | scraper.http         | HTTP GET https://synsol.ch/wp-sitemap-posts-page-1.xml → 200
+2025-08-22 12:17:00,648 | INFO    | scraper.http         | HTTP GET https://synsol.ch/wp-sitemap-users-1.xml → 200
+2025-08-22 12:17:00,971 | INFO    | scraper.http         | HTTP GET https://synsol.ch/privacy-policy-of-synsol-ag/ → 200
+2025-08-22 12:17:00,993 | INFO    | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from text)
+2025-08-22 12:17:01,009 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-22 12:17:01,010 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-22 12:17:02,080 | INFO    | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from text)
+2025-08-22 12:17:02,506 | INFO    | scraper.http         | HTTP GET https://synsol.ch/urea/ → 200
+2025-08-22 12:17:02,533 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/urea/ (def from text)
+2025-08-22 12:17:02,558 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://synsol.ch/urea/
+2025-08-22 12:17:02,574 | INFO    | scraper.orchestrator | Used sitemap for synsol.ch
+2025-08-22 12:17:02,574 | INFO    | scraper.orchestrator | ✓ Found 1 emails for Synsol
+2025-08-22 12:17:27,283 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 12:18:13,121 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 12:18:13,121 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (91.68s)
+2025-08-22 12:18:14,419 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html → 200
+2025-08-22 12:18:14,430 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 12:18:14,438 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 12:18:14,438 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 12:18:16,608 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 12:18:16,951 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ → 200
+2025-08-22 12:18:16,952 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 12:18:16,953 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 12:18:16,953 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 12:18:18,988 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 12:18:19,666 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 12:18:19,674 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 12:18:19,684 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 12:18:19,684 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 12:18:21,210 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 12:18:22,577 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html → 200
+2025-08-22 12:18:22,592 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 12:18:22,599 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 12:18:22,600 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 12:18:25,003 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 12:18:25,729 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html → 200
+2025-08-22 12:18:25,734 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 12:18:25,740 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 12:18:25,740 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 12:18:28,325 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 12:18:29,485 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 12:18:29,499 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 12:18:29,511 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 12:18:29,512 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 12:18:31,825 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 12:18:42,764 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 12:18:42,777 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 12:18:42,777 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 12:18:43,803 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 12:18:43,811 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 12:18:43,822 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 12:18:43,823 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 12:18:46,260 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 12:18:47,423 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 12:18:47,430 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 12:18:47,437 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 12:18:47,437 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 12:18:49,920 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 12:18:49,931 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 12:18:49,932 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 12:18:50,039 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 12:18:50,053 | INFO    | scraper.cli          | 
++--------------------------------------------------+
+| RUN SUMMARY                                      |
++--------------------------------------------------+
+| Leads           :   9
+| Domain found    :   3
+| No Google hits  :   6
+| Domain unclear  :   0
+| Sitemap used    :   3
+| With e-mail     :   3
+| Without e-mail  :   0
+| Google errors   :   0
+| Processing errors:   0
+| Unique e-mails  :   4
+| Runtime         :  174.7 s
+| HTTP Requests   :  34
+| HTTP errors     :   0
+| No-response     :   0
++--------------------------------------------------+
+2025-08-22 12:18:50,054 | INFO    | scraper.cli          | Saved 4 rows -> results.xlsx
+2025-08-22 12:18:50,055 | INFO    | scraper.cli          | Verbose log -> C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper_20250822_121554.log

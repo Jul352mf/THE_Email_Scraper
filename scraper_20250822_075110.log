@@ -1,0 +1,27 @@
+2025-08-22 07:51:10,362 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 07:51:10,363 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 07:51:10,363 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 07:51:10,363 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 07:51:10,364 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 07:51:10,364 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 07:51:10,364 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 07:51:10,364 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 07:51:10,580 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 07:51:10,581 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 07:51:10,581 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer co.
+2025-08-22 07:51:10,585 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals;  inc.
+2025-08-22 07:51:10,585 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman co.; ltd.
+2025-08-22 07:51:10,585 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks n.v.
+2025-08-22 07:51:10,586 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete s.r.l.
+2025-08-22 07:51:10,586 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 07:51:10,587 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 07:51:10,587 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 07:51:11,549 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 07:51:11,549 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL] internal error (_ssl.c:2648)
+2025-08-22 07:51:11,550 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 07:51:11,551 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 07:51:11,551 | ERROR   | scraper.google_search | Search failed with fallback: [SSL] internal error (_ssl.c:2648)
+2025-08-22 07:51:11,551 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals;  inc.
+2025-08-22 07:51:11,552 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 07:51:11,552 | WARNING | scraper.orchestrator | No Google search results for: euro dam jas doo
+2025-08-22 07:51:11,552 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels

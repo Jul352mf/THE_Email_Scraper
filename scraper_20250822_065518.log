@@ -1,0 +1,117 @@
+2025-08-22 06:55:18,250 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 06:55:18,250 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 06:55:18,250 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 06:55:18,251 | INFO    | scraper.cli          | Workers: 2
+2025-08-22 06:55:18,251 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 06:55:18,251 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 06:55:18,251 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 06:55:18,251 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 06:55:18,491 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 06:55:18,492 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 06:55:18,495 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer co.
+2025-08-22 06:55:18,944 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:18,944 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:55:19,338 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:19,338 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:55:20,976 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:20,976 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:55:21,783 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:21,783 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:55:25,006 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:25,006 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:55:25,816 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:25,817 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:55:33,039 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:33,039 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:55:33,849 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:33,849 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:55:49,069 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:49,070 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)
+2025-08-22 06:55:49,890 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:55:49,891 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)
+2025-08-22 06:56:21,070 | ERROR   | scraper.google_search | Google search failed for 'walter schmidt chemie gmbh' after 5 retries
+2025-08-22 06:56:21,071 | ERROR   | scraper.google_search | Search failed with fallback: Google search failed for 'walter schmidt chemie gmbh' after 5 retries
+2025-08-22 06:56:21,071 | WARNING | scraper.orchestrator | No Google search results for: walter schmidt chemie gmbh
+2025-08-22 06:56:21,071 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals;  inc.
+2025-08-22 06:56:21,101 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:21,101 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:56:21,891 | ERROR   | scraper.google_search | Google search failed for 'henan xinlianxin fertilizer co.' after 5 retries
+2025-08-22 06:56:21,892 | ERROR   | scraper.google_search | Search failed with fallback: Google search failed for 'henan xinlianxin fertilizer co.' after 5 retries
+2025-08-22 06:56:21,893 | WARNING | scraper.orchestrator | No Google search results for: henan xinlianxin fertilizer co.
+2025-08-22 06:56:21,894 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman co.; ltd.
+2025-08-22 06:56:21,923 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:21,924 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:56:23,137 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:23,138 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:56:23,951 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:23,952 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:56:27,165 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:27,165 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:56:27,979 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:27,980 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:56:35,197 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:35,197 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:56:36,007 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:36,007 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:56:51,233 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:51,233 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)
+2025-08-22 06:56:52,036 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:56:52,036 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)
+2025-08-22 06:57:23,234 | ERROR   | scraper.google_search | Google search failed for 'mitsui toatsu chemicals;  inc.' after 5 retries
+2025-08-22 06:57:23,234 | ERROR   | scraper.google_search | Search failed with fallback: Google search failed for 'mitsui toatsu chemicals;  inc.' after 5 retries
+2025-08-22 06:57:23,234 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals;  inc.
+2025-08-22 06:57:23,234 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks n.v.
+2025-08-22 06:57:23,256 | WARNING | scraper.cli          | Interrupted by user; shutting down threads
+2025-08-22 06:57:23,257 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 06:57:23,283 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:23,284 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:57:24,037 | ERROR   | scraper.google_search | Google search failed for 'bluetec haman co.; ltd.' after 5 retries
+2025-08-22 06:57:24,037 | ERROR   | scraper.google_search | Search failed with fallback: Google search failed for 'bluetec haman co.; ltd.' after 5 retries
+2025-08-22 06:57:24,038 | WARNING | scraper.orchestrator | No Google search results for: bluetec haman co.; ltd.
+2025-08-22 06:57:24,038 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete s.r.l.
+2025-08-22 06:57:24,085 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:24,085 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:57:25,310 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:25,310 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:57:26,116 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:26,116 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:57:29,338 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:29,338 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:57:30,143 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:30,143 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:57:37,369 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:37,370 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:57:38,171 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:38,171 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:57:53,399 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:53,400 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)
+2025-08-22 06:57:54,197 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:57:54,197 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)
+2025-08-22 06:58:25,400 | ERROR   | scraper.google_search | Google search failed for 'daf trucks n.v.' after 5 retries
+2025-08-22 06:58:25,401 | ERROR   | scraper.google_search | Search failed with fallback: Google search failed for 'daf trucks n.v.' after 5 retries
+2025-08-22 06:58:25,401 | WARNING | scraper.orchestrator | No Google search results for: daf trucks n.v.
+2025-08-22 06:58:25,401 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 06:58:25,429 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:25,429 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:58:26,198 | ERROR   | scraper.google_search | Google search failed for 'petrol rete s.r.l.' after 5 retries
+2025-08-22 06:58:26,199 | ERROR   | scraper.google_search | Search failed with fallback: Google search failed for 'petrol rete s.r.l.' after 5 retries
+2025-08-22 06:58:26,200 | WARNING | scraper.orchestrator | No Google search results for: petrol rete s.r.l.
+2025-08-22 06:58:26,200 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 06:58:26,232 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:26,232 | WARNING | scraper.google_search | Google quota 403 – sleeping 2s (attempt 1/5)
+2025-08-22 06:58:27,459 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:27,460 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:58:28,259 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:28,259 | WARNING | scraper.google_search | Google quota 403 – sleeping 4s (attempt 2/5)
+2025-08-22 06:58:31,491 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:31,492 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:58:32,290 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:32,291 | WARNING | scraper.google_search | Google quota 403 – sleeping 8s (attempt 3/5)
+2025-08-22 06:58:39,519 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:39,519 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:58:40,321 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:40,321 | WARNING | scraper.google_search | Google quota 403 – sleeping 16s (attempt 4/5)
+2025-08-22 06:58:55,549 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:55,549 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)
+2025-08-22 06:58:56,360 | WARNING | googleapiclient.http | Encountered 403 Forbidden with reason "forbidden"
+2025-08-22 06:58:56,360 | WARNING | scraper.google_search | Google quota 403 – sleeping 32s (attempt 5/5)

@@ -1,0 +1,43 @@
+2025-08-22 11:48:45,101 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 11:48:45,101 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 11:48:45,102 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 11:48:45,102 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 11:48:45,102 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 11:48:45,102 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 11:48:45,102 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 11:48:45,103 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 11:48:45,279 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 11:48:45,280 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 11:48:45,283 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer 
+2025-08-22 11:48:45,283 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals 
+2025-08-22 11:48:45,284 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman
+2025-08-22 11:48:45,284 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks
+2025-08-22 11:48:45,284 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete 
+2025-08-22 11:48:45,285 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 11:48:45,285 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 11:48:45,285 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 11:48:46,012 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 11:48:46,291 | ERROR   | scraper.google_search | Unexpected SSL error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648) (count 1/3)
+2025-08-22 11:48:46,291 | ERROR   | scraper.google_search | Unexpected SSL error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648) (count 2/3)
+2025-08-22 11:48:46,292 | ERROR   | scraper.google_search | Unexpected SSL error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648) (count 3/3)
+2025-08-22 11:48:46,295 | ERROR   | scraper.google_search | Unexpected SSL error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648) (count 4/3)
+2025-08-22 11:48:46,296 | ERROR   | scraper.google_search | Disabling Google search for remainder of run after 4 SSL errors. Fallback will return empty results.
+2025-08-22 11:48:46,296 | ERROR   | scraper.google_search | Disabling Google search for remainder of run after 4 SSL errors. Fallback will return empty results.
+2025-08-22 11:48:46,296 | ERROR   | scraper.google_search | Disabling Google search for remainder of run after 4 SSL errors. Fallback will return empty results.
+2025-08-22 11:48:46,297 | ERROR   | scraper.google_search | Disabling Google search for remainder of run after 4 SSL errors. Fallback will return empty results.
+2025-08-22 11:48:46,297 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels
+2025-08-22 11:48:46,297 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals 
+2025-08-22 11:48:46,297 | WARNING | scraper.orchestrator | No Google search results for: bluetec haman
+2025-08-22 11:48:46,297 | WARNING | scraper.orchestrator | No Google search results for: petrol rete 
+2025-08-22 11:49:28,596 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 11:49:28,607 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 11:49:28,620 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 11:49:30,448 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 11:49:46,133 | WARNING | scraper.google_search | Google search timed out on 'euro dam jas doo' (attempt 1/5), retrying in 1s
+2025-08-22 11:49:46,134 | WARNING | scraper.google_search | Google search timed out on 'daf trucks' (attempt 1/5), retrying in 1s
+2025-08-22 11:49:46,343 | WARNING | scraper.google_search | Google search timed out on 'henan xinlianxin fertilizer ' (attempt 1/5), retrying in 1s
+2025-08-22 11:49:46,344 | WARNING | scraper.google_search | Google search timed out on 'Synsol' (attempt 1/5), retrying in 1s
+2025-08-22 11:49:47,776 | INFO    | scraper.orchestrator | ✓ Found domain: eurodamjas.com (score: 100)
+2025-08-22 11:49:48,144 | ERROR   | scraper.google_search | Unexpected SSL error in Google search: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648) (count 5/3)
+2025-08-22 11:49:48,144 | ERROR   | scraper.google_search | Disabling Google search for remainder of run after 5 SSL errors. Fallback will return empty results.
+2025-08-22 11:49:48,144 | WARNING | scraper.orchestrator | No Google search results for: daf trucks

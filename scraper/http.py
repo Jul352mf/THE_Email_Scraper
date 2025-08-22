@@ -204,12 +204,13 @@ class HttpClient:
         retry_delay: float = 1.0,
         callback: Optional[Callable[[requests.Response], Any]] = None,
     ) -> Optional[requests.Response]:
+        # Validate URL early
         if not validate_url(url):
             log.warning("Skipping invalid URL: %s", url)
             self.stats["skipped_urls"] += 1
             return None
 
-        #––– BLOCKED‐PATTERN CHECK –––
+        # Blocked patterns (domains/extensions) from env
         blocked = {
             p.strip().lower()
             for p in os.getenv("BLOCKED_DOMAINS", "").split(",")
@@ -232,35 +233,28 @@ class HttpClient:
         head_mode = method.upper() == "HEAD"
         canon = canonicalise(url)
 
-        # only throttle actual GETs, not HEADs
+        # Throttle only non-HEAD methods
         if not head_mode:
-            domain = normalise_domain(parsed.netloc)
-            bucket = _get_bucket_for(domain)
+            throttle_domain = normalise_domain(parsed.netloc)
+            bucket = _get_bucket_for(throttle_domain)
             bucket.consume()
-            
-        # Rotate User-Agent per request
+
+    # Prepare headers & merge rotating User-Agent.
+    # Contract (TASK-002): if caller supplies headers, only inject a UA
+    # when no case-insensitive "user-agent" key is present.
+    # Rotation occurs per safe_get invocation (not per retry/fallback).
         hdrs = headers.copy() if headers else {}
-        
-        if config.proxies:
-            proxy = random.choice(config.proxies)
-            proxy_url = f"http://{proxy}"
-            proxies = {"http": proxy_url, "https": proxy_url}
-        else:
-            proxies = None
-        
-        if not head_mode and hasattr(config, "user_agents"):
-            hdrs["User-Agent"] = random.choice(config.user_agents)
-        else:
-            hdrs.setdefault("User-Agent", random.choice(config.user_agents))
+        if getattr(config, "user_agents", None):
+            has_ua = any(k.lower() == "user-agent" for k in hdrs)
+            if not has_ua:
+                hdrs["User-Agent"] = random.choice(config.user_agents)
 
-
-        # track domain
+        # Track domain (normalised) for session & visited
         domain = normalise_domain(parsed.netloc)
-
         if not getattr(_thread_local, "visited", None):
             _thread_local.visited = set()
 
-        # loop guard
+        # Loop guard on canonical URL (only for non-HEAD)
         if not head_mode and canon in _thread_local.visited:
             log.warning("Redirect loop detected – already visited %s", url)
             self.stats["skipped_urls"] += 1
@@ -271,10 +265,8 @@ class HttpClient:
 
         sess = _session_mgr.session(domain)
         request_fn = sess.head if head_mode else sess.get
-        hdrs = headers.copy() if headers else {}
         self.stats["total_requests"] += 1
-        
-        
+
         response: Optional[requests.Response] = None
         for attempt in range(retry_count):
             try:
@@ -282,114 +274,137 @@ class HttpClient:
                     url,
                     allow_redirects=True,
                     timeout=timeout,
-                    headers=(headers or hdrs),
-                    proxies=proxies,
+                    headers=hdrs,
                 )
-
-                # 1) No response at all → trigger fallback
                 if response is None:
-                    raise requests.exceptions.ConnectionError(f"No response for {url}")
-
+                    raise requests.exceptions.ConnectionError(
+                        f"No response for {url}"
+                    )
                 status = response.status_code
                 log.info("HTTP %s %s → %s", method, url, status)
-
-                # 2) Too many requests → backoff & retry the *same* URL
                 if status == 429:
                     backoff = retry_delay * (2 ** attempt)
                     log.warning(
-                        "429 Too Many Requests for %s; backing off %.1fs (attempt %d/%d)",
-                        url, backoff, attempt + 1, retry_count
+                        (
+                            "429 Too Many Requests for %s; backoff %.1fs "
+                            "(attempt %d/%d)"
+                        ),
+                        url,
+                        backoff,
+                        attempt + 1,
+                        retry_count,
                     )
                     time.sleep(backoff)
                     continue
-
-                # 3) ANY non-2xx status → treat as error and fall into except
                 if not (200 <= status < 300):
-                    raise requests.exceptions.HTTPError(f"Bad status {status} for {url}")
-
-                # SUCCESS! real 2xx response
-                break
-
-            except (ConnectTimeout, requests.exceptions.ConnectionError, 
-                    SSLError, requests.exceptions.RetryError, 
-                    requests.exceptions.HTTPError) as err:
-                log.debug("Network/HTTP error (attempt %d/%d) for %s: %s",
-                          attempt + 1, retry_count, url, err)
-
-                # SSL fallback if allowed
-                if isinstance(err, SSLError) and attempt + 1 >= retry_count and config.insecure_ssl:
+                    raise requests.exceptions.HTTPError(
+                        f"Bad status {status} for {url}"
+                    )
+                break  # success
+            except (
+                ConnectTimeout,
+                requests.exceptions.ConnectionError,
+                SSLError,
+                requests.exceptions.RetryError,
+                requests.exceptions.HTTPError,
+            ) as err:
+                log.debug(
+                    "Network/HTTP error (attempt %d/%d) for %s: %s",
+                    attempt + 1,
+                    retry_count,
+                    url,
+                    err,
+                )
+                # SSL fallback (final attempt) if insecure allowed
+                if (
+                    isinstance(err, SSLError)
+                    and attempt + 1 >= retry_count
+                    and config.insecure_ssl
+                ):
                     try:
-                        log.info("SSL failed, retrying with verify=False: %s", url)
+                        log.info(
+                            "SSL failed, retrying with verify=False: %s", url
+                        )
                         response = request_fn(
-                            url, allow_redirects=True, timeout=timeout,
-                            headers=(headers or hdrs), verify=False, proxies=proxies
+                            url,
+                            allow_redirects=True,
+                            timeout=timeout,
+                            headers=hdrs,
+                            verify=False,
                         )
                         if response and response.ok:
                             break
                     except Exception as e2:
-                        log.warning("SSL-off retry failed for %s: %s", url, e2)
-
+                        log.warning(
+                            "SSL-off retry failed for %s: %s", url, e2
+                        )
                 # www-prefix fallback
-                parsed = urlparse(url)
-                host = parsed.netloc
-                if not host.startswith("www."):
-                    fallback = urlunparse(parsed._replace(netloc="www." + host))
+                parsed_retry = urlparse(url)
+                host_retry = parsed_retry.netloc
+                if not host_retry.startswith("www."):
+                    fallback = urlunparse(
+                        parsed_retry._replace(netloc="www." + host_retry)
+                    )
                     log.info("Retrying with www-prefix: %s", fallback)
                     try:
                         response = request_fn(
-                            fallback, allow_redirects=True, timeout=timeout,
-                            headers=(headers or hdrs), verify=not config.insecure_ssl,
-                            proxies=proxies
+                            fallback,
+                            allow_redirects=True,
+                            timeout=timeout,
+                            headers=hdrs,
+                            verify=not config.insecure_ssl,
                         )
                         if response and response.ok:
                             url = fallback
                             break
                     except Exception as e2:
-                        log.warning("www-prefix retry failed for %s: %s", fallback, e2)
-
-                # http-scheme fallback
-                if parsed.scheme == "https":
-                    http_url = urlunparse(parsed._replace(scheme="http"))
+                        log.warning(
+                            "www-prefix retry failed for %s: %s", fallback, e2
+                        )
+                # http scheme fallback
+                if parsed_retry.scheme == "https":
+                    http_url = urlunparse(parsed_retry._replace(scheme="http"))
                     log.info("Retrying with HTTP: %s", http_url)
                     try:
                         response = request_fn(
-                            http_url, allow_redirects=True, timeout=timeout,
-                            headers=(headers or hdrs), proxies=proxies
+                            http_url,
+                            allow_redirects=True,
+                            timeout=timeout,
+                            headers=hdrs,
                         )
                         if response and response.ok:
                             url = http_url
                             break
                     except Exception as e3:
-                        log.warning("HTTP fallback failed for %s: %s", http_url, e3)
-
-                # if still no good response, and we have more attempts, wait
+                        log.warning(
+                            "HTTP fallback failed for %s: %s", http_url, e3
+                        )
                 if attempt < retry_count - 1:
                     time.sleep(retry_delay * (2 ** attempt))
-
             except requests.RequestException as err:
-                log.debug("Generic request exception (attempt %d/%d) for %s: %s",
-                          attempt + 1, retry_count, url, err)
+                log.debug(
+                    "Generic request exception (attempt %d/%d) for %s: %s",
+                    attempt + 1,
+                    retry_count,
+                    url,
+                    err,
+                )
                 if attempt < retry_count - 1:
                     time.sleep(retry_delay * (2 ** attempt))
 
-        # record final status
         status = response.status_code if response else "no-response"
         self.stats[f"status_{status}"] += 1
-
-        # give up if still no OK response
         if not response or not response.ok:
             return None
 
-        if response.ok:
-            if not hasattr(_thread_local, "visited_subdomains"):
-                _thread_local.visited_subdomains = set()
-            _thread_local.visited_subdomains.add(response.url)
+        if not hasattr(_thread_local, "visited_subdomains"):
+            _thread_local.visited_subdomains = set()
+        _thread_local.visited_subdomains.add(response.url)
 
-        if self.DEBUG and not head_mode: # and response.status_code == 200
+        if self.DEBUG and not head_mode:
             log.info("DEBUG-DUMP %s → %d", url, response.status_code)
             self._dump_debug(url, response)
 
-        # mark canon as fetched
         if not head_mode:
             _thread_local.visited.add(canon)
 
@@ -414,21 +429,23 @@ class HttpClient:
         except Exception as exc:
             log.warning("Failed to save debug dump for %s: %s", url, exc)
 
+
 def normalise_domain(url: str) -> str:
-    """
-    Normalize a domain by removing www prefix and converting to lowercase.
-    """
+    """Normalize a domain by removing www prefix and lowering case."""
     try:
-        host = urlparse(url).netloc if url.startswith(("http://", "https://")) else url
+        host = (
+            urlparse(url).netloc
+            if url.startswith(("http://", "https://"))
+            else url
+        )
         return host.lower().removeprefix("www.")
-    except Exception as e:
+    except Exception as e:  # pragma: no cover (defensive)
         log.warning("Domain normalization error for %s: %s", url, e)
         return url.lower()
 
+
 def join_url(base: str, path: str) -> str:
-    """
-    Join a base URL and a path, handling relative paths correctly.
-    """
+    """Join a base URL and a path, handling relative paths correctly."""
     if path.startswith(("http://", "https://")):
         return path
 
@@ -442,4 +459,7 @@ def join_url(base: str, path: str) -> str:
     return joined_url
 
 # single, shared instance
+ 
+
 http_client = HttpClient()
+

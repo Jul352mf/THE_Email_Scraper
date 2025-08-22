@@ -1,0 +1,388 @@
+2025-08-22 10:09:53,618 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 10:09:53,619 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 10:09:53,619 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 10:09:53,619 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 10:09:53,620 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 10:09:53,621 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 10:09:53,621 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 10:09:53,621 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 10:09:53,856 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 10:09:53,857 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 10:09:53,860 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer co.
+2025-08-22 10:09:53,861 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals;  inc.
+2025-08-22 10:09:53,864 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman co.; ltd.
+2025-08-22 10:09:53,864 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks n.v.
+2025-08-22 10:09:53,865 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete s.r.l.
+2025-08-22 10:09:53,865 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 10:09:53,866 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 10:09:53,866 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 10:09:54,184 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 10:09:54,951 | WARNING | scraper.google_search | REST Google search received 429 Too Many Requests for q='henan xinlianxin fertilizer co.' (attempt 1/5)
+2025-08-22 10:09:54,983 | WARNING | scraper.google_search | REST Google search received 429 Too Many Requests for q='speedy fuels' (attempt 1/5)
+2025-08-22 10:09:55,106 | INFO    | scraper.orchestrator | ✓ Found domain: bluetech00.gobizkorea.com (score: 88)
+2025-08-22 10:09:55,107 | INFO    | scraper.orchestrator | ✓ Found domain: synsol.ch (score: 100)
+2025-08-22 10:09:55,212 | INFO    | scraper.orchestrator | ✓ Found domain: eurodamjas.com (score: 100)
+2025-08-22 10:09:55,214 | INFO    | scraper.orchestrator | ✓ Found domain: bpetrol.it (score: 92)
+2025-08-22 10:09:55,217 | INFO    | scraper.orchestrator | ✓ Found domain: us.mitsuichemicals.com (score: 88)
+2025-08-22 10:09:55,222 | INFO    | scraper.orchestrator | ✓ Found domain: daf.com (score: 100)
+2025-08-22 10:09:55,862 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com → 200
+2025-08-22 10:09:55,897 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 10:09:55,978 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/
+2025-08-22 10:09:55,980 | INFO    | scraper.http         | HTTP GET https://daf.com → 200
+2025-08-22 10:09:56,013 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 10:09:56,047 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com → 200
+2025-08-22 10:09:56,050 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/sites-landing
+2025-08-22 10:09:56,071 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://eurodamjas.com/
+2025-08-22 10:09:56,074 | INFO    | scraper.http         | HTTP GET https://bpetrol.it → 200
+2025-08-22 10:09:56,131 | INFO    | scraper.email_extractor |   2 emails on https://www.bpetrol.it/ (def from text)
+2025-08-22 10:09:56,131 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 emails in https://www.bpetrol.it/
+2025-08-22 10:09:56,363 | INFO    | scraper.orchestrator | ✓ Found domain: worldfertilizer.com (score: 80)
+2025-08-22 10:09:56,581 | INFO    | scraper.http         | HTTP GET https://worldfertilizer.com → 404
+2025-08-22 10:09:56,582 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com
+2025-08-22 10:09:56,621 | INFO    | scraper.http         | HTTP GET https://synsol.ch → 200
+2025-08-22 10:09:56,661 | INFO    | scraper.http         | HTTP HEAD https://eurodamjas.com/sitemap.xml → 200
+2025-08-22 10:09:56,692 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/ (def from text)
+2025-08-22 10:09:56,692 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://synsol.ch/
+2025-08-22 10:09:56,908 | WARNING | scraper.google_search | REST Google search received 429 Too Many Requests for q='speedy fuels' (attempt 2/5)
+2025-08-22 10:09:57,023 | INFO    | scraper.http         | HTTP HEAD https://synsol.ch/sitemap.xml → 200
+2025-08-22 10:09:57,057 | INFO    | scraper.http         | HTTP GET https://synsol.ch/sitemap.xml → 200
+2025-08-22 10:09:57,057 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://synsol.ch/sitemap.xml (0.36s)
+2025-08-22 10:09:57,058 | WARNING | scraper.sitemap      | Error parsing https://synsol.ch/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:09:57,059 | INFO    | scraper.orchestrator | Used sitemap for synsol.ch
+2025-08-22 10:09:57,059 | INFO    | scraper.orchestrator | ✓ Found 1 emails for Synsol
+2025-08-22 10:09:57,074 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/sitemap.xml → 200
+2025-08-22 10:09:57,075 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://eurodamjas.com/sitemap.xml (1.00s)
+2025-08-22 10:09:57,075 | WARNING | scraper.sitemap      | Error parsing https://eurodamjas.com/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:09:57,076 | INFO    | scraper.orchestrator | Used sitemap for eurodamjas.com
+2025-08-22 10:09:57,076 | INFO    | scraper.orchestrator | ✓ Found 1 emails for euro dam jas doo
+2025-08-22 10:09:57,625 | INFO    | scraper.http         | HTTP HEAD https://bpetrol.it/sitemap.xml → 200
+2025-08-22 10:09:57,729 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/ (def from text)
+2025-08-22 10:09:57,730 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.worldfertilizer.com/
+2025-08-22 10:09:58,080 | INFO    | scraper.http         | HTTP HEAD https://worldfertilizer.com/sitemap.xml → 404
+2025-08-22 10:09:58,080 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com/sitemap.xml
+2025-08-22 10:09:58,177 | INFO    | scraper.http         | HTTP GET https://bpetrol.it/sitemap.xml → 200
+2025-08-22 10:09:58,186 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://bpetrol.it/sitemap.xml (2.05s)
+2025-08-22 10:09:58,193 | WARNING | scraper.sitemap      | Error parsing https://bpetrol.it/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:09:58,194 | INFO    | scraper.orchestrator | Used sitemap for bpetrol.it
+2025-08-22 10:09:58,195 | INFO    | scraper.orchestrator | ✓ Found 2 emails for petrol rete s.r.l.
+2025-08-22 10:09:58,398 | INFO    | scraper.http         | HTTP GET https://worldfertilizer.com/sitemap.xml → 404
+2025-08-22 10:09:58,398 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com/sitemap.xml
+2025-08-22 10:09:58,522 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://worldfertilizer.com/sitemap.xml (0.79s)
+2025-08-22 10:09:58,523 | WARNING | scraper.sitemap      | Error parsing https://worldfertilizer.com/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:09:58,523 | INFO    | scraper.orchestrator | Used sitemap for worldfertilizer.com
+2025-08-22 10:09:58,523 | INFO    | scraper.orchestrator | ✓ Found 1 emails for henan xinlianxin fertilizer co.
+2025-08-22 10:09:59,174 | INFO    | scraper.orchestrator | ✓ Found domain: speedyfuels.co.uk (score: 100)
+2025-08-22 10:09:59,568 | INFO    | scraper.http         | HTTP GET https://speedyfuels.co.uk → 200
+2025-08-22 10:09:59,629 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 10:09:59,662 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/
+2025-08-22 10:10:02,007 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 10:10:02,700 | INFO    | scraper.http         | HTTP HEAD https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 10:10:02,954 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 10:10:02,955 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://us.mitsuichemicals.com/sitemap.xml (0.89s)
+2025-08-22 10:10:02,955 | WARNING | scraper.sitemap      | Error parsing https://us.mitsuichemicals.com/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:10:02,955 | INFO    | scraper.orchestrator | Used sitemap for us.mitsuichemicals.com
+2025-08-22 10:10:02,956 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: us.mitsuichemicals.com
+2025-08-22 10:10:02,956 | INFO    | scraper.crawler      | Starting crawl of us.mitsuichemicals.com (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 10:10:03,208 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/ → 200
+2025-08-22 10:10:03,246 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 10:10:03,603 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 10:10:03,641 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/index.htm → 200
+2025-08-22 10:10:03,672 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 10:10:03,699 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/index.htm
+2025-08-22 10:10:04,019 | INFO    | scraper.http         | HTTP HEAD https://daf.com/sitemap.xml → 200
+2025-08-22 10:10:04,061 | INFO    | scraper.http         | HTTP GET https://daf.com/sitemap.xml → 200
+2025-08-22 10:10:04,061 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://daf.com/sitemap.xml (0.42s)
+2025-08-22 10:10:04,062 | WARNING | scraper.sitemap      | Error parsing https://daf.com/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:10:04,062 | INFO    | scraper.orchestrator | Used sitemap for daf.com
+2025-08-22 10:10:04,062 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: daf.com
+2025-08-22 10:10:04,062 | INFO    | scraper.crawler      | Starting crawl of daf.com (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 10:10:04,193 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/sites-landing → 200
+2025-08-22 10:10:04,240 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 10:10:04,856 | INFO    | scraper.http         | HTTP GET https://parts.daf.com/ → 200
+2025-08-22 10:10:04,940 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/ (def from text)
+2025-08-22 10:10:04,953 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://parts.daf.com/en-gb/
+2025-08-22 10:10:05,550 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 10:10:06,143 | INFO    | scraper.http         | HTTP HEAD https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 10:10:06,586 | INFO    | scraper.http         | HTTP GET https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 10:10:06,586 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://speedyfuels.co.uk/sitemap.xml (0.99s)
+2025-08-22 10:10:06,587 | WARNING | scraper.sitemap      | Error parsing https://speedyfuels.co.uk/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:10:06,587 | INFO    | scraper.orchestrator | Used sitemap for speedyfuels.co.uk
+2025-08-22 10:10:06,587 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: speedyfuels.co.uk
+2025-08-22 10:10:06,588 | INFO    | scraper.crawler      | Starting crawl of speedyfuels.co.uk (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 10:10:06,695 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/ → 200
+2025-08-22 10:10:06,771 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 10:10:07,105 | INFO    | scraper.http         | HTTP GET https://sustainability.speedyfuels.co.uk/environment/ → 200
+2025-08-22 10:10:07,256 | INFO    | scraper.email_extractor |   0 emails on https://sustainability.speedyfuels.co.uk/environment/ (def from text)
+2025-08-22 10:10:07,375 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://sustainability.speedyfuels.co.uk/environment/
+2025-08-22 10:10:08,836 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 10:10:09,538 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 10:10:09,561 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 10:10:09,586 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 10:10:12,045 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/ (def from text)
+2025-08-22 10:10:13,578 | INFO    | scraper.email_extractor |   0 emails on https://sustainability.speedyfuels.co.uk/environment/ (def from text)
+2025-08-22 10:10:14,040 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/services/emergency-delivery/ → 200
+2025-08-22 10:10:14,123 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/emergency-delivery/ (def from text)
+2025-08-22 10:10:14,157 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/services/emergency-delivery/
+2025-08-22 10:10:14,403 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/news-and-media → 200
+2025-08-22 10:10:14,441 | INFO    | scraper.email_extractor |   1 emails on https://www.daf.com/en/news-and-media (def from text)
+2025-08-22 10:10:14,441 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.daf.com/en/news-and-media
+2025-08-22 10:10:14,713 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/suppliers → 200
+2025-08-22 10:10:14,749 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/suppliers (def from text)
+2025-08-22 10:10:14,782 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/suppliers
+2025-08-22 10:10:15,919 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 10:10:16,693 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/index.htm → 200
+2025-08-22 10:10:16,722 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 10:10:16,754 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/index.htm
+2025-08-22 10:10:17,298 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/emergency-delivery/ (def from text)
+2025-08-22 10:10:17,521 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/ → 200
+2025-08-22 10:10:17,583 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/ (def from text)
+2025-08-22 10:10:17,632 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/
+2025-08-22 10:10:18,910 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/suppliers (def from text)
+2025-08-22 10:10:19,443 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/working-at-daf → 200
+2025-08-22 10:10:19,486 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf (def from text)
+2025-08-22 10:10:19,542 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/working-at-daf
+2025-08-22 10:10:21,727 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 10:10:22,473 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/overview/index.htm → 200
+2025-08-22 10:10:22,501 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 10:10:22,534 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/overview/index.htm
+2025-08-22 10:10:23,248 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/ (def from text)
+2025-08-22 10:10:24,060 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/adblue/ → 200
+2025-08-22 10:10:24,306 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 10:10:24,398 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/adblue/
+2025-08-22 10:10:25,548 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf (def from text)
+2025-08-22 10:10:26,585 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en → 200
+2025-08-22 10:10:26,660 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from text)
+2025-08-22 10:10:26,741 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 10:10:26,742 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en
+2025-08-22 10:10:28,133 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 10:10:28,971 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm → 200
+2025-08-22 10:10:29,008 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 10:10:29,032 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm
+2025-08-22 10:10:29,558 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 10:10:30,381 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/biodiesel/ → 200
+2025-08-22 10:10:30,457 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/biodiesel/ (def from text)
+2025-08-22 10:10:30,495 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/biodiesel/
+2025-08-22 10:10:31,506 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from text)
+2025-08-22 10:10:31,559 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 10:10:31,810 | INFO    | scraper.http         | HTTP GET https://www.daf.com/nl-nl → 200
+2025-08-22 10:10:31,886 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from text)
+2025-08-22 10:10:31,960 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 10:10:31,960 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/nl-nl
+2025-08-22 10:10:33,893 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 10:10:34,221 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/legacy/index.htm → 200
+2025-08-22 10:10:34,268 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 10:10:34,299 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/legacy/index.htm
+2025-08-22 10:10:35,357 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/biodiesel/ (def from text)
+2025-08-22 10:10:36,716 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/carbon-clean-kerosene/ → 200
+2025-08-22 10:10:36,793 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-clean-kerosene/ (def from text)
+2025-08-22 10:10:36,825 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/carbon-clean-kerosene/
+2025-08-22 10:10:36,902 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 10:10:36,915 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 10:10:36,931 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 10:10:37,364 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from text)
+2025-08-22 10:10:37,425 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 10:10:37,766 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/dealer-locator-page → 200
+2025-08-22 10:10:37,791 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/dealer-locator-page (def from text)
+2025-08-22 10:10:37,813 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/dealer-locator-page
+2025-08-22 10:10:39,183 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 10:10:40,463 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/mca/index.htm → 200
+2025-08-22 10:10:40,482 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 10:10:40,506 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mca/2024/index.htm
+2025-08-22 10:10:40,755 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-clean-kerosene/ (def from text)
+2025-08-22 10:10:41,530 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/carbon-offset-fuels/ → 200
+2025-08-22 10:10:41,591 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-offset-fuels/ (def from text)
+2025-08-22 10:10:41,632 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/carbon-offset-fuels/
+2025-08-22 10:10:42,465 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 10:10:48,945 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/dealer-locator-page (def from text)
+2025-08-22 10:10:50,749 | INFO    | scraper.http         | HTTP GET https://www.daf.com.au → 200
+2025-08-22 10:10:50,785 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.au/ (def from text)
+2025-08-22 10:10:50,814 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com.au/
+2025-08-22 10:10:51,386 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 10:10:52,645 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/mci/mci-news/index.htm → 200
+2025-08-22 10:10:52,695 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 10:10:52,742 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm
+2025-08-22 10:10:52,860 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-offset-fuels/ (def from text)
+2025-08-22 10:10:53,135 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/diesel/ → 200
+2025-08-22 10:10:53,217 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/diesel/ (def from text)
+2025-08-22 10:10:53,269 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/diesel/
+2025-08-22 10:10:58,436 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.au/ (def from text)
+2025-08-22 10:10:59,552 | INFO    | scraper.http         | HTTP GET https://www.daf.com.tw?MarketCode=TW → 200
+2025-08-22 10:10:59,560 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.tw/?MarketCode=TW (def from text)
+2025-08-22 10:10:59,565 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com.tw/?MarketCode=TW
+2025-08-22 10:10:59,745 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 10:11:00,757 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA9EB20F50>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:11:00,758 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 10:11:01,098 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 10:11:02,028 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/index.htm → 200
+2025-08-22 10:11:02,068 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 10:11:02,099 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/index.htm
+2025-08-22 10:11:02,271 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/diesel/ (def from text)
+2025-08-22 10:11:02,511 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/storage-tanks/ → 200
+2025-08-22 10:11:02,561 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/storage-tanks/ (def from text)
+2025-08-22 10:11:02,584 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/storage-tanks/
+2025-08-22 10:11:03,674 | INFO    | scraper.http         | HTTP GET https://readytogo.daf.com/en → 200
+2025-08-22 10:11:03,704 | INFO    | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from text)
+2025-08-22 10:11:03,723 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://readytogo.daf.com/en
+2025-08-22 10:11:05,127 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 10:11:05,206 | INFO    | scraper.crawler      | Crawl of us.mitsuichemicals.com completed: 10 pages fetched, 429 unique URLs seen, 0 emails, 62.3 seconds
+2025-08-22 10:11:05,207 | INFO    | scraper.orchestrator | ✗ No emails found for mitsui toatsu chemicals;  inc.
+2025-08-22 10:11:06,541 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/storage-tanks/ (def from text)
+2025-08-22 10:11:06,769 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/hvo-fuel/ → 200
+2025-08-22 10:11:06,827 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/hvo-fuel/ (def from text)
+2025-08-22 10:11:06,855 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/hvo-fuel/
+2025-08-22 10:11:08,994 | INFO    | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from text)
+2025-08-22 10:11:09,038 | INFO    | scraper.crawler      | Crawl of daf.com completed: 11 pages fetched, 443 unique URLs seen, 1 emails, 65.0 seconds
+2025-08-22 10:11:09,039 | INFO    | scraper.orchestrator | ✓ Found 1 emails for daf trucks n.v.
+2025-08-22 10:11:10,505 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/hvo-fuel/ (def from text)
+2025-08-22 10:11:10,565 | INFO    | scraper.crawler      | Crawl of speedyfuels.co.uk completed: 11 pages fetched, 444 unique URLs seen, 0 emails, 64.0 seconds
+2025-08-22 10:11:10,565 | INFO    | scraper.orchestrator | ✗ No emails found for speedy fuels
+2025-08-22 10:11:28,262 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 10:12:04,925 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA994A74D0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:12:13,896 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 10:12:13,896 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (91.42s)
+2025-08-22 10:12:13,899 | WARNING | scraper.sitemap      | Error parsing https://walter-schmidt-chemie.de/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:12:13,900 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 10:12:13,900 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: walter-schmidt-chemie.de
+2025-08-22 10:12:13,900 | INFO    | scraper.crawler      | Starting crawl of walter-schmidt-chemie.de (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 10:12:14,089 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/ → 200
+2025-08-22 10:12:14,102 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 10:12:14,324 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/en/ → 200
+2025-08-22 10:12:14,333 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from text)
+2025-08-22 10:12:14,342 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/en/
+2025-08-22 10:12:16,133 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from text)
+2025-08-22 10:12:16,513 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/index.html → 200
+2025-08-22 10:12:16,527 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 10:12:17,372 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/ → 200
+2025-08-22 10:12:17,380 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-22 10:12:17,387 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html
+2025-08-22 10:12:19,247 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-22 10:12:19,492 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html → 200
+2025-08-22 10:12:19,504 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-22 10:12:19,735 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/standorte.html → 200
+2025-08-22 10:12:19,754 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/standorte.html (def from text)
+2025-08-22 10:12:19,760 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/standorte.html
+2025-08-22 10:12:21,385 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/standorte.html (def from text)
+2025-08-22 10:12:21,616 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/ → 200
+2025-08-22 10:12:21,630 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/ (def from text)
+2025-08-22 10:12:21,637 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/
+2025-08-22 10:12:23,499 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/ (def from text)
+2025-08-22 10:12:24,105 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html → 200
+2025-08-22 10:12:24,116 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html (def from text)
+2025-08-22 10:12:24,125 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html
+2025-08-22 10:12:26,273 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html (def from text)
+2025-08-22 10:12:27,217 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/ → 200
+2025-08-22 10:12:27,231 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktuebersicht.html (def from text)
+2025-08-22 10:12:27,242 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/produktuebersicht.html
+2025-08-22 10:12:29,110 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktuebersicht.html (def from text)
+2025-08-22 10:12:29,473 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/produktsuche.html → 200
+2025-08-22 10:12:29,481 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktsuche.html (def from text)
+2025-08-22 10:12:29,488 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/produktsuche.html
+2025-08-22 10:12:31,056 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktsuche.html (def from text)
+2025-08-22 10:12:31,293 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/ → 200
+2025-08-22 10:12:31,301 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/ (def from text)
+2025-08-22 10:12:31,308 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/
+2025-08-22 10:12:33,342 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/ (def from text)
+2025-08-22 10:12:33,536 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/winterprodukte/ → 200
+2025-08-22 10:12:33,550 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/winterprodukte/ (def from text)
+2025-08-22 10:12:33,564 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/winterprodukte/
+2025-08-22 10:12:35,517 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/winterprodukte/ (def from text)
+2025-08-22 10:12:35,768 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/ → 200
+2025-08-22 10:12:35,778 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/ (def from text)
+2025-08-22 10:12:35,787 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/
+2025-08-22 10:12:37,411 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/ (def from text)
+2025-08-22 10:12:37,623 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/ → 200
+2025-08-22 10:12:37,643 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/ (def from text)
+2025-08-22 10:12:37,658 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/
+2025-08-22 10:12:39,718 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/ (def from text)
+2025-08-22 10:12:39,971 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ → 200
+2025-08-22 10:12:39,979 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ (def from text)
+2025-08-22 10:12:39,986 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/
+2025-08-22 10:12:41,682 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ (def from text)
+2025-08-22 10:12:41,888 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/desinfektion/ → 200
+2025-08-22 10:12:41,896 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/desinfektion/ (def from text)
+2025-08-22 10:12:41,903 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/desinfektion/
+2025-08-22 10:12:43,492 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/desinfektion/ (def from text)
+2025-08-22 10:12:44,634 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 10:12:44,642 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 10:12:44,650 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 10:12:46,185 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 10:12:46,387 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/ → 200
+2025-08-22 10:12:46,401 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/ (def from text)
+2025-08-22 10:12:46,415 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/
+2025-08-22 10:12:48,254 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/ (def from text)
+2025-08-22 10:12:48,521 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/reiniger/ → 200
+2025-08-22 10:12:48,538 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/reiniger/ (def from text)
+2025-08-22 10:12:48,553 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/reiniger/
+2025-08-22 10:12:50,685 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/reiniger/ (def from text)
+2025-08-22 10:12:50,854 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/ → 200
+2025-08-22 10:12:50,865 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/ (def from text)
+2025-08-22 10:12:50,874 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/
+2025-08-22 10:12:52,532 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/ (def from text)
+2025-08-22 10:12:52,733 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/zubehoer/ → 200
+2025-08-22 10:12:52,745 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/zubehoer/ (def from text)
+2025-08-22 10:12:52,754 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/zubehoer/
+2025-08-22 10:12:54,293 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/zubehoer/ (def from text)
+2025-08-22 10:12:58,065 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html → 200
+2025-08-22 10:12:58,097 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html (def from text)
+2025-08-22 10:12:58,125 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html
+2025-08-22 10:13:02,850 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html (def from text)
+2025-08-22 10:13:03,988 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/ → 200
+2025-08-22 10:13:03,995 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from text)
+2025-08-22 10:13:04,002 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html
+2025-08-22 10:13:05,635 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from text)
+2025-08-22 10:13:05,909 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html → 200
+2025-08-22 10:13:05,916 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from text)
+2025-08-22 10:13:06,139 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html → 200
+2025-08-22 10:13:06,145 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html (def from text)
+2025-08-22 10:13:06,152 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html
+2025-08-22 10:13:07,684 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html (def from text)
+2025-08-22 10:13:08,017 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html → 200
+2025-08-22 10:13:08,026 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html (def from text)
+2025-08-22 10:13:08,034 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html
+2025-08-22 10:13:09,826 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html (def from text)
+2025-08-22 10:13:10,047 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 10:13:10,678 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 10:13:10,689 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 10:13:10,697 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 10:13:11,060 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA994A5450>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:13:11,060 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 10:13:12,270 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 10:13:12,605 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 10:13:12,617 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 10:13:12,926 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 10:13:12,936 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 10:13:12,937 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 10:13:13,190 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 10:13:13,203 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 10:13:13,223 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 10:13:14,724 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 10:13:14,753 | INFO    | scraper.crawler      | Crawl of walter-schmidt-chemie.de completed: 30 pages fetched, 1091 unique URLs seen, 1 emails, 60.9 seconds
+2025-08-22 10:13:14,753 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 10:14:15,192 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA9D491EB0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:15:19,334 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 10:15:20,362 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA994A6C10>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:15:20,363 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 10:16:24,505 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA994B8D10>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:17:29,614 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 10:17:30,647 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA993F7390>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:17:30,647 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 10:18:34,771 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA994BA580>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:19:38,897 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap_index.xml
+2025-08-22 10:19:39,906 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap_index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap_index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA9B9A4550>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:19:39,906 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap_index.xml
+2025-08-22 10:20:44,086 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap_index.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap_index.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA994B9BF0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:21:49,248 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap_index.xml
+2025-08-22 10:21:50,260 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap_index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap_index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA993F6350>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:21:50,261 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap_index.xml
+2025-08-22 10:22:54,418 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap_index.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap_index.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA994B9BF0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:23:58,546 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 10:23:59,559 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap-index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap-index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA993F7C50>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:23:59,559 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 10:25:03,693 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap-index.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap-index.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA994BA580>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:26:08,868 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 10:26:09,877 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap-index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap-index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA994A6AD0>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:26:09,877 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap-index.xml
+2025-08-22 10:27:13,972 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap-index.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap-index.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001AA994B8D10>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 10:28:18,137 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap1.xml
+2025-08-22 10:28:19,149 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap1.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap1.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001AA9B9A4410>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 10:28:19,150 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap1.xml

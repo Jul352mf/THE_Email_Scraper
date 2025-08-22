@@ -1,0 +1,105 @@
+2025-08-22 12:02:23,788 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 12:02:23,788 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 12:02:23,789 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 12:02:23,789 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 12:02:23,789 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 12:02:23,789 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 12:02:23,789 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 12:02:23,790 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 12:02:23,978 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 12:02:23,979 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 12:02:23,979 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer 
+2025-08-22 12:02:23,982 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals 
+2025-08-22 12:02:23,982 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman
+2025-08-22 12:02:23,983 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks
+2025-08-22 12:02:23,983 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete 
+2025-08-22 12:02:23,983 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 12:02:23,984 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 12:02:23,984 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 12:02:24,772 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 12:02:24,987 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:02:24,988 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:02:24,989 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:02:24,989 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:02:24,990 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:02:24,990 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:02:24,990 | WARNING | scraper.orchestrator | No Google search results for: euro dam jas doo
+2025-08-22 12:02:24,991 | WARNING | scraper.orchestrator | No Google search results for: petrol rete 
+2025-08-22 12:02:24,991 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels
+2025-08-22 12:03:08,349 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 12:03:08,365 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 12:03:08,374 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 12:03:10,168 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 12:03:24,824 | WARNING | scraper.google_search | Google search timed out on 'bluetec haman' (attempt 1/5), retrying in 1s
+2025-08-22 12:03:24,825 | WARNING | scraper.google_search | Google search timed out on 'henan xinlianxin fertilizer ' (attempt 1/5), retrying in 1s
+2025-08-22 12:03:25,029 | WARNING | scraper.google_search | Google search timed out on 'Synsol' (attempt 1/5), retrying in 1s
+2025-08-22 12:03:25,029 | WARNING | scraper.google_search | Google search timed out on 'daf trucks' (attempt 1/5), retrying in 1s
+2025-08-22 12:03:25,031 | WARNING | scraper.google_search | Google search timed out on 'mitsui toatsu chemicals ' (attempt 1/5), retrying in 1s
+2025-08-22 12:03:26,470 | INFO    | scraper.orchestrator | ✓ Found domain: bluetech00.gobizkorea.com (score: 88)
+2025-08-22 12:03:26,839 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,839 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,839 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,840 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,840 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,840 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,840 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,840 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 12:03:26,840 | WARNING | scraper.orchestrator | No Google search results for: henan xinlianxin fertilizer 
+2025-08-22 12:03:26,841 | WARNING | scraper.orchestrator | No Google search results for: daf trucks
+2025-08-22 12:03:26,841 | WARNING | scraper.orchestrator | No Google search results for: Synsol
+2025-08-22 12:03:26,841 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals 
+2025-08-22 12:03:56,193 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 12:04:30,611 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 12:04:31,623 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001EE8291C050>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 12:04:31,623 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 12:04:41,878 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 12:04:41,878 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (91.70s)
+2025-08-22 12:04:42,364 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ → 200
+2025-08-22 12:04:42,365 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 12:04:42,366 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 12:04:42,366 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 12:04:44,393 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 12:04:45,740 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 12:04:45,758 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 12:04:45,771 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 12:04:45,771 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 12:04:47,502 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 12:04:49,239 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html → 200
+2025-08-22 12:04:49,250 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 12:04:49,260 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 12:04:49,260 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 12:04:52,279 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 12:04:54,280 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 12:04:54,289 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 12:04:54,297 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 12:04:54,298 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 12:04:56,887 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 12:04:57,102 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 12:04:57,113 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 12:04:57,121 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 12:04:57,121 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 12:04:58,729 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 12:04:59,448 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 12:04:59,462 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 12:04:59,462 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 12:04:59,824 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html → 200
+2025-08-22 12:04:59,837 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 12:04:59,843 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 12:04:59,843 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 12:05:01,515 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 12:05:02,304 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html → 200
+2025-08-22 12:05:02,311 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 12:05:02,318 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 12:05:02,319 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 12:05:04,036 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 12:05:04,945 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 12:05:04,956 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 12:05:04,965 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 12:05:04,965 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 12:05:07,409 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 12:05:07,419 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 12:05:07,419 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 12:05:36,039 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001EE811DBED0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 12:06:41,171 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 12:06:42,184 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001EE82FE42D0>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 12:06:42,189 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com

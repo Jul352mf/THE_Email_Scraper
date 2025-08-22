@@ -1,0 +1,100 @@
+2025-08-22 09:46:49,965 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 09:46:49,965 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 09:46:49,966 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 09:46:49,966 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 09:46:49,966 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 09:46:49,966 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 09:46:49,967 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 09:46:49,967 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 09:46:50,126 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 09:46:50,127 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 09:46:50,127 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer co.
+2025-08-22 09:46:50,129 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals;  inc.
+2025-08-22 09:46:50,130 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman co.; ltd.
+2025-08-22 09:46:50,130 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks n.v.
+2025-08-22 09:46:50,130 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete s.r.l.
+2025-08-22 09:46:50,131 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 09:46:50,131 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 09:46:50,131 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 09:46:50,784 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 09:46:51,143 | INFO    | scraper.orchestrator | ✓ Found domain: synsol.ch (score: 100)
+2025-08-22 09:46:51,227 | INFO    | scraper.http         | HTTP GET https://synsol.ch → 200
+2025-08-22 09:46:51,271 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/ (def from text)
+2025-08-22 09:46:51,271 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://synsol.ch/
+2025-08-22 09:46:51,337 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,338 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,338 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,338 | ERROR   | scraper.google_search | Unexpected error in Google search: [PROV: CIPHER_OPERATION_FAILED] cipher operation failed (_ssl.c:2648)
+2025-08-22 09:46:51,338 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,338 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,339 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,339 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,339 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,339 | ERROR   | scraper.google_search | Search failed with fallback: [PROV: CIPHER_OPERATION_FAILED] cipher operation failed (_ssl.c:2648)
+2025-08-22 09:46:51,339 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,340 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:46:51,340 | WARNING | scraper.orchestrator | No Google search results for: henan xinlianxin fertilizer co.
+2025-08-22 09:46:51,340 | WARNING | scraper.orchestrator | No Google search results for: daf trucks n.v.
+2025-08-22 09:46:51,340 | WARNING | scraper.orchestrator | No Google search results for: bluetec haman co.; ltd.
+2025-08-22 09:46:51,340 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels
+2025-08-22 09:46:51,341 | WARNING | scraper.orchestrator | No Google search results for: petrol rete s.r.l.
+2025-08-22 09:46:51,341 | WARNING | scraper.orchestrator | No Google search results for: euro dam jas doo
+2025-08-22 09:46:51,682 | INFO    | scraper.http         | HTTP HEAD https://synsol.ch/sitemap.xml → 200
+2025-08-22 09:46:51,714 | INFO    | scraper.http         | HTTP GET https://synsol.ch/sitemap.xml → 200
+2025-08-22 09:46:51,714 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://synsol.ch/sitemap.xml (0.44s)
+2025-08-22 09:46:51,715 | WARNING | scraper.sitemap      | Error parsing https://synsol.ch/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 09:46:51,715 | INFO    | scraper.orchestrator | Used sitemap for synsol.ch
+2025-08-22 09:46:51,716 | INFO    | scraper.orchestrator | ✓ Found 1 emails for Synsol
+2025-08-22 09:47:33,396 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 09:47:33,411 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 09:47:33,429 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 09:47:50,999 | WARNING | scraper.google_search | Google search timed out on 'mitsui toatsu chemicals;  inc.' (attempt 1/5), retrying in 1s
+2025-08-22 09:47:52,562 | INFO    | scraper.orchestrator | ✓ Found domain: us.mitsuichemicals.com (score: 88)
+2025-08-22 09:47:53,090 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com → 200
+2025-08-22 09:47:53,174 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 09:47:53,202 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/
+2025-08-22 09:48:08,445 | WARNING | scraper.browser_service | Render() timeout for https://www.walter-schmidt-chemie.de/
+2025-08-22 09:48:28,223 | WARNING | scraper.browser_service | Render() timeout for https://us.mitsuichemicals.com/
+2025-08-22 09:48:28,511 | INFO    | scraper.http         | HTTP HEAD https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 09:48:28,770 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 09:48:28,770 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://us.mitsuichemicals.com/sitemap.xml (0.54s)
+2025-08-22 09:48:28,771 | WARNING | scraper.sitemap      | Error parsing https://us.mitsuichemicals.com/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 09:48:28,771 | INFO    | scraper.orchestrator | Used sitemap for us.mitsuichemicals.com
+2025-08-22 09:48:28,771 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: us.mitsuichemicals.com
+2025-08-22 09:48:28,772 | INFO    | scraper.crawler      | Starting crawl of us.mitsuichemicals.com (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 09:48:29,014 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/ → 200
+2025-08-22 09:48:29,048 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 09:48:29,368 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/index.htm → 200
+2025-08-22 09:48:29,401 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 09:48:29,432 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/index.htm
+2025-08-22 09:48:53,878 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 09:49:04,442 | WARNING | scraper.browser_service | Render() timeout for https://us.mitsuichemicals.com/index.htm
+2025-08-22 09:49:05,110 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 09:49:05,135 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 09:49:05,152 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 09:49:39,782 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 09:49:39,783 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (91.34s)
+2025-08-22 09:49:39,786 | WARNING | scraper.sitemap      | Error parsing https://walter-schmidt-chemie.de/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 09:49:39,786 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 09:49:39,787 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: walter-schmidt-chemie.de
+2025-08-22 09:49:39,787 | INFO    | scraper.crawler      | Starting crawl of walter-schmidt-chemie.de (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 09:49:40,034 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/ → 200
+2025-08-22 09:49:40,049 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 09:49:40,156 | WARNING | scraper.browser_service | Render() timeout for https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 09:49:40,179 | INFO    | scraper.crawler      | Crawl of us.mitsuichemicals.com completed: 3 pages fetched, 60 unique URLs seen, 0 emails, 71.4 seconds
+2025-08-22 09:49:40,179 | INFO    | scraper.orchestrator | ✗ No emails found for mitsui toatsu chemicals;  inc.
+2025-08-22 09:49:40,194 | WARNING | scraper.cli          | Interrupted by user; shutting down threads
+2025-08-22 09:49:40,195 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 09:49:40,359 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/en/ → 200
+2025-08-22 09:49:40,373 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from text)
+2025-08-22 09:49:40,382 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/en/
+2025-08-22 09:50:15,385 | WARNING | scraper.browser_service | Render() timeout for https://www.walter-schmidt-chemie.de/en/
+2025-08-22 09:50:36,921 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/index.html → 200
+2025-08-22 09:50:36,940 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 09:50:37,835 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/ → 200
+2025-08-22 09:50:37,842 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-22 09:50:37,849 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html
+2025-08-22 09:51:12,852 | WARNING | scraper.browser_service | Render() timeout for https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html
+2025-08-22 09:51:12,865 | INFO    | scraper.crawler      | Crawl of walter-schmidt-chemie.de completed: 4 pages fetched, 125 unique URLs seen, 0 emails, 93.1 seconds
+2025-08-22 09:51:12,865 | INFO    | scraper.orchestrator | ✗ No emails found for walter schmidt chemie gmbh
+2025-08-22 09:51:12,867 | WARNING | scraper.cli          | Execution interrupted by user

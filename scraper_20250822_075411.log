@@ -1,0 +1,19 @@
+2025-08-22 07:54:11,754 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 07:54:11,755 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 07:54:11,755 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 07:54:11,755 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 07:54:11,755 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 07:54:11,756 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 07:54:11,756 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 07:54:11,757 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 07:54:11,967 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 07:54:11,967 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 07:54:11,968 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer co.
+2025-08-22 07:54:11,971 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals;  inc.
+2025-08-22 07:54:11,971 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman co.; ltd.
+2025-08-22 07:54:11,971 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks n.v.
+2025-08-22 07:54:11,972 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete s.r.l.
+2025-08-22 07:54:11,972 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 07:54:11,972 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 07:54:11,973 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 07:54:13,152 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)

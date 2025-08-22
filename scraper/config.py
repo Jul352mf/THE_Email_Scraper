@@ -119,14 +119,12 @@ class Config:
             "Mobile/15E148 Safari/605.1.15",
         ]
         
-        p_list = os.getenv("PROXIES", "")
-        self.proxies = [p.strip() for p in p_list.split(",") if p.strip()]
         
         # Sitemap file names
         self.sitemap_filenames = (
-            "sitemap.xml", 
-            "sitemap_index.xml", 
-            "sitemap-index.xml", 
+            "sitemap.xml",
+            "sitemap_index.xml",
+            "sitemap-index.xml",
             "sitemap1.xml"
         )
         # per‐sitemap URL parse limit

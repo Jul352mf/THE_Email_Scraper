@@ -1,0 +1,205 @@
+2025-08-22 11:06:10,396 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 11:06:10,396 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 11:06:10,396 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 11:06:10,396 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 11:06:10,397 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 11:06:10,397 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 11:06:10,397 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 11:06:10,397 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 11:06:10,585 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 11:06:10,586 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 11:06:10,586 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer 
+2025-08-22 11:06:10,589 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals 
+2025-08-22 11:06:10,589 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman
+2025-08-22 11:06:10,589 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks
+2025-08-22 11:06:10,590 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete 
+2025-08-22 11:06:10,590 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 11:06:10,590 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 11:06:10,591 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 11:06:11,223 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 11:06:11,616 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 11:06:11,617 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:06:11,618 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:06:11,618 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 11:06:11,619 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:06:11,619 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:06:11,619 | WARNING | scraper.orchestrator | No Google search results for: euro dam jas doo
+2025-08-22 11:06:11,620 | WARNING | scraper.orchestrator | No Google search results for: petrol rete 
+2025-08-22 11:06:11,620 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels
+2025-08-22 11:06:53,890 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 11:06:53,906 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 11:06:53,916 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 11:06:55,833 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 11:07:11,659 | WARNING | scraper.google_search | Google search timed out on 'bluetec haman' (attempt 1/5), retrying in 1s
+2025-08-22 11:07:11,659 | WARNING | scraper.google_search | Google search timed out on 'daf trucks' (attempt 1/5), retrying in 1s
+2025-08-22 11:07:11,675 | WARNING | scraper.google_search | Google search timed out on 'Synsol' (attempt 1/5), retrying in 1s
+2025-08-22 11:07:11,676 | WARNING | scraper.google_search | Google search timed out on 'henan xinlianxin fertilizer ' (attempt 1/5), retrying in 1s
+2025-08-22 11:07:11,678 | WARNING | scraper.google_search | Google search timed out on 'mitsui toatsu chemicals ' (attempt 1/5), retrying in 1s
+2025-08-22 11:07:13,338 | INFO    | scraper.orchestrator | ✓ Found domain: bluetech00.gobizkorea.com (score: 88)
+2025-08-22 11:07:13,706 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL] internal error (_ssl.c:2648)
+2025-08-22 11:07:13,707 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 11:07:13,707 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:07:13,707 | ERROR   | scraper.google_search | Search failed with fallback: [SSL] internal error (_ssl.c:2648)
+2025-08-22 11:07:13,707 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 11:07:13,707 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:07:13,707 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals 
+2025-08-22 11:07:13,708 | WARNING | scraper.orchestrator | No Google search results for: Synsol
+2025-08-22 11:07:13,708 | WARNING | scraper.orchestrator | No Google search results for: daf trucks
+2025-08-22 11:07:13,993 | INFO    | scraper.orchestrator | ✓ Found domain: worldfertilizer.com (score: 80)
+2025-08-22 11:07:14,204 | INFO    | scraper.http         | HTTP GET https://worldfertilizer.com → 404
+2025-08-22 11:07:14,205 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com
+2025-08-22 11:07:16,700 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/ (def from text)
+2025-08-22 11:07:16,701 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.worldfertilizer.com/
+2025-08-22 11:07:16,885 | INFO    | scraper.http         | HTTP HEAD https://worldfertilizer.com/sitemap.xml → 404
+2025-08-22 11:07:16,885 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com/sitemap.xml
+2025-08-22 11:07:17,180 | INFO    | scraper.http         | HTTP GET https://worldfertilizer.com/sitemap.xml → 404
+2025-08-22 11:07:17,181 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com/sitemap.xml
+2025-08-22 11:07:17,296 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://worldfertilizer.com/sitemap.xml (0.59s)
+2025-08-22 11:07:17,760 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/19012022/stamicarbon-wins-licensing-and-equipment-supply-contract-for-two-urea-plants-in-china/ → 200
+2025-08-22 11:07:17,775 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/19012022/stamicarbon-wins-licensing-and-equipment-supply-contract-for-two-urea-plants-in-china/ (def from text)
+2025-08-22 11:07:17,775 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/19012022/stamicarbon-wins-licensing-and-equipment-supply-contract-for-two-urea-plants-in-china/
+2025-08-22 11:07:18,145 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/ → 200
+2025-08-22 11:07:18,166 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/ (def from text)
+2025-08-22 11:07:18,166 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/
+2025-08-22 11:07:18,474 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/ → 200
+2025-08-22 11:07:18,492 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/ (def from text)
+2025-08-22 11:07:18,492 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/
+2025-08-22 11:07:18,756 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/ → 200
+2025-08-22 11:07:18,775 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/ (def from text)
+2025-08-22 11:07:18,775 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/
+2025-08-22 11:07:19,426 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/ → 200
+2025-08-22 11:07:19,444 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/ (def from text)
+2025-08-22 11:07:19,444 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/
+2025-08-22 11:07:19,726 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/ → 200
+2025-08-22 11:07:19,741 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/ (def from text)
+2025-08-22 11:07:19,742 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/
+2025-08-22 11:07:20,087 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/ → 200
+2025-08-22 11:07:20,106 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/ (def from text)
+2025-08-22 11:07:20,106 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/
+2025-08-22 11:07:20,401 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/ → 200
+2025-08-22 11:07:20,419 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/ (def from text)
+2025-08-22 11:07:20,419 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/
+2025-08-22 11:07:20,801 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/ → 200
+2025-08-22 11:07:20,821 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/ (def from text)
+2025-08-22 11:07:20,822 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/
+2025-08-22 11:07:21,252 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/environment/11052022/fertilizers-europe-share-a-statement-on-the-application-of-the-eu-fertilizing-product-regulation/ → 200
+2025-08-22 11:07:21,283 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/environment/11052022/fertilizers-europe-share-a-statement-on-the-application-of-the-eu-fertilizing-product-regulation/ (def from text)
+2025-08-22 11:07:21,284 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/environment/11052022/fertilizers-europe-share-a-statement-on-the-application-of-the-eu-fertilizing-product-regulation/
+2025-08-22 11:07:21,697 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/ → 200
+2025-08-22 11:07:21,711 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/ (def from text)
+2025-08-22 11:07:21,712 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/
+2025-08-22 11:07:21,779 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/privacy/ → 200
+2025-08-22 11:07:21,802 | INFO    | scraper.email_extractor |   2 emails on https://www.worldfertilizer.com/privacy/ (def from text)
+2025-08-22 11:07:21,802 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 on https://www.worldfertilizer.com/privacy/
+2025-08-22 11:07:22,168 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/special-reports/20072023/the-grupa-azoty-group-successfully-passes-fertilizers-europe-audit-for-fertilizer-products/ → 200
+2025-08-22 11:07:22,186 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/special-reports/20072023/the-grupa-azoty-group-successfully-passes-fertilizers-europe-audit-for-fertilizer-products/ (def from text)
+2025-08-22 11:07:22,186 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/special-reports/20072023/the-grupa-azoty-group-successfully-passes-fertilizers-europe-audit-for-fertilizer-products/
+2025-08-22 11:07:22,460 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/ → 200
+2025-08-22 11:07:22,474 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/ (def from text)
+2025-08-22 11:07:22,474 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/
+2025-08-22 11:07:22,938 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/ → 200
+2025-08-22 11:07:22,956 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/ (def from text)
+2025-08-22 11:07:22,956 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/
+2025-08-22 11:07:23,368 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/ → 200
+2025-08-22 11:07:23,384 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/ (def from text)
+2025-08-22 11:07:23,384 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/
+2025-08-22 11:07:23,665 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/ → 200
+2025-08-22 11:07:23,684 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/ (def from text)
+2025-08-22 11:07:23,684 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/
+2025-08-22 11:07:23,817 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/tag/urea-news/ → 200
+2025-08-22 11:07:23,837 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/tag/urea-news/ (def from text)
+2025-08-22 11:07:23,837 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/tag/urea-news/
+2025-08-22 11:07:24,168 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/ → 200
+2025-08-22 11:07:24,186 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/ (def from text)
+2025-08-22 11:07:24,186 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/
+2025-08-22 11:07:24,517 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/ → 200
+2025-08-22 11:07:24,537 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/ (def from text)
+2025-08-22 11:07:24,538 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/
+2025-08-22 11:07:24,808 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/26012023/tcnicas-reunidas-selected-as-contractor-to-develop-new-ammonium-urea-nitric-acid-and-ammonium-nitrate-complex/ → 200
+2025-08-22 11:07:24,825 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/26012023/tcnicas-reunidas-selected-as-contractor-to-develop-new-ammonium-urea-nitric-acid-and-ammonium-nitrate-complex/ (def from text)
+2025-08-22 11:07:24,826 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/26012023/tcnicas-reunidas-selected-as-contractor-to-develop-new-ammonium-urea-nitric-acid-and-ammonium-nitrate-complex/
+2025-08-22 11:07:25,155 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/ → 200
+2025-08-22 11:07:25,176 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/ (def from text)
+2025-08-22 11:07:25,176 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/
+2025-08-22 11:07:25,576 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/ → 200
+2025-08-22 11:07:25,593 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/ (def from text)
+2025-08-22 11:07:25,594 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/
+2025-08-22 11:07:25,866 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/ → 200
+2025-08-22 11:07:25,883 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/ (def from text)
+2025-08-22 11:07:25,883 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/
+2025-08-22 11:07:26,201 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/28042022/stamicarbon-is-selected-as-urea-licensor-for-neurizers-project-in-australia/ → 200
+2025-08-22 11:07:26,221 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/28042022/stamicarbon-is-selected-as-urea-licensor-for-neurizers-project-in-australia/ (def from text)
+2025-08-22 11:07:26,221 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/28042022/stamicarbon-is-selected-as-urea-licensor-for-neurizers-project-in-australia/
+2025-08-22 11:07:26,554 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/ → 200
+2025-08-22 11:07:26,574 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/ (def from text)
+2025-08-22 11:07:26,574 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/
+2025-08-22 11:07:27,470 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/ → 200
+2025-08-22 11:07:27,490 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/ (def from text)
+2025-08-22 11:07:27,490 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/
+2025-08-22 11:07:29,228 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/ → 200
+2025-08-22 11:07:29,246 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/ (def from text)
+2025-08-22 11:07:29,246 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/
+2025-08-22 11:07:29,345 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/contact/ → 200
+2025-08-22 11:07:29,358 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/contact/ (def from text)
+2025-08-22 11:07:29,358 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/contact/
+2025-08-22 11:07:29,747 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/ → 200
+2025-08-22 11:07:29,760 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/ (def from text)
+2025-08-22 11:07:29,761 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/
+2025-08-22 11:07:29,761 | INFO    | scraper.orchestrator | Used sitemap for worldfertilizer.com
+2025-08-22 11:07:29,761 | INFO    | scraper.orchestrator | ✓ Found 2 emails for henan xinlianxin fertilizer 
+2025-08-22 11:07:42,020 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 11:08:17,501 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 11:08:18,515 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025F6D328690>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 11:08:18,515 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 11:08:28,146 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 11:08:28,146 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (92.30s)
+2025-08-22 11:08:28,378 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 11:08:28,395 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 11:08:28,409 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 11:08:28,409 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 11:08:30,425 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 11:08:30,736 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 11:08:30,745 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 11:08:30,763 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 11:08:30,763 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 11:08:32,426 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 11:08:33,499 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 11:08:33,509 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 11:08:33,517 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 11:08:33,517 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 11:08:35,919 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 11:08:36,499 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html → 200
+2025-08-22 11:08:36,511 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 11:08:36,519 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 11:08:36,519 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 11:08:38,335 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 11:08:38,579 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html → 200
+2025-08-22 11:08:38,587 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 11:08:38,593 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 11:08:38,594 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 11:08:40,242 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 11:08:40,654 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ → 200
+2025-08-22 11:08:40,656 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 11:08:40,656 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 11:08:40,656 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 11:08:42,871 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 11:08:44,132 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 11:08:44,143 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 11:08:44,153 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 11:08:44,153 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 11:08:46,536 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 11:08:46,815 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 11:08:46,825 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 11:08:46,826 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 11:08:47,060 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html → 200
+2025-08-22 11:08:47,065 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 11:08:47,071 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 11:08:47,071 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 11:08:48,598 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 11:08:48,604 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 11:08:48,604 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 11:09:22,683 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025F6AA7BED0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 11:10:27,836 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 11:10:28,852 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025F6D32A490>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 11:10:28,852 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 11:11:33,012 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025F6ABE0830>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))

@@ -1,0 +1,204 @@
+2025-08-22 11:34:20,046 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 11:34:20,047 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 11:34:20,047 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 11:34:20,047 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 11:34:20,047 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 11:34:20,048 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 11:34:20,048 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 11:34:20,049 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 11:34:20,245 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 11:34:20,245 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 11:34:20,246 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer 
+2025-08-22 11:34:20,250 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals 
+2025-08-22 11:34:20,251 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman
+2025-08-22 11:34:20,251 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks
+2025-08-22 11:34:20,252 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete 
+2025-08-22 11:34:20,252 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 11:34:20,252 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 11:34:20,253 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 11:34:20,945 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 11:34:21,284 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 11:34:21,285 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,285 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,285 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,285 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,285 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,286 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 11:34:21,286 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,286 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,287 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,287 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,288 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 11:34:21,288 | WARNING | scraper.orchestrator | No Google search results for: euro dam jas doo
+2025-08-22 11:34:21,288 | WARNING | scraper.orchestrator | No Google search results for: daf trucks
+2025-08-22 11:34:21,288 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels
+2025-08-22 11:34:21,289 | WARNING | scraper.orchestrator | No Google search results for: henan xinlianxin fertilizer 
+2025-08-22 11:34:21,289 | WARNING | scraper.orchestrator | No Google search results for: bluetec haman
+2025-08-22 11:34:21,289 | WARNING | scraper.orchestrator | No Google search results for: Synsol
+2025-08-22 11:34:21,551 | INFO    | scraper.orchestrator | ✓ Found domain: bpetrol.it (score: 92)
+2025-08-22 11:34:22,024 | INFO    | scraper.http         | HTTP GET https://bpetrol.it → 200
+2025-08-22 11:34:22,077 | INFO    | scraper.email_extractor |   2 emails on https://www.bpetrol.it/ (def from text)
+2025-08-22 11:34:22,077 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 emails in https://www.bpetrol.it/
+2025-08-22 11:34:23,648 | INFO    | scraper.http         | HTTP HEAD https://bpetrol.it/sitemap.xml → 200
+2025-08-22 11:34:24,278 | INFO    | scraper.http         | HTTP GET https://bpetrol.it/sitemap.xml → 200
+2025-08-22 11:34:24,278 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://bpetrol.it/sitemap.xml (2.20s)
+2025-08-22 11:34:24,458 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/post-sitemap.xml → 200
+2025-08-22 11:34:24,604 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/3d-flip-book-sitemap.xml → 200
+2025-08-22 11:34:24,655 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/post_tag-sitemap.xml → 200
+2025-08-22 11:34:24,755 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/category-sitemap.xml → 200
+2025-08-22 11:34:24,756 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/page-sitemap.xml → 200
+2025-08-22 11:34:24,857 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/privacy-policy/ → 200
+2025-08-22 11:34:24,876 | INFO    | scraper.email_extractor |   3 emails on https://www.bpetrol.it/privacy-policy/ (def from text)
+2025-08-22 11:34:24,877 | INFO    | scraper.hybrid_email_extractor | Static pass found 3 on https://www.bpetrol.it/privacy-policy/
+2025-08-22 11:34:24,877 | INFO    | scraper.orchestrator | Used sitemap for bpetrol.it
+2025-08-22 11:34:24,877 | INFO    | scraper.orchestrator | ✓ Found 3 emails for petrol rete 
+2025-08-22 11:35:03,625 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 11:35:03,640 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 11:35:03,652 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 11:35:08,379 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 11:35:21,335 | WARNING | scraper.google_search | Google search timed out on 'mitsui toatsu chemicals ' (attempt 1/5), retrying in 1s
+2025-08-22 11:35:22,974 | INFO    | scraper.orchestrator | ✓ Found domain: us.mitsuichemicals.com (score: 88)
+2025-08-22 11:35:24,250 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com → 200
+2025-08-22 11:35:24,283 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 11:35:24,312 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/
+2025-08-22 11:35:29,732 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 11:35:30,048 | INFO    | scraper.http         | HTTP HEAD https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 11:35:30,307 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 11:35:30,307 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://us.mitsuichemicals.com/sitemap.xml (0.52s)
+2025-08-22 11:35:31,137 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/siteinfo/privacy/index.htm → 200
+2025-08-22 11:35:31,186 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm (def from text)
+2025-08-22 11:35:31,226 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm
+2025-08-22 11:35:31,226 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/siteinfo/privacy/index.htm
+2025-08-22 11:35:35,631 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm (def from text)
+2025-08-22 11:35:36,310 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 11:35:36,332 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 11:35:36,348 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 11:35:36,348 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 11:35:39,341 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 11:35:39,376 | INFO    | scraper.orchestrator | Used sitemap for us.mitsuichemicals.com
+2025-08-22 11:35:39,376 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: us.mitsuichemicals.com
+2025-08-22 11:35:39,376 | INFO    | scraper.crawler      | Starting crawl of us.mitsuichemicals.com (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 11:35:39,626 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/ → 200
+2025-08-22 11:35:39,660 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 11:35:39,977 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/index.htm → 200
+2025-08-22 11:35:40,007 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 11:35:40,037 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/index.htm
+2025-08-22 11:35:44,155 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 11:35:44,479 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 11:35:44,508 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 11:35:45,278 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/index.htm → 200
+2025-08-22 11:35:45,300 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 11:35:45,319 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/index.htm
+2025-08-22 11:35:48,356 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 11:35:49,084 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/overview/index.htm → 200
+2025-08-22 11:35:49,111 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 11:35:49,129 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/overview/index.htm
+2025-08-22 11:35:51,146 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 11:35:51,901 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm → 200
+2025-08-22 11:35:51,928 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 11:35:51,947 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm
+2025-08-22 11:35:53,635 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 11:35:54,902 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 11:35:55,773 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/legacy/index.htm → 200
+2025-08-22 11:35:55,800 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 11:35:55,817 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/legacy/index.htm
+2025-08-22 11:35:58,303 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 11:35:59,552 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/mca/index.htm → 200
+2025-08-22 11:35:59,574 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 11:35:59,589 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mca/2024/index.htm
+2025-08-22 11:36:02,301 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 11:36:03,557 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/mci/mci-news/index.htm → 200
+2025-08-22 11:36:03,593 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 11:36:03,625 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm
+2025-08-22 11:36:05,721 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 11:36:06,649 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/index.htm → 200
+2025-08-22 11:36:06,682 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 11:36:06,712 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/index.htm
+2025-08-22 11:36:09,411 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 11:36:10,220 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/life_healthcare/index.htm → 200
+2025-08-22 11:36:10,253 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/life_healthcare/index.htm (def from text)
+2025-08-22 11:36:10,283 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/life_healthcare/index.htm
+2025-08-22 11:36:13,105 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/life_healthcare/index.htm (def from text)
+2025-08-22 11:36:13,849 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/mobility/index.htm → 200
+2025-08-22 11:36:13,878 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/mobility/index.htm (def from text)
+2025-08-22 11:36:13,898 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/mobility/index.htm
+2025-08-22 11:36:16,768 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/mobility/index.htm (def from text)
+2025-08-22 11:36:17,473 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/ict/index.htm → 200
+2025-08-22 11:36:17,509 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/ict/index.htm (def from text)
+2025-08-22 11:36:17,541 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/ict/index.htm
+2025-08-22 11:36:20,053 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/ict/index.htm (def from text)
+2025-08-22 11:36:20,730 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/basic/index.htm → 200
+2025-08-22 11:36:20,754 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/basic/index.htm (def from text)
+2025-08-22 11:36:20,773 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/basic/index.htm
+2025-08-22 11:36:22,817 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/basic/index.htm (def from text)
+2025-08-22 11:36:23,664 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/new_business/index.htm → 200
+2025-08-22 11:36:23,693 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/new_business/index.htm (def from text)
+2025-08-22 11:36:23,717 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/new_business/index.htm
+2025-08-22 11:36:26,016 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/new_business/index.htm (def from text)
+2025-08-22 11:36:28,220 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/search/index.htm → 200
+2025-08-22 11:36:28,296 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/search/index.htm (def from text)
+2025-08-22 11:36:28,370 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/search/index.htm
+2025-08-22 11:36:30,795 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/search/index.htm (def from text)
+2025-08-22 11:36:31,554 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/application/index.htm → 200
+2025-08-22 11:36:31,577 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/application/index.htm (def from text)
+2025-08-22 11:36:31,597 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/application/index.htm
+2025-08-22 11:36:36,197 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/application/index.htm (def from text)
+2025-08-22 11:36:36,867 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/exhibition/index.htm → 200
+2025-08-22 11:36:36,886 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/exhibition/index.htm (def from text)
+2025-08-22 11:36:36,902 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/exhibition/index.htm
+2025-08-22 11:36:38,935 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/exhibition/index.htm (def from text)
+2025-08-22 11:36:39,056 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 11:36:39,057 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (90.66s)
+2025-08-22 11:36:39,233 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/career/index.htm → 200
+2025-08-22 11:36:39,256 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/career/index.htm (def from text)
+2025-08-22 11:36:39,275 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/career/index.htm
+2025-08-22 11:36:39,452 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ → 200
+2025-08-22 11:36:39,453 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 11:36:39,454 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 11:36:39,454 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 11:36:41,885 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/career/index.htm (def from text)
+2025-08-22 11:36:41,941 | INFO    | scraper.crawler      | Crawl of us.mitsuichemicals.com completed: 19 pages fetched, 130 unique URLs seen, 0 emails, 62.6 seconds
+2025-08-22 11:36:41,942 | INFO    | scraper.orchestrator | ✗ No emails found for mitsui toatsu chemicals 
+2025-08-22 11:36:43,969 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 11:36:44,262 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html → 200
+2025-08-22 11:36:44,270 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 11:36:44,277 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 11:36:44,277 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 11:36:45,813 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 11:36:46,054 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 11:36:46,066 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 11:36:46,066 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 11:36:46,720 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 11:36:46,742 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 11:36:46,748 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 11:36:46,749 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 11:36:48,791 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 11:36:49,053 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 11:36:49,071 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 11:36:49,084 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 11:36:49,084 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 11:36:50,682 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 11:36:50,963 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 11:36:50,971 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 11:36:50,978 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 11:36:50,979 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 11:36:52,478 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 11:36:53,359 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 11:36:53,367 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 11:36:53,521 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 11:36:53,522 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 11:36:55,832 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 11:36:56,240 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html → 200
+2025-08-22 11:36:56,252 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 11:36:56,264 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 11:36:56,265 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 11:36:57,963 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 11:36:58,195 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html → 200
+2025-08-22 11:36:58,202 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 11:36:58,212 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 11:36:58,212 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 11:36:59,667 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 11:36:59,678 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 11:36:59,679 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 11:36:59,832 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 11:36:59,846 | ERROR   | scraper.cli          | Failed to save output file: [Errno 13] Permission denied: 'results.xlsx'

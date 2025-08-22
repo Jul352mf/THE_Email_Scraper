@@ -1,0 +1,205 @@
+2025-08-22 09:39:33,026 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 09:39:33,026 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 09:39:33,026 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 09:39:33,027 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 09:39:33,027 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 09:39:33,027 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 09:39:33,027 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 09:39:33,028 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 09:39:33,270 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 09:39:33,271 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 09:39:33,276 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer co.
+2025-08-22 09:39:33,276 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals;  inc.
+2025-08-22 09:39:33,277 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman co.; ltd.
+2025-08-22 09:39:33,277 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks n.v.
+2025-08-22 09:39:33,277 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete s.r.l.
+2025-08-22 09:39:33,278 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 09:39:33,278 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 09:39:33,279 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 09:39:33,996 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 09:39:34,276 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 09:39:34,276 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:39:34,276 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:39:34,277 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:39:34,277 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: ENCRYPTED_LENGTH_TOO_LONG] encrypted length too long (_ssl.c:2648)
+2025-08-22 09:39:34,277 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:39:34,277 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:39:34,277 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:39:34,278 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals;  inc.
+2025-08-22 09:39:34,278 | WARNING | scraper.orchestrator | No Google search results for: Synsol
+2025-08-22 09:39:34,278 | WARNING | scraper.orchestrator | No Google search results for: euro dam jas doo
+2025-08-22 09:39:34,278 | WARNING | scraper.orchestrator | No Google search results for: bluetec haman co.; ltd.
+2025-08-22 09:39:34,349 | INFO    | scraper.orchestrator | ✓ Found domain: worldfertilizer.com (score: 80)
+2025-08-22 09:39:34,576 | INFO    | scraper.http         | HTTP GET https://worldfertilizer.com → 404
+2025-08-22 09:39:34,576 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com
+2025-08-22 09:39:35,516 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/ (def from text)
+2025-08-22 09:39:35,517 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.worldfertilizer.com/
+2025-08-22 09:39:35,637 | INFO    | scraper.http         | HTTP HEAD https://www.worldfertilizer.com/sitemap.xml → 200
+2025-08-22 09:39:35,723 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/sitemap.xml → 200
+2025-08-22 09:39:35,741 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.worldfertilizer.com/sitemap.xml (0.22s)
+2025-08-22 09:39:35,755 | WARNING | scraper.sitemap      | Error parsing https://www.worldfertilizer.com/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 09:39:35,763 | INFO    | scraper.orchestrator | Used sitemap for worldfertilizer.com
+2025-08-22 09:39:35,763 | INFO    | scraper.orchestrator | ✓ Found 1 emails for henan xinlianxin fertilizer co.
+2025-08-22 09:40:16,555 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 09:40:16,568 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 09:40:16,582 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 09:40:21,597 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 09:40:34,125 | WARNING | scraper.google_search | Google search timed out on 'petrol rete s.r.l.' (attempt 1/5), retrying in 1s
+2025-08-22 09:40:34,125 | WARNING | scraper.google_search | Google search timed out on 'speedy fuels' (attempt 1/5), retrying in 1s
+2025-08-22 09:40:34,142 | WARNING | scraper.google_search | Google search timed out on 'daf trucks n.v.' (attempt 1/5), retrying in 1s
+2025-08-22 09:40:35,723 | INFO    | scraper.orchestrator | ✓ Found domain: bpetrol.it (score: 92)
+2025-08-22 09:40:36,115 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:40:36,116 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:40:36,116 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:40:36,116 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 09:40:36,117 | WARNING | scraper.orchestrator | No Google search results for: daf trucks n.v.
+2025-08-22 09:40:36,117 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels
+2025-08-22 09:40:36,287 | INFO    | scraper.http         | HTTP GET https://bpetrol.it → 200
+2025-08-22 09:40:36,339 | INFO    | scraper.email_extractor |   2 emails on https://www.bpetrol.it/ (def from text)
+2025-08-22 09:40:36,340 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 emails in https://www.bpetrol.it/
+2025-08-22 09:40:37,928 | INFO    | scraper.http         | HTTP HEAD https://bpetrol.it/sitemap.xml → 200
+2025-08-22 09:40:38,576 | INFO    | scraper.http         | HTTP GET https://bpetrol.it/sitemap.xml → 200
+2025-08-22 09:40:38,577 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://bpetrol.it/sitemap.xml (2.24s)
+2025-08-22 09:40:38,578 | WARNING | scraper.sitemap      | Error parsing https://bpetrol.it/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 09:40:38,578 | INFO    | scraper.orchestrator | Used sitemap for bpetrol.it
+2025-08-22 09:40:38,578 | INFO    | scraper.orchestrator | ✓ Found 2 emails for petrol rete s.r.l.
+2025-08-22 09:41:07,581 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 09:41:53,352 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 09:41:53,353 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (91.70s)
+2025-08-22 09:41:53,369 | WARNING | scraper.sitemap      | Error parsing https://walter-schmidt-chemie.de/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 09:41:53,371 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 09:41:53,373 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: walter-schmidt-chemie.de
+2025-08-22 09:41:53,377 | INFO    | scraper.crawler      | Starting crawl of walter-schmidt-chemie.de (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 09:41:53,541 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/ → 200
+2025-08-22 09:41:53,575 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 09:41:53,925 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/en/ → 200
+2025-08-22 09:41:53,958 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from text)
+2025-08-22 09:41:53,992 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/en/
+2025-08-22 09:41:56,193 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from text)
+2025-08-22 09:41:56,638 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/index.html → 200
+2025-08-22 09:41:56,649 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 09:41:57,739 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/ → 200
+2025-08-22 09:41:57,748 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-22 09:41:57,757 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html
+2025-08-22 09:41:59,757 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-22 09:42:00,080 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html → 200
+2025-08-22 09:42:00,090 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-22 09:42:00,391 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/standorte.html → 200
+2025-08-22 09:42:00,406 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/standorte.html (def from text)
+2025-08-22 09:42:00,426 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/standorte.html
+2025-08-22 09:42:02,056 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/standorte.html (def from text)
+2025-08-22 09:42:02,264 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/ → 200
+2025-08-22 09:42:02,278 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/ (def from text)
+2025-08-22 09:42:02,291 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/
+2025-08-22 09:42:04,095 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/zertifizierungen/ (def from text)
+2025-08-22 09:42:04,689 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html → 200
+2025-08-22 09:42:04,699 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html (def from text)
+2025-08-22 09:42:04,706 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html
+2025-08-22 09:42:06,774 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html (def from text)
+2025-08-22 09:42:07,734 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/ → 200
+2025-08-22 09:42:07,742 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktuebersicht.html (def from text)
+2025-08-22 09:42:07,757 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/produktuebersicht.html
+2025-08-22 09:42:09,589 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktuebersicht.html (def from text)
+2025-08-22 09:42:09,846 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/produktsuche.html → 200
+2025-08-22 09:42:09,852 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktsuche.html (def from text)
+2025-08-22 09:42:09,860 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/produktsuche.html
+2025-08-22 09:42:11,370 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/produktsuche.html (def from text)
+2025-08-22 09:42:11,600 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/ → 200
+2025-08-22 09:42:11,613 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/ (def from text)
+2025-08-22 09:42:11,621 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/
+2025-08-22 09:42:13,435 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/premiumprodukte/ (def from text)
+2025-08-22 09:42:13,661 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/winterprodukte/ → 200
+2025-08-22 09:42:13,676 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/winterprodukte/ (def from text)
+2025-08-22 09:42:13,691 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/winterprodukte/
+2025-08-22 09:42:15,509 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/winterprodukte/ (def from text)
+2025-08-22 09:42:15,755 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/ → 200
+2025-08-22 09:42:15,762 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/ (def from text)
+2025-08-22 09:42:15,768 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/
+2025-08-22 09:42:17,429 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sommerprodukte/ (def from text)
+2025-08-22 09:42:17,642 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/ → 200
+2025-08-22 09:42:17,657 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/ (def from text)
+2025-08-22 09:42:17,670 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/
+2025-08-22 09:42:19,660 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/autopflegeprodukte/ (def from text)
+2025-08-22 09:42:19,839 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ → 200
+2025-08-22 09:42:19,849 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ (def from text)
+2025-08-22 09:42:19,856 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/
+2025-08-22 09:42:21,435 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ (def from text)
+2025-08-22 09:42:21,605 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/desinfektion/ → 200
+2025-08-22 09:42:21,613 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/desinfektion/ (def from text)
+2025-08-22 09:42:21,620 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/desinfektion/
+2025-08-22 09:42:23,158 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/desinfektion/ (def from text)
+2025-08-22 09:42:24,348 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 09:42:24,364 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 09:42:24,375 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 09:42:26,013 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 09:42:26,245 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/ → 200
+2025-08-22 09:42:26,261 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/ (def from text)
+2025-08-22 09:42:26,272 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/
+2025-08-22 09:42:28,196 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/professional-reiniger/ (def from text)
+2025-08-22 09:42:28,446 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/reiniger/ → 200
+2025-08-22 09:42:28,460 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/reiniger/ (def from text)
+2025-08-22 09:42:28,480 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/reiniger/
+2025-08-22 09:42:30,531 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/reiniger/ (def from text)
+2025-08-22 09:42:30,818 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/ → 200
+2025-08-22 09:42:30,831 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/ (def from text)
+2025-08-22 09:42:30,840 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/
+2025-08-22 09:42:32,835 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/putztuchrollen/ (def from text)
+2025-08-22 09:42:33,073 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/zubehoer/ → 200
+2025-08-22 09:42:33,080 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/zubehoer/ (def from text)
+2025-08-22 09:42:33,087 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/zubehoer/
+2025-08-22 09:42:34,645 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/zubehoer/ (def from text)
+2025-08-22 09:42:38,424 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html → 200
+2025-08-22 09:42:38,461 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html (def from text)
+2025-08-22 09:42:38,491 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html
+2025-08-22 09:42:43,764 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html (def from text)
+2025-08-22 09:42:44,817 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/ → 200
+2025-08-22 09:42:44,823 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from text)
+2025-08-22 09:42:44,829 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html
+2025-08-22 09:42:46,341 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from text)
+2025-08-22 09:42:46,535 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html → 200
+2025-08-22 09:42:46,541 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from text)
+2025-08-22 09:42:46,718 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html → 200
+2025-08-22 09:42:46,727 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html (def from text)
+2025-08-22 09:42:46,734 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html
+2025-08-22 09:42:48,238 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html (def from text)
+2025-08-22 09:42:48,502 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html → 200
+2025-08-22 09:42:48,510 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html (def from text)
+2025-08-22 09:42:48,518 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html
+2025-08-22 09:42:50,085 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html (def from text)
+2025-08-22 09:42:50,845 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 09:42:50,857 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 09:42:50,865 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 09:42:52,385 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 09:42:52,647 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 09:42:52,658 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 09:42:52,912 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 09:42:52,924 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 09:42:52,924 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 09:42:53,163 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 09:42:53,239 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 09:42:53,252 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 09:42:54,737 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 09:42:54,763 | INFO    | scraper.crawler      | Crawl of walter-schmidt-chemie.de completed: 30 pages fetched, 1091 unique URLs seen, 1 emails, 61.4 seconds
+2025-08-22 09:42:54,763 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 09:42:54,891 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 09:42:54,914 | INFO    | scraper.cli          | 
++--------------------------------------------------+
+| RUN SUMMARY                                      |
++--------------------------------------------------+
+| Leads           :   9
+| Domain found    :   3
+| No Google hits  :   6
+| Domain unclear  :   0
+| Sitemap used    :   3
+| With e-mail     :   3
+| Without e-mail  :   0
+| Google errors   :   0
+| Processing errors:   0
+| Unique e-mails  :   4
+| Runtime         :  201.6 s
+| HTTP Requests   :  39
+| HTTP errors     :   0
+| No-response     :   0
++--------------------------------------------------+
+2025-08-22 09:42:54,914 | INFO    | scraper.cli          | Saved 4 rows -> results.xlsx
+2025-08-22 09:42:54,915 | INFO    | scraper.cli          | Verbose log -> C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper_20250822_093932.log

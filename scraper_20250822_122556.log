@@ -1,0 +1,647 @@
+2025-08-22 12:25:56,548 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 12:25:56,549 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 12:25:56,550 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 12:25:56,550 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 12:25:56,550 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 12:25:56,550 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 12:25:56,551 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 12:25:56,551 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 12:25:56,769 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 12:25:56,770 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 12:25:56,770 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer 
+2025-08-22 12:25:56,771 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals 
+2025-08-22 12:25:56,771 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman
+2025-08-22 12:25:56,772 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks
+2025-08-22 12:25:56,773 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete 
+2025-08-22 12:25:56,774 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 12:25:56,774 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 12:25:56,774 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 12:25:57,092 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 12:25:57,801 | INFO    | scraper.orchestrator | ✓ Found domain: worldfertilizer.com (score: 80)
+2025-08-22 12:25:57,997 | INFO    | scraper.http         | HTTP GET https://worldfertilizer.com → 404
+2025-08-22 12:25:57,997 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com
+2025-08-22 12:25:58,032 | INFO    | scraper.orchestrator | ✓ Found domain: daf.com (score: 100)
+2025-08-22 12:25:58,045 | INFO    | scraper.orchestrator | ✓ Found domain: bluetech00.gobizkorea.com (score: 88)
+2025-08-22 12:25:58,124 | INFO    | scraper.orchestrator | ✓ Found domain: eurodamjas.com (score: 100)
+2025-08-22 12:25:58,125 | INFO    | scraper.orchestrator | ✓ Found domain: synsol.ch (score: 100)
+2025-08-22 12:25:58,128 | INFO    | scraper.orchestrator | ✓ Found domain: bpetrol.it (score: 92)
+2025-08-22 12:25:58,130 | INFO    | scraper.orchestrator | ✓ Found domain: us.mitsuichemicals.com (score: 88)
+2025-08-22 12:25:58,131 | INFO    | scraper.orchestrator | ✓ Found domain: speedyfuels.co.uk (score: 100)
+2025-08-22 12:25:58,352 | INFO    | scraper.http         | HTTP GET https://synsol.ch → 200
+2025-08-22 12:25:58,469 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/ (def from text)
+2025-08-22 12:25:58,469 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://synsol.ch/
+2025-08-22 12:25:58,580 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com → 200
+2025-08-22 12:25:58,615 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 12:25:58,653 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/
+2025-08-22 12:25:58,654 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com → 200
+2025-08-22 12:25:58,675 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://eurodamjas.com/
+2025-08-22 12:25:58,682 | INFO    | scraper.http         | HTTP GET https://speedyfuels.co.uk → 200
+2025-08-22 12:25:58,761 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 12:25:58,833 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/
+2025-08-22 12:25:58,838 | INFO    | scraper.http         | HTTP GET https://daf.com → 200
+2025-08-22 12:25:58,924 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 12:25:58,965 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/ (def from text)
+2025-08-22 12:25:58,972 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/sites-landing
+2025-08-22 12:25:58,972 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.worldfertilizer.com/
+2025-08-22 12:25:58,975 | INFO    | scraper.http         | HTTP GET https://bpetrol.it → 200
+2025-08-22 12:25:59,040 | INFO    | scraper.email_extractor |   2 emails on https://www.bpetrol.it/ (def from text)
+2025-08-22 12:25:59,051 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 emails in https://www.bpetrol.it/
+2025-08-22 12:25:59,170 | INFO    | scraper.http         | HTTP HEAD https://worldfertilizer.com/sitemap.xml → 404
+2025-08-22 12:25:59,170 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com/sitemap.xml
+2025-08-22 12:25:59,552 | INFO    | scraper.http         | HTTP HEAD https://www.eurodamjas.com/sitemap.xml → 200
+2025-08-22 12:25:59,617 | INFO    | scraper.http         | HTTP GET https://worldfertilizer.com/sitemap.xml → 404
+2025-08-22 12:25:59,617 | INFO    | scraper.http         | Retrying with www-prefix: https://www.worldfertilizer.com/sitemap.xml
+2025-08-22 12:25:59,622 | INFO    | scraper.http         | HTTP HEAD https://www.synsol.ch/sitemap.xml → 200
+2025-08-22 12:25:59,677 | INFO    | scraper.http         | HTTP GET https://www.synsol.ch/sitemap.xml → 200
+2025-08-22 12:25:59,677 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.synsol.ch/sitemap.xml (1.21s)
+2025-08-22 12:25:59,734 | INFO    | scraper.http         | HTTP GET https://synsol.ch/wp-sitemap-posts-page-1.xml → 200
+2025-08-22 12:25:59,737 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://worldfertilizer.com/sitemap.xml (0.76s)
+2025-08-22 12:25:59,771 | INFO    | scraper.http         | HTTP GET https://synsol.ch/wp-sitemap-users-1.xml → 200
+2025-08-22 12:25:59,799 | INFO    | scraper.http         | HTTP GET https://synsol.ch/urea/ → 200
+2025-08-22 12:25:59,821 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/urea/ (def from text)
+2025-08-22 12:25:59,821 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://synsol.ch/urea/
+2025-08-22 12:25:59,918 | INFO    | scraper.http         | HTTP GET https://www.eurodamjas.com/sitemap.xml → 200
+2025-08-22 12:25:59,919 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.eurodamjas.com/sitemap.xml (1.24s)
+2025-08-22 12:26:00,105 | INFO    | scraper.http         | HTTP GET https://synsol.ch/privacy-policy-of-synsol-ag/ → 200
+2025-08-22 12:26:00,117 | INFO    | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from text)
+2025-08-22 12:26:00,127 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-22 12:26:00,128 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-22 12:26:00,182 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-posts-post-1.xml → 200
+2025-08-22 12:26:00,265 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-portfolio-1.xml → 200
+2025-08-22 12:26:00,297 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-posts-page-1.xml → 200
+2025-08-22 12:26:00,301 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-service-1.xml → 200
+2025-08-22 12:26:00,369 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-team-member-1.xml → 200
+2025-08-22 12:26:00,405 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/ → 200
+2025-08-22 12:26:00,419 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/ (def from text)
+2025-08-22 12:26:00,420 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/15122021/most-of-yaras-european-ammonia-production-back-on-stream/
+2025-08-22 12:26:00,441 | INFO    | scraper.http         | HTTP HEAD https://www.bpetrol.it/sitemap.xml → 200
+2025-08-22 12:26:00,459 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-posts-cspt-testimonial-1.xml → 200
+2025-08-22 12:26:00,477 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-taxonomies-category-1.xml → 200
+2025-08-22 12:26:00,479 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-taxonomies-cspt-portfolio-category-1.xml → 200
+2025-08-22 12:26:00,545 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/wp-sitemap-users-1.xml → 200
+2025-08-22 12:26:00,814 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/ → 200
+2025-08-22 12:26:00,831 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/ (def from text)
+2025-08-22 12:26:00,832 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/11112022/stamicarbon-selected-as-licensor-for-urea-project-in-china/
+2025-08-22 12:26:00,837 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/about-us-01/ → 200
+2025-08-22 12:26:00,860 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/about-us-01/
+2025-08-22 12:26:00,992 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/sitemap.xml → 200
+2025-08-22 12:26:00,992 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.bpetrol.it/sitemap.xml (1.94s)
+2025-08-22 12:26:01,243 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/ → 200
+2025-08-22 12:26:01,261 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/ (def from text)
+2025-08-22 12:26:01,261 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/01122021/stamicarbon-provides-carbamate-condenser-for-ammonia-stripping-urea-plant/
+2025-08-22 12:26:01,428 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/page-sitemap.xml → 200
+2025-08-22 12:26:01,583 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/3d-flip-book-sitemap.xml → 200
+2025-08-22 12:26:01,596 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/post_tag-sitemap.xml → 200
+2025-08-22 12:26:01,610 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/ → 200
+2025-08-22 12:26:01,628 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/ (def from text)
+2025-08-22 12:26:01,629 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/special-reports/04072022/cru-appoints-new-regional-director-of-sales-for-mena/
+2025-08-22 12:26:01,645 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/category-sitemap.xml → 200
+2025-08-22 12:26:01,684 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/post-sitemap.xml → 200
+2025-08-22 12:26:01,777 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/privacy-policy/ → 200
+2025-08-22 12:26:01,802 | INFO    | scraper.email_extractor |   3 emails on https://www.bpetrol.it/privacy-policy/ (def from text)
+2025-08-22 12:26:01,802 | INFO    | scraper.hybrid_email_extractor | Static pass found 3 on https://www.bpetrol.it/privacy-policy/
+2025-08-22 12:26:01,802 | INFO    | scraper.orchestrator | Used sitemap for bpetrol.it
+2025-08-22 12:26:01,802 | INFO    | scraper.orchestrator | ✓ Found 3 emails for petrol rete 
+2025-08-22 12:26:01,949 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/ → 200
+2025-08-22 12:26:01,964 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/ (def from text)
+2025-08-22 12:26:01,965 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/04022022/perdaman-urea-project-receives-government-financing/
+2025-08-22 12:26:02,293 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 12:26:02,462 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/26012023/tcnicas-reunidas-selected-as-contractor-to-develop-new-ammonium-urea-nitric-acid-and-ammonium-nitrate-complex/ → 200
+2025-08-22 12:26:02,473 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/26012023/tcnicas-reunidas-selected-as-contractor-to-develop-new-ammonium-urea-nitric-acid-and-ammonium-nitrate-complex/ (def from text)
+2025-08-22 12:26:02,473 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/26012023/tcnicas-reunidas-selected-as-contractor-to-develop-new-ammonium-urea-nitric-acid-and-ammonium-nitrate-complex/
+2025-08-22 12:26:02,665 | INFO    | scraper.http         | HTTP HEAD https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 12:26:02,886 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/ → 200
+2025-08-22 12:26:02,901 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/ (def from text)
+2025-08-22 12:26:02,901 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/11112021/stamicarbon-delivers-high-pressure-stripper-and-pool-reactor-for-urea-plant-in-russia/
+2025-08-22 12:26:02,912 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/sitemap.xml → 200
+2025-08-22 12:26:02,912 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://us.mitsuichemicals.com/sitemap.xml (0.57s)
+2025-08-22 12:26:03,172 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/siteinfo/privacy/index.htm → 200
+2025-08-22 12:26:03,220 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm (def from text)
+2025-08-22 12:26:03,232 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/ → 200
+2025-08-22 12:26:03,259 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm
+2025-08-22 12:26:03,280 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/ (def from text)
+2025-08-22 12:26:03,280 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/siteinfo/privacy/index.htm
+2025-08-22 12:26:03,280 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/06062022/kima-approves-amicable-settlement-with-technemont-regarding-ammonia-and-urea-project/
+2025-08-22 12:26:03,598 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/environment/11052022/fertilizers-europe-share-a-statement-on-the-application-of-the-eu-fertilizing-product-regulation/ → 200
+2025-08-22 12:26:03,610 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/environment/11052022/fertilizers-europe-share-a-statement-on-the-application-of-the-eu-fertilizing-product-regulation/ (def from text)
+2025-08-22 12:26:03,611 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/environment/11052022/fertilizers-europe-share-a-statement-on-the-application-of-the-eu-fertilizing-product-regulation/
+2025-08-22 12:26:03,779 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-22 12:26:03,812 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/tag/urea-news/ → 200
+2025-08-22 12:26:03,829 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/tag/urea-news/ (def from text)
+2025-08-22 12:26:03,829 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/tag/urea-news/
+2025-08-22 12:26:03,938 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/contact/ → 200
+2025-08-22 12:26:03,947 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/contact/ (def from text)
+2025-08-22 12:26:03,947 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/contact/
+2025-08-22 12:26:04,353 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/ → 200
+2025-08-22 12:26:04,374 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/ (def from text)
+2025-08-22 12:26:04,374 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/10052023/construction-of-perdaman-chemicals-fertilisers-urea-plant-begins/
+2025-08-22 12:26:04,601 | INFO    | scraper.http         | HTTP HEAD https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 12:26:05,074 | INFO    | scraper.http         | HTTP GET https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 12:26:05,074 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://speedyfuels.co.uk/sitemap.xml (1.26s)
+2025-08-22 12:26:05,121 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/post-sitemap.xml → 200
+2025-08-22 12:26:05,183 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/page-sitemap.xml → 200
+2025-08-22 12:26:05,273 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/ → 200
+2025-08-22 12:26:05,294 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/ (def from text)
+2025-08-22 12:26:05,295 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/16032023/fitch-ratings-cuts-near-term-ammonia-urea-and-potash-fertiliser-price-assumptions/
+2025-08-22 12:26:06,107 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 12:26:06,148 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/28042022/stamicarbon-is-selected-as-urea-licensor-for-neurizers-project-in-australia/ → 200
+2025-08-22 12:26:06,170 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/28042022/stamicarbon-is-selected-as-urea-licensor-for-neurizers-project-in-australia/ (def from text)
+2025-08-22 12:26:06,170 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/28042022/stamicarbon-is-selected-as-urea-licensor-for-neurizers-project-in-australia/
+2025-08-22 12:26:06,419 | INFO    | scraper.http         | HTTP HEAD https://daf.com/sitemap.xml → 200
+2025-08-22 12:26:06,462 | INFO    | scraper.http         | HTTP GET https://daf.com/sitemap.xml → 200
+2025-08-22 12:26:06,462 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://daf.com/sitemap.xml (0.32s)
+2025-08-22 12:26:06,518 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/sitemap.xml → 200
+2025-08-22 12:26:06,526 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/special-reports/20072023/the-grupa-azoty-group-successfully-passes-fertilizers-europe-audit-for-fertilizer-products/ → 200
+2025-08-22 12:26:06,542 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/special-reports/20072023/the-grupa-azoty-group-successfully-passes-fertilizers-europe-audit-for-fertilizer-products/ (def from text)
+2025-08-22 12:26:06,543 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/special-reports/20072023/the-grupa-azoty-group-successfully-passes-fertilizers-europe-audit-for-fertilizer-products/
+2025-08-22 12:26:06,546 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/guides/adblue-guide/ → 200
+2025-08-22 12:26:06,612 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/adblue-guide/ (def from text)
+2025-08-22 12:26:06,640 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/guides/adblue-guide/
+2025-08-22 12:26:06,640 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/guides/adblue-guide/
+2025-08-22 12:26:06,659 | INFO    | scraper.http         | HTTP GET https://www.daf.com/nl-nl/sitemap.xml → 200
+2025-08-22 12:26:06,953 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-worldwide/dealer-network → 200
+2025-08-22 12:26:06,986 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/dealer-network (def from text)
+2025-08-22 12:26:07,013 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide/dealer-network
+2025-08-22 12:26:07,013 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide/dealer-network
+2025-08-22 12:26:07,045 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/ → 200
+2025-08-22 12:26:07,065 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/ (def from text)
+2025-08-22 12:26:07,065 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/13012022/operator-training-simulator-to-train-operators-at-gemlik-urea-melt-and-granulation-plant/
+2025-08-22 12:26:07,399 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/ → 200
+2025-08-22 12:26:07,416 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/ (def from text)
+2025-08-22 12:26:07,416 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02032023/new-survey-suggests-strong-european-consumer-demand-for-sustainable-food/
+2025-08-22 12:26:07,494 | INFO    | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from text)
+2025-08-22 12:26:07,511 | INFO    | scraper.orchestrator | Used sitemap for synsol.ch
+2025-08-22 12:26:07,511 | INFO    | scraper.orchestrator | ✓ Found 1 emails for Synsol
+2025-08-22 12:26:07,765 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/ → 200
+2025-08-22 12:26:07,788 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/ (def from text)
+2025-08-22 12:26:07,788 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02022022/strike-energys-urea-fertilizer-project-given-major-project-status/
+2025-08-22 12:26:08,227 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/ → 200
+2025-08-22 12:26:08,242 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/ (def from text)
+2025-08-22 12:26:08,242 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/01022022/new-brunei-urea-melt-plant-begins-production/
+2025-08-22 12:26:08,553 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/ → 200
+2025-08-22 12:26:08,579 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/ (def from text)
+2025-08-22 12:26:08,579 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/01092023/ypfb-to-deliver-2500-t-of-granulated-urea-to-cochabamba-granulated-fertilizers-plant/
+2025-08-22 12:26:08,873 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/ → 200
+2025-08-22 12:26:09,011 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/ (def from text)
+2025-08-22 12:26:09,011 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/08082022/maire-tecnimont-selected-as-urea-licensor-for-project-in-sub-saharan-africa/
+2025-08-22 12:26:09,311 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/ → 200
+2025-08-22 12:26:09,334 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/ (def from text)
+2025-08-22 12:26:09,335 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/phosphates/10052023/kropz-plc-provides-update-on-elandsfontein-phosphate-project-sales/
+2025-08-22 12:26:09,916 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/ → 200
+2025-08-22 12:26:09,942 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/ (def from text)
+2025-08-22 12:26:09,942 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/materials-handling/02082022/shiploader-for-fertilizer-and-granulated-urea-supplied-to-fertil-ruwais-terminal/
+2025-08-22 12:26:10,163 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/siteinfo/privacy/index.htm (def from text)
+2025-08-22 12:26:10,528 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 12:26:10,560 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 12:26:10,592 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 12:26:10,593 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/19012022/stamicarbon-wins-licensing-and-equipment-supply-contract-for-two-urea-plants-in-china/ → 200
+2025-08-22 12:26:10,593 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/contact/index.htm
+2025-08-22 12:26:10,623 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/19012022/stamicarbon-wins-licensing-and-equipment-supply-contract-for-two-urea-plants-in-china/ (def from text)
+2025-08-22 12:26:10,624 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/19012022/stamicarbon-wins-licensing-and-equipment-supply-contract-for-two-urea-plants-in-china/
+2025-08-22 12:26:11,318 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/ → 200
+2025-08-22 12:26:11,347 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/ (def from text)
+2025-08-22 12:26:11,347 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/project-news/02032023/kimre-celebrates-engineering-and-technical-sales-personnel/
+2025-08-22 12:26:11,778 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/adblue-guide/ (def from text)
+2025-08-22 12:26:11,823 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/ → 200
+2025-08-22 12:26:11,838 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/ (def from text)
+2025-08-22 12:26:11,838 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/sulfur/10022022/itafos-resumes-sulfuric-acid-production-and-sales-at-arraias/
+2025-08-22 12:26:12,239 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/ → 200
+2025-08-22 12:26:12,268 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/ (def from text)
+2025-08-22 12:26:12,268 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/potash/25082022/verde-announces-strategic-sales-partnership-with-lavoro/
+2025-08-22 12:26:12,570 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ → 200
+2025-08-22 12:26:12,643 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ (def from text)
+2025-08-22 12:26:12,696 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/
+2025-08-22 12:26:12,696 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/
+2025-08-22 12:26:13,087 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/ → 200
+2025-08-22 12:26:13,109 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/ (def from text)
+2025-08-22 12:26:13,109 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/11112022/yara-calls-for-action-to-secure-continued-supply-of-nitrogen-essentials-such-as-adblue/
+2025-08-22 12:26:13,675 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/ → 200
+2025-08-22 12:26:13,690 | INFO    | scraper.email_extractor |   1 emails on https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/ (def from text)
+2025-08-22 12:26:13,691 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.worldfertilizer.com/nitrogen/26062023/neurizer-announces-significant-milestone-in-the-approval-process-for-new-urea-project/
+2025-08-22 12:26:13,770 | INFO    | scraper.http         | HTTP GET https://www.worldfertilizer.com/privacy/ → 200
+2025-08-22 12:26:13,801 | INFO    | scraper.email_extractor |   2 emails on https://www.worldfertilizer.com/privacy/ (def from text)
+2025-08-22 12:26:13,801 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 on https://www.worldfertilizer.com/privacy/
+2025-08-22 12:26:13,801 | INFO    | scraper.orchestrator | Used sitemap for worldfertilizer.com
+2025-08-22 12:26:13,802 | INFO    | scraper.orchestrator | ✓ Found 2 emails for henan xinlianxin fertilizer 
+2025-08-22 12:26:14,192 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/dealer-network (def from text)
+2025-08-22 12:26:15,867 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-history → 200
+2025-08-22 12:26:15,915 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history (def from text)
+2025-08-22 12:26:15,954 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:26:15,955 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history
+2025-08-22 12:26:15,955 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history
+2025-08-22 12:26:17,087 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 12:26:17,126 | INFO    | scraper.orchestrator | Used sitemap for us.mitsuichemicals.com
+2025-08-22 12:26:17,126 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: us.mitsuichemicals.com
+2025-08-22 12:26:17,126 | INFO    | scraper.crawler      | Starting crawl of us.mitsuichemicals.com (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 12:26:17,383 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/ → 200
+2025-08-22 12:26:17,412 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/ (def from text)
+2025-08-22 12:26:17,713 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/index.htm → 200
+2025-08-22 12:26:17,751 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 12:26:17,785 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/index.htm
+2025-08-22 12:26:18,627 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/how-to-look-after-your-adblue-storage-tanks/ (def from text)
+2025-08-22 12:26:19,351 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ → 200
+2025-08-22 12:26:19,429 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ (def from text)
+2025-08-22 12:26:19,472 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/
+2025-08-22 12:26:19,472 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/
+2025-08-22 12:26:20,843 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history (def from text)
+2025-08-22 12:26:20,877 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:26:21,284 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/reach → 200
+2025-08-22 12:26:21,313 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/reach (def from text)
+2025-08-22 12:26:21,343 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/reach
+2025-08-22 12:26:21,343 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/reach
+2025-08-22 12:26:24,045 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/index.htm (def from text)
+2025-08-22 12:26:24,379 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/contact/index.htm → 200
+2025-08-22 12:26:24,403 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/contact/index.htm (def from text)
+2025-08-22 12:26:24,682 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/index.htm → 200
+2025-08-22 12:26:24,713 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 12:26:24,737 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/index.htm
+2025-08-22 12:26:25,512 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ (def from text)
+2025-08-22 12:26:26,231 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/contact-us/ → 200
+2025-08-22 12:26:26,257 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.speedyfuels.co.uk/contact-us/
+2025-08-22 12:26:26,313 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/products/adblue/ → 200
+2025-08-22 12:26:26,376 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 12:26:26,510 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/products/adblue/
+2025-08-22 12:26:26,510 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/products/adblue/
+2025-08-22 12:26:27,527 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/reach (def from text)
+2025-08-22 12:26:27,943 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions → 200
+2025-08-22 12:26:27,983 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions (def from text)
+2025-08-22 12:26:28,062 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions
+2025-08-22 12:26:28,062 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions
+2025-08-22 12:26:30,315 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/index.htm (def from text)
+2025-08-22 12:26:30,628 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/overview/index.htm → 200
+2025-08-22 12:26:30,651 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 12:26:30,673 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/overview/index.htm
+2025-08-22 12:26:31,822 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-22 12:26:32,604 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ → 200
+2025-08-22 12:26:32,671 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ (def from text)
+2025-08-22 12:26:32,698 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/
+2025-08-22 12:26:32,698 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/
+2025-08-22 12:26:33,278 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions (def from text)
+2025-08-22 12:26:33,691 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-history/past-and-present → 200
+2025-08-22 12:26:33,720 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/past-and-present (def from text)
+2025-08-22 12:26:33,754 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history/past-and-present
+2025-08-22 12:26:33,754 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history/past-and-present
+2025-08-22 12:26:35,836 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/overview/index.htm (def from text)
+2025-08-22 12:26:36,144 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm → 200
+2025-08-22 12:26:36,173 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 12:26:36,204 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm
+2025-08-22 12:26:37,248 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/advice-on-finding-fuel-suppliers-in-the-uk/ (def from text)
+2025-08-22 12:26:37,381 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ → 200
+2025-08-22 12:26:37,438 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ (def from text)
+2025-08-22 12:26:37,466 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/
+2025-08-22 12:26:37,467 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/
+2025-08-22 12:26:39,157 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/past-and-present (def from text)
+2025-08-22 12:26:39,415 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction → 200
+2025-08-22 12:26:39,460 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction (def from text)
+2025-08-22 12:26:39,492 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction
+2025-08-22 12:26:39,492 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction
+2025-08-22 12:26:39,891 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 12:26:39,903 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 12:26:39,913 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 12:26:41,586 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/america/company_locations/index.htm (def from text)
+2025-08-22 12:26:41,890 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/corporate/legacy/index.htm → 200
+2025-08-22 12:26:41,917 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 12:26:41,939 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/corporate/legacy/index.htm
+2025-08-22 12:26:43,048 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ (def from text)
+2025-08-22 12:26:43,795 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/fuel-suppliers/ → 200
+2025-08-22 12:26:43,860 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/fuel-suppliers/ (def from text)
+2025-08-22 12:26:43,893 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/fuel-suppliers/
+2025-08-22 12:26:43,894 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/fuel-suppliers/
+2025-08-22 12:26:44,406 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction (def from text)
+2025-08-22 12:26:44,734 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy → 200
+2025-08-22 12:26:44,767 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy (def from text)
+2025-08-22 12:26:44,794 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:26:44,794 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy
+2025-08-22 12:26:44,794 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy
+2025-08-22 12:26:46,127 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 12:26:48,559 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/corporate/legacy/index.htm (def from text)
+2025-08-22 12:26:49,371 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/mca/index.htm → 200
+2025-08-22 12:26:49,395 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 12:26:49,432 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mca/2024/index.htm
+2025-08-22 12:26:49,526 | INFO    | scraper.http         | HTTP HEAD https://www.walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 12:26:50,434 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/fuel-suppliers/ (def from text)
+2025-08-22 12:26:50,658 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/about-us/ → 200
+2025-08-22 12:26:50,717 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from text)
+2025-08-22 12:26:50,742 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.speedyfuels.co.uk/about-us/
+2025-08-22 12:26:50,742 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.speedyfuels.co.uk/about-us/
+2025-08-22 12:26:52,560 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/daf-environmental-policy (def from text)
+2025-08-22 12:26:52,592 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:26:52,764 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 12:26:52,765 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.walter-schmidt-chemie.de/sitemap.xml (6.63s)
+2025-08-22 12:26:52,792 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-worldwide → 200
+2025-08-22 12:26:52,825 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide (def from text)
+2025-08-22 12:26:52,865 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide
+2025-08-22 12:26:52,865 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide
+2025-08-22 12:26:53,987 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/ → 200
+2025-08-22 12:26:53,997 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 12:26:54,004 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 12:26:54,004 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/
+2025-08-22 12:26:54,931 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mca/2024/index.htm (def from text)
+2025-08-22 12:26:55,740 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/mci/mci-news/index.htm → 200
+2025-08-22 12:26:55,781 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 12:26:55,815 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm
+2025-08-22 12:26:56,366 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from text)
+2025-08-22 12:26:57,168 | INFO    | scraper.http         | HTTP GET https://www.speedyfuels.co.uk/privacy-policy/ → 200
+2025-08-22 12:26:57,199 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.speedyfuels.co.uk/privacy-policy/
+2025-08-22 12:26:57,199 | INFO    | scraper.orchestrator | Used sitemap for speedyfuels.co.uk
+2025-08-22 12:26:57,199 | INFO    | scraper.orchestrator | ✓ Found 2 emails for speedy fuels
+2025-08-22 12:26:57,769 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide (def from text)
+2025-08-22 12:26:57,976 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/innovation → 302
+2025-08-22 12:26:57,976 | INFO    | scraper.http         | Retrying with HTTP: http://www.daf.com/en/about-daf/innovation
+2025-08-22 12:26:58,227 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/innovation (def from text)
+2025-08-22 12:26:58,227 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/innovation
+2025-08-22 12:26:58,227 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/innovation
+2025-08-22 12:27:00,140 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-22 12:27:01,035 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html → 200
+2025-08-22 12:27:01,045 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 12:27:01,055 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 12:27:01,055 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html
+2025-08-22 12:27:01,248 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/kontakt/ → 200
+2025-08-22 12:27:01,259 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/kontakt/
+2025-08-22 12:27:01,539 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/usluge/adblue/ → 200
+2025-08-22 12:27:01,551 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/usluge/adblue/
+2025-08-22 12:27:01,868 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/about-us-02/ → 200
+2025-08-22 12:27:01,886 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://eurodamjas.com/about-us-02/
+2025-08-22 12:27:01,886 | INFO    | scraper.orchestrator | Used sitemap for eurodamjas.com
+2025-08-22 12:27:01,887 | INFO    | scraper.orchestrator | ✓ Found 1 emails for euro dam jas doo
+2025-08-22 12:27:02,492 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/mci/mci-news/2025/index.htm (def from text)
+2025-08-22 12:27:02,697 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 12:27:02,826 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/index.htm → 200
+2025-08-22 12:27:02,867 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 12:27:02,895 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/index.htm
+2025-08-22 12:27:03,080 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/innovation (def from text)
+2025-08-22 12:27:03,284 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/facts-and-figures → 200
+2025-08-22 12:27:03,316 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/facts-and-figures (def from text)
+2025-08-22 12:27:03,344 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:27:03,345 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/facts-and-figures
+2025-08-22 12:27:03,345 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/facts-and-figures
+2025-08-22 12:27:03,714 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025E165F2850>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 12:27:03,714 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 12:27:05,315 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html (def from text)
+2025-08-22 12:27:05,539 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html → 200
+2025-08-22 12:27:05,552 | INFO    | scraper.email_extractor |   1 emails on https://www.walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-22 12:27:05,552 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 on https://www.walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-22 12:27:06,496 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/ → 200
+2025-08-22 12:27:06,505 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 12:27:06,513 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 12:27:06,513 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/
+2025-08-22 12:27:07,942 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/index.htm (def from text)
+2025-08-22 12:27:08,263 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/life_healthcare/index.htm → 200
+2025-08-22 12:27:08,292 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/life_healthcare/index.htm (def from text)
+2025-08-22 12:27:08,316 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/life_healthcare/index.htm
+2025-08-22 12:27:09,819 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/facts-and-figures (def from text)
+2025-08-22 12:27:09,934 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:27:11,313 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/contact → 200
+2025-08-22 12:27:11,357 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact (def from text)
+2025-08-22 12:27:11,399 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/contact
+2025-08-22 12:27:11,399 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/contact
+2025-08-22 12:27:12,021 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-22 12:27:12,260 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html → 200
+2025-08-22 12:27:12,286 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 12:27:12,301 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 12:27:12,301 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html
+2025-08-22 12:27:13,781 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/life_healthcare/index.htm (def from text)
+2025-08-22 12:27:14,151 | INFO    | scraper.http         | HTTP GET https://us.mitsuichemicals.com/service/mobility/index.htm → 200
+2025-08-22 12:27:14,185 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/mobility/index.htm (def from text)
+2025-08-22 12:27:14,211 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://us.mitsuichemicals.com/service/mobility/index.htm
+2025-08-22 12:27:15,319 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact (def from text)
+2025-08-22 12:27:15,535 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities- → 200
+2025-08-22 12:27:15,571 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities- (def from text)
+2025-08-22 12:27:15,603 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities-
+2025-08-22 12:27:15,603 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities-
+2025-08-22 12:27:16,710 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-22 12:27:17,006 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ → 200
+2025-08-22 12:27:17,013 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 12:27:17,027 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 12:27:17,027 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/
+2025-08-22 12:27:18,516 | INFO    | scraper.email_extractor |   0 emails on https://us.mitsuichemicals.com/service/mobility/index.htm (def from text)
+2025-08-22 12:27:18,575 | INFO    | scraper.crawler      | Crawl of us.mitsuichemicals.com completed: 12 pages fetched, 98 unique URLs seen, 0 emails, 61.4 seconds
+2025-08-22 12:27:18,575 | INFO    | scraper.orchestrator | ✗ No emails found for mitsui toatsu chemicals 
+2025-08-22 12:27:20,601 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-production-facilities- (def from text)
+2025-08-22 12:27:20,797 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-circularity → 200
+2025-08-22 12:27:20,835 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity (def from text)
+2025-08-22 12:27:20,868 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-circularity
+2025-08-22 12:27:20,868 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-circularity
+2025-08-22 12:27:22,101 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-22 12:27:22,747 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ → 200
+2025-08-22 12:27:22,749 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 12:27:22,750 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 12:27:22,750 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/
+2025-08-22 12:27:23,866 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity (def from text)
+2025-08-22 12:27:24,030 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability → 200
+2025-08-22 12:27:24,063 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability (def from text)
+2025-08-22 12:27:24,099 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability
+2025-08-22 12:27:24,099 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability
+2025-08-22 12:27:26,156 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-22 12:27:26,425 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html → 200
+2025-08-22 12:27:26,437 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 12:27:26,449 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 12:27:26,450 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html
+2025-08-22 12:27:27,670 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability (def from text)
+2025-08-22 12:27:27,925 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/responsible-business → 200
+2025-08-22 12:27:27,962 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/responsible-business (def from text)
+2025-08-22 12:27:28,003 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/responsible-business
+2025-08-22 12:27:28,004 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/responsible-business
+2025-08-22 12:27:29,203 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/produkte/adblue/adblue.html (def from text)
+2025-08-22 12:27:29,440 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html → 200
+2025-08-22 12:27:29,448 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 12:27:29,455 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 12:27:29,455 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html
+2025-08-22 12:27:31,368 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/responsible-business (def from text)
+2025-08-22 12:27:31,559 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-history/timeline → 200
+2025-08-22 12:27:31,610 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/timeline (def from text)
+2025-08-22 12:27:31,651 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history/timeline
+2025-08-22 12:27:31,651 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history/timeline
+2025-08-22 12:27:32,918 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html (def from text)
+2025-08-22 12:27:32,927 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 12:27:32,927 | INFO    | scraper.orchestrator | ✓ Found 1 emails for walter schmidt chemie gmbh
+2025-08-22 12:27:35,151 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/timeline (def from text)
+2025-08-22 12:27:35,538 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology → 200
+2025-08-22 12:27:35,571 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology (def from text)
+2025-08-22 12:27:35,595 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology
+2025-08-22 12:27:35,595 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology
+2025-08-22 12:27:37,849 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/world-class-technology (def from text)
+2025-08-22 12:27:38,346 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products → 200
+2025-08-22 12:27:38,382 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products (def from text)
+2025-08-22 12:27:38,411 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products
+2025-08-22 12:27:38,415 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products
+2025-08-22 12:27:40,164 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-products (def from text)
+2025-08-22 12:27:40,471 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/legislation → 200
+2025-08-22 12:27:40,509 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/legislation (def from text)
+2025-08-22 12:27:40,540 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/legislation
+2025-08-22 12:27:40,540 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/legislation
+2025-08-22 12:27:42,110 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/legislation (def from text)
+2025-08-22 12:27:42,482 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/united-nations-sustainable-development-goals → 200
+2025-08-22 12:27:42,522 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/united-nations-sustainable-development-goals (def from text)
+2025-08-22 12:27:42,551 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/united-nations-sustainable-development-goals
+2025-08-22 12:27:42,551 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/united-nations-sustainable-development-goals
+2025-08-22 12:27:44,723 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/united-nations-sustainable-development-goals (def from text)
+2025-08-22 12:27:45,030 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/quality → 200
+2025-08-22 12:27:45,065 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/quality (def from text)
+2025-08-22 12:27:45,092 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/quality
+2025-08-22 12:27:45,093 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/quality
+2025-08-22 12:27:45,748 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/quality (def from text)
+2025-08-22 12:27:46,040 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/suppliers → 200
+2025-08-22 12:27:46,071 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/suppliers (def from text)
+2025-08-22 12:27:46,099 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/suppliers
+2025-08-22 12:27:46,099 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/suppliers
+2025-08-22 12:27:48,383 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/suppliers (def from text)
+2025-08-22 12:27:48,926 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing → 200
+2025-08-22 12:27:48,960 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing (def from text)
+2025-08-22 12:27:48,989 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing
+2025-08-22 12:27:48,989 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing
+2025-08-22 12:27:50,471 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-sourcing (def from text)
+2025-08-22 12:27:50,809 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/care-for-people → 200
+2025-08-22 12:27:50,843 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/care-for-people (def from text)
+2025-08-22 12:27:50,871 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/care-for-people
+2025-08-22 12:27:50,871 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/care-for-people
+2025-08-22 12:27:52,926 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/care-for-people (def from text)
+2025-08-22 12:27:53,196 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/board-of-management → 200
+2025-08-22 12:27:53,232 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/board-of-management (def from text)
+2025-08-22 12:27:53,261 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/board-of-management
+2025-08-22 12:27:53,261 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/board-of-management
+2025-08-22 12:27:55,013 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/board-of-management (def from text)
+2025-08-22 12:27:55,557 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes → 200
+2025-08-22 12:27:55,591 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes (def from text)
+2025-08-22 12:27:55,623 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes
+2025-08-22 12:27:55,624 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes
+2025-08-22 12:27:58,109 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-circularity/circular-processes (def from text)
+2025-08-22 12:27:58,440 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-history/clever-solutions → 200
+2025-08-22 12:27:58,474 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/clever-solutions (def from text)
+2025-08-22 12:27:58,502 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-history/clever-solutions
+2025-08-22 12:27:58,502 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-history/clever-solutions
+2025-08-22 12:28:00,562 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-history/clever-solutions (def from text)
+2025-08-22 12:28:00,824 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/daf-worldwide/production-locations → 200
+2025-08-22 12:28:00,856 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/production-locations (def from text)
+2025-08-22 12:28:00,882 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/daf-worldwide/production-locations
+2025-08-22 12:28:00,882 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/daf-worldwide/production-locations
+2025-08-22 12:28:02,347 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/daf-worldwide/production-locations (def from text)
+2025-08-22 12:28:02,593 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines → 200
+2025-08-22 12:28:02,627 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines (def from text)
+2025-08-22 12:28:02,655 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines
+2025-08-22 12:28:02,655 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines
+2025-08-22 12:28:04,160 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf/sustainability/environment-emission-reduction/sustainable-transport-solutions/alternative-fuels-and-drivelines (def from text)
+2025-08-22 12:28:04,360 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf → 200
+2025-08-22 12:28:04,507 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf (def from text)
+2025-08-22 12:28:04,538 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:04,539 | INFO    | scraper.hybrid_email_extractor | Static pass found 0 on https://www.daf.com/en/about-daf
+2025-08-22 12:28:04,539 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/about-daf
+2025-08-22 12:28:06,796 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf (def from text)
+2025-08-22 12:28:06,823 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:06,823 | INFO    | scraper.orchestrator | Used sitemap for daf.com
+2025-08-22 12:28:06,823 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: daf.com
+2025-08-22 12:28:06,823 | INFO    | scraper.crawler      | Starting crawl of daf.com (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 12:28:06,955 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/sites-landing → 200
+2025-08-22 12:28:07,005 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-22 12:28:07,834 | INFO    | scraper.http         | HTTP GET https://parts.daf.com/ → 200
+2025-08-22 12:28:07,921 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/ (def from text)
+2025-08-22 12:28:07,921 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025E17DCDE00>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 12:28:07,934 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://parts.daf.com/en-gb/
+2025-08-22 12:28:10,162 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/ (def from text)
+2025-08-22 12:28:12,219 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/news-and-media → 200
+2025-08-22 12:28:12,307 | INFO    | scraper.email_extractor |   1 emails on https://www.daf.com/en/news-and-media (def from text)
+2025-08-22 12:28:12,308 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.daf.com/en/news-and-media
+2025-08-22 12:28:12,494 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/suppliers → 200
+2025-08-22 12:28:12,544 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/suppliers (def from text)
+2025-08-22 12:28:12,765 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/working-at-daf → 200
+2025-08-22 12:28:12,815 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf (def from text)
+2025-08-22 12:28:12,900 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/working-at-daf
+2025-08-22 12:28:15,368 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf (def from text)
+2025-08-22 12:28:15,681 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en → 200
+2025-08-22 12:28:15,730 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from text)
+2025-08-22 12:28:15,778 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:15,779 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en
+2025-08-22 12:28:18,118 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from text)
+2025-08-22 12:28:18,151 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:18,330 | INFO    | scraper.http         | HTTP GET https://www.daf.com/nl-nl → 200
+2025-08-22 12:28:18,377 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from text)
+2025-08-22 12:28:18,414 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:18,414 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/nl-nl
+2025-08-22 12:28:20,905 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from text)
+2025-08-22 12:28:20,938 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:21,157 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/dealer-locator-page → 200
+2025-08-22 12:28:21,178 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/dealer-locator-page (def from text)
+2025-08-22 12:28:21,198 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/dealer-locator-page
+2025-08-22 12:28:28,609 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/dealer-locator-page (def from text)
+2025-08-22 12:28:30,395 | INFO    | scraper.http         | HTTP GET https://www.daf.com.au → 200
+2025-08-22 12:28:30,420 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.au/ (def from text)
+2025-08-22 12:28:30,441 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com.au/
+2025-08-22 12:28:36,196 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.au/ (def from text)
+2025-08-22 12:28:37,311 | INFO    | scraper.http         | HTTP GET https://www.daf.com.tw?MarketCode=TW → 200
+2025-08-22 12:28:37,319 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.tw/?MarketCode=TW (def from text)
+2025-08-22 12:28:37,324 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com.tw/?MarketCode=TW
+2025-08-22 12:28:38,742 | INFO    | scraper.http         | HTTP GET https://readytogo.daf.com/en → 200
+2025-08-22 12:28:38,762 | INFO    | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from text)
+2025-08-22 12:28:38,774 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://readytogo.daf.com/en
+2025-08-22 12:28:41,226 | INFO    | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from text)
+2025-08-22 12:28:41,578 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/driver-information/driver-manuals → 200
+2025-08-22 12:28:41,613 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/driver-information/driver-manuals (def from text)
+2025-08-22 12:28:41,645 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/driver-information/driver-manuals
+2025-08-22 12:28:43,863 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/driver-information/driver-manuals (def from text)
+2025-08-22 12:28:44,202 | INFO    | scraper.http         | HTTP GET https://rmi.daf.com → 200
+2025-08-22 12:28:44,233 | INFO    | scraper.email_extractor |   0 emails on https://rmi.daf.com/en (def from text)
+2025-08-22 12:28:44,258 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://rmi.daf.com/en
+2025-08-22 12:28:45,850 | INFO    | scraper.email_extractor |   0 emails on https://rmi.daf.com/en (def from text)
+2025-08-22 12:28:46,071 | INFO    | scraper.http         | HTTP GET https://pti.daf.com → 200
+2025-08-22 12:28:46,092 | INFO    | scraper.email_extractor |   0 emails on https://pti.daf.com/ (def from text)
+2025-08-22 12:28:46,108 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://pti.daf.com/
+2025-08-22 12:28:48,122 | INFO    | scraper.email_extractor |   0 emails on https://pti.daf.com/ (def from text)
+2025-08-22 12:28:48,647 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/about-daf → 200
+2025-08-22 12:28:48,683 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/about-daf (def from text)
+2025-08-22 12:28:48,712 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:50,262 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/products-and-services → 200
+2025-08-22 12:28:50,322 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/products-and-services (def from text)
+2025-08-22 12:28:50,370 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:50,370 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/products-and-services
+2025-08-22 12:28:52,434 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/products-and-services (def from text)
+2025-08-22 12:28:52,473 | WARNING | scraper.email_extractor | Failed to clean '': invalid format (no single @)
+2025-08-22 12:28:52,777 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/contact → 200
+2025-08-22 12:28:52,997 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact (def from text)
+2025-08-22 12:28:53,744 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/contact/pems-testing-service-contact-page → 200
+2025-08-22 12:28:53,774 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact/pems-testing-service-contact-page (def from text)
+2025-08-22 12:28:53,797 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/contact/pems-testing-service-contact-page
+2025-08-22 12:28:55,837 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/contact/pems-testing-service-contact-page (def from text)
+2025-08-22 12:28:56,143 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/legal/code-of-conduct → 200
+2025-08-22 12:28:56,181 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/code-of-conduct (def from text)
+2025-08-22 12:28:56,212 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/legal/code-of-conduct
+2025-08-22 12:28:58,434 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/code-of-conduct (def from text)
+2025-08-22 12:28:58,829 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/working-at-daf/onboarding → 200
+2025-08-22 12:28:58,873 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf/onboarding (def from text)
+2025-08-22 12:28:58,912 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/working-at-daf/onboarding
+2025-08-22 12:29:00,352 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/working-at-daf/onboarding (def from text)
+2025-08-22 12:29:00,401 | WARNING | scraper.http         | Redirect loop detected – already visited https://rmi.daf.com/
+2025-08-22 12:29:00,616 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/legal/legal-notice → 200
+2025-08-22 12:29:00,645 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/legal-notice (def from text)
+2025-08-22 12:29:00,668 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/legal/legal-notice
+2025-08-22 12:29:02,130 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/legal-notice (def from text)
+2025-08-22 12:29:02,526 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/legal/privacy-statement → 200
+2025-08-22 12:29:02,579 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/privacy-statement (def from text)
+2025-08-22 12:29:02,637 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://www.daf.com/en/legal/privacy-statement
+2025-08-22 12:29:02,872 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/legal/general-conditions → 200
+2025-08-22 12:29:02,900 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/general-conditions (def from text)
+2025-08-22 12:29:02,923 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/legal/general-conditions
+2025-08-22 12:29:04,396 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/general-conditions (def from text)
+2025-08-22 12:29:04,614 | INFO    | scraper.http         | HTTP GET https://www.daf.com/en/legal/daf-and-cookies → 200
+2025-08-22 12:29:04,645 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/daf-and-cookies (def from text)
+2025-08-22 12:29:04,667 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.daf.com/en/legal/daf-and-cookies
+2025-08-22 12:29:06,602 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/legal/daf-and-cookies (def from text)
+2025-08-22 12:29:06,783 | INFO    | scraper.http         | HTTP GET https://parts.daf.com/hybrid-login → 200
+2025-08-22 12:29:06,784 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://parts.daf.com/en-gb/identity/login/commerce/Auth0Generic?returnUrl=
+2025-08-22 12:29:08,261 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/identity/login/commerce/Auth0Generic?returnUrl= (def from text)
+2025-08-22 12:29:08,263 | INFO    | scraper.crawler      | Crawl of daf.com completed: 25 pages fetched, 390 unique URLs seen, 2 emails, 61.4 seconds
+2025-08-22 12:29:08,264 | INFO    | scraper.orchestrator | ✓ Found 2 emails for daf trucks
+2025-08-22 12:29:13,088 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com
+2025-08-22 12:29:14,103 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025E17C7BED0>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 12:29:14,104 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com
+2025-08-22 12:30:18,232 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025E17C96140>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 12:31:22,408 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 12:31:23,417 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025E17C78410>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 12:31:23,418 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 12:32:27,542 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025E17C959D0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 12:33:32,700 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 12:33:33,718 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025E17C787D0>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 12:33:33,719 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap.xml
+2025-08-22 12:34:37,878 | WARNING | scraper.http         | HTTP fallback failed for http://bluetech00.gobizkorea.com/sitemap.xml: HTTPConnectionPool(host='bluetech00.gobizkorea.com', port=80): Max retries exceeded with url: /sitemap.xml (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000025E17C947C0>, 'Connection to bluetech00.gobizkorea.com timed out. (connect timeout=60)'))
+2025-08-22 12:35:42,002 | INFO    | scraper.http         | Retrying with www-prefix: https://www.bluetech00.gobizkorea.com/sitemap_index.xml
+2025-08-22 12:35:43,025 | WARNING | scraper.http         | www-prefix retry failed for https://www.bluetech00.gobizkorea.com/sitemap_index.xml: HTTPSConnectionPool(host='www.bluetech00.gobizkorea.com', port=443): Max retries exceeded with url: /sitemap_index.xml (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000025E17C7A350>: Failed to resolve 'www.bluetech00.gobizkorea.com' ([Errno 11001] getaddrinfo failed)"))
+2025-08-22 12:35:43,025 | INFO    | scraper.http         | Retrying with HTTP: http://bluetech00.gobizkorea.com/sitemap_index.xml

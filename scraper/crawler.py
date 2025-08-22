@@ -86,11 +86,15 @@ class Crawler:
 
         limit = limit or self.get_domain_limit(domain)
         max_time = max_time if max_time is not None else min(60, limit * 2)
-        num_workers = num_workers or getattr(config, 'default_workers', 4)
+    # Default workers (TASK-003): fall back to config.max_workers when None
+        if not num_workers:
+            num_workers = config.max_workers
 
         start_time = time.time()
-        log.info("Starting crawl of %s (limit: %d pages, timeout: %d seconds, workers: %d)",
-                 domain, limit, max_time, num_workers)
+        log.info(
+            "Start crawl %s (limit=%d, timeout=%ds, workers=%d)",
+            domain, limit, max_time, num_workers
+        )
 
         q: Deque[str] = deque()
         found_emails: Set[str] = set()
@@ -123,7 +127,9 @@ class Crawler:
                         return
 
                 # 4) do the actual fetch
-                log.debug("[%s] Fetching %s", threading.current_thread().name, url)
+                log.debug(
+                    "[%s] Fetching %s", threading.current_thread().name, url
+                )
                 resp = http_client.safe_get(url, retry_count=2)
                 if not resp:
                     continue   # failed fetch doesn’t count
@@ -166,12 +172,15 @@ class Crawler:
         with self._lock:
             seen_count = len(self._seen_urls)
         log.info(
-            "Crawl of %s completed: %d pages fetched, %d unique URLs seen, %d emails, %.1f seconds",
+            (
+                "Crawl of %s completed: %d pages fetched, %d unique URLs "
+                "seen, %d emails, %.1f s"
+            ),
             domain,
             go_global_page_count[domain],
             seen_count,
             len(found_emails),
-            total_time
+            total_time,
         )
 
         return found_emails
@@ -184,7 +193,7 @@ class Crawler:
         found_emails: Set[str],
     ) -> None:
         """
-        Extract emails and internal links from a response, enqueueing only new canonical URLs.
+    Extract emails and internal links, enqueue only new canonical URLs.
         """
         page_url = resp.url
         html = resp.text
@@ -216,4 +225,6 @@ class Crawler:
                     q.append(canon)
 
 # Global crawler instance
+ 
+
 crawler = Crawler()

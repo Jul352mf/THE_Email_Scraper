@@ -1,0 +1,77 @@
+2025-08-22 10:50:41,056 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 10:50:41,056 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 10:50:41,057 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 10:50:41,057 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 10:50:41,058 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-22 10:50:41,058 | INFO    | scraper.cli          | Max pages: 30
+2025-08-22 10:50:41,058 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 10:50:41,059 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 10:50:41,233 | INFO    | scraper.cli          | Loaded 9 companies from test_input.xlsx
+2025-08-22 10:50:41,233 | INFO    | scraper.orchestrator | ▶ Processing company: walter schmidt chemie gmbh
+2025-08-22 10:50:41,234 | INFO    | scraper.orchestrator | ▶ Processing company: henan xinlianxin fertilizer 
+2025-08-22 10:50:41,236 | INFO    | scraper.orchestrator | ▶ Processing company: mitsui toatsu chemicals 
+2025-08-22 10:50:41,237 | INFO    | scraper.orchestrator | ▶ Processing company: bluetec haman
+2025-08-22 10:50:41,237 | INFO    | scraper.orchestrator | ▶ Processing company: daf trucks
+2025-08-22 10:50:41,237 | INFO    | scraper.orchestrator | ▶ Processing company: petrol rete 
+2025-08-22 10:50:41,238 | INFO    | scraper.orchestrator | ▶ Processing company: euro dam jas doo
+2025-08-22 10:50:41,238 | INFO    | scraper.orchestrator | ▶ Processing company: Synsol
+2025-08-22 10:50:41,238 | INFO    | scraper.orchestrator | ▶ Processing company: speedy fuels
+2025-08-22 10:50:41,907 | INFO    | scraper.orchestrator | ✓ Found domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 10:50:42,304 | ERROR   | scraper.google_search | SSL WRONG_VERSION_NUMBER from Google API – likely a proxy/MITM issue. Transport is already proxy-free; check system-wide proxies or antivirus HTTPS inspection.
+2025-08-22 10:50:42,304 | ERROR   | scraper.google_search | SSL WRONG_VERSION_NUMBER from Google API – likely a proxy/MITM issue. Transport is already proxy-free; check system-wide proxies or antivirus HTTPS inspection.
+2025-08-22 10:50:42,304 | ERROR   | scraper.google_search | SSL WRONG_VERSION_NUMBER from Google API – likely a proxy/MITM issue. Transport is already proxy-free; check system-wide proxies or antivirus HTTPS inspection.
+2025-08-22 10:50:42,305 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 10:50:42,305 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 10:50:42,305 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:2648)
+2025-08-22 10:50:42,306 | WARNING | scraper.orchestrator | No Google search results for: Synsol
+2025-08-22 10:50:42,306 | WARNING | scraper.orchestrator | No Google search results for: daf trucks
+2025-08-22 10:50:42,306 | WARNING | scraper.orchestrator | No Google search results for: speedy fuels
+2025-08-22 10:50:42,531 | INFO    | scraper.orchestrator | ✓ Found domain: bpetrol.it (score: 92)
+2025-08-22 10:50:43,039 | INFO    | scraper.http         | HTTP GET https://bpetrol.it → 200
+2025-08-22 10:50:43,090 | INFO    | scraper.email_extractor |   2 emails on https://www.bpetrol.it/ (def from text)
+2025-08-22 10:50:43,090 | INFO    | scraper.hybrid_email_extractor | Static pass found 2 emails in https://www.bpetrol.it/
+2025-08-22 10:50:43,765 | INFO    | scraper.http         | HTTP HEAD https://www.bpetrol.it/sitemap.xml → 200
+2025-08-22 10:50:44,321 | INFO    | scraper.http         | HTTP GET https://www.bpetrol.it/sitemap.xml → 200
+2025-08-22 10:50:44,322 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://www.bpetrol.it/sitemap.xml (1.23s)
+2025-08-22 10:50:44,322 | WARNING | scraper.sitemap      | Error parsing https://www.bpetrol.it/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:50:44,323 | INFO    | scraper.orchestrator | Used sitemap for bpetrol.it
+2025-08-22 10:50:44,323 | INFO    | scraper.orchestrator | ✓ Found 2 emails for petrol rete 
+2025-08-22 10:50:52,075 | WARNING | scraper.google_search | Google search timed out on 'henan xinlianxin fertilizer ' (attempt 1/5), retrying in 1s
+2025-08-22 10:50:52,076 | WARNING | scraper.google_search | Google search timed out on 'euro dam jas doo' (attempt 1/5), retrying in 1s
+2025-08-22 10:50:52,356 | WARNING | scraper.google_search | Google search timed out on 'bluetec haman' (attempt 1/5), retrying in 1s
+2025-08-22 10:50:52,356 | WARNING | scraper.google_search | Google search timed out on 'mitsui toatsu chemicals ' (attempt 1/5), retrying in 1s
+2025-08-22 10:50:53,615 | INFO    | scraper.orchestrator | ✓ Found domain: eurodamjas.com (score: 100)
+2025-08-22 10:50:54,044 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com → 200
+2025-08-22 10:50:54,069 | INFO    | scraper.hybrid_email_extractor | Static pass found 1 emails in https://eurodamjas.com/
+2025-08-22 10:50:54,095 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 10:50:54,096 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 10:50:54,096 | ERROR   | scraper.google_search | Unexpected error in Google search: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 10:50:54,096 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 10:50:54,097 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 10:50:54,097 | ERROR   | scraper.google_search | Search failed with fallback: [SSL: DECRYPTION_FAILED_OR_BAD_RECORD_MAC] decryption failed or bad record mac (_ssl.c:2648)
+2025-08-22 10:50:54,097 | WARNING | scraper.orchestrator | No Google search results for: henan xinlianxin fertilizer 
+2025-08-22 10:50:54,097 | WARNING | scraper.orchestrator | No Google search results for: bluetec haman
+2025-08-22 10:50:54,097 | WARNING | scraper.orchestrator | No Google search results for: mitsui toatsu chemicals 
+2025-08-22 10:50:54,410 | INFO    | scraper.http         | HTTP HEAD https://eurodamjas.com/sitemap.xml → 200
+2025-08-22 10:50:54,734 | INFO    | scraper.http         | HTTP GET https://eurodamjas.com/sitemap.xml → 200
+2025-08-22 10:50:54,734 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://eurodamjas.com/sitemap.xml (0.66s)
+2025-08-22 10:50:54,735 | WARNING | scraper.sitemap      | Error parsing https://eurodamjas.com/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:50:54,735 | INFO    | scraper.orchestrator | Used sitemap for eurodamjas.com
+2025-08-22 10:50:54,736 | INFO    | scraper.orchestrator | ✓ Found 1 emails for euro dam jas doo
+2025-08-22 10:51:24,761 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de → 200
+2025-08-22 10:51:24,811 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 10:51:24,819 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/
+2025-08-22 10:51:29,526 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 10:52:15,478 | INFO    | scraper.http         | HTTP HEAD https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 10:53:01,701 | INFO    | scraper.http         | HTTP GET https://walter-schmidt-chemie.de/sitemap.xml → 200
+2025-08-22 10:53:01,701 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (92.16s)
+2025-08-22 10:53:01,703 | WARNING | scraper.sitemap      | Error parsing https://walter-schmidt-chemie.de/sitemap.xml – XML parse failed: Couldn't find a tree builder with the features you requested: xml. Do you need to install a parser library?
+2025-08-22 10:53:01,704 | INFO    | scraper.orchestrator | Used sitemap for walter-schmidt-chemie.de
+2025-08-22 10:53:01,704 | INFO    | scraper.orchestrator | No emails found in sitemap, attempting fallback crawl: walter-schmidt-chemie.de
+2025-08-22 10:53:01,704 | INFO    | scraper.crawler      | Starting crawl of walter-schmidt-chemie.de (limit: 30 pages, timeout: 60 seconds, workers: 4)
+2025-08-22 10:53:01,946 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/ → 200
+2025-08-22 10:53:01,963 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-22 10:53:02,270 | INFO    | scraper.http         | HTTP GET https://www.walter-schmidt-chemie.de/en/ → 200
+2025-08-22 10:53:02,283 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from text)
+2025-08-22 10:53:02,292 | INFO    | scraper.hybrid_email_extractor | JS fallback for https://www.walter-schmidt-chemie.de/en/
+2025-08-22 10:53:37,296 | WARNING | scraper.browser_service | Render() timeout for https://www.walter-schmidt-chemie.de/en/
