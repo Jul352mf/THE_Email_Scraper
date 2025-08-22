@@ -46,11 +46,12 @@ Legend
 - Commit message: `perf(http): implement domain access pattern optimization to reduce redundant requests`
 - Result: Added DomainPattern system with AccessMethod enum, domain probing logic, and integration across all components. Significantly reduces HTTP requests by eliminating redundant fallback attempts.
 
-### TASK-004 — Clear orchestrator seen/in-progress on reset (MEDIUM) [Open]
+### TASK-004 — Clear orchestrator seen/in-progress on reset (MEDIUM) [Done]
 - Files: `scraper/orchestrator.py`
 - Contract: `Orchestrator.reset_stats()` should clear `_global_seen` and `_global_in_progress` under lock.
 - Smoke test: run two sequential orchestrator runs in same process and ensure second run does not skip domains.
 - Commit message: `fix(orchestrator): clear global seen and in-progress sets on reset`
+- Result: Already implemented in TASK-028. The reset_stats() method properly clears global domain tracking sets under lock, allowing sequential runs to process the same domains without skipping. Verified with smoke tests.
 
 ### TASK-005 — BrowserService graceful degrade (HIGH) [Open]
 - Files: `scraper/browser_service.py`
