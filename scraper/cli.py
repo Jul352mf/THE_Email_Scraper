@@ -117,19 +117,19 @@ class CLI:
         
         parser.add_argument(
             "--input-dir",
-            default="input",
+            default=os.getenv("INPUT_DIR", "input"),
             help="Input directory for batch processing"
         )
         
         parser.add_argument(
             "--output-dir", 
-            default="output",
+            default=os.getenv("OUTPUT_DIR", "output"),
             help="Output directory for results"
         )
         
         parser.add_argument(
             "--log-dir",
-            default="logs",
+            default=os.getenv("LOG_DIR", "logs"),
             help="Log directory for processing logs"
         )
         
@@ -233,18 +233,23 @@ class CLI:
         except Exception as e:
             return False, f"Error checking output file: {e}"
     
-    def setup_logging(self, verbose: bool) -> str:
+    def setup_logging(self, verbose: bool, log_dir: str = ".") -> str:
         """
         Set up logging configuration.
         
         Args:
             verbose: Whether to enable verbose logging
+            log_dir: Directory where log files should be saved
             
         Returns:
             Path to log file
         """
-        # Create log file name
-        logfile = f"scraper_{time.strftime('%Y%m%d_%H%M%S')}.log"
+        # Ensure log directory exists
+        os.makedirs(log_dir, exist_ok=True)
+        
+        # Create log file name in the specified directory
+        timestamp = time.strftime('%Y%m%d_%H%M%S')
+        logfile = os.path.join(log_dir, f"scraper_{timestamp}.log")
         
         # Set log level
         level = logging.DEBUG if verbose else logging.INFO
@@ -275,12 +280,12 @@ class CLI:
         Returns:
             True if successful, False otherwise
         """
-        # Set up logging
-        logfile = self.setup_logging(args.verbose)
+        # Set up logging with log directory
+        logfile = self.setup_logging(args.verbose, args.log_dir)
         
         log.info("Email scraper starting in batch mode")
         log.info("Input directory: %s", args.input_dir)
-        log.info("Output directory: %s", args.output_dir) 
+        log.info("Output directory: %s", args.output_dir)
         log.info("Log directory: %s", args.log_dir)
         log.info("Workers: %d", args.workers)
         
@@ -346,8 +351,8 @@ class CLI:
         Returns:
             True if successful, False otherwise
         """
-        # Set up logging
-        logfile = self.setup_logging(args.verbose)
+        # Set up logging with log directory
+        logfile = self.setup_logging(args.verbose, args.log_dir)
         
         browser_service = get_browser_service()
         
