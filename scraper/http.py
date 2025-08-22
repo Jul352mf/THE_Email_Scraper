@@ -86,23 +86,36 @@ class TokenBucket:
         self._last = time.time()
 
     def consume(self, tokens: float = 1.0):
+        # Fast path: try to consume with lock held and return immediately if possible
         with self._lock:
             now = time.time()
-            # add tokens since last check
             delta = (now - self._last) * self.rate
             self._tokens = min(self.capacity, self._tokens + delta)
             self._last = now
 
             if self._tokens >= tokens:
                 self._tokens -= tokens
-                return  # go ahead immediately
+                return
 
-            # not enough tokens—compute sleep
+            # Not enough tokens — compute how long we need to wait, but do not sleep while holding the lock.
             needed = tokens - self._tokens
             wait = needed / self.rate
+
+        # Sleep outside the lock so other threads may make progress.
+        if wait > 0:
             time.sleep(wait)
-            # after sleeping, “spend” the tokens
-            self._tokens = 0
+
+        # After sleeping, re-acquire lock and deduct tokens (defensive: recompute the refill)
+        with self._lock:
+            now = time.time()
+            delta = (now - self._last) * self.rate
+            self._tokens = min(self.capacity, self._tokens + delta)
+            self._last = now
+            # consume if available, else set to 0 (we waited the necessary time)
+            if self._tokens >= tokens:
+                self._tokens -= tokens
+            else:
+                self._tokens = 0
 
 
 # ---------------------------------------------------------------------------
