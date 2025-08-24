@@ -1,0 +1,4826 @@
+[
+  {
+    "id": "PERF-001",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "Canvas/canvas_scraper.py",
+      "line": 52,
+      "snippet": "for link in module_links:\nresp = self.session.get(link)"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-002",
+    "title": "Reading entire file into memory",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "Canvas/canvas_scraper.py",
+      "line": 107,
+      "snippet": "module_html = open(os.path.join(\"Canvas\", \"Canvas_Corporate_Finance_Module_html_F12_export.html\"), encoding=\"utf-8\").read()"
+    },
+    "impact": "Large file operations may cause memory issues",
+    "remediation": [
+      "Use streaming/chunked reading",
+      "Implement pagination"
+    ],
+    "effort": "S",
+    "tags": [
+      "performance",
+      "memory",
+      "io"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-003",
+    "title": "Reading entire file into memory",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "Canvas/canvas_scraper.py",
+      "line": 111,
+      "snippet": "page_html = open(os.path.join(\"Canvas\", \"Canvas_Corporate_Finance_Module_Page_html_F12_export.html\"), encoding=\"utf-8\").read()"
+    },
+    "impact": "Large file operations may cause memory issues",
+    "remediation": [
+      "Use streaming/chunked reading",
+      "Implement pagination"
+    ],
+    "effort": "S",
+    "tags": [
+      "performance",
+      "memory",
+      "io"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-004",
+    "title": "Network operations without error handling",
+    "severity": "Major",
+    "confidence": "High",
+    "evidence": {
+      "path": "Canvas/canvas_scraper.py",
+      "line": 1,
+      "snippet": "File contains network calls but no try/catch"
+    },
+    "impact": "Unhandled network errors can crash the application",
+    "remediation": [
+      "Add try/catch blocks",
+      "Implement retry logic"
+    ],
+    "effort": "S",
+    "tags": [
+      "architecture",
+      "reliability",
+      "error-handling"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-005",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "Canvas/canvas_scraper.py",
+      "line": 107,
+      "snippet": "    module_html = open(os.path.join(\"Canvas\", \"Can... (127 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-006",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "Canvas/canvas_scraper.py",
+      "line": 111,
+      "snippet": "    page_html = open(os.path.join(\"Canvas\", \"Canva... (130 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-007",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "Canvas/canvas_scraper.py",
+      "line": 54,
+      "snippet": "resp.raise_for_status() (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-008",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/crawler_old.py",
+      "line": 233,
+      "snippet": "for a in soup.find_all(\"a\", href=True):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-009",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "archive/crawler_old.py",
+      "line": 83,
+      "snippet": "Function has 86 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-010",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/crawler_old.py",
+      "line": 169,
+      "snippet": "except Exception as e: (appears 5 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-011",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/file_updater.py",
+      "line": 142,
+      "snippet": "for company, results in company_results.items():"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-012",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/file_updater.py",
+      "line": 143,
+      "snippet": "for result in results:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-013",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/http_old.py",
+      "line": 55,
+      "snippet": "status_forcelist=[429, 500, 502, 503, 504],\nallowed_methods=[\"GET\", \"HEAD\"]"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-014",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/http_old.py",
+      "line": 94,
+      "snippet": "# Debug mode for saving HTML content\nself.debug_mode = os.getenv(\"DEBUG_MODE\", \"0\").lower() in {\"1\", \"true\", \"yes\"}"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-015",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "archive/http_old.py",
+      "line": 107,
+      "snippet": "Function has 103 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-016",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/http_old.py",
+      "line": 103,
+      "snippet": "except Exception as e: (appears 5 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-017",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/progress.py",
+      "line": 63,
+      "snippet": "if self.console: (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-018",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/proxy.py",
+      "line": 281,
+      "snippet": "available = sum(1 for p in self.proxies if p.is_available())\nsuccess_rates = [p.get_success_rate() for p in self.proxies if p.success_count + p.failure_count > 0]"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-019",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/proxy.py",
+      "line": 261,
+      "snippet": "for proxy in self.proxies:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-020",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/proxy.py",
+      "line": 147,
+      "snippet": "with self.lock: (appears 5 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-021",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/rate_limiter.py",
+      "line": 63,
+      "snippet": "# Get rate for this domain\nrate = self.domain_rates.get(domain, self.default_rate) if domain else self.default_rate"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-022",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 173,
+      "snippet": "# Check for sitemap index\nsitemapindex = soup.find(\"sitemapindex\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-023",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 179,
+      "snippet": "for sitemap in sitemapindex.find_all(\"sitemap\"):\nloc = sitemap.find(\"loc\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-024",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 196,
+      "snippet": "for loc in soup.find_all(\"loc\"):\nurl = loc.get_text(strip=True)"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-025",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 115,
+      "snippet": "for line in response.text.splitlines():"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-026",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 179,
+      "snippet": "for sitemap in sitemapindex.find_all(\"sitemap\"):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-027",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 191,
+      "snippet": "for url in self.parse_sitemap(response.content):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-028",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 196,
+      "snippet": "for loc in soup.find_all(\"loc\"):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-029",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 230,
+      "snippet": "for sitemap_url in self.discover_sitemaps(domain):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-030",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 242,
+      "snippet": "for url in self.parse_sitemap(response.content):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-031",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 40,
+      "snippet": "Function has 63 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-032",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 135,
+      "snippet": "Function has 53 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-033",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/sitemap_old.py",
+      "line": 162,
+      "snippet": "except Exception as e: (appears 4 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "SEC-034",
+    "title": "Hardcoded API key",
+    "severity": "Major",
+    "confidence": "High",
+    "evidence": {
+      "path": "archive/tests.py",
+      "line": 55,
+      "snippet": "config.api_key = \"te***\""
+    },
+    "impact": "Hardcoded credentials pose security risk",
+    "remediation": [
+      "Use environment variables",
+      "Use secure credential management"
+    ],
+    "effort": "S",
+    "tags": [
+      "security",
+      "credentials",
+      "secrets"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "SEC-035",
+    "title": "Hardcoded API key",
+    "severity": "Major",
+    "confidence": "High",
+    "evidence": {
+      "path": "archive/tests.py",
+      "line": 61,
+      "snippet": "config.api_key = \"te***\""
+    },
+    "impact": "Hardcoded credentials pose security risk",
+    "remediation": [
+      "Use environment variables",
+      "Use secure credential management"
+    ],
+    "effort": "S",
+    "tags": [
+      "security",
+      "credentials",
+      "secrets"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-036",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/tests.py",
+      "line": 118,
+      "snippet": "# Reset mock for the next test\nmock_get.side_effect = None"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-037",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/tests.py",
+      "line": 270,
+      "snippet": "for result in results:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "REL-038",
+    "title": "Missing logging in business logic",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/tests.py",
+      "line": 1,
+      "snippet": "No logging statements found"
+    },
+    "impact": "Lack of logging makes debugging difficult",
+    "remediation": [
+      "Add structured logging",
+      "Log important operations and errors"
+    ],
+    "effort": "S",
+    "tags": [
+      "reliability",
+      "observability",
+      "logging"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-039",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/tests.py",
+      "line": 51,
+      "snippet": "errors = config.validate() (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-040",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/worker.py",
+      "line": 155,
+      "snippet": "for _ in range(self.worker_count):\nworker = threading.Thread(target=self._worker_loop)"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-041",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/worker.py",
+      "line": 155,
+      "snippet": "for _ in range(self.worker_count):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-042",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/worker.py",
+      "line": 181,
+      "snippet": "for worker in self.workers:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-043",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "archive/worker.py",
+      "line": 128,
+      "snippet": "with self.results_lock: (appears 5 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-044",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 227,
+      "snippet": "for severity in Severity:\ncount = len([f for f in findings if f.severity == severity])"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-045",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 238,
+      "snippet": "for finding in findings:\nall_tags.extend(finding.tags)"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-046",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 242,
+      "snippet": "for tag in all_tags:\ntag_counts[tag] = tag_counts.get(tag, 0) + 1"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-047",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 176,
+      "snippet": "for cmd in lint_commands:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-048",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 227,
+      "snippet": "for severity in Severity:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-049",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 233,
+      "snippet": "for severity, count in severity_counts.items():"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-050",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 238,
+      "snippet": "for finding in findings:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-051",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 242,
+      "snippet": "for tag in all_tags:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-052",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 247,
+      "snippet": "for tag, count in sorted(tag_counts.items(), key=lambda x: x[1], reverse=True)[:5]:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-053",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/audit_engine.py",
+      "line": 64,
+      "snippet": "except Exception as e: (appears 4 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-054",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/cli.py",
+      "line": 35,
+      "snippet": "parser.add_argument( (appears 10 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "SEC-055",
+    "title": "Code injection via eval",
+    "severity": "Major",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 137,
+      "snippet": "(r'eval\\s*\\(', \"Code injection via eval()\"),"
+    },
+    "impact": "Potential command injection vulnerability",
+    "remediation": [
+      "Use subprocess with lists",
+      "Validate and sanitize input"
+    ],
+    "effort": "S",
+    "tags": [
+      "security",
+      "injection",
+      "command"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-056",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 212,
+      "snippet": "if any(keyword in next_line.lower() for keyword in ['query', 'select', 'find', 'get']):\nself._add_finding("
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-057",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 219,
+      "snippet": "\"N+1 queries can cause performance degradation\",\n[\"Use bulk operations\", \"Implement query optimization\"],"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-058",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 409,
+      "snippet": "evidence: Evidence, impact: str, remediation: List[str], effort: str, tags: List[str]):\n\"\"\"Add a finding to the results.\"\"\""
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-059",
+    "title": "Reading entire file into memory",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 75,
+      "snippet": "content = f.read()"
+    },
+    "impact": "Large file operations may cause memory issues",
+    "remediation": [
+      "Use streaming/chunked reading",
+      "Implement pagination"
+    ],
+    "effort": "S",
+    "tags": [
+      "performance",
+      "memory",
+      "io"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-060",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 119,
+      "snippet": "for pattern, desc in sql_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-061",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 141,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-062",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 142,
+      "snippet": "for pattern, desc in xss_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-063",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 164,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-064",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 165,
+      "snippet": "for pattern, desc in secret_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-065",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 189,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-066",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 190,
+      "snippet": "for pattern, desc in cmd_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-067",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 209,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-068",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 231,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-069",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 232,
+      "snippet": "for pattern, desc in large_file_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-070",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 249,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-071",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 277,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-072",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 348,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-073",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 349,
+      "snippet": "for pattern, tag in todo_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-074",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 369,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-075",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 385,
+      "snippet": "for i, line in enumerate(lines, 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-076",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 393,
+      "snippet": "for line_content, line_numbers in line_counts.items():"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-077",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 107,
+      "snippet": "Function has 82 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-078",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 204,
+      "snippet": "Function has 55 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "TODO-079",
+    "title": "TODO: /FIXME comments",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 340,
+      "snippet": "# TODO/FIXME comments"
+    },
+    "impact": "Open work item that should be addressed",
+    "remediation": [
+      "Complete the work item",
+      "Create tracking issue"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "todo",
+      "todo"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-080",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 305,
+      "snippet": "            has_network_calls = any(keyword in con... (121 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-081",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/code_analysis.py",
+      "line": 95,
+      "snippet": "self._add_finding( (appears 14 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "REL-082",
+    "title": "Missing logging in business logic",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/config.py",
+      "line": 1,
+      "snippet": "No logging statements found"
+    },
+    "impact": "Lack of logging makes debugging difficult",
+    "remediation": [
+      "Add structured logging",
+      "Log important operations and errors"
+    ],
+    "effort": "S",
+    "tags": [
+      "reliability",
+      "observability",
+      "logging"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "SEC-083",
+    "title": "Shell injection risk",
+    "severity": "Major",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 141,
+      "snippet": "result = subprocess.run(cmd, shell=True, capture_output=True, text=True)"
+    },
+    "impact": "Potential command injection vulnerability",
+    "remediation": [
+      "Use subprocess with lists",
+      "Validate and sanitize input"
+    ],
+    "effort": "S",
+    "tags": [
+      "security",
+      "injection",
+      "command"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-084",
+    "title": "Reading entire file into memory",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 153,
+      "snippet": "content = f.read()"
+    },
+    "impact": "Large file operations may cause memory issues",
+    "remediation": [
+      "Use streaming/chunked reading",
+      "Implement pagination"
+    ],
+    "effort": "S",
+    "tags": [
+      "performance",
+      "memory",
+      "io"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-085",
+    "title": "Reading entire file into memory",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 163,
+      "snippet": "content = f.read()"
+    },
+    "impact": "Large file operations may cause memory issues",
+    "remediation": [
+      "Use streaming/chunked reading",
+      "Implement pagination"
+    ],
+    "effort": "S",
+    "tags": [
+      "performance",
+      "memory",
+      "io"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-086",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 70,
+      "snippet": "for file_path in all_files:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-087",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 72,
+      "snippet": "for pattern in self.exclude_globs:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-088",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 81,
+      "snippet": "for file_path in sorted(filtered_files):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-089",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 183,
+      "snippet": "for line in lines:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-090",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 197,
+      "snippet": "for line in lines:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-091",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 218,
+      "snippet": "for line in lines:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-092",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 239,
+      "snippet": "for line in lines:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "REL-093",
+    "title": "Missing logging in business logic",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 1,
+      "snippet": "No logging statements found"
+    },
+    "impact": "Lack of logging makes debugging difficult",
+    "remediation": [
+      "Add structured logging",
+      "Log important operations and errors"
+    ],
+    "effort": "S",
+    "tags": [
+      "reliability",
+      "observability",
+      "logging"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-094",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 140,
+      "snippet": "            cmd = f'cd \"{self.repo_path}\" && git -... (127 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-095",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/file_enumeration.py",
+      "line": 133,
+      "snippet": "except Exception: (appears 4 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-096",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 2,
+      "snippet": "Report generation module for audit system.\nGenerates markdown reports, JSON findings, and code maps."
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-097",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 64,
+      "snippet": "# Performance\ncontent.extend(self._generate_performance_section(findings))"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-098",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 96,
+      "snippet": "for finding in findings:\nfinding_dict = {"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-099",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 109,
+      "snippet": "\"effort\": finding.effort,\n\"tags\": finding.tags,"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-100",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 159,
+      "snippet": "languages = set(f.language for f in file_infos)\ncritical_findings = [f for f in findings if f.severity == Severity.CRITICAL]"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-101",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 160,
+      "snippet": "critical_findings = [f for f in findings if f.severity == Severity.CRITICAL]\nmajor_findings = [f for f in findings if f.severity == Severity.MAJOR]"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-102",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 185,
+      "snippet": "for purpose in file_purposes:\npurpose_counts[purpose] = purpose_counts.get(purpose, 0) + 1"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-103",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 267,
+      "snippet": "arch_findings = [f for f in findings if 'arch' in f.tags]\nfor finding in arch_findings[:3]:  # Top 3 architectural issues"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-104",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 268,
+      "snippet": "for finding in arch_findings[:3]:  # Top 3 architectural issues\ncontent.append(f\"- {finding.impact} ({finding.evidence.path}:{finding.evidence.line})\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-105",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 283,
+      "snippet": "for i, finding in enumerate(sorted_findings[:10], 1):\ncontent.append(f\"### {i}. {finding.title}\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-106",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 301,
+      "snippet": "sec_findings = [f for f in findings if 'security' in f.tags]\nif not sec_findings:"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-107",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 309,
+      "snippet": "for finding in sec_findings:\nfor tag in finding.tags:"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-108",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 318,
+      "snippet": "for finding in type_findings:\ncontent.append(f\"- **{finding.title}** ({finding.severity.value})\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-109",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 337,
+      "snippet": "for finding in logging_issues[:3]:\ncontent.append(f\"- {finding.title} in `{finding.evidence.path}`\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-110",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 347,
+      "snippet": "for finding in error_issues[:3]:\ncontent.append(f\"- {finding.title} in `{finding.evidence.path}`\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-111",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 368,
+      "snippet": "for finding in perf_findings:\ncontent.append(f\"- **{finding.title}** ({finding.severity.value})\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-112",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 443,
+      "snippet": "# Categorize by effort\nfast_wins = [f for f in findings if f.effort == 'S']"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-113",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 444,
+      "snippet": "fast_wins = [f for f in findings if f.effort == 'S']\nhigh_leverage = [f for f in findings if f.effort == 'M']"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-114",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 445,
+      "snippet": "high_leverage = [f for f in findings if f.effort == 'M']\ndeep_work = [f for f in findings if f.effort == 'L']"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-115",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 449,
+      "snippet": "for finding in fast_wins[:5]:\ncontent.append(f\"- {finding.title} ({finding.severity.value})\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-116",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 454,
+      "snippet": "for finding in high_leverage[:5]:\ncontent.append(f\"- {finding.title} ({finding.severity.value})\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-117",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 459,
+      "snippet": "for finding in deep_work[:3]:\ncontent.append(f\"- {finding.title} ({finding.severity.value})\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-118",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 135,
+      "snippet": "for dir_path in sorted(dirs.keys()):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-119",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 140,
+      "snippet": "for file_info in files:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-120",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 185,
+      "snippet": "for purpose in file_purposes:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-121",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 190,
+      "snippet": "for keyword in ['main', 'cli', '__main__', 'app', 'server'])]"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-122",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 194,
+      "snippet": "for ep in entry_points[:3]:  # Top 3 entry points"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-123",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 201,
+      "snippet": "for lang in sorted(languages):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-124",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 217,
+      "snippet": "for dir_name in sorted(dirs):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-125",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 220,
+      "snippet": "for file_info in files_in_dir[:3]:  # Show max 3 files per dir"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-126",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 233,
+      "snippet": "for lang in sorted(languages):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-127",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 253,
+      "snippet": "for f in file_infos)"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-128",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 268,
+      "snippet": "for finding in arch_findings[:3]:  # Top 3 architectural issues"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-129",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 283,
+      "snippet": "for i, finding in enumerate(sorted_findings[:10], 1):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-130",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 309,
+      "snippet": "for finding in sec_findings:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-131",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 310,
+      "snippet": "for tag in finding.tags:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-132",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 316,
+      "snippet": "for sec_type, type_findings in sec_types.items():"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-133",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 318,
+      "snippet": "for finding in type_findings:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-134",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 337,
+      "snippet": "for finding in logging_issues[:3]:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-135",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 347,
+      "snippet": "for finding in error_issues[:3]:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-136",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 368,
+      "snippet": "for finding in perf_findings:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-137",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 384,
+      "snippet": "for keyword in ['model', 'schema', 'db', 'sql', 'migration'])]"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-138",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 388,
+      "snippet": "for f in data_files:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-139",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 414,
+      "snippet": "for f in test_files:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-140",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 426,
+      "snippet": "for name in ['dockerfile', 'requirements.txt', 'package.json', 'makefile'])]"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-141",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 430,
+      "snippet": "for f in build_files:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-142",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 449,
+      "snippet": "for finding in fast_wins[:5]:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-143",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 454,
+      "snippet": "for finding in high_leverage[:5]:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-144",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 459,
+      "snippet": "for finding in deep_work[:3]:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-145",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 488,
+      "snippet": "for f in file_infos:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-146",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 491,
+      "snippet": "            content.append(f\"| {f.path} | {f.langu... (134 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-147",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "audit_system/report_generator.py",
+      "line": 41,
+      "snippet": "content.append(\"\") (appears 46 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-148",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/browser_service.py",
+      "line": 48,
+      "snippet": "except PWTimeout: (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-149",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/cache.py",
+      "line": 138,
+      "snippet": "for key, _ in sorted_items[:to_remove]:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-150",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/cache.py",
+      "line": 503,
+      "snippet": "for key in list(self.index.keys()):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-151",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/cache.py",
+      "line": 82,
+      "snippet": "with self.lock: (appears 18 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-152",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/cli.py",
+      "line": 222,
+      "snippet": "# Set lower level for external libraries\nlogging.getLogger(\"requests\").setLevel(logging.WARNING)"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-153",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/cli.py",
+      "line": 43,
+      "snippet": "Function has 55 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-154",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/cli.py",
+      "line": 228,
+      "snippet": "Function has 104 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-155",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/cli.py",
+      "line": 55,
+      "snippet": "parser.add_argument( (appears 9 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-156",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/config.py",
+      "line": 33,
+      "snippet": "Function has 69 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-157",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/config.py",
+      "line": 86,
+      "snippet": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \" (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-158",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/crawler.py",
+      "line": 155,
+      "snippet": "for i in range(num_workers):\nt = threading.Thread(target=worker, name=f\"CrawlerThread-{i+1}\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-159",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/crawler.py",
+      "line": 54,
+      "snippet": "with self._lock: (appears 7 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-160",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/domain_scorer.py",
+      "line": 151,
+      "snippet": "for result in search_results:\nlink = result.get(\"link\", \"\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-161",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/domain_scorer.py",
+      "line": 175,
+      "snippet": "log.error(\"Error finding best domain for %s: %s\", company, e)\nraise DomainScoringError(f\"Error finding best domain: {e}\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-162",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/domain_scorer.py",
+      "line": 151,
+      "snippet": "for result in search_results:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-163",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/domain_scorer.py",
+      "line": 76,
+      "snippet": "company: Company name to match (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-164",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor.py",
+      "line": 76,
+      "snippet": "return False (appears 11 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-165",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 481,
+      "snippet": "# Look for emails in specific HTML elements that might contain contact info\ncontact_elements = soup.select('.contact, .email, .mail, #contact, #email, [class*=\"contact\"], [class*=\"email\"]')"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-166",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 483,
+      "snippet": "for element in contact_elements:\nelement_text = element.get_text()"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-167",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 341,
+      "snippet": "for pattern in self.false_positive_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-168",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 451,
+      "snippet": "for match in EMAIL_RE.finditer(html):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-169",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 468,
+      "snippet": "for anchor in soup.find_all(\"a\", href=True):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-170",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 483,
+      "snippet": "for element in contact_elements:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-171",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 486,
+      "snippet": "for match in EMAIL_RE.finditer(element_text):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-172",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 528,
+      "snippet": "for match in EMAIL_RE.finditer(text):"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-173",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 573,
+      "snippet": "for pattern in self.false_positive_patterns:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-174",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 90,
+      "snippet": "Function has 144 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-175",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 247,
+      "snippet": "Function has 62 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-176",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 433,
+      "snippet": "Function has 55 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-177",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 482,
+      "snippet": "                contact_elements = soup.select('.c... (129 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-178",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/email_extractor_manus.py",
+      "line": 258,
+      "snippet": "return False (appears 17 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-179",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/google_fallback.py",
+      "line": 88,
+      "snippet": "for element in soup.select(selector):\nurl = element.get(attribute, \"\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-180",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/google_fallback.py",
+      "line": 122,
+      "snippet": "# Format URL with query\nurl = engine[\"url\"].format(query=query.replace(\" \", \"+\"))"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-181",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/google_fallback.py",
+      "line": 160,
+      "snippet": "log.error(\"All fallback search engines failed for query: %s\", query)\nraise GoogleFallbackError(f\"All fallback search engines failed for query: {query}\")"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-182",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/google_fallback.py",
+      "line": 173,
+      "snippet": "# Normalize query for cache key\ncache_key = query.lower().strip()"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-183",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/google_fallback.py",
+      "line": 42,
+      "snippet": "            \"Mozilla/5.0 (Windows NT 10.0; Win64; ... (130 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-184",
+    "title": "Line too long",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/google_fallback.py",
+      "line": 43,
+      "snippet": "            \"Mozilla/5.0 (Macintosh; Intel Mac OS ... (134 chars)"
+    },
+    "impact": "Long lines reduce readability",
+    "remediation": [
+      "Break long lines",
+      "Use consistent formatting"
+    ],
+    "effort": "S",
+    "tags": [
+      "maintainability",
+      "formatting",
+      "readability"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-185",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/google_search.py",
+      "line": 72,
+      "snippet": "Function has 61 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-186",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/http.py",
+      "line": 123,
+      "snippet": "status_forcelist=(429, 500, 502, 503, 504),\nallowed_methods=(\"GET\", \"HEAD\"),"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-187",
+    "title": "Deep nested loops detected",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/http.py",
+      "line": 213,
+      "snippet": "for pat in blocked:"
+    },
+    "impact": "Deeply nested loops can impact performance",
+    "remediation": [
+      "Consider algorithmic optimization",
+      "Use more efficient data structures"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "algorithms",
+      "complexity"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-188",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/http.py",
+      "line": 184,
+      "snippet": "Function has 158 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-189",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/http.py",
+      "line": 52,
+      "snippet": "p = urlparse(url) (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-190",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/hybrid_email_extractor.py",
+      "line": 30,
+      "snippet": "log.info(\"JS fallback for %s\", url)\nhtml = get_browser_service().render(url)"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-191",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/hybrid_email_extractor.py",
+      "line": 50,
+      "snippet": "return hits (appears 5 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-192",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/orchestrator.py",
+      "line": 48,
+      "snippet": "Function has 108 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-193",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/orchestrator.py",
+      "line": 75,
+      "snippet": "return stats, rows (appears 7 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-194",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/sitemap.py",
+      "line": 145,
+      "snippet": "for sm in idx.find_all('sitemap'):\nloc = sm.find('loc')"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-195",
+    "title": "Potential N+1 query pattern",
+    "severity": "Major",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/sitemap.py",
+      "line": 174,
+      "snippet": "for loc in soup.find_all('loc'):\nu = loc.get_text(strip=True)"
+    },
+    "impact": "N+1 queries can cause performance degradation",
+    "remediation": [
+      "Use bulk operations",
+      "Implement query optimization"
+    ],
+    "effort": "M",
+    "tags": [
+      "performance",
+      "database",
+      "n+1"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-196",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/sitemap.py",
+      "line": 47,
+      "snippet": "Function has 57 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-197",
+    "title": "Large function detected",
+    "severity": "Minor",
+    "confidence": "High",
+    "evidence": {
+      "path": "scraper/sitemap.py",
+      "line": 116,
+      "snippet": "Function has 59 lines"
+    },
+    "impact": "Large functions are harder to maintain and test",
+    "remediation": [
+      "Break into smaller functions",
+      "Extract common logic"
+    ],
+    "effort": "M",
+    "tags": [
+      "architecture",
+      "maintainability",
+      "functions"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "MAINT-198",
+    "title": "Potential code duplication",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "scraper/sitemap.py",
+      "line": 77,
+      "snippet": "elapsed = time.time() - start (appears 3 times)"
+    },
+    "impact": "Code duplication increases maintenance burden",
+    "remediation": [
+      "Extract to function/variable",
+      "Create reusable utilities"
+    ],
+    "effort": "M",
+    "tags": [
+      "maintainability",
+      "duplication",
+      "refactoring"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-199",
+    "title": "Reading entire file into memory",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "test/canvas_parser_test.py",
+      "line": 13,
+      "snippet": "module_html = fh.read()"
+    },
+    "impact": "Large file operations may cause memory issues",
+    "remediation": [
+      "Use streaming/chunked reading",
+      "Implement pagination"
+    ],
+    "effort": "S",
+    "tags": [
+      "performance",
+      "memory",
+      "io"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "PERF-200",
+    "title": "Reading entire file into memory",
+    "severity": "Minor",
+    "confidence": "Med",
+    "evidence": {
+      "path": "test/canvas_parser_test.py",
+      "line": 19,
+      "snippet": "page_html = fh.read()"
+    },
+    "impact": "Large file operations may cause memory issues",
+    "remediation": [
+      "Use streaming/chunked reading",
+      "Implement pagination"
+    ],
+    "effort": "S",
+    "tags": [
+      "performance",
+      "memory",
+      "io"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  },
+  {
+    "id": "ARCH-201",
+    "title": "Network operations without error handling",
+    "severity": "Major",
+    "confidence": "High",
+    "evidence": {
+      "path": "test/canvas_parser_test.py",
+      "line": 1,
+      "snippet": "File contains network calls but no try/catch"
+    },
+    "impact": "Unhandled network errors can crash the application",
+    "remediation": [
+      "Add try/catch blocks",
+      "Implement retry logic"
+    ],
+    "effort": "S",
+    "tags": [
+      "architecture",
+      "reliability",
+      "error-handling"
+    ],
+    "introduced_in_commit": null,
+    "related_tests": []
+  }
+]
