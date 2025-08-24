@@ -1,5 +1,5 @@
 import asyncio
-from scraper.async_orchestrator import AsyncOrchestrator, async_process_companies
+from scraper.async_orchestrator import AsyncOrchestrator, async_process_companies, async_process_companies_streaming
 
 async def test():
     print("Testing async orchestrator...")
@@ -31,3 +31,24 @@ async def test():
 
 if __name__ == "__main__":
     asyncio.run(test())
+
+
+# Additional test: async on_company_start callback
+async def test_async_on_company_start():
+    print("Testing async on_company_start callback...")
+    triggered = []
+    async def on_company_start(company):
+        await asyncio.sleep(0.01)
+        triggered.append(company)
+
+    test_companies = ["Test Async 1", "Test Async 2"]
+    stats, results = await async_process_companies_streaming(
+        test_companies,
+        max_concurrent=2,
+        on_company_start=on_company_start
+    )
+    assert set(triggered) == set(test_companies), f"Not all companies triggered: {triggered}"
+    print("✅ Async on_company_start callback test passed!")
+
+if __name__ == "__main__":
+    asyncio.run(test_async_on_company_start())

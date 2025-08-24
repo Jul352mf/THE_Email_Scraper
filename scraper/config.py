@@ -241,6 +241,67 @@ class Config:
         self.max_urls_per_sitemap = self._parse_int(
             "MAX_URLS_PER_SITEMAP", 10_000, 1, 100_000
         )
+
+        # Async orchestration tuning (new)
+    # Controls how many companies processed concurrently
+    # (can override orchestrator init)
+        self.async_company_concurrency = self._parse_int(
+            "ASYNC_COMPANY_CONCURRENCY", 50, 1, 500
+        )
+        # Max parallel page fetches within a single domain
+        self.async_per_domain_page_concurrency = self._parse_int(
+            "ASYNC_PER_DOMAIN_PAGE_CONCURRENCY", 3, 1, 20
+        )
+        # Whether to skip generic discovery when sitemap produced priority URLs
+        self.enable_sitemap_first = self._parse_bool(
+            "ENABLE_SITEMAP_FIRST", True
+        )
+        # Enable Google dorking (site:domain "@domain")
+        # to harvest leaked emails
+        self.enable_google_dork = self._parse_bool(
+            "ENABLE_GOOGLE_DORK", True
+        )
+        # Limit of dork result pages / queries
+        self.google_dork_max_results = self._parse_int(
+            "GOOGLE_DORK_MAX_RESULTS", 5, 1, 20
+        )
+        # Early stop absolute cap (extra guard besides EARLY_STOP_THRESHOLD)
+        self.max_emails_per_domain = self._parse_int(
+            "MAX_EMAILS_PER_DOMAIN", 150, 1, 5000
+        )
+        # Allow generic role emails (info@, support@, sales@) to be kept
+        self.allow_generic_role_emails = self._parse_bool(
+            "ALLOW_GENERIC_ROLE_EMAILS", True
+        )
+        # Debug: log raw vs filtered email candidates per domain extraction
+        self.debug_email_candidates = self._parse_bool(
+            "DEBUG_EMAIL_CANDIDATES", True
+        )
+    # Email candidate threshold: when reached we can skip
+    # sitemap/extra phases or early stop (config dependent)
+        self.email_candidate_threshold = self._parse_int(
+            "EMAIL_CANDIDATE_THRESHOLD", 25, 1, 10_000
+        )
+    # Minimal email validation: keep almost everything that
+    # syntactically looks like an email
+        self.minimal_email_validation = self._parse_bool(
+            "MINIMAL_EMAIL_VALIDATION", True
+        )
+        # Use simplified fuzzy domain match instead of complex scorer penalties
+        self.simple_domain_match = self._parse_bool(
+            "SIMPLE_DOMAIN_MATCH", False
+        )
+        # Fallback: guess domain if Google returns nothing
+        self.enable_domain_guessing = self._parse_bool(
+            "ENABLE_DOMAIN_GUESSING", True
+        )
+    # Deprecated: previously enabled harvesting emails from
+    # Google snippets. Logic removed from async orchestrator for
+    # precision parity; flag kept only to avoid attribute errors
+    # if env var still set.
+        self.enable_snippet_email_harvest = self._parse_bool(
+            "ENABLE_SNIPPET_EMAIL_HARVEST", False
+        )
         
         # Security settings
         self.allowed_schemes: Set[str] = {"http", "https"}
@@ -249,9 +310,15 @@ class Config:
         # Load blocked domains if provided
         blocked_domains_str = os.getenv("BLOCKED_DOMAINS", "")
         if blocked_domains_str:
-            self.blocked_domains = {d.strip().lower() for d in blocked_domains_str.split(",") if d.strip()}
+            self.blocked_domains = {
+                d.strip().lower()
+                for d in blocked_domains_str.split(",")
+                if d.strip()
+            }
     
-    def _parse_int(self, env_var: str, default: int, min_val: int, max_val: int) -> int:
+    def _parse_int(
+        self, env_var: str, default: int, min_val: int, max_val: int
+    ) -> int:
         """
         Parse an integer environment variable with range validation.
         
@@ -267,17 +334,29 @@ class Config:
         try:
             value = int(os.getenv(env_var, str(default)))
             if value < min_val:
-                log.warning("%s value %d below minimum %d, using minimum", env_var, value, min_val)
+                log.warning(
+                    "%s value %d below minimum %d, using minimum",
+                    env_var,
+                    value,
+                    min_val,
+                )
                 return min_val
             if value > max_val:
-                log.warning("%s value %d above maximum %d, using maximum", env_var, value, max_val)
+                log.warning(
+                    "%s value %d above maximum %d, using maximum",
+                    env_var,
+                    value,
+                    max_val,
+                )
                 return max_val
             return value
         except ValueError:
             log.warning("Invalid %s value, using default %d", env_var, default)
             return default
     
-    def _parse_float(self, env_var: str, default: float, min_val: float, max_val: float) -> float:
+    def _parse_float(
+        self, env_var: str, default: float, min_val: float, max_val: float
+    ) -> float:
         """
         Parse a float environment variable with range validation.
         
@@ -293,10 +372,20 @@ class Config:
         try:
             value = float(os.getenv(env_var, str(default)))
             if value < min_val:
-                log.warning("%s value %f below minimum %f, using minimum", env_var, value, min_val)
+                log.warning(
+                    "%s value %f below minimum %f, using minimum",
+                    env_var,
+                    value,
+                    min_val,
+                )
                 return min_val
             if value > max_val:
-                log.warning("%s value %f above maximum %f, using maximum", env_var, value, max_val)
+                log.warning(
+                    "%s value %f above maximum %f, using maximum",
+                    env_var,
+                    value,
+                    max_val,
+                )
                 return max_val
             return value
         except ValueError:
@@ -326,7 +415,9 @@ class Config:
         Returns:
             Dictionary of configuration values
         """
-        return {k: v for k, v in self.__dict__.items() if not k.startswith('_')}
+        return {
+            k: v for k, v in self.__dict__.items() if not k.startswith('_')
+        }
     
     def validate(self) -> List[str]:
         """
@@ -407,6 +498,10 @@ class Config:
 
 # Create a global configuration instance
 config = Config()
+# Backward-compat alias (legacy code may import settings)
+settings = config  # deprecated alias
+__all__ = ["Config", "ConfigurationError", "config", "settings"]
+
 
 # Export API credentials for backward compatibility
 API_KEY = config.api_key

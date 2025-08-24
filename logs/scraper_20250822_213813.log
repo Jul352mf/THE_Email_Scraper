@@ -1,0 +1,26 @@
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Domain threshold: 50
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Max pages: 50
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 21:38:13,086 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 21:38:13,086 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-22 21:38:13,264 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 21:38:13,265 | INFO    | scraper.orchestrator | Reset orchestrator stats and cleared domain tracking cache
+2025-08-22 21:38:13,439 | ERROR   | scraper.cli          | Unhandled exception: expected an indented block after function definition on line 50 (async_http_client.py, line 52)
+Traceback (most recent call last):
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 771, in run
+    success = self.scrape_companies(parsed_args)
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 522, in scrape_companies
+    return self._scrape_companies_async(args, companies, browser_service, start_time, logfile)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 635, in _scrape_companies_async
+    from scraper.async_orchestrator import AsyncOrchestrator
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\async_orchestrator.py", line 22, in <module>
+    from scraper.async_http_client import AsyncHttpClient
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\async_http_client.py", line 52
+    self.max_concurrent_requests = max_concurrent_requests
+    ^^^^
+IndentationError: expected an indented block after function definition on line 50

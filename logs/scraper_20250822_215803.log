@@ -1,0 +1,33 @@
+2025-08-22 21:58:03,762 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 21:58:03,762 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 21:58:03,762 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 21:58:03,763 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 21:58:03,763 | INFO    | scraper.cli          | Domain threshold: 50
+2025-08-22 21:58:03,763 | INFO    | scraper.cli          | Max pages: 50
+2025-08-22 21:58:03,763 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 21:58:03,763 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 21:58:03,776 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-22 21:58:03,960 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 21:58:03,960 | INFO    | scraper.orchestrator | Reset orchestrator stats and cleared domain tracking cache
+2025-08-22 21:58:04,144 | INFO    | scraper.async_google_search | Async Google API session initialized (max_concurrent=10)
+2025-08-22 21:58:04,439 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: walter-schmidt-chemie.de
+2025-08-22 21:58:04,439 | WARNING | scraper.async_http_client | All access methods failed for domain: walter-schmidt-chemie.de
+2025-08-22 21:58:04,439 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: walter-schmidt-chemie.de
+2025-08-22 21:58:05,153 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: sinofert.com
+2025-08-22 21:58:05,153 | WARNING | scraper.async_http_client | All access methods failed for domain: sinofert.com
+2025-08-22 21:58:05,153 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: sinofert.com
+2025-08-22 21:58:05,941 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: jp.mitsuichemicals.com
+2025-08-22 21:58:05,942 | WARNING | scraper.async_http_client | All access methods failed for domain: jp.mitsuichemicals.com
+2025-08-22 21:58:05,942 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: jp.mitsuichemicals.com
+2025-08-22 21:58:06,816 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: daf.com
+2025-08-22 21:58:06,816 | WARNING | scraper.async_http_client | All access methods failed for domain: daf.com
+2025-08-22 21:58:06,816 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: daf.com
+2025-08-22 21:58:07,635 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: alvolante.it
+2025-08-22 21:58:07,636 | WARNING | scraper.async_http_client | All access methods failed for domain: alvolante.it
+2025-08-22 21:58:07,636 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: alvolante.it
+2025-08-22 21:58:09,220 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: synsol.ch
+2025-08-22 21:58:09,220 | WARNING | scraper.async_http_client | All access methods failed for domain: synsol.ch
+2025-08-22 21:58:09,220 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: synsol.ch
+2025-08-22 21:58:10,010 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: speedyfuels.co.uk
+2025-08-22 21:58:10,010 | WARNING | scraper.async_http_client | All access methods failed for domain: speedyfuels.co.uk
+2025-08-22 21:58:10,011 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: speedyfuels.co.uk

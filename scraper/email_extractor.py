@@ -1,8 +1,8 @@
 """
 Enhanced email extraction module with improved error handling and security.
 
-This module provides robust email extraction functionality with proper error handling,
-validation, and security features.
+This module provides robust email extraction functionality with proper error
+handling, validation, and security features.
 """
 
 import logging
@@ -20,16 +20,23 @@ from scraper.regex_cache import get_compiled_pattern, get_cache_stats
 # Initialize logger
 log = logging.getLogger(__name__)
 
-# Use cached regex patterns for better performance
+"""Helpers returning cached regex patterns (centralised for reuse)."""
+
+
 def get_email_regex() -> Pattern:
     """Get cached email regex pattern."""
     return get_compiled_pattern(
-        r"(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,63}(?![A-Z0-9._%+-])"
+        (
+            r"(?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@"
+            r"(?:[A-Z0-9-]+\.)+[A-Z]{2,63}(?![A-Z0-9._%+-])"
+        )
     )
 
+
 def get_mailto_regex() -> Pattern:
-    """Get cached mailto regex pattern.""" 
+    """Get cached mailto regex pattern."""
     return get_compiled_pattern(r"mailto:", re.IGNORECASE)
+
 
 def get_obfuscated_email_regex() -> Pattern:
     """Get cached obfuscated email regex pattern."""
@@ -37,31 +44,41 @@ def get_obfuscated_email_regex() -> Pattern:
         r"""
         (?P<user>[A-Za-z0-9._%+-]+)              # local-part
         \s*(?:\[\s*at\s*\]|\(\s*at\s*\)|\bat\b)\s*  # obfuscated "at"
-        (?P<host>(?:[A-Za-z0-9-]+                  # domain labels
-            (?:\s*(?:\[\s*dot\s*\]|\(\s*dot\s*\)|\bdot\b)\s*[A-Za-z0-9-]+)+))  # one or more obf-dot + label
+        (?P<host>(?:[A-Za-z0-9-]+                # domain labels
+            (?:\s*(?:\[\s*dot\s*\]|\(\s*dot\s*\)|\bdot\b)\s*[A-Za-z0-9-]+)+))
         """,
-        re.IGNORECASE | re.VERBOSE
+        re.IGNORECASE | re.VERBOSE,
     )
 
 # Backward compatibility - lazily evaluated
+
+ 
 EMAIL_RE = None
-MAILTO_RE = None  
+MAILTO_RE = None
 _OBF_EMAIL = None
+
 
 class EmailValidationError(Exception):
     """Exception raised for email validation errors."""
+
     pass
 
+
 class EmailExtractor:
-    """Enhanced email extractor with improved validation and security features."""
+    """Email extractor with validation and security features."""
     
     def __init__(self):
         """Initialize the email extractor with cached validation patterns."""
         
         # Additional validation patterns
         self.domain_blacklist: Set[str] = {
-            "example.com", "test.com", "domain.com", "email.com", 
-            "yourcompany.com", "company.com", "localhost"
+            "example.com",
+            "test.com",
+            "domain.com",
+            "email.com",
+            "yourcompany.com",
+            "company.com",
+            "localhost",
         }
         
         # Use cached patterns for better performance
@@ -76,12 +93,22 @@ class EmailExtractor:
         
         # Drop patterns using cached compilation
         self._drop_patterns: List[Pattern] = [
-            get_compiled_pattern(r"\.(?:png|jpe?g|gif)$", re.IGNORECASE),  # asset filenames
-            get_compiled_pattern(r"^[0-9a-f]{20,}$", re.IGNORECASE),       # long hex local-parts
+            # asset filenames
+            get_compiled_pattern(r"\.(?:png|jpe?g|gif)$", re.IGNORECASE),
+            # long hex local-parts
+            get_compiled_pattern(r"^[0-9a-f]{20,}$", re.IGNORECASE),
         ]
     
     def is_valid_email(self, email: str) -> bool:
         try:
+            # Minimal mode: keep almost anything that looks like email
+            from scraper.config import config as _cfg
+            if getattr(_cfg, 'minimal_email_validation', False):
+                return (
+                    bool(email)
+                    and '@' in email
+                    and '.' in email.rsplit('@', 1)[-1]
+                )
             if not email or '@' not in email:
                 log.debug("Rejecting %r: empty or missing @", email)
                 return False
@@ -94,7 +121,11 @@ class EmailExtractor:
                 log.debug("Rejecting %r: empty local-part", email)
                 return False
             if len(local_part) > 64:
-                log.debug("Rejecting %r: local-part too long (%d > 64)", email, len(local_part))
+                log.debug(
+                    "Rejecting %r: local-part too long (%d > 64)",
+                    email,
+                    len(local_part),
+                )
                 return False
 
             # Domain checks
@@ -102,27 +133,46 @@ class EmailExtractor:
                 log.debug("Rejecting %r: empty domain", email)
                 return False
             if len(domain) > 255:
-                log.debug("Rejecting %r: domain too long (%d > 255)", email, len(domain))
+                log.debug(
+                    "Rejecting %r: domain too long (%d > 255)",
+                    email,
+                    len(domain),
+                )
                 return False
             if '.' not in domain:
                 log.debug("Rejecting %r: domain has no dot", email)
                 return False
 
             # Blacklist
-            if not os.environ.get('SCRAPER_TEST_MODE') and domain.lower() in self.domain_blacklist:
-                log.debug("Rejecting %r: blacklisted domain %r", email, domain.lower())
+            if (
+                not os.environ.get("SCRAPER_TEST_MODE")
+                and domain.lower() in self.domain_blacklist
+            ):
+                log.debug(
+                    "Rejecting %r: blacklisted domain %r",
+                    email,
+                    domain.lower(),
+                )
                 return False
 
             # Suspicious patterns
             for pat in self.suspicious_patterns:
                 if pat.search(email):
-                    log.debug("Rejecting %r: matched suspicious pattern %r", email, pat.pattern)
+                    log.debug(
+                        "Rejecting %r: matched suspicious pattern %r",
+                        email,
+                        pat.pattern,
+                    )
                     return False
 
             # Drop‐patterns
             for pat in self._drop_patterns:
                 if pat.search(local_part) or pat.search(domain):
-                    log.debug("Rejecting %r: matched drop-pattern %r", email, pat.pattern)
+                    log.debug(
+                        "Rejecting %r: matched drop-pattern %r",
+                        email,
+                        pat.pattern,
+                    )
                     return False
 
             return True
@@ -155,13 +205,19 @@ class EmailExtractor:
         
         # Check again after processing
         if not email:
-            log.debug("Rejecting email string that became empty after processing")
-            raise EmailValidationError("Email string became empty after processing")
+            log.debug(
+                "Rejecting email string that became empty after processing"
+            )
+            raise EmailValidationError(
+                "Email string became empty after processing"
+            )
 
         try:
             user, host = email.rsplit('@', 1)
         except ValueError:
-            log.warning("Failed to clean %r: invalid format (no single @)", email)
+            log.warning(
+                "Failed to clean %r: invalid format (no single @)", email
+            )
             raise EmailValidationError(f"Invalid email format: {email}")
 
         host = host.strip().rstrip("%;,:)}]>\"'`")
@@ -172,8 +228,12 @@ class EmailExtractor:
 
         cleaned = f"{user}@{host}".lower()
         if not self.is_valid_email(cleaned):
-            log.warning("Validation failed after cleaning: %r → %r", email, cleaned)
-            raise EmailValidationError(f"Invalid email after cleaning: {cleaned}")
+            log.warning(
+                "Validation failed after cleaning: %r → %r", email, cleaned
+            )
+            raise EmailValidationError(
+                f"Invalid email after cleaning: {cleaned}"
+            )
 
         log.debug("Successfully cleaned %r → %r", email, cleaned)
         return cleaned
@@ -184,7 +244,12 @@ class EmailExtractor:
             user = m.group("user")
             host = m.group("host")
             # turn any [dot]/(dot)/dot in the host into real dots
-            host = re.sub(r'(\[\s*dot\s*\]|\(\s*dot\s*\)|\bdot\b)', '.', host, flags=re.IGNORECASE)
+            host = re.sub(
+                r'(\[\s*dot\s*\]|\(\s*dot\s*\)|\bdot\b)',
+                '.',
+                host,
+                flags=re.IGNORECASE,
+            )
             # collapse any stray spaces around dots
             host = re.sub(r'\s*\.\s*', '.', host)
             return f"{user}@{host}"
@@ -208,7 +273,7 @@ class EmailExtractor:
         
         # Get the page content with retry and timeout
         response = http_client.safe_get(
-            url, 
+            url,
             retry_count=2,
             timeout=(10, 60)  # Longer timeout for potentially large pages
         )
@@ -223,7 +288,9 @@ class EmailExtractor:
         # For non-HTML content, try direct text extraction
         return self.extract_from_text(response.text, url)
     
-    def extract_from_html(self, html: str, url: Optional[str] = None) -> Set[str]:
+    def extract_from_html(
+        self, html: str, url: Optional[str] = None
+    ) -> Set[str]:
         hits: Set[str] = set()
         seen_raw: Set[str] = set()
         seen_clean: Set[str] = set()
@@ -261,7 +328,9 @@ class EmailExtractor:
                             seen_clean.add(cleaned)
                             hits.add(cleaned)
                     except EmailValidationError as e:
-                        log.debug("Failed to clean mailto email %s: %s", raw, e)
+                        log.debug(
+                            "Failed to clean mailto email %s: %s", raw, e
+                        )
 
         except Exception as e:
             log.error("Error extracting emails from HTML: %s", e)
@@ -270,7 +339,9 @@ class EmailExtractor:
             log.debug(" %2d emails on %s (def from html)", len(hits), url)
         return hits
     
-    def extract_from_text(self, text: str, url: Optional[str] = None) -> Set[str]:
+    def extract_from_text(
+        self, text: str, url: Optional[str] = None
+    ) -> Set[str]:
         """
         Extract email addresses from plain text.
         
@@ -285,29 +356,75 @@ class EmailExtractor:
             return set()
         
         hits = set()
-        
-        text = self.deobfuscate_emails(text) 
-        
+        text = self.deobfuscate_emails(text)
+
         try:
-            # Extract emails using regex
             for match in get_email_regex().finditer(text):
+                raw_email = match.group(0).strip()
+                if not raw_email:
+                    continue
                 try:
-                    raw_email = match.group(0).strip()
-                    if not raw_email:
-                        continue
                     email = self.clean_email(raw_email)
                     if self.is_valid_email(email):
                         hits.add(email)
-                except Exception as e:
-                    log.debug("Failed to clean email %s: %s", match.group(0), e)
-        
-        except Exception as e:
+                except Exception as e:  # pragma: no cover - defensive
+                    log.debug(
+                        "Failed to clean email %s: %s", raw_email, e
+                    )
+        except Exception as e:  # pragma: no cover
             log.error("Error extracting emails from text: %s", e)
-        
+
         if url:
-            log.info(" %2d emails on %s (def from text)", len(hits), url) # to check
-        
+            log.info(
+                " %2d emails on %s (def from text)",
+                len(hits),
+                url,
+            )  # to check
         return hits
+
+    # ------------------------------------------------------------------
+    def extract_emails_from_content(
+        self, content: str, url: Optional[str] = None
+    ) -> Set[str]:
+        """Backward-compatible convenience wrapper.
+
+        Attempts HTML extraction first when the content appears to be HTML,
+        then (if empty) falls back to plain text extraction. Mirrors the legacy
+        API name used elsewhere in the codebase.
+
+        Args:
+            content: Raw content string (HTML or plain text)
+            url: Optional URL for logging context
+        Returns:
+            Set of validated, cleaned email addresses.
+        """
+        try:
+            if not content:
+                return set()
+            lowered = content.lower()
+            # Heuristic: treat as HTML if typical tags present
+            is_html = (
+                "<html" in lowered
+                or "</" in lowered
+                or "<body" in lowered
+                or lowered.strip().startswith("<!doctype")
+            )
+            if is_html:
+                emails = self.extract_from_html(content, url)
+                if emails:
+                    return emails
+                # fallback – some HTML fragments may yield better via text path
+                return self.extract_from_text(content, url)
+            else:
+                return self.extract_from_text(content, url)
+        except Exception as e:  # pragma: no cover - safety net
+            log.debug(
+                "extract_emails_from_content failed for %s: %s",
+                url or "<no-url>",
+                e,
+            )
+            return set()
 
 # Create a global email extractor instance
 email_extractor = EmailExtractor()
+

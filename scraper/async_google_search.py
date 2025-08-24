@@ -15,15 +15,104 @@ import logging
 import time
 import os
 import pickle
+import threading
 from typing import List, Dict, Any, Optional, Callable
 import aiohttp
 import aiofiles
 
 from scraper.config import config, API_KEY, CX_ID
-from scraper.google_search import EnhancedGoogleSearchCache, GoogleApiError
 
 # Initialize logger
 log = logging.getLogger(__name__)
+
+
+class GoogleApiError(Exception):
+    """Exception raised for Google API errors."""
+    pass
+
+
+class EnhancedGoogleSearchCache:
+    """
+    Enhanced Google Search Cache with deduplication and similarity detection.
+    Base class for async cache implementation.
+    """
+
+    def __init__(self, ttl_hours: int = 24, max_memory_size: int = 10000):
+        """
+        Initialize cache with TTL and size limits.
+        
+        Args:
+            ttl_hours: Time-to-live in hours for cached entries
+            max_memory_size: Maximum number of entries in memory cache
+        """
+        self.ttl_hours = ttl_hours
+        self.max_memory_size = max_memory_size
+        self.memory_cache: Dict[str, Dict[str, Any]] = {}
+        self.similar_queries: Dict[str, set] = {}
+        self.lock = threading.Lock()
+        self.hit_count = 0
+        self.miss_count = 0
+        self.persistence_enabled = True
+        
+    def get(self, query: str) -> Optional[List[Dict[str, Any]]]:
+        """Get cached results for a query."""
+        with self.lock:
+            normalized = self._normalize_query(query)
+            
+            if normalized in self.memory_cache:
+                entry = self.memory_cache[normalized]
+                if self._is_valid(entry):
+                    self.hit_count += 1
+                    return entry['results']
+                else:
+                    # Expired entry
+                    del self.memory_cache[normalized]
+            
+            self.miss_count += 1
+            return None
+    
+    def put(self, query: str, results: List[Dict[str, Any]]) -> None:
+        """Cache query results."""
+        with self.lock:
+            normalized = self._normalize_query(query)
+            
+            # Enforce size limit
+            if len(self.memory_cache) >= self.max_memory_size:
+                # Remove oldest entry
+                oldest_key = next(iter(self.memory_cache))
+                del self.memory_cache[oldest_key]
+            
+            # Store with timestamp
+            self.memory_cache[normalized] = {
+                'results': results,
+                'timestamp': time.time(),
+                'original_query': query
+            }
+    
+    def _normalize_query(self, query: str) -> str:
+        """Normalize query for consistent caching."""
+        return query.lower().strip()
+    
+    def _is_valid(self, entry: Dict[str, Any]) -> bool:
+        """Check if cache entry is still valid."""
+        age_hours = (time.time() - entry['timestamp']) / 3600
+        return age_hours < self.ttl_hours
+    
+    def get_stats(self) -> Dict[str, Any]:
+        """Get cache statistics."""
+        with self.lock:
+            total_requests = self.hit_count + self.miss_count
+            hit_rate = (
+                self.hit_count / total_requests if total_requests > 0 else 0
+            )
+            
+            return {
+                'hit_count': self.hit_count,
+                'miss_count': self.miss_count,
+                'hit_rate': hit_rate,
+                'cache_size': len(self.memory_cache),
+                'max_size': self.max_memory_size
+            }
 
 
 class AsyncGoogleSearchCache(EnhancedGoogleSearchCache):
@@ -151,8 +240,10 @@ class AsyncRateLimiter:
 
             if elapsed < self.min_interval:
                 wait_time = self.min_interval - elapsed
-                log.debug("Async rate limiting: waiting %.2f seconds",
-                         wait_time)
+                log.debug(
+                    "Async rate limiting: waiting %.2f seconds",
+                    wait_time
+                )
                 await asyncio.sleep(wait_time)
 
             self.last_request_time = time.time()
@@ -274,8 +365,9 @@ class AsyncGoogleSearchClient:
             log.error("Async Google search failed for '%s': %s", full_q, e)
             return []
 
-    async def _perform_api_search(self, query: str, num_results: int
-                                 ) -> List[Dict[str, Any]]:
+    async def _perform_api_search(
+        self, query: str, num_results: int
+    ) -> List[Dict[str, Any]]:
         """
         Perform the actual async Google API call with rate limiting.
         """
@@ -344,15 +436,16 @@ class AsyncGoogleSearchClient:
             f"{config.google_max_retries} retry attempts"
         )
 
-    async def search_batch(self,
-                          queries: List[str],
-                          num_results: int = 10,
-                          site_restrict: Optional[str] = None
-                          ) -> List[List[Dict[str, Any]]]:
+    async def search_batch(
+        self,
+        queries: List[str],
+        num_results: int = 10,
+        site_restrict: Optional[str] = None,
+    ) -> List[List[Dict[str, Any]]]:
         """
         Perform multiple Google searches concurrently.
 
-        This is the key performance improvement - instead of sequential searches,
+    This is the key performance improvement - instead of sequential
         we process all queries in parallel using asyncio.gather().
 
         Expected improvement: 50x for 100 company searches
@@ -365,51 +458,41 @@ class AsyncGoogleSearchClient:
         log.info("Starting async batch search for %d queries", len(queries))
         start_time = time.time()
 
-        # Create semaphore to limit concurrent requests to Google API
-        max_concurrent = min(self.max_concurrent_requests, 5)
+        max_concurrent = self.max_concurrent_requests
         semaphore = asyncio.Semaphore(max_concurrent)
 
         async def search_with_semaphore(query: str) -> List[Dict[str, Any]]:
-            """Wrapper to limit concurrency per Google's terms of service."""
             async with semaphore:
                 return await self.search_single(
                     query, num_results, site_restrict
                 )
 
-        # Execute all searches concurrently
         try:
             results = await asyncio.gather(
-                *[search_with_semaphore(query) for query in queries],
-                return_exceptions=True  # Don't fail entire batch on error
+                *[search_with_semaphore(q) for q in queries],
+                return_exceptions=True,
             )
-
-            # Process results and handle exceptions
-            processed_results = []
-            for i, result in enumerate(results):
-                if isinstance(result, Exception):
-                    log.error("Query failed in batch: %s - %s",
-                             queries[i], result)
-                    processed_results.append([])  # Empty result for failed
+            processed: List[List[Dict[str, Any]]] = []
+            for i, r in enumerate(results):
+                if isinstance(r, Exception):
+                    log.error("Query failed in batch: %s - %s", queries[i], r)
+                    processed.append([])
                 else:
-                    processed_results.append(result)
-
+                    processed.append(r)
             elapsed = time.time() - start_time
-            queries_per_sec = len(queries) / elapsed if elapsed > 0 else 0
+            qps = len(queries) / elapsed if elapsed > 0 else 0
             log.info(
-                "Async batch search completed: %d queries in %.2f seconds "
-                "(%.2f queries/sec)",
-                len(queries), elapsed, queries_per_sec
+                "Async batch search: %d queries in %.2fs (%.2f q/s)",
+                len(queries), elapsed, qps
             )
-
-            return processed_results
-
+            return processed
         except Exception as e:
             log.error("Async batch search failed: %s", e)
-            # Return empty results for all queries
             return [[] for _ in queries]
 
-    async def search_companies(self, company_names: List[str]
-                              ) -> List[List[Dict[str, Any]]]:
+    async def search_companies(
+        self, company_names: List[str]
+    ) -> List[List[Dict[str, Any]]]:
         """
         High-level method to search for multiple companies concurrently.
         Formats queries appropriately for company searches.
@@ -452,14 +535,88 @@ class AsyncGoogleSearchClient:
             'rate_limiter_stats': self._rate_limiter.get_stats()
         }
 
+    # ------------------------------------------------------------------
+    async def search_companies_streaming(
+        self, company_names: List[str], num_results: int = 10
+    ):
+        import logging
+        log = logging.getLogger(__name__)
+        log.info(
+            "[ASYNC-GOOGLE] Streaming search start: %d companies",
+            len(company_names),
+        )
+        if not company_names:
+            log.debug(
+                "[TRACE] search_companies_streaming: no company names provided"
+            )
+            return
+        queries = []
+        for company in company_names:
+            company_clean = (company or "").strip()
+            if not company_clean:
+                queries.append((company, ""))
+            else:
+                queries.append(
+                    (company, f'"{company_clean}" contact email')
+                )
+
+        sem = asyncio.Semaphore(self.max_concurrent_requests)
+
+        async def run(company: str, query: str):
+            log.debug(f"[TRACE] run: starting search for {company}")
+            started = time.time()
+            async with sem:
+                try:
+                    res = await asyncio.wait_for(
+                        self.search_single(query, num_results=num_results),
+                        timeout=45,
+                    )
+                except asyncio.TimeoutError:
+                    log.error(
+                        "[ASYNC-GOOGLE] Timeout querying %s after %.1fs",
+                        company,
+                        time.time() - started,
+                    )
+                    return company, []
+                except Exception as e:
+                    log.error(
+                        "[ASYNC-GOOGLE] Error querying %s: %s",
+                        company,
+                        e,
+                    )
+                    return company, []
+                log.debug(
+                    f"[TRACE] run: finished search for {company} in "
+                    f"{time.time() - started:.2f}s"
+                )
+                return company, res
+
+        tasks = [asyncio.create_task(run(c, q)) for c, q in queries]
+        log.info(
+            "[ASYNC-GOOGLE] Scheduled %d search tasks (concurrency=%d)",
+            len(tasks), self.max_concurrent_requests
+        )
+        for coro in asyncio.as_completed(tasks):
+            try:
+                company, results = await coro
+                log.info(
+                    "[ASYNC-GOOGLE] Completed search: %s (results=%d)",
+                    company, len(results)
+                )
+            except Exception as e:  # pragma: no cover
+                log.error("Streaming search failed: %s", e)
+                continue
+            yield company, results
+
 
 # Global async client instance (use as context manager)
 async_google_client = AsyncGoogleSearchClient()
 
 
 # Convenience function for backwards compatibility
-async def async_search_companies(company_names: List[str]
-                                ) -> List[List[Dict[str, Any]]]:
+async def async_search_companies(
+    company_names: List[str],
+) -> List[List[Dict[str, Any]]]:
     """
     Convenience function to search for companies asynchronously.
 

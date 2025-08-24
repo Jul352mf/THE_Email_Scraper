@@ -1,37 +1,36 @@
 """
 Enhanced CLI module with improved error handling and user interface.
 
-This module provides a robust command-line interface with proper error handling,
-input validation, and clean output formatting.
-"""
+This module provides a robust command-line interface with proper
+error handling, input validation, and clean output formatting.
+"""  # flake8: noqa
 import argparse
 import logging
 import os
-import signal
-import sys, traceback
+import sys
 import time
-from collections import Counter
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Tuple
-from scraper.http_client import http_client
-import asyncio
-from scraper.async_scraper import main as async_main
+from typing import List, Optional, Tuple
 
 import pandas as pd
 
 from scraper.config import config, ConfigurationError
-from scraper.orchestrator import orchestrator
 from scraper.browser_service import get_browser_service
-from scraper.batch_processor import batch_processor
-from scraper.performance_optimizer import get_performance_report
+# batch_processor imported lazily where needed to avoid cost when unused
 from scraper.progress_tracker import (
-    initialize_progress_tracker, finalize_progress_tracker
+    initialize_progress_tracker,
+    finalize_progress_tracker,
+    update_progress_company_started,
+    update_progress_stats,
 )
 
 # Import process manager for zombie prevention
 try:
-    from scraper.process_manager import setup_signal_handlers, check_for_zombies, cleanup_all_processes
+    from scraper.process_manager import (
+        setup_signal_handlers,
+        check_for_zombies,
+        cleanup_all_processes,
+    )
     PROCESS_MANAGER_AVAILABLE = True
 except ImportError:
     PROCESS_MANAGER_AVAILABLE = False
@@ -45,8 +44,9 @@ class CLIError(Exception):
     """Exception raised for CLI errors."""
     pass
 
+
 class CLI:
-    """Enhanced command-line interface with improved error handling and validation."""
+    """Enhanced command-line interface with improved error handling."""
     
     def __init__(self):
         """Initialize the CLI."""
@@ -76,7 +76,7 @@ class CLI:
         )
         
         parser.add_argument(
-            "output_file", 
+            "output_file",
             nargs='?',  # Make optional for batch mode
             help="Output Excel file for results"
         )
@@ -130,6 +130,8 @@ class CLI:
             action="store_true",
             help="Process all files in input directory"
         )
+
+    # Async pipeline is now the only supported mode (legacy sync removed)
         
         parser.add_argument(
             "--input-dir",
@@ -138,7 +140,7 @@ class CLI:
         )
         
         parser.add_argument(
-            "--output-dir", 
+            "--output-dir",
             default=os.getenv("OUTPUT_DIR", "output"),
             help="Output directory for results"
         )
@@ -165,7 +167,9 @@ class CLI:
             log.error("Configuration error: %s", e)
             return False
     
-    def validate_input_file(self, file_path: str) -> Tuple[bool, Optional[str]]:
+    def validate_input_file(
+        self, file_path: str
+    ) -> Tuple[bool, Optional[str]]:
         """
         Validate that the input file exists and has the required format.
         
@@ -181,7 +185,14 @@ class CLI:
             
         # Check file extension
         if not file_path.lower().endswith(('.xlsx', '.xls', '.csv')):
-            return False, f"Input file must be Excel or CSV format (.xlsx, .xls, or .csv): {file_path}"
+            return (
+                False,
+                (
+                    "Input file must be Excel or CSV format "
+                    "(.xlsx, .xls, or .csv): "
+                    f"{file_path}"
+                ),
+            )
             
         # Try to load the file
         try:
@@ -196,13 +207,20 @@ class CLI:
                     except UnicodeDecodeError:
                         continue
                 if df is None:
-                    return False, f"Could not read CSV file with any supported encoding: {file_path}"
+                    return (
+                        False,
+                        "Could not read CSV file with any supported encoding: "
+                        f"{file_path}",
+                    )
             else:
                 df = pd.read_excel(file_path)
             
             # Check for required columns
             if "Company" not in df.columns:
-                return False, f"Input file must have 'Company' column: {file_path}"
+                return (
+                    False,
+                    f"Input file must have 'Company' column: {file_path}",
+                )
                 
             # Check if there's data
             if len(df) == 0:
@@ -213,7 +231,9 @@ class CLI:
         except Exception as e:
             return False, f"Error reading input file: {e}"
     
-    def validate_output_file(self, file_path: str) -> Tuple[bool, Optional[str]]:
+    def validate_output_file(
+        self, file_path: str
+    ) -> Tuple[bool, Optional[str]]:
         """
         Validate that the output file can be written.
         
@@ -225,7 +245,13 @@ class CLI:
         """
         # Check file extension
         if not file_path.lower().endswith(('.xlsx', '.xls')):
-            return False, f"Output file must be Excel format (.xlsx or .xls): {file_path}"
+            return (
+                False,
+                (
+                    f"Output file must be Excel format (.xlsx or .xls): "
+                    f"{file_path}"
+                ),
+            )
             
         # Check if directory exists
         output_dir = os.path.dirname(file_path)
@@ -242,7 +268,10 @@ class CLI:
                 # Check if we can write to directory
                 test_dir = output_dir if output_dir else "."
                 if not os.access(test_dir, os.W_OK):
-                    return False, f"Cannot write to output directory: {test_dir}"
+                    return (
+                        False,
+                        f"Cannot write to output directory: {test_dir}",
+                    )
                     
             return True, None
             
@@ -337,8 +366,7 @@ class CLI:
         config.process_pdfs = args.process_pdfs
         config.update_max_workers(args.workers)
         
-        # Set orchestrator options
-        orchestrator.set_options(save_domain_only=args.save_domain_only)
+    # Legacy orchestrator removed – option retained for forward compatibility
         
         # Validate environment
         if not self.validate_environment():
@@ -381,14 +409,18 @@ class CLI:
             return False
         finally:
             browser_service.shutdown()
-            browser_service.join()
+            # BrowserService is thread-backed; no join() API.
+            # Shutdown handled separately.
             log.info("BrowserService: shutdown complete")
             
             # Check for any remaining zombie processes
             if PROCESS_MANAGER_AVAILABLE:
                 zombies = check_for_zombies()
                 if zombies:
-                    log.warning("Found and cleaned up %d zombie processes", len(zombies))
+                    log.warning(
+                        "Found and cleaned up %d zombie processes",
+                        len(zombies)
+                    )
     
     def scrape_companies(self, args: argparse.Namespace) -> bool:
         """
@@ -405,8 +437,7 @@ class CLI:
         
         browser_service = get_browser_service()
         
-        
-        # Log startup information
+    # Log startup information
         log.info("Email scraper starting")
         log.info("Input file: %s", args.input_file)
         log.info("Output file: %s", args.output_file)
@@ -422,8 +453,8 @@ class CLI:
         config.process_pdfs = args.process_pdfs
         config.update_max_workers(args.workers)
         
-        # Set orchestrator options
-        orchestrator.set_options(save_domain_only=args.save_domain_only)
+    # Legacy orchestrator removed; save_domain_only currently unused
+    # (reserved for async pipeline future use)
         
         # Validate environment
         if not self.validate_environment():
@@ -437,7 +468,9 @@ class CLI:
             return False
             
         # Validate output file
-        valid_output, output_error = self.validate_output_file(args.output_file)
+        valid_output, output_error = self.validate_output_file(
+            args.output_file
+        )
         if not valid_output:
             log.error("Output validation failed: %s", output_error)
             return False
@@ -451,126 +484,208 @@ class CLI:
                 for encoding in encodings:
                     try:
                         df = pd.read_csv(args.input_file, encoding=encoding)
-                        log.debug(f"Successfully read CSV with encoding {encoding}")
+                        log.debug(
+                            "Successfully read CSV with encoding %s",
+                            encoding,
+                        )
                         break
                     except UnicodeDecodeError:
                         continue
                 if df is None:
-                    log.error("Could not read CSV file with any supported encoding")
+                    log.error(
+                        "Could not read CSV file with any supported encoding"
+                    )
                     return False
             else:
                 df = pd.read_excel(args.input_file)
                 
             companies = [c for c in df["Company"].astype(str) if c.strip()]
-            log.info("Loaded %d companies from %s", len(companies), args.input_file)
+            log.info(
+                "Loaded %d companies from %s", len(companies), args.input_file
+            )
         except Exception as e:
             log.error("Failed to load input file: %s", e)
             return False
             
         # Initialize tracking
         start_time = time.time()
-        orchestrator.reset_stats()
-        all_rows: List[Dict[str, str]] = []
+        # Always use async pipeline now
+        return self._scrape_companies_async(
+            args, companies, browser_service, start_time, logfile
+        )
 
-        # Initialize progress tracker
-        show_progress = not args.verbose  # Hide progress bar in verbose mode to avoid conflicts
-        initialize_progress_tracker(len(companies), show_progress=show_progress)
+    # ----------------------------- async path -----------------------------
+    def _scrape_companies_async(
+        self,
+        args: argparse.Namespace,
+        companies: List[str],
+        browser_service,
+        start_time: float,
+        logfile: str,
+    ) -> bool:
+        """Async scraping pipeline using AsyncOrchestrator.
 
-        # Process companies with concurrent domain processing
+        Reuses validation & setup from sync path; runs event loop to process
+        companies concurrently while updating the progress tracker live.
+        """
+        import asyncio
+        from scraper.async_orchestrator import AsyncOrchestrator
+
+        async def run_async() -> bool:
+            initialize_progress_tracker(
+                len(companies), show_progress=not args.verbose
+            )
+            tmp_csv = Path(args.output_file).with_suffix('.partial.csv')
+            written = 0
+            header_written = False
+            import csv
+
+            fieldnames = ["Company", "Domain", "Email", "Source"]
+
+            from scraper.config import config as _cfg
+            async with AsyncOrchestrator(
+                max_concurrent_companies=min(
+                    getattr(
+                        _cfg,
+                        'async_company_concurrency',
+                        args.workers,
+                    ),
+                    200,
+                ),
+                per_domain_page_concurrency=getattr(
+                    _cfg, 'async_per_domain_page_concurrency', 3
+                ),
+            ) as async_orch:
+                async def on_start(name: str):  # company begins
+                    update_progress_company_started(name)
+
+                def on_rows(rows):  # domain results ready
+                    nonlocal header_written, written
+                    if not rows:
+                        return
+                    mode = 'a' if header_written else 'w'
+                    with open(
+                        tmp_csv, mode, newline='', encoding='utf-8'
+                    ) as f:
+                        writer = csv.DictWriter(f, fieldnames=fieldnames)
+                        if not header_written:
+                            writer.writeheader()
+                            header_written = True
+                        for r in rows:
+                            writer.writerow(
+                                {
+                                    "Company": r.get("company"),
+                                    "Domain": r.get("domain"),
+                                    "Email": r.get("email"),
+                                    "Source": r.get("source", "unknown"),
+                                }
+                            )
+                        written += len(rows)
+
+                stats_counter, _ = await async_orch.\
+                    process_companies_streaming(
+                        companies,
+                        on_company_start=on_start,
+                        on_rows=on_rows,
+                    )
+
+                update_progress_stats(
+                    with_email=stats_counter.get("success", 0),
+                    without_email=stats_counter.get("no_email", 0),
+                    processing_error=stats_counter.get("processing_errors", 0)
+                    + stats_counter.get("domain_processing_errors", 0),
+                    google_error=stats_counter.get("no_google", 0),
+                    domain=stats_counter.get("success", 0)
+                    + stats_counter.get("no_email", 0),
+                )
+
+            finalize_progress_tracker()
+
+            # Consolidate to Excel
+            try:
+                import pandas as pd
+                import os
+                import tempfile
+
+                def _write_excel_atomic(df, path: Path):
+                    """Write DataFrame to XLSX atomically.
+
+                    Ensures we never leave a half-written workbook.
+                    """
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    # Always ensure columns exist even if empty
+                    base_cols = ["Company", "Domain", "Email", "Source"]
+                    for c in base_cols:
+                        if c not in df.columns:
+                            df[c] = []
+                    df = df[base_cols]
+                    with tempfile.NamedTemporaryFile(
+                        suffix=".xlsx", delete=False
+                    ) as tmpf:
+                        tmp_name = tmpf.name
+                    try:
+                        with pd.ExcelWriter(tmp_name, engine="openpyxl") as w:
+                            df.to_excel(w, index=False)
+                        os.replace(tmp_name, path)
+                    finally:  # cleanup on failure
+                        if os.path.exists(tmp_name) and not os.path.samefile(
+                            tmp_name, path
+                        ):
+                            try:
+                                os.remove(tmp_name)
+                            except Exception:
+                                pass
+
+                if tmp_csv.exists():
+                    df_out = pd.read_csv(tmp_csv)
+                    df_out = df_out.drop_duplicates()
+                else:
+                    df_out = pd.DataFrame(
+                        columns=["Company", "Domain", "Email", "Source"]
+                    )
+
+                _write_excel_atomic(df_out, Path(args.output_file))
+            except Exception as e:
+                log.error("Failed final Excel write: %s", e)
+                # Best-effort fallback: write CSV instead next to desired path
+                try:
+                    fallback_csv = Path(args.output_file).with_suffix('.csv')
+                    if 'df_out' in locals():
+                        df_out.to_csv(fallback_csv, index=False)
+                        log.warning(
+                            "Wrote fallback CSV instead: %s", fallback_csv
+                        )
+                except Exception as e2:  # pragma: no cover
+                    log.error("Fallback CSV write also failed: %s", e2)
+                return False
+
+            elapsed = time.time() - start_time
+            log.info(
+                "Async streaming run complete in %.1fs (%d rows)",
+                elapsed,
+                written,
+            )
+            log.info("Saved output -> %s", args.output_file)
+            if tmp_csv.exists():
+                try:
+                    tmp_csv.unlink()
+                except Exception:
+                    pass
+            return True
+
         try:
-            stats, rows = orchestrator.process_companies_concurrent(companies)
-            orchestrator.global_stats.update(stats)
-            all_rows.extend(rows)
-        except KeyboardInterrupt:
-            log.warning("Interrupted by user; shutting down")
-            # Clean up any zombie processes on interruption
-            if PROCESS_MANAGER_AVAILABLE:
-                cleanup_all_processes()
-            return False
-        except Exception as e:
-            log.error("Error in concurrent processing: %s", e)
-            return False
-        
+            return asyncio.run(run_async())
         finally:
             browser_service.shutdown()
-            browser_service.join()
+            # BrowserService is thread-backed; no join() API
             log.info("BrowserService: shutdown complete")
-            
-            # Check for any remaining zombie processes
             if PROCESS_MANAGER_AVAILABLE:
                 zombies = check_for_zombies()
                 if zombies:
-                    log.warning("Found and cleaned up %d zombie processes", len(zombies))
-
-        # Finalize progress tracker
-        finalize_progress_tracker()
-
-        # Create output DataFrame
-        df_out = pd.DataFrame(all_rows, columns=["Company", "Domain", "Email"]).drop_duplicates()
-        
-        # Save output
-        try:
-            df_out.to_excel(args.output_file, index=False)
-        except Exception as e:
-            log.error("Failed to save output file: %s", e)
-            return False
-
-        # Print summary
-        elapsed = time.time() - start_time
-        stats = orchestrator.global_stats
-        
-        http_stats = http_client.stats
-        
-        # Get performance monitoring report
-        perf_report = get_performance_report()
-        
-        # collect all HTTP statuses ≥400
-        error_stats = {
-            k: v
-            for k, v in http_stats.items()
-            if k.startswith("status_")
-               and k.split("_", 1)[1].isdigit()
-               and 400 <= int(k.split("_", 1)[1]) < 600
-        }
-        
-        # grab any “no-response” count (defaulting to zero)
-        no_response_count = http_stats.get("status_no-response", 0)    
-        
-        total_http_errors = sum(error_stats.values())
-
-        # now print the box with performance monitoring
-        log.info(
-            "\n+--------------------------------------------------+\n"
-            "| RUN SUMMARY                                      |\n"
-            "+--------------------------------------------------+\n"
-            f"| Leads           : {stats['leads']:>3}\n"
-            f"| Domain found    : {stats['domain']:>3}\n"
-            f"| No Google hits  : {stats['no_google']:>3}\n"
-            f"| Domain unclear  : {stats['domain_unclear']:>3}\n"
-            f"| Sitemap used    : {stats['sitemap']:>3}\n"
-            f"| With e-mail     : {stats['with_email']:>3}\n"
-            f"| Without e-mail  : {stats['without_email']:>3}\n"
-            f"| Google errors   : {stats['google_error']:>3}\n"
-            f"| Processing errors: {stats['processing_error']:>3}\n"
-            f"| Unique e-mails  : {df_out['Email'].nunique():>3}\n"
-            f"| Runtime         : {elapsed:6.1f} s\n"
-            f"| HTTP Requests   : {http_stats['total_requests']:>3}\n"
-            f"| HTTP errors     : {total_http_errors:>3}\n"
-            f"| No-response     : {no_response_count:>3}\n"
-            "+--------------------------------------------------+\n"
-            "| PERFORMANCE MONITORING                           |\n"
-            "+--------------------------------------------------+\n"
-            f"| Avg Request Time: {perf_report['average_request_time']:>6.3f} s\n"
-            f"| Requests/Second : {perf_report['requests_per_second']:>6.2f}\n"
-            f"| Cache Hit Rate  : {perf_report['cache_stats']['hit_rate_percent']:>6.1f}%\n"
-            f"| Cache Size      : {perf_report['cache_stats']['cache_size']:>3}\n"
-            f"| Suggested Workers: {perf_report['suggested_workers'] or 'optimal':>3}\n"
-            "+--------------------------------------------------+"
-        )
-        log.info("Saved %d rows -> %s", len(df_out), args.output_file)
-        log.info("Verbose log -> %s", Path(logfile).resolve())
-        
-        return True
+                    log.warning(
+                        "Found and cleaned up %d zombie processes",
+                        len(zombies),
+                    )
     
     def run(self, args: Optional[List[str]] = None) -> int:
         """
@@ -588,17 +703,25 @@ class CLI:
             
             # Check if batch processing or single file
             if parsed_args.batch:
-                success = self.process_batch(parsed_args)
-            else:
-                # Validate required arguments for single file mode
-                if not hasattr(parsed_args, 'input_file') or not parsed_args.input_file:
-                    log.error("Input file is required for single file mode")
-                    return 1
-                if not hasattr(parsed_args, 'output_file') or not parsed_args.output_file:
-                    log.error("Output file is required for single file mode")
-                    return 1
-                    
-                success = self.scrape_companies(parsed_args)
+                # TODO: migrate batch mode to async (legacy removed)
+                log.error(
+                    "Batch mode is temporarily unsupported in async-only build"
+                )
+                return 1
+            # Single file mode validation
+            if (
+                not hasattr(parsed_args, 'input_file')
+                or not parsed_args.input_file
+            ):
+                log.error("Input file is required for single file mode")
+                return 1
+            if (
+                not hasattr(parsed_args, 'output_file')
+                or not parsed_args.output_file
+            ):
+                log.error("Output file is required for single file mode")
+                return 1
+            success = self.scrape_companies(parsed_args)
             
             return 0 if success else 1
             
@@ -609,6 +732,7 @@ class CLI:
             log.error("Unhandled exception: %s", e, exc_info=True)
             return 1
 
+ 
 def main() -> int:
     """
     Main entry point for the email scraper.

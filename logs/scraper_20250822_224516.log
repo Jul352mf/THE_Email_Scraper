@@ -1,0 +1,645 @@
+2025-08-22 22:45:16,037 | DEBUG   | scraper.output_formatter | Output formatter initialized (verbose=True)
+2025-08-22 22:45:16,038 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 22:45:16,038 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 22:45:16,038 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 22:45:16,038 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 22:45:16,038 | INFO    | scraper.cli          | Domain threshold: 50
+2025-08-22 22:45:16,038 | INFO    | scraper.cli          | Max pages: 50
+2025-08-22 22:45:16,038 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 22:45:16,039 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 22:45:16,039 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-22 22:45:16,232 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 22:45:16,515 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 22:45:16,518 | DEBUG   | scraper.http_client  | Created optimized session template with connection pooling
+2025-08-22 22:45:16,519 | DEBUG   | scraper.http_client  | Created new session for domain: googleapis.com
+2025-08-22 22:45:16,519 | INFO    | scraper.google_search | Google API requests session initialized
+2025-08-22 22:45:16,519 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 22:45:16,640 | INFO    | scraper.regex_cache  | Precompiling 11 regex patterns
+2025-08-22 22:45:16,641 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: (?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@(?:[A-Z0-9-]+ (0.548ms)
+2025-08-22 22:45:16,641 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'email_basic'
+2025-08-22 22:45:16,641 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: mailto: (0.037ms)
+2025-08-22 22:45:16,641 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'mailto'
+2025-08-22 22:45:16,642 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: 
+            (?P<user>[A-Za-z0-9._%+-]+)           (0.895ms)
+2025-08-22 22:45:16,642 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'obfuscated_email'
+2025-08-22 22:45:16,642 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: noreply@ (0.046ms)
+2025-08-22 22:45:16,643 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'noreply'
+2025-08-22 22:45:16,643 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: donotreply@ (0.036ms)
+2025-08-22 22:45:16,643 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'donotreply'
+2025-08-22 22:45:16,643 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: no-reply@ (0.040ms)
+2025-08-22 22:45:16,643 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'no_reply'
+2025-08-22 22:45:16,643 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: webmaster@ (0.042ms)
+2025-08-22 22:45:16,643 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'webmaster'
+2025-08-22 22:45:16,644 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: hostmaster@ (0.062ms)
+2025-08-22 22:45:16,644 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hostmaster'
+2025-08-22 22:45:16,644 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: postmaster@ (0.034ms)
+2025-08-22 22:45:16,644 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'postmaster'
+2025-08-22 22:45:16,644 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: \.(?:png|jpe?g|gif)$ (0.067ms)
+2025-08-22 22:45:16,644 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'image_extensions'
+2025-08-22 22:45:16,645 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: ^[0-9a-f]{20,}$ (0.059ms)
+2025-08-22 22:45:16,645 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hex_local_parts'
+2025-08-22 22:45:16,645 | INFO    | scraper.regex_cache  | Precompiled 11 common email extraction patterns
+2025-08-22 22:45:16,647 | DEBUG   | asyncio              | Using proactor: IocpProactor
+2025-08-22 22:45:16,654 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 22:45:16,654 | INFO    | scraper.async_google_search | Async Google API session initialized (max_concurrent=10)
+2025-08-22 22:45:16,655 | INFO    | scraper.async_orchestrator | Starting streaming processing of 8 companies
+2025-08-22 22:45:16,655 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: start with 8 companies
+2025-08-22 22:45:16,655 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: created 8 tasks
+2025-08-22 22:45:16,655 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:16,655 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for walter schmidt chemie gmbh
+2025-08-22 22:45:16,656 | DEBUG   | scraper.google_search | Google cache MISS for query: "walter schmidt chemie gmbh" contact email
+2025-08-22 22:45:16,656 | DEBUG   | scraper.async_google_search | Async Google API search: "walter schmidt chemie gmbh" contact email
+2025-08-22 22:45:16,657 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for henan xinlianxin fertilizer 
+2025-08-22 22:45:16,657 | DEBUG   | scraper.google_search | Google cache MISS for query: "henan xinlianxin fertilizer" contact email
+2025-08-22 22:45:16,657 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 22:45:16,658 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for mitsui toatsu chemicals 
+2025-08-22 22:45:16,658 | DEBUG   | scraper.google_search | Google cache MISS for query: "mitsui toatsu chemicals" contact email
+2025-08-22 22:45:16,660 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for daf trucks
+2025-08-22 22:45:16,660 | DEBUG   | scraper.google_search | Google cache MISS for query: "daf trucks" contact email
+2025-08-22 22:45:16,661 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for petrol rete 
+2025-08-22 22:45:16,661 | DEBUG   | scraper.google_search | Google cache MISS for query: "petrol rete" contact email
+2025-08-22 22:45:16,661 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for euro dam jas doo
+2025-08-22 22:45:16,662 | DEBUG   | scraper.google_search | Google cache MISS for query: "euro dam jas doo" contact email
+2025-08-22 22:45:16,662 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for Synsol
+2025-08-22 22:45:16,662 | DEBUG   | scraper.google_search | Google cache MISS for query: "Synsol" contact email
+2025-08-22 22:45:16,662 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for speedy fuels
+2025-08-22 22:45:16,662 | DEBUG   | scraper.google_search | Google cache MISS for query: "speedy fuels" contact email
+2025-08-22 22:45:16,884 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "walter schmidt chemie gmbh" contact email
+2025-08-22 22:45:16,885 | DEBUG   | scraper.google_search | Cached Google results for query: "walter schmidt chemie gmbh" contact email (10 results)
+2025-08-22 22:45:16,886 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for walter schmidt chemie gmbh
+2025-08-22 22:45:16,886 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for walter schmidt chemie gmbh
+2025-08-22 22:45:16,887 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: walter schmidt chemie gmbh
+2025-08-22 22:45:16,887 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: walter schmidt chemie gmbh
+2025-08-22 22:45:16,888 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: walter schmidt chemie gmbh
+2025-08-22 22:45:16,889 | DEBUG   | filelock             | Attempting to acquire lock 3095712955904 on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 22:45:16,890 | DEBUG   | filelock             | Lock 3095712955904 acquired on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 22:45:16,894 | DEBUG   | filelock             | Attempting to release lock 3095712955904 on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 22:45:16,895 | DEBUG   | filelock             | Lock 3095712955904 released on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 22:45:16,914 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and walter-schmidt-chemie.de: 89 (base: 89, penalty: 0)
+2025-08-22 22:45:16,915 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and rocketreach.co: 45 (base: 45, penalty: 0)
+2025-08-22 22:45:16,915 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and walter-schmidt-chemie.de: 89 (base: 89, penalty: 0)
+2025-08-22 22:45:16,915 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 22:45:16,916 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and carlroth.com: 50 (base: 50, penalty: 0)
+2025-08-22 22:45:16,917 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 22:45:16,917 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and noba-normteile.de: 42 (base: 42, penalty: 0)
+2025-08-22 22:45:16,917 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 22:45:16,917 | DEBUG   | scraper.domain_scorer | Applied penalty to linkedin.com (contains linkedin.com)
+2025-08-22 22:45:16,918 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and linkedin.com: 15 (base: 40, penalty: 25)
+2025-08-22 22:45:16,918 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 22:45:16,918 | DEBUG   | scraper.domain_scorer | Best domain for walter schmidt chemie gmbh: https://www.walter-schmidt-chemie.de/en/contact/imprint.html (score: 89)
+2025-08-22 22:45:16,918 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for walter schmidt chemie gmbh: https://www.walter-schmidt-chemie.de/en/contact/imprint.html
+2025-08-22 22:45:16,918 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:16,918 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: walter-schmidt-chemie.de (score: 89)
+2025-08-22 22:45:16,919 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: walter-schmidt-chemie.de
+2025-08-22 22:45:16,919 | DEBUG   | scraper.async_http_client | Testing access method https: https://walter-schmidt-chemie.de
+2025-08-22 22:45:17,460 | DEBUG   | scraper.async_google_search | Async Google API search: "henan xinlianxin fertilizer" contact email
+2025-08-22 22:45:17,461 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 22:45:17,615 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "henan xinlianxin fertilizer" contact email
+2025-08-22 22:45:17,615 | DEBUG   | scraper.google_search | Cached Google results for query: "henan xinlianxin fertilizer" contact email (10 results)
+2025-08-22 22:45:17,615 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for henan xinlianxin fertilizer 
+2025-08-22 22:45:17,616 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for henan xinlianxin fertilizer 
+2025-08-22 22:45:17,616 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: henan xinlianxin fertilizer 
+2025-08-22 22:45:17,616 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: henan xinlianxin fertilizer 
+2025-08-22 22:45:17,616 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: henan xinlianxin fertilizer 
+2025-08-22 22:45:17,616 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-22 22:45:17,616 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and facebook.com: 0 (base: 25, penalty: 25)
+2025-08-22 22:45:17,617 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and jet-inc.com: 42 (base: 42, penalty: 0)
+2025-08-22 22:45:17,617 | DEBUG   | scraper.domain_scorer | Applied penalty to linkedin.com (contains linkedin.com)
+2025-08-22 22:45:17,617 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and linkedin.com: 37 (base: 62, penalty: 25)
+2025-08-22 22:45:17,617 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and sinofert.com: 75 (base: 75, penalty: 0)
+2025-08-22 22:45:17,617 | DEBUG   | scraper.domain_scorer | Applied penalty to cn.linkedin.com (contains linkedin.com)
+2025-08-22 22:45:17,617 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and cn.linkedin.com: 37 (base: 62, penalty: 25)
+2025-08-22 22:45:17,618 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and methanol.org: 50 (base: 50, penalty: 0)
+2025-08-22 22:45:17,618 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and issuu.com: 22 (base: 22, penalty: 0)
+2025-08-22 22:45:17,618 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and airproducts.com: 36 (base: 36, penalty: 0)
+2025-08-22 22:45:17,618 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and cell.com: 33 (base: 33, penalty: 0)
+2025-08-22 22:45:17,618 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and fertilizerpricing.com: 74 (base: 74, penalty: 0)
+2025-08-22 22:45:17,619 | DEBUG   | scraper.domain_scorer | Best domain for henan xinlianxin fertilizer : http://www.sinofert.com/en/s/5635-15034-47938.html (score: 75)
+2025-08-22 22:45:17,619 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for henan xinlianxin fertilizer : http://www.sinofert.com/en/s/5635-15034-47938.html
+2025-08-22 22:45:17,619 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:17,619 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: sinofert.com (score: 75)
+2025-08-22 22:45:17,619 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: sinofert.com
+2025-08-22 22:45:17,619 | DEBUG   | scraper.async_http_client | Testing access method https: https://sinofert.com
+2025-08-22 22:45:17,631 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 22:45:17,958 | DEBUG   | scraper.async_http_client | Async HEAD https://walter-schmidt-chemie.de -> 200 (0 bytes)
+2025-08-22 22:45:17,958 | INFO    | scraper.async_http_client | Selected access method for walter-schmidt-chemie.de: https
+2025-08-22 22:45:17,958 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://walter-schmidt-chemie.de
+2025-08-22 22:45:18,268 | DEBUG   | scraper.async_google_search | Async Google API search: "mitsui toatsu chemicals" contact email
+2025-08-22 22:45:18,269 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 22:45:18,446 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "mitsui toatsu chemicals" contact email
+2025-08-22 22:45:18,447 | DEBUG   | scraper.google_search | Cached Google results for query: "mitsui toatsu chemicals" contact email (10 results)
+2025-08-22 22:45:18,447 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for mitsui toatsu chemicals 
+2025-08-22 22:45:18,447 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for mitsui toatsu chemicals 
+2025-08-22 22:45:18,447 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: mitsui toatsu chemicals 
+2025-08-22 22:45:18,448 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: mitsui toatsu chemicals 
+2025-08-22 22:45:18,448 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: mitsui toatsu chemicals 
+2025-08-22 22:45:18,448 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and kuraray.com: 28 (base: 28, penalty: 0)
+2025-08-22 22:45:18,448 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and globaldata.com: 30 (base: 30, penalty: 0)
+2025-08-22 22:45:18,449 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and jp.mitsuichemicals.com: 88 (base: 88, penalty: 0)
+2025-08-22 22:45:18,449 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and www3.epa.gov: 33 (base: 33, penalty: 0)
+2025-08-22 22:45:18,449 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and bccresearch.com: 36 (base: 36, penalty: 0)
+2025-08-22 22:45:18,449 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and carlyle.com: 54 (base: 54, penalty: 0)
+2025-08-22 22:45:18,449 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and mc-croplifesolutions.com: 45 (base: 45, penalty: 0)
+2025-08-22 22:45:18,450 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and agc.com: 33 (base: 33, penalty: 0)
+2025-08-22 22:45:18,450 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and pubmed.ncbi.nlm.nih.gov: 40 (base: 40, penalty: 0)
+2025-08-22 22:45:18,450 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and andersondevelopment.com: 25 (base: 25, penalty: 0)
+2025-08-22 22:45:18,450 | DEBUG   | scraper.domain_scorer | Best domain for mitsui toatsu chemicals : https://jp.mitsuichemicals.com/en/corporate/number/index.htm (score: 88)
+2025-08-22 22:45:18,450 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for mitsui toatsu chemicals : https://jp.mitsuichemicals.com/en/corporate/number/index.htm
+2025-08-22 22:45:18,450 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:18,451 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: jp.mitsuichemicals.com (score: 88)
+2025-08-22 22:45:18,451 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: jp.mitsuichemicals.com
+2025-08-22 22:45:18,451 | DEBUG   | scraper.async_http_client | Testing access method https: https://jp.mitsuichemicals.com
+2025-08-22 22:45:18,518 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de -> 200 (0 bytes)
+2025-08-22 22:45:18,519 | DEBUG   | scraper.async_orchestrator | Main page analysis failed for walter-schmidt-chemie.de: Connection closed
+2025-08-22 22:45:18,519 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://walter-schmidt-chemie.de/sitemap.xml
+2025-08-22 22:45:18,519 | DEBUG   | scraper.performance_optimizer | Created optimized session for walter-schmidt-chemie.de
+2025-08-22 22:45:18,643 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 22:45:18,644 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 22:45:18,974 | DEBUG   | scraper.async_http_client | Async HEAD https://jp.mitsuichemicals.com -> 200 (20313 bytes)
+2025-08-22 22:45:18,974 | INFO    | scraper.async_http_client | Selected access method for jp.mitsuichemicals.com: https
+2025-08-22 22:45:18,975 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://jp.mitsuichemicals.com
+2025-08-22 22:45:19,077 | DEBUG   | scraper.async_google_search | Async Google API search: "daf trucks" contact email
+2025-08-22 22:45:19,079 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 22:45:19,276 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "daf trucks" contact email
+2025-08-22 22:45:19,277 | DEBUG   | scraper.google_search | Cached Google results for query: "daf trucks" contact email (10 results)
+2025-08-22 22:45:19,277 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for daf trucks
+2025-08-22 22:45:19,277 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for daf trucks
+2025-08-22 22:45:19,278 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: daf trucks
+2025-08-22 22:45:19,278 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: daf trucks
+2025-08-22 22:45:19,278 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: daf trucks
+2025-08-22 22:45:19,279 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and daf.com: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:19,279 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and daf.global: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:19,279 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and daf.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:19,280 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and rmi.daf.com: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:19,280 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and hereforddaftrucks.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:19,280 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and gloucesterdaftrucks.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:19,280 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and paccar.com: 36 (base: 36, penalty: 0)
+2025-08-22 22:45:19,281 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and gbdaf.com: 75 (base: 75, penalty: 0)
+2025-08-22 22:45:19,281 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and chassiscab.com: 30 (base: 30, penalty: 0)
+2025-08-22 22:45:19,281 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and suttondaftrucks.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:19,281 | DEBUG   | scraper.domain_scorer | Best domain for daf trucks: https://www.daf.com/en/contact (score: 100)
+2025-08-22 22:45:19,281 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for daf trucks: https://www.daf.com/en/contact
+2025-08-22 22:45:19,282 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:19,282 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: daf.com (score: 100)
+2025-08-22 22:45:19,282 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: daf.com
+2025-08-22 22:45:19,282 | DEBUG   | scraper.async_http_client | Testing access method https: https://daf.com
+2025-08-22 22:45:19,480 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com -> 200 (20313 bytes)
+2025-08-22 22:45:19,481 | DEBUG   | scraper.async_orchestrator | Main page analysis failed for jp.mitsuichemicals.com: Connection closed
+2025-08-22 22:45:19,481 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://jp.mitsuichemicals.com/sitemap.xml
+2025-08-22 22:45:19,482 | DEBUG   | scraper.performance_optimizer | Created optimized session for jp.mitsuichemicals.com
+2025-08-22 22:45:19,637 | DEBUG   | scraper.async_http_client | Async HEAD https://daf.com -> 200 (14850 bytes)
+2025-08-22 22:45:19,637 | INFO    | scraper.async_http_client | Selected access method for daf.com: https
+2025-08-22 22:45:19,637 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://daf.com
+2025-08-22 22:45:19,653 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 22:45:19,653 | DEBUG   | scraper.async_http_client | Testing access method http: http://sinofert.com
+2025-08-22 22:45:19,654 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): http://sinofert.com - Cannot connect to host sinofert.com:80 ssl:default [getaddrinfo failed]
+2025-08-22 22:45:19,654 | WARNING | scraper.async_components | Circuit breaker OPEN for sinofert.com (5)
+2025-08-22 22:45:19,883 | DEBUG   | scraper.async_google_search | Async Google API search: "petrol rete" contact email
+2025-08-22 22:45:19,885 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 22:45:19,917 | DEBUG   | scraper.async_http_client | Async GET https://daf.com -> 200 (0 bytes)
+2025-08-22 22:45:19,917 | DEBUG   | scraper.async_orchestrator | Main page analysis failed for daf.com: Connection closed
+2025-08-22 22:45:19,918 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://daf.com/sitemap.xml
+2025-08-22 22:45:19,918 | DEBUG   | scraper.performance_optimizer | Created optimized session for daf.com
+2025-08-22 22:45:20,058 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "petrol rete" contact email
+2025-08-22 22:45:20,059 | DEBUG   | scraper.google_search | Cached Google results for query: "petrol rete" contact email (10 results)
+2025-08-22 22:45:20,059 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for petrol rete 
+2025-08-22 22:45:20,059 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for petrol rete 
+2025-08-22 22:45:20,059 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: petrol rete 
+2025-08-22 22:45:20,059 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: petrol rete 
+2025-08-22 22:45:20,060 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: petrol rete 
+2025-08-22 22:45:20,060 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-22 22:45:20,060 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and facebook.com: 5 (base: 30, penalty: 25)
+2025-08-22 22:45:20,060 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and scribd.com: 19 (base: 19, penalty: 0)
+2025-08-22 22:45:20,060 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-22 22:45:20,060 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and facebook.com: 5 (base: 30, penalty: 25)
+2025-08-22 22:45:20,061 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and prezzibenzina.it: 46 (base: 46, penalty: 0)
+2025-08-22 22:45:20,061 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and alvolante.it: 53 (base: 53, penalty: 0)
+2025-08-22 22:45:20,061 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and piazzalucana.it: 23 (base: 23, penalty: 0)
+2025-08-22 22:45:20,061 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and geomonitorsnc.com: 40 (base: 40, penalty: 0)
+2025-08-22 22:45:20,061 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and alvolante.it: 53 (base: 53, penalty: 0)
+2025-08-22 22:45:20,061 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and gazzettadellavaldagri.it: 40 (base: 40, penalty: 0)
+2025-08-22 22:45:20,062 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and oraridiapertura24.it: 42 (base: 42, penalty: 0)
+2025-08-22 22:45:20,062 | DEBUG   | scraper.domain_scorer | Best domain for petrol rete : https://www.alvolante.it/prezzo-carburante/basilicata/potenza/pompe-bianche-petrol-rete-59655 (score: 53)
+2025-08-22 22:45:20,062 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for petrol rete : https://www.alvolante.it/prezzo-carburante/basilicata/potenza/pompe-bianche-petrol-rete-59655
+2025-08-22 22:45:20,062 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:20,062 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: alvolante.it (score: 53)
+2025-08-22 22:45:20,062 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: alvolante.it
+2025-08-22 22:45:20,063 | DEBUG   | scraper.async_http_client | Testing access method https: https://alvolante.it
+2025-08-22 22:45:20,149 | DEBUG   | scraper.http_client  | Created new session for domain: jp.mitsuichemicals.com
+2025-08-22 22:45:20,417 | DEBUG   | scraper.async_http_client | Async HEAD https://alvolante.it -> 200 (42556 bytes)
+2025-08-22 22:45:20,417 | INFO    | scraper.async_http_client | Selected access method for alvolante.it: https
+2025-08-22 22:45:20,417 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://alvolante.it
+2025-08-22 22:45:20,457 | INFO    | scraper.http_client  | HTTP HEAD https://jp.mitsuichemicals.com/sitemap.xml → 404
+2025-08-22 22:45:20,457 | DEBUG   | scraper.http_client  | Network/HTTP error (attempt 1/3) for https://jp.mitsuichemicals.com/sitemap.xml: Bad status 404 for https://jp.mitsuichemicals.com/sitemap.xml
+2025-08-22 22:45:20,458 | DEBUG   | scraper.http_client  | Skipping fallbacks for jp.mitsuichemicals.com - using verified pattern
+2025-08-22 22:45:20,458 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://jp.mitsuichemicals.com/sitemap_index.xml
+2025-08-22 22:45:20,549 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it -> 200 (42556 bytes)
+2025-08-22 22:45:20,549 | DEBUG   | scraper.async_orchestrator | Main page analysis failed for alvolante.it: Connection closed
+2025-08-22 22:45:20,549 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://alvolante.it/sitemap.xml
+2025-08-22 22:45:20,549 | DEBUG   | scraper.performance_optimizer | Created optimized session for alvolante.it
+2025-08-22 22:45:20,663 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): http://sinofert.com - Cannot connect to host sinofert.com:80 ssl:default [getaddrinfo failed]
+2025-08-22 22:45:20,664 | WARNING | scraper.async_components | Circuit breaker OPEN for sinofert.com (6)
+2025-08-22 22:45:20,664 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-22 22:45:20,664 | DEBUG   | scraper.async_http_client | Testing access method https_www: https://www.sinofert.com
+2025-08-22 22:45:20,664 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-22 22:45:20,664 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-22 22:45:20,665 | DEBUG   | scraper.async_http_client | Testing access method http_www: http://www.sinofert.com
+2025-08-22 22:45:20,665 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-22 22:45:20,665 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-22 22:45:20,665 | WARNING | scraper.async_http_client | All access methods failed for domain: sinofert.com
+2025-08-22 22:45:20,665 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: sinofert.com
+2025-08-22 22:45:20,692 | DEBUG   | scraper.async_google_search | Async Google API search: "euro dam jas doo" contact email
+2025-08-22 22:45:20,693 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 22:45:20,746 | DEBUG   | scraper.performance_optimizer | Cached response for https://daf.com/sitemap.xml
+2025-08-22 22:45:20,747 | DEBUG   | scraper.http_client  | Using optimized request for: https://daf.com/sitemap.xml
+2025-08-22 22:45:20,748 | DEBUG   | scraper.performance_optimizer | Cache HIT for https://daf.com/sitemap.xml
+2025-08-22 22:45:20,749 | DEBUG   | scraper.http_client  | Using optimized request for: https://daf.com/sitemap.xml
+2025-08-22 22:45:20,749 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://daf.com/sitemap.xml (0.83s)
+2025-08-22 22:45:20,750 | DEBUG   | scraper.config       | Allocated 1 workers for task: sitemap_download
+2025-08-22 22:45:20,767 | DEBUG   | scraper.config       | Allocated 2 workers for task: sitemap_download
+2025-08-22 22:45:20,767 | DEBUG   | scraper.sitemap      | Parallel-fetching 2 nested sitemaps via 2 threads
+2025-08-22 22:45:20,767 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.daf.com/en/sitemap.xml
+2025-08-22 22:45:20,768 | DEBUG   | scraper.performance_optimizer | Created optimized session for www.daf.com
+2025-08-22 22:45:20,768 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.daf.com/nl-nl/sitemap.xml
+2025-08-22 22:45:20,854 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "euro dam jas doo" contact email
+2025-08-22 22:45:20,855 | DEBUG   | scraper.google_search | Cached Google results for query: "euro dam jas doo" contact email (10 results)
+2025-08-22 22:45:20,855 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for euro dam jas doo
+2025-08-22 22:45:20,855 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for euro dam jas doo
+2025-08-22 22:45:20,855 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: euro dam jas doo
+2025-08-22 22:45:20,855 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: euro dam jas doo
+2025-08-22 22:45:20,855 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: euro dam jas doo
+2025-08-22 22:45:20,856 | DEBUG   | scraper.domain_scorer | Applied penalty to ba.linkedin.com (contains linkedin.com)
+2025-08-22 22:45:20,856 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and ba.linkedin.com: 25 (base: 50, penalty: 25)
+2025-08-22 22:45:20,856 | DEBUG   | scraper.domain_scorer | Applied penalty to instagram.com (contains instagram.com)
+2025-08-22 22:45:20,856 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and instagram.com: 12 (base: 37, penalty: 25)
+2025-08-22 22:45:20,856 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and goodyear.eu: 42 (base: 42, penalty: 0)
+2025-08-22 22:45:20,857 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and companywall.ba: 30 (base: 30, penalty: 0)
+2025-08-22 22:45:20,857 | DEBUG   | scraper.domain_scorer | Applied penalty to linkedin.com (contains linkedin.com)
+2025-08-22 22:45:20,857 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and linkedin.com: 5 (base: 30, penalty: 25)
+2025-08-22 22:45:20,857 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-22 22:45:20,857 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and facebook.com: 21 (base: 46, penalty: 25)
+2025-08-22 22:45:20,858 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and jpautoceste.ba: 35 (base: 35, penalty: 0)
+2025-08-22 22:45:20,858 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-22 22:45:20,858 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and facebook.com: 21 (base: 46, penalty: 25)
+2025-08-22 22:45:20,858 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and scribd.com: 40 (base: 40, penalty: 0)
+2025-08-22 22:45:20,858 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and flek.ba: 40 (base: 40, penalty: 0)
+2025-08-22 22:45:20,858 | DEBUG   | scraper.domain_scorer | Best domain for euro dam jas doo: https://www.goodyear.eu/bs_ba/consumer/all-dealers/lukavac/euro-dam-jas-doo-30092243.html (score: 42)
+2025-08-22 22:45:20,858 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for euro dam jas doo: https://www.goodyear.eu/bs_ba/consumer/all-dealers/lukavac/euro-dam-jas-doo-30092243.html
+2025-08-22 22:45:20,859 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:20,992 | INFO    | scraper.http_client  | HTTP HEAD https://jp.mitsuichemicals.com/sitemap_index.xml → 404
+2025-08-22 22:45:20,992 | DEBUG   | scraper.http_client  | Network/HTTP error (attempt 1/3) for https://jp.mitsuichemicals.com/sitemap_index.xml: Bad status 404 for https://jp.mitsuichemicals.com/sitemap_index.xml
+2025-08-22 22:45:20,992 | DEBUG   | scraper.http_client  | Skipping fallbacks for jp.mitsuichemicals.com - using verified pattern
+2025-08-22 22:45:20,993 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://jp.mitsuichemicals.com/sitemap-index.xml
+2025-08-22 22:45:21,204 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.daf.com/en/sitemap.xml
+2025-08-22 22:45:21,204 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.daf.com/en/sitemap.xml
+2025-08-22 22:45:21,205 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.daf.com/nl-nl/sitemap.xml
+2025-08-22 22:45:21,205 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.daf.com/nl-nl/sitemap.xml
+2025-08-22 22:45:21,271 | DEBUG   | scraper.sitemap      | Priority URL extraction for daf.com finished in 1.35 s – 50 URLs
+2025-08-22 22:45:21,273 | DEBUG   | scraper.smart_discovery | Prioritized 50 URLs, processing top 25
+2025-08-22 22:45:21,273 | DEBUG   | scraper.sitemap      | Applied smart prioritization to 25 URLs
+2025-08-22 22:45:21,273 | DEBUG   | scraper.async_orchestrator | Using 25 sitemap priority URLs for daf.com
+2025-08-22 22:45:21,412 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/contact -> 200 (0 bytes)
+2025-08-22 22:45:21,502 | DEBUG   | scraper.async_google_search | Async Google API search: "Synsol" contact email
+2025-08-22 22:45:21,503 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 22:45:21,526 | INFO    | scraper.http_client  | HTTP HEAD https://jp.mitsuichemicals.com/sitemap-index.xml → 404
+2025-08-22 22:45:21,526 | DEBUG   | scraper.http_client  | Network/HTTP error (attempt 1/3) for https://jp.mitsuichemicals.com/sitemap-index.xml: Bad status 404 for https://jp.mitsuichemicals.com/sitemap-index.xml
+2025-08-22 22:45:21,527 | DEBUG   | scraper.http_client  | Skipping fallbacks for jp.mitsuichemicals.com - using verified pattern
+2025-08-22 22:45:21,527 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://jp.mitsuichemicals.com/sitemap1.xml
+2025-08-22 22:45:21,528 | DEBUG   | scraper.performance_optimizer | Cached response for https://alvolante.it/sitemap.xml
+2025-08-22 22:45:21,528 | DEBUG   | scraper.http_client  | Using optimized request for: https://alvolante.it/sitemap.xml
+2025-08-22 22:45:21,528 | DEBUG   | scraper.performance_optimizer | Cache HIT for https://alvolante.it/sitemap.xml
+2025-08-22 22:45:21,529 | DEBUG   | scraper.http_client  | Using optimized request for: https://alvolante.it/sitemap.xml
+2025-08-22 22:45:21,529 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://alvolante.it/sitemap.xml (0.98s)
+2025-08-22 22:45:21,529 | DEBUG   | scraper.config       | Allocated 1 workers for task: sitemap_download
+2025-08-22 22:45:21,531 | DEBUG   | scraper.config       | Allocated 4 workers for task: sitemap_download
+2025-08-22 22:45:21,531 | DEBUG   | scraper.sitemap      | Parallel-fetching 18 nested sitemaps via 4 threads
+2025-08-22 22:45:21,532 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=1
+2025-08-22 22:45:21,532 | DEBUG   | scraper.performance_optimizer | Created optimized session for www.alvolante.it
+2025-08-22 22:45:21,532 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=2
+2025-08-22 22:45:21,533 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=3
+2025-08-22 22:45:21,536 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=4
+2025-08-22 22:45:21,566 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/daf-history -> 200 (0 bytes)
+2025-08-22 22:45:21,653 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf -> 200 (0 bytes)
+2025-08-22 22:45:21,687 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/daf-history/clever-solutions -> 200 (0 bytes)
+2025-08-22 22:45:21,716 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/board-of-management -> 200 (0 bytes)
+2025-08-22 22:45:21,723 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "Synsol" contact email
+2025-08-22 22:45:21,723 | DEBUG   | scraper.google_search | Cached Google results for query: "Synsol" contact email (10 results)
+2025-08-22 22:45:21,723 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for Synsol
+2025-08-22 22:45:21,723 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for Synsol
+2025-08-22 22:45:21,723 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: Synsol
+2025-08-22 22:45:21,724 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: Synsol
+2025-08-22 22:45:21,724 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: Synsol
+2025-08-22 22:45:21,724 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and www1.mscdirect.com: 25 (base: 25, penalty: 0)
+2025-08-22 22:45:21,724 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and synsol.ch: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:21,724 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and www1.mscdirect.com: 25 (base: 25, penalty: 0)
+2025-08-22 22:45:21,725 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and contactout.com: 33 (base: 33, penalty: 0)
+2025-08-22 22:45:21,725 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and synsol.ch: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:21,725 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and mscdirect.com: 25 (base: 25, penalty: 0)
+2025-08-22 22:45:21,725 | DEBUG   | scraper.domain_scorer | Applied penalty to crunchbase.com (contains crunchbase.com)
+2025-08-22 22:45:21,725 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and crunchbase.com: 8 (base: 33, penalty: 25)
+2025-08-22 22:45:21,725 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and find-and-update.company-information.service.gov.uk: 50 (base: 50, penalty: 0)
+2025-08-22 22:45:21,726 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and metalloidcorp.com: 22 (base: 22, penalty: 0)
+2025-08-22 22:45:21,726 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and find-and-update.company-information.service.gov.uk: 50 (base: 50, penalty: 0)
+2025-08-22 22:45:21,726 | DEBUG   | scraper.domain_scorer | Best domain for Synsol: https://synsol.ch/privacy-policy-of-synsol-ag/ (score: 100)
+2025-08-22 22:45:21,726 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for Synsol: https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-22 22:45:21,726 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 22:45:21,727 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: synsol.ch (score: 100)
+2025-08-22 22:45:21,727 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: synsol.ch
+2025-08-22 22:45:21,727 | DEBUG   | scraper.async_http_client | Testing access method https: https://synsol.ch
+2025-08-22 22:45:22,055 | INFO    | scraper.http_client  | HTTP HEAD https://jp.mitsuichemicals.com/sitemap1.xml → 404
+2025-08-22 22:45:22,056 | DEBUG   | scraper.http_client  | Network/HTTP error (attempt 1/3) for https://jp.mitsuichemicals.com/sitemap1.xml: Bad status 404 for https://jp.mitsuichemicals.com/sitemap1.xml
+2025-08-22 22:45:22,056 | DEBUG   | scraper.http_client  | Skipping fallbacks for jp.mitsuichemicals.com - using verified pattern
+2025-08-22 22:45:22,056 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://jp.mitsuichemicals.com/robots.txt
+2025-08-22 22:45:22,171 | DEBUG   | scraper.async_http_client | Async HEAD https://synsol.ch -> 200 (0 bytes)
+2025-08-22 22:45:22,171 | INFO    | scraper.async_http_client | Selected access method for synsol.ch: https
+2025-08-22 22:45:22,171 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://synsol.ch
+2025-08-22 22:45:22,185 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=1
+2025-08-22 22:45:22,186 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=1
+2025-08-22 22:45:22,186 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=5
+2025-08-22 22:45:22,193 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=4
+2025-08-22 22:45:22,193 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=4
+2025-08-22 22:45:22,193 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=6
+2025-08-22 22:45:22,216 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=2
+2025-08-22 22:45:22,216 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=2
+2025-08-22 22:45:22,217 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=7
+2025-08-22 22:45:22,218 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch -> 200 (0 bytes)
+2025-08-22 22:45:22,219 | DEBUG   | scraper.async_orchestrator | Main page analysis failed for synsol.ch: Connection closed
+2025-08-22 22:45:22,221 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://synsol.ch/sitemap.xml
+2025-08-22 22:45:22,221 | DEBUG   | scraper.performance_optimizer | Created optimized session for synsol.ch
+2025-08-22 22:45:22,223 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=3
+2025-08-22 22:45:22,224 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=3
+2025-08-22 22:45:22,224 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=8
+2025-08-22 22:45:22,253 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=5
+2025-08-22 22:45:22,253 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=5
+2025-08-22 22:45:22,254 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=9
+2025-08-22 22:45:22,261 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=6
+2025-08-22 22:45:22,261 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=6
+2025-08-22 22:45:22,262 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=10
+2025-08-22 22:45:22,282 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=7
+2025-08-22 22:45:22,283 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=7
+2025-08-22 22:45:22,284 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=11
+2025-08-22 22:45:22,291 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=8
+2025-08-22 22:45:22,291 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=8
+2025-08-22 22:45:22,291 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=12
+2025-08-22 22:45:22,296 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=9
+2025-08-22 22:45:22,296 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=9
+2025-08-22 22:45:22,297 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=13
+2025-08-22 22:45:22,301 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=10
+2025-08-22 22:45:22,302 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=10
+2025-08-22 22:45:22,302 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=14
+2025-08-22 22:45:22,357 | DEBUG   | scraper.performance_optimizer | Cached response for https://jp.mitsuichemicals.com/robots.txt
+2025-08-22 22:45:22,358 | DEBUG   | scraper.async_google_search | Async Google API search: "speedy fuels" contact email
+2025-08-22 22:45:22,359 | DEBUG   | scraper.http_client  | Using optimized request for: https://jp.mitsuichemicals.com/robots.txt
+2025-08-22 22:45:22,361 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://jp.mitsuichemicals.com/jp.sitemap.xml
+2025-08-22 22:45:22,367 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=12
+2025-08-22 22:45:22,368 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=12
+2025-08-22 22:45:22,368 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=13
+2025-08-22 22:45:22,369 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=13
+2025-08-22 22:45:22,369 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=15
+2025-08-22 22:45:22,370 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=11
+2025-08-22 22:45:22,371 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=11
+2025-08-22 22:45:22,371 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=16
+2025-08-22 22:45:22,372 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=14
+2025-08-22 22:45:22,373 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=14
+2025-08-22 22:45:22,373 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=17
+2025-08-22 22:45:22,373 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.alvolante.it/sitemap.xml?page=18
+2025-08-22 22:45:22,410 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=15
+2025-08-22 22:45:22,411 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=15
+2025-08-22 22:45:22,418 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=16
+2025-08-22 22:45:22,419 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=16
+2025-08-22 22:45:22,422 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=18
+2025-08-22 22:45:22,422 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=18
+2025-08-22 22:45:22,429 | DEBUG   | scraper.performance_optimizer | Cached response for https://www.alvolante.it/sitemap.xml?page=17
+2025-08-22 22:45:22,429 | DEBUG   | scraper.http_client  | Using optimized request for: https://www.alvolante.it/sitemap.xml?page=17
+2025-08-22 22:45:22,444 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/daf-history/past-and-present -> 200 (0 bytes)
+2025-08-22 22:45:22,482 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/daf-worldwide -> 200 (0 bytes)
+2025-08-22 22:45:22,506 | DEBUG   | scraper.sitemap      | Priority URL extraction for alvolante.it finished in 1.96 s – 2 URLs
+2025-08-22 22:45:22,506 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/daf-history/timeline -> 200 (0 bytes)
+2025-08-22 22:45:22,506 | DEBUG   | scraper.smart_discovery | Prioritized 2 URLs, processing top 2
+2025-08-22 22:45:22,506 | DEBUG   | scraper.sitemap      | Applied smart prioritization to 2 URLs
+2025-08-22 22:45:22,507 | DEBUG   | scraper.async_orchestrator | Using 2 sitemap priority URLs for alvolante.it
+2025-08-22 22:45:22,553 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "speedy fuels" contact email
+2025-08-22 22:45:22,553 | DEBUG   | scraper.google_search | Cached Google results for query: "speedy fuels" contact email (10 results)
+2025-08-22 22:45:22,554 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for speedy fuels
+2025-08-22 22:45:22,554 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for speedy fuels
+2025-08-22 22:45:22,554 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: speedy fuels
+2025-08-22 22:45:22,554 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: speedy fuels
+2025-08-22 22:45:22,554 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: speedy fuels
+2025-08-22 22:45:22,554 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:22,555 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and cdn.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:22,555 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:22,555 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and cdn.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:22,555 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:22,555 | DEBUG   | scraper.domain_scorer | Applied penalty to uk.linkedin.com (contains linkedin.com)
+2025-08-22 22:45:22,555 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and uk.linkedin.com: 25 (base: 50, penalty: 25)
+2025-08-22 22:45:22,556 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:22,556 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and zoominfo.com: 15 (base: 15, penalty: 0)
+2025-08-22 22:45:22,556 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-22 22:45:22,556 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and crownoil.co.uk: 19 (base: 19, penalty: 0)
+2025-08-22 22:45:22,556 | DEBUG   | scraper.domain_scorer | Best domain for speedy fuels: https://www.speedyfuels.co.uk/contact-us/ (score: 100)
+2025-08-22 22:45:22,556 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for speedy fuels: https://www.speedyfuels.co.uk/contact-us/
+2025-08-22 22:45:22,557 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: speedyfuels.co.uk (score: 100)
+2025-08-22 22:45:22,557 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: speedyfuels.co.uk
+2025-08-22 22:45:22,557 | DEBUG   | scraper.async_http_client | Testing access method https: https://speedyfuels.co.uk
+2025-08-22 22:45:22,569 | DEBUG   | scraper.async_http_client | Async GET https://www.alvolante.it/news/opel_taglia_posti_lavoro_governi_europei-157681044 -> 200 (21706 bytes)
+2025-08-22 22:45:22,630 | DEBUG   | scraper.performance_optimizer | Cached response for https://jp.mitsuichemicals.com/jp.sitemap.xml
+2025-08-22 22:45:22,630 | DEBUG   | scraper.http_client  | Using optimized request for: https://jp.mitsuichemicals.com/jp.sitemap.xml
+2025-08-22 22:45:22,630 | INFO    | scraper.sitemap      | Found sitemap via robots.txt: https://jp.mitsuichemicals.com/jp.sitemap.xml (3.15s)
+2025-08-22 22:45:22,630 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://jp.mitsuichemicals.com/en.sitemap.xml
+2025-08-22 22:45:22,635 | DEBUG   | scraper.async_http_client | Async GET https://www.alvolante.it/opinioni/alfa_romeo_mito_futureal -> 200 (27042 bytes)
+2025-08-22 22:45:22,780 | DEBUG   | scraper.async_http_client | Async HEAD https://speedyfuels.co.uk -> 200 (0 bytes)
+2025-08-22 22:45:22,780 | INFO    | scraper.async_http_client | Selected access method for speedyfuels.co.uk: https
+2025-08-22 22:45:22,780 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://speedyfuels.co.uk
+2025-08-22 22:45:22,798 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contact -> 404 (0 bytes)
+2025-08-22 22:45:22,862 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contacts -> 404 (0 bytes)
+2025-08-22 22:45:22,934 | DEBUG   | scraper.performance_optimizer | Cached response for https://jp.mitsuichemicals.com/en.sitemap.xml
+2025-08-22 22:45:22,934 | DEBUG   | scraper.http_client  | Using optimized request for: https://jp.mitsuichemicals.com/en.sitemap.xml
+2025-08-22 22:45:22,934 | INFO    | scraper.sitemap      | Found sitemap via robots.txt: https://jp.mitsuichemicals.com/en.sitemap.xml (3.45s)
+2025-08-22 22:45:22,935 | DEBUG   | scraper.config       | Allocated 2 workers for task: sitemap_download
+2025-08-22 22:45:22,958 | DEBUG   | scraper.performance_optimizer | Cached response for https://synsol.ch/sitemap.xml
+2025-08-22 22:45:22,958 | DEBUG   | scraper.http_client  | Using optimized request for: https://synsol.ch/sitemap.xml
+2025-08-22 22:45:22,959 | DEBUG   | scraper.performance_optimizer | Cache HIT for https://synsol.ch/sitemap.xml
+2025-08-22 22:45:22,959 | DEBUG   | scraper.http_client  | Using optimized request for: https://synsol.ch/sitemap.xml
+2025-08-22 22:45:22,959 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://synsol.ch/sitemap.xml (0.74s)
+2025-08-22 22:45:22,960 | DEBUG   | scraper.config       | Allocated 1 workers for task: sitemap_download
+2025-08-22 22:45:22,962 | DEBUG   | scraper.config       | Allocated 2 workers for task: sitemap_download
+2025-08-22 22:45:22,962 | DEBUG   | scraper.sitemap      | Parallel-fetching 2 nested sitemaps via 2 threads
+2025-08-22 22:45:22,963 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://synsol.ch/wp-sitemap-posts-page-1.xml
+2025-08-22 22:45:22,964 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://synsol.ch/wp-sitemap-users-1.xml
+2025-08-22 22:45:22,965 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contact/ -> 404 (0 bytes)
+2025-08-22 22:45:22,974 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk -> 200 (0 bytes)
+2025-08-22 22:45:22,975 | DEBUG   | scraper.async_orchestrator | Main page analysis failed for speedyfuels.co.uk: Connection closed
+2025-08-22 22:45:22,976 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://speedyfuels.co.uk/sitemap.xml
+2025-08-22 22:45:22,976 | DEBUG   | scraper.performance_optimizer | Created optimized session for speedyfuels.co.uk
+2025-08-22 22:45:23,076 | DEBUG   | scraper.sitemap      | Priority URL extraction for jp.mitsuichemicals.com finished in 3.59 s – 7 URLs
+2025-08-22 22:45:23,077 | DEBUG   | scraper.smart_discovery | Prioritized 7 URLs, processing top 7
+2025-08-22 22:45:23,077 | DEBUG   | scraper.sitemap      | Applied smart prioritization to 7 URLs
+2025-08-22 22:45:23,077 | DEBUG   | scraper.async_orchestrator | Using 7 sitemap priority URLs for jp.mitsuichemicals.com
+2025-08-22 22:45:23,104 | DEBUG   | scraper.performance_optimizer | Cached response for https://synsol.ch/wp-sitemap-users-1.xml
+2025-08-22 22:45:23,104 | DEBUG   | scraper.http_client  | Using optimized request for: https://synsol.ch/wp-sitemap-users-1.xml
+2025-08-22 22:45:23,410 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/en/contact/index.htm -> 200 (15377 bytes)
+2025-08-22 22:45:23,422 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/en/siteinfo/privacy/index.htm -> 200 (18532 bytes)
+2025-08-22 22:45:23,469 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/daf-worldwide/production-locations -> 200 (0 bytes)
+2025-08-22 22:45:23,518 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/about-daf/daf-worldwide/dealer-network -> 200 (0 bytes)
+2025-08-22 22:45:23,533 | DEBUG   | scraper.performance_optimizer | Cached response for https://synsol.ch/wp-sitemap-posts-page-1.xml
+2025-08-22 22:45:23,533 | DEBUG   | scraper.http_client  | Using optimized request for: https://synsol.ch/wp-sitemap-posts-page-1.xml
+2025-08-22 22:45:23,537 | DEBUG   | scraper.sitemap      | Priority URL extraction for synsol.ch finished in 1.32 s – 2 URLs
+2025-08-22 22:45:23,538 | DEBUG   | scraper.smart_discovery | Prioritized 2 URLs, processing top 2
+2025-08-22 22:45:23,539 | DEBUG   | scraper.sitemap      | Applied smart prioritization to 2 URLs
+2025-08-22 22:45:23,540 | DEBUG   | scraper.async_orchestrator | Using 2 sitemap priority URLs for synsol.ch
+2025-08-22 22:45:23,681 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:23,682 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:23,739 | DEBUG   | scraper.http_client  | Created new session for domain: speedyfuels.co.uk
+2025-08-22 22:45:23,780 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/en/career/know_us/about_us/index.htm -> 200 (16072 bytes)
+2025-08-22 22:45:24,097 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/en/siteinfo/privacy_french/index.htm -> 200 (19288 bytes)
+2025-08-22 22:45:24,133 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/en/siteinfo/privacy_german/index.htm -> 200 (19605 bytes)
+2025-08-22 22:45:24,340 | INFO    | scraper.http_client  | HTTP HEAD https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 22:45:24,340 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://speedyfuels.co.uk/sitemap.xml
+2025-08-22 22:45:24,364 | DEBUG   | scraper.http_client  | Created token bucket for domain speedyfuels.co.uk (rate=10.00/s, capacity=5.0)
+2025-08-22 22:45:24,550 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contacts -> 404 (0 bytes)
+2025-08-22 22:45:24,616 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contact/ -> 200 (0 bytes)
+2025-08-22 22:45:24,650 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contact -> 200 (0 bytes)
+2025-08-22 22:45:24,651 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it -> 200 (42556 bytes)
+2025-08-22 22:45:24,652 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 22:45:24,773 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/sitemap.xml → 200
+2025-08-22 22:45:24,773 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://speedyfuels.co.uk/sitemap.xml (1.80s)
+2025-08-22 22:45:24,774 | DEBUG   | scraper.config       | Allocated 1 workers for task: sitemap_download
+2025-08-22 22:45:24,775 | DEBUG   | scraper.config       | Allocated 2 workers for task: sitemap_download
+2025-08-22 22:45:24,775 | DEBUG   | scraper.sitemap      | Parallel-fetching 2 nested sitemaps via 2 threads
+2025-08-22 22:45:24,776 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.speedyfuels.co.uk/post-sitemap.xml
+2025-08-22 22:45:24,776 | DEBUG   | scraper.performance_optimizer | Created optimized session for www.speedyfuels.co.uk
+2025-08-22 22:45:24,776 | DEBUG   | scraper.performance_optimizer | Cache MISS for https://www.speedyfuels.co.uk/page-sitemap.xml
+2025-08-22 22:45:24,805 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/privacy-policy-of-synsol-ag/ -> 200 (0 bytes)
+2025-08-22 22:45:24,938 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/urea/ -> 200 (0 bytes)
+2025-08-22 22:45:25,040 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/product/adblue/index.htm -> 200 (33266 bytes)
+2025-08-22 22:45:25,190 | DEBUG   | scraper.http_client  | Using optimized URL: https://www.speedyfuels.co.uk/page-sitemap.xml -> https://speedyfuels.co.uk/page-sitemap.xml
+2025-08-22 22:45:25,191 | DEBUG   | scraper.http_client  | Using optimized URL: https://www.speedyfuels.co.uk/post-sitemap.xml -> https://speedyfuels.co.uk/post-sitemap.xml
+2025-08-22 22:45:25,191 | DEBUG   | scraper.http_client  | Created new session for domain: speedyfuels.co.uk
+2025-08-22 22:45:25,191 | DEBUG   | scraper.http_client  | Created new session for domain: speedyfuels.co.uk
+2025-08-22 22:45:25,318 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contact -> 404 (0 bytes)
+2025-08-22 22:45:25,318 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contact/ -> 404 (0 bytes)
+2025-08-22 22:45:25,319 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contacts -> 404 (0 bytes)
+2025-08-22 22:45:25,458 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:25,465 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:25,465 | DEBUG   | scraper.async_orchestrator | Discovery page analysis failed for https://daf.com/contact: Connection closed
+2025-08-22 22:45:25,465 | DEBUG   | scraper.async_orchestrator | Discovery page analysis failed for https://daf.com/contact/: Connection closed
+2025-08-22 22:45:25,607 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:25,695 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:25,696 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:25,733 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contact/ -> 404 (0 bytes)
+2025-08-22 22:45:25,801 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/en/sustainability/society/supplier/procurement/index.htm -> 200 (16149 bytes)
+2025-08-22 22:45:25,823 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contacts -> 404 (0 bytes)
+2025-08-22 22:45:25,825 | DEBUG   | scraper.async_http_client | Async GET https://alvolante.it/contact -> 404 (0 bytes)
+2025-08-22 22:45:25,825 | INFO    | scraper.async_http_client | Async batch request completed: 5/5 successful in 1.17 seconds (4.26 requests/sec)
+2025-08-22 22:45:25,896 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:26,224 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/post-sitemap.xml → 200
+2025-08-22 22:45:26,425 | INFO    | scraper.http_client  | HTTP GET https://speedyfuels.co.uk/page-sitemap.xml → 200
+2025-08-22 22:45:26,441 | DEBUG   | scraper.sitemap      | Priority URL extraction for speedyfuels.co.uk finished in 3.47 s – 15 URLs
+2025-08-22 22:45:26,441 | DEBUG   | scraper.smart_discovery | Prioritized 15 URLs, processing top 15
+2025-08-22 22:45:26,441 | DEBUG   | scraper.sitemap      | Applied smart prioritization to 15 URLs
+2025-08-22 22:45:26,442 | DEBUG   | scraper.async_orchestrator | Using 15 sitemap priority URLs for speedyfuels.co.uk
+2025-08-22 22:45:26,442 | DEBUG   | scraper.async_http_client | Blocked domain or extension: https://cdn.speedyfuels.co.uk/wp-content/uploads/2021/04/Red-Diesel-FAQ-Contact.jpg
+2025-08-22 22:45:26,443 | DEBUG   | scraper.async_http_client | Blocked domain or extension: https://cdn.speedyfuels.co.uk/wp-content/uploads/2021/10/About-Speedy-scaled.jpg
+2025-08-22 22:45:26,488 | INFO    | scraper.async_browser_service | AsyncBrowserService started (headless=True, concurrent=8)
+2025-08-22 22:45:26,514 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/about-us/ -> 200 (0 bytes)
+2025-08-22 22:45:26,583 | DEBUG   | scraper.async_http_client | Async GET https://daf.com -> 200 (0 bytes)
+2025-08-22 22:45:26,584 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 22:45:26,586 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch -> 200 (0 bytes)
+2025-08-22 22:45:26,586 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 22:45:26,606 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/news/common-misconceptions-about-hvo/ -> 200 (0 bytes)
+2025-08-22 22:45:26,692 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contact -> 404 (14886 bytes)
+2025-08-22 22:45:26,712 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contacts -> 404 (14886 bytes)
+2025-08-22 22:45:26,716 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contact/ -> 404 (14886 bytes)
+2025-08-22 22:45:27,461 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:27,495 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:27,531 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contacts -> 404 (0 bytes)
+2025-08-22 22:45:27,643 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/fuel-suppliers/ -> 200 (0 bytes)
+2025-08-22 22:45:27,651 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contacts/ -> 404 (14886 bytes)
+2025-08-22 22:45:27,659 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contact/ -> 200 (0 bytes)
+2025-08-22 22:45:27,666 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/contact -> 200 (0 bytes)
+2025-08-22 22:45:27,666 | INFO    | scraper.async_http_client | Async batch request completed: 5/5 successful in 1.08 seconds (4.62 requests/sec)
+2025-08-22 22:45:27,689 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/kontakt -> 404 (14886 bytes)
+2025-08-22 22:45:27,694 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/contact-us/ -> 200 (0 bytes)
+2025-08-22 22:45:27,715 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/privacy-policy/ -> 200 (0 bytes)
+2025-08-22 22:45:27,825 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:27,849 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:27,887 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contact -> 404 (0 bytes)
+2025-08-22 22:45:27,900 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contact/ -> 404 (0 bytes)
+2025-08-22 22:45:27,904 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/contacts -> 404 (0 bytes)
+2025-08-22 22:45:27,904 | INFO    | scraper.async_http_client | Async batch request completed: 5/5 successful in 1.32 seconds (3.79 requests/sec)
+2025-08-22 22:45:28,212 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/commercial-fuel-suppliers-uk/ -> 200 (0 bytes)
+2025-08-22 22:45:28,524 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/adblue/ -> 200 (0 bytes)
+2025-08-22 22:45:28,654 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com -> 200 (20313 bytes)
+2025-08-22 22:45:28,654 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 22:45:29,141 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/guides/adblue-guide/ -> 200 (0 bytes)
+2025-08-22 22:45:29,340 | DEBUG   | scraper.async_orchestrator | Async JS render failed for alvolante.it: 'EmailExtractor' object has no attribute 'extract_emails_from_content'
+2025-08-22 22:45:29,341 | DEBUG   | scraper.async_orchestrator | No emails found for petrol rete  (alvolante.it)
+2025-08-22 22:45:29,348 | DEBUG   | scraper.async_orchestrator | Async JS render failed for synsol.ch: 'EmailExtractor' object has no attribute 'extract_emails_from_content'
+2025-08-22 22:45:29,349 | DEBUG   | scraper.async_orchestrator | No emails found for Synsol (synsol.ch)
+2025-08-22 22:45:29,383 | DEBUG   | scraper.async_orchestrator | Async JS render failed for daf.com: 'EmailExtractor' object has no attribute 'extract_emails_from_content'
+2025-08-22 22:45:29,384 | DEBUG   | scraper.async_orchestrator | No emails found for daf trucks (daf.com)
+2025-08-22 22:45:29,660 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/kontakt -> 404 (14886 bytes)
+2025-08-22 22:45:29,661 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contacts -> 404 (14886 bytes)
+2025-08-22 22:45:29,671 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contacts/ -> 404 (14886 bytes)
+2025-08-22 22:45:29,675 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contact/ -> 404 (14886 bytes)
+2025-08-22 22:45:29,679 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/contact -> 404 (14886 bytes)
+2025-08-22 22:45:29,680 | INFO    | scraper.async_http_client | Async batch request completed: 5/5 successful in 1.03 seconds (4.88 requests/sec)
+2025-08-22 22:45:30,136 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contact -> 404 (0 bytes)
+2025-08-22 22:45:30,270 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contacts -> 404 (0 bytes)
+2025-08-22 22:45:30,353 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contact/ -> 404 (0 bytes)
+2025-08-22 22:45:31,066 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:31,164 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:31,643 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk -> 200 (0 bytes)
+2025-08-22 22:45:31,644 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 22:45:33,725 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contacts -> 404 (0 bytes)
+2025-08-22 22:45:33,737 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/kontakt -> 404 (0 bytes)
+2025-08-22 22:45:33,767 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contact -> 404 (0 bytes)
+2025-08-22 22:45:33,777 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contact/ -> 404 (0 bytes)
+2025-08-22 22:45:33,841 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contacts/ -> 404 (0 bytes)
+2025-08-22 22:45:33,842 | INFO    | scraper.async_http_client | Async batch request completed: 5/5 successful in 2.20 seconds (2.28 requests/sec)
+2025-08-22 22:45:35,346 | DEBUG   | scraper.async_orchestrator | Async JS render failed for speedyfuels.co.uk: 'EmailExtractor' object has no attribute 'extract_emails_from_content'
+2025-08-22 22:45:35,346 | DEBUG   | scraper.async_orchestrator | No emails found for speedy fuels (speedyfuels.co.uk)
+2025-08-22 22:45:35,649 | DEBUG   | scraper.async_orchestrator | Async JS render failed for jp.mitsuichemicals.com: 'EmailExtractor' object has no attribute 'extract_emails_from_content'
+2025-08-22 22:45:35,649 | DEBUG   | scraper.async_orchestrator | No emails found for mitsui toatsu chemicals  (jp.mitsuichemicals.com)
+2025-08-22 22:46:04,797 | DEBUG   | scraper.performance_optimizer | Cached response for https://walter-schmidt-chemie.de/sitemap.xml
+2025-08-22 22:46:04,798 | DEBUG   | scraper.http_client  | Using optimized request for: https://walter-schmidt-chemie.de/sitemap.xml
+2025-08-22 22:46:04,798 | DEBUG   | scraper.performance_optimizer | Cache HIT for https://walter-schmidt-chemie.de/sitemap.xml
+2025-08-22 22:46:04,798 | DEBUG   | scraper.http_client  | Using optimized request for: https://walter-schmidt-chemie.de/sitemap.xml
+2025-08-22 22:46:04,798 | INFO    | scraper.sitemap      | Found sitemap via standard filenames: https://walter-schmidt-chemie.de/sitemap.xml (46.28s)
+2025-08-22 22:46:04,799 | DEBUG   | scraper.config       | Allocated 1 workers for task: sitemap_download
+2025-08-22 22:46:04,841 | DEBUG   | scraper.sitemap      | Priority URL extraction for walter-schmidt-chemie.de finished in 46.32 s – 11 URLs
+2025-08-22 22:46:04,842 | DEBUG   | scraper.smart_discovery | Prioritized 11 URLs, processing top 11
+2025-08-22 22:46:04,842 | DEBUG   | scraper.sitemap      | Applied smart prioritization to 11 URLs
+2025-08-22 22:46:04,842 | DEBUG   | scraper.async_orchestrator | Using 11 sitemap priority URLs for walter-schmidt-chemie.de
+2025-08-22 22:46:04,843 | DEBUG   | scraper.async_http_client | Blocked domain or extension: https://www.walter-schmidt-chemie.de/kontakt/agb.pdf
+2025-08-22 22:46:04,843 | DEBUG   | scraper.async_http_client | Blocked domain or extension: https://www.walter-schmidt-chemie.de/kontakt/einkaufsbedingungen.pdf
+2025-08-22 22:46:05,204 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/kontakt/impressum.html -> 200 (0 bytes)
+2025-08-22 22:46:05,482 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html -> 200 (0 bytes)
+2025-08-22 22:46:05,487 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/ -> 200 (0 bytes)
+2025-08-22 22:46:06,126 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/nachricht-erfolgreich-versandt.html -> 200 (0 bytes)
+2025-08-22 22:46:06,260 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/kontakt/ -> 200 (0 bytes)
+2025-08-22 22:46:06,492 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/kontakt/kontaktformular/formhandler.html -> 200 (0 bytes)
+2025-08-22 22:46:07,267 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ -> 200 (0 bytes)
+2025-08-22 22:46:07,896 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/produkte/adblue/ -> 200 (0 bytes)
+2025-08-22 22:46:08,611 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contact -> 404 (0 bytes)
+2025-08-22 22:46:09,164 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contacts -> 404 (0 bytes)
+2025-08-22 22:46:09,273 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contact/ -> 404 (0 bytes)
+2025-08-22 22:46:09,512 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contacts/ -> 404 (0 bytes)
+2025-08-22 22:46:10,892 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt -> 200 (0 bytes)
+2025-08-22 22:46:10,892 | DEBUG   | scraper.async_orchestrator | Discovery page analysis failed for https://walter-schmidt-chemie.de/kontakt: Connection closed
+2025-08-22 22:46:11,105 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de -> 200 (0 bytes)
+2025-08-22 22:46:11,106 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 22:46:12,191 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contact/ -> 404 (0 bytes)
+2025-08-22 22:46:12,228 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contacts -> 404 (0 bytes)
+2025-08-22 22:46:12,464 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contacts/ -> 404 (0 bytes)
+2025-08-22 22:46:12,610 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/contact -> 404 (0 bytes)
+2025-08-22 22:46:13,228 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt -> 200 (0 bytes)
+2025-08-22 22:46:13,228 | INFO    | scraper.async_http_client | Async batch request completed: 5/5 successful in 2.12 seconds (2.36 requests/sec)
+2025-08-22 22:46:15,604 | DEBUG   | scraper.async_orchestrator | Async JS render failed for walter-schmidt-chemie.de: 'EmailExtractor' object has no attribute 'extract_emails_from_content'
+2025-08-22 22:46:15,605 | DEBUG   | scraper.async_orchestrator | No emails found for walter schmidt chemie gmbh (walter-schmidt-chemie.de)
+2025-08-22 22:46:15,605 | DEBUG   | scraper.async_google_search | Async Google API session closed
+2025-08-22 22:46:15,611 | INFO    | scraper.async_http_client | Async HTTP client closed
+2025-08-22 22:46:15,612 | INFO    | scraper.cli          | Async streaming run complete in 59.4s (0 rows)
+2025-08-22 22:46:15,613 | INFO    | scraper.cli          | Saved output -> results.xlsx
+2025-08-22 22:46:15,615 | INFO    | scraper.browser_service | BrowserService shutdown complete
+2025-08-22 22:46:15,615 | INFO    | scraper.cli          | BrowserService: shutdown complete

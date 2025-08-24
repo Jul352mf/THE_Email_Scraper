@@ -1,0 +1,14 @@
+2025-08-23 01:29:15,438 | INFO    | scraper.cli          | Email scraper starting
+2025-08-23 01:29:15,438 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-23 01:29:15,438 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-23 01:29:15,439 | INFO    | scraper.cli          | Workers: 16
+2025-08-23 01:29:15,439 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-23 01:29:15,439 | INFO    | scraper.cli          | Max pages: 50
+2025-08-23 01:29:15,439 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-23 01:29:15,439 | INFO    | scraper.cli          | Save domain only: False
+2025-08-23 01:29:15,439 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-23 01:29:15,659 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-23 01:29:15,860 | INFO    | scraper.regex_cache  | Precompiling 11 regex patterns
+2025-08-23 01:29:15,862 | INFO    | scraper.regex_cache  | Precompiled 11 common email extraction patterns
+2025-08-23 01:29:16,056 | INFO    | scraper.google_search | Google API requests session initialized
+2025-08-23 01:29:16,057 | INFO    | scraper.async_orchestrator | Starting streaming processing of 8 companies

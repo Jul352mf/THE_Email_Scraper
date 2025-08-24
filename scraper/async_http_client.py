@@ -12,294 +12,22 @@ This module provides asynchronous HTTP client functionality with:
 
 import asyncio
 import logging
-import os
 import time
 import random
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlparse
 from collections import Counter
 import aiohttp
-from aiohttp import ClientTimeout, ClientSession, TCPConnector
 
 from scraper.config import config
 from scraper.http_client import (
     AccessMethod, DomainPattern, validate_url, normalise_domain,
-    canonicalise, _domain_patterns
+    _domain_patterns
 )
-
+from scraper.async_components import (
+    AsyncCircuitBreaker, AsyncTokenBucket, AsyncSessionManager
+)
 log = logging.getLogger(__name__)
-
-
-class AsyncCircuitBreaker:
-    """
-    Async circuit breaker for HTTP requests.
-    Prevents cascading failures and implements smart retry logic.
-    """
-    
-    def __init__(self, failure_threshold: int = 5,
-                 recovery_timeout: float = 60.0):
-        self.failure_threshold = failure_threshold
-        self.recovery_timeout = recovery_timeout
-        self._states: Dict[str, Dict[str, Any]] = {}
-        self._lock = asyncio.Lock()
-        
-    async def can_request(self, domain: str) -> bool:
-        """Check if requests to domain are allowed."""
-        async with self._lock:
-            state = self._get_state(domain)
-            current_time = time.time()
-            
-            if state['failure_count'] < self.failure_threshold:
-                return True  # CLOSED state
-                
-            # OPEN state - check if recovery time has passed
-            time_since_failure = current_time - state['last_failure_time']
-            if time_since_failure > self.recovery_timeout:
-                state['state'] = 'HALF_OPEN'
-                log.info("Circuit breaker HALF_OPEN for domain: %s", domain)
-                return True
-                
-            log.debug(
-                "Circuit breaker OPEN for domain: %s (%d failures)",
-                domain, state['failure_count']
-            )
-            return False
-    
-    async def record_success(self, domain: str) -> None:
-        """Record successful request."""
-        async with self._lock:
-            state = self._get_state(domain)
-            if state['state'] == 'HALF_OPEN':
-                # Recovery successful
-                state['state'] = 'CLOSED'
-                state['failure_count'] = 0
-                log.info("Circuit breaker CLOSED for domain: %s", domain)
-            elif state['failure_count'] > 0:
-                # Partial recovery
-                state['failure_count'] = max(0, state['failure_count'] - 1)
-    
-    async def record_failure(self, domain: str, error_type: str) -> None:
-        """Record failed request."""
-        async with self._lock:
-            state = self._get_state(domain)
-            state['failure_count'] += 1
-            state['last_failure_time'] = time.time()
-            state['error_types'][error_type] += 1
-            
-            if state['failure_count'] >= self.failure_threshold:
-                state['state'] = 'OPEN'
-                log.warning(
-                    "Circuit breaker OPEN for domain: %s "
-                    "(%d failures, last: %s)",
-                    domain, state['failure_count'], error_type
-                )
-    
-    def _get_state(self, domain: str) -> Dict[str, Any]:
-        """Get or create circuit breaker state for domain."""
-        if domain not in self._states:
-            self._states[domain] = {
-                'state': 'CLOSED',
-                'failure_count': 0,
-                'last_failure_time': 0.0,
-                'error_types': Counter()
-            }
-        return self._states[domain]
-    
-    async def get_stats(self) -> Dict[str, Any]:
-        """Get circuit breaker statistics."""
-        async with self._lock:
-            stats = {
-                'domains_tracked': len(self._states),
-                'open_circuits': 0,
-                'half_open_circuits': 0,
-                'total_failures': 0,
-                'domain_details': {}
-            }
-            
-            for domain, state in self._states.items():
-                if state['state'] == 'OPEN':
-                    stats['open_circuits'] += 1
-                elif state['state'] == 'HALF_OPEN':
-                    stats['half_open_circuits'] += 1
-                    
-                stats['total_failures'] += state['failure_count']
-                stats['domain_details'][domain] = {
-                    'state': state['state'],
-                    'failure_count': state['failure_count'],
-                    'error_types': dict(state['error_types'])
-                }
-            
-            return stats
-
-
-class AsyncTokenBucket:
-    """
-    Async token bucket for rate limiting.
-    Non-blocking implementation that respects rate limits.
-    """
-    
-    def __init__(self, capacity: float, refill_rate: float):
-        self.capacity = capacity
-        self.refill_rate = refill_rate
-        self.tokens = capacity
-        self.last_refill = time.time()
-        self._lock = asyncio.Lock()
-        self.stats = {
-            'requests_allowed': 0,
-            'requests_delayed': 0,
-            'total_wait_time': 0.0
-        }
-    
-    async def consume(self, tokens: float = 1.0) -> None:
-        """Consume tokens, waiting if necessary."""
-        async with self._lock:
-            await self._refill()
-            
-            if self.tokens >= tokens:
-                self.tokens -= tokens
-                self.stats['requests_allowed'] += 1
-                return
-            
-            # Calculate wait time needed
-            tokens_needed = tokens - self.tokens
-            wait_time = tokens_needed / self.refill_rate
-            
-            log.debug(
-                "Rate limiting: waiting %.2f seconds for %d tokens",
-                wait_time, tokens
-            )
-            
-            self.stats['requests_delayed'] += 1
-            self.stats['total_wait_time'] += wait_time
-            
-        # Wait outside the lock
-        await asyncio.sleep(wait_time)
-        
-        # Try again after waiting
-        async with self._lock:
-            await self._refill()
-            self.tokens = max(0, self.tokens - tokens)
-            self.stats['requests_allowed'] += 1
-    
-    async def _refill(self) -> None:
-        """Refill tokens based on elapsed time."""
-        current_time = time.time()
-        elapsed = current_time - self.last_refill
-        tokens_to_add = elapsed * self.refill_rate
-        
-        self.tokens = min(self.capacity, self.tokens + tokens_to_add)
-        self.last_refill = current_time
-
-
-class AsyncSessionManager:
-    """
-    Async session manager with connection pooling and lifecycle management.
-    """
-    
-    def __init__(self, max_sessions: int = 100):
-        self.max_sessions = max_sessions
-        self._sessions: Dict[str, ClientSession] = {}
-        self._session_stats: Dict[str, Dict[str, Any]] = {}
-        self._lock = asyncio.Lock()
-        
-    async def get_session(self, domain: str) -> ClientSession:
-        """Get or create session for domain."""
-        async with self._lock:
-            if domain in self._sessions:
-                session = self._sessions[domain]
-                if not session.closed:
-                    # Update access time
-                    self._session_stats[domain]['last_access'] = time.time()
-                    self._session_stats[domain]['request_count'] += 1
-                    return session
-                else:
-                    # Clean up closed session
-                    del self._sessions[domain]
-                    del self._session_stats[domain]
-            
-            # Create new session
-            connector = TCPConnector(
-                limit=30,  # Connection pool limit per domain
-                limit_per_host=10,
-                ttl_dns_cache=300,
-                use_dns_cache=True,
-                ssl=not config.insecure_ssl,
-                keepalive_timeout=30
-            )
-            
-            timeout = ClientTimeout(
-                total=config.request_timeout[0] + config.request_timeout[1],
-                connect=config.request_timeout[0], 
-                sock_read=config.request_timeout[1]
-            )
-            
-            session = ClientSession(
-                connector=connector,
-                timeout=timeout,
-                headers={'User-Agent': self._get_user_agent()},
-                auto_decompress=True
-            )
-            
-            self._sessions[domain] = session
-            self._session_stats[domain] = {
-                'created': time.time(),
-                'last_access': time.time(),
-                'request_count': 0
-            }
-            
-            log.debug("Created new async session for domain: %s", domain)
-            return session
-    
-    def _get_user_agent(self) -> str:
-        """Get rotating User-Agent."""
-        if hasattr(config, 'user_agents') and config.user_agents:
-            return random.choice(config.user_agents)
-        return 'THE_Email_Scraper/1.0 Async'
-    
-    async def close_all(self) -> None:
-        """Close all sessions."""
-        async with self._lock:
-            for session in self._sessions.values():
-                if not session.closed:
-                    await session.close()
-            
-            self._sessions.clear()
-            self._session_stats.clear()
-            log.info("Closed all async HTTP sessions")
-    
-    async def cleanup_stale_sessions(self, max_age: float = 3600) -> None:
-        """Clean up sessions not used recently."""
-        current_time = time.time()
-        stale_domains = []
-        
-        async with self._lock:
-            for domain, stats in self._session_stats.items():
-                if (current_time - stats['last_access']) > max_age:
-                    stale_domains.append(domain)
-            
-            for domain in stale_domains:
-                session = self._sessions.get(domain)
-                if session and not session.closed:
-                    await session.close()
-                
-                del self._sessions[domain]
-                del self._session_stats[domain]
-                log.debug("Cleaned up stale session for domain: %s", domain)
-    
-    async def get_stats(self) -> Dict[str, Any]:
-        """Get session manager statistics."""
-        async with self._lock:
-            total_requests = sum(
-                stats['request_count'] 
-                for stats in self._session_stats.values()
-            )
-            
-            return {
-                'active_sessions': len(self._sessions),
-                'total_requests': total_requests,
-                'max_sessions': self.max_sessions,
-                'session_details': dict(self._session_stats)
-            }
 
 
 class AsyncHttpClient:
@@ -315,21 +43,55 @@ class AsyncHttpClient:
     """
     
     def __init__(self, max_concurrent_requests: int = 50):
+        """Initialise async HTTP client state."""
         self.max_concurrent_requests = max_concurrent_requests
         self.stats = Counter()
         self.domain_patterns = _domain_patterns
-        
         # Async components
         self._circuit_breaker = AsyncCircuitBreaker()
         self._session_manager = AsyncSessionManager()
         self._rate_limiters: Dict[str, AsyncTokenBucket] = {}
         self._semaphore = asyncio.Semaphore(max_concurrent_requests)
-        self._visited = set()  # Track visited URLs (per client instance)
+    # Global redirect loop tracking removed; handled per-domain in orchestrator
+    # to avoid prematurely blocking discovery pages.
+        self._last_session_cleanup = time.time()
+        self._session_cleanup_interval = 900  # seconds
         
     async def __aenter__(self):
         """Async context manager entry."""
         return self
         
+    # ------------------------------------------------------------------
+    def _is_blocked_domain(self, netloc: str, path: str) -> bool:
+        """Lightweight filter to skip obviously irrelevant / static targets.
+
+        Mirrors a subset of the sync client's filtering (kept minimal to avoid
+        adding heavy dependencies). This prevents wasting requests on assets
+        or large binary files and avoids social media domains unlikely to
+        yield direct contact emails.
+        """
+        # Common static / binary extensions we never need to fetch
+        static_ext = (
+            '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico',
+            '.css', '.js', '.json', '.xml', '.pdf', '.zip', '.rar', '.7z',
+            '.tar', '.gz', '.mp4', '.mp3', '.avi', '.mov', '.wmv', '.woff',
+            '.woff2', '.ttf', '.otf'
+        )
+        if path.endswith(static_ext):
+            return True
+        # Skip huge pagination or tracking query patterns quickly
+        if any(token in path for token in ('/wp-json', '/feed', '/tags/')):
+            return True
+    # Social / user generated content domains (low signal for direct
+    # email pages)
+        blacklist_substrings = (
+            'linkedin.com', 'facebook.com', 'instagram.com', 'twitter.com',
+            'tiktok.com', 'youtube.com', 'youtu.be', 'pinterest.com'
+        )
+        if any(b in netloc for b in blacklist_substrings):
+            return True
+        return False
+
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         """Async context manager exit."""
         await self.close()
@@ -353,14 +115,15 @@ class AsyncHttpClient:
         
         return self._rate_limiters[domain]
     
-    async def safe_get(self,
-                      url: str,
-                      method: str = "GET",
-                      timeout: Optional[float] = None,
-                      headers: Optional[Dict[str, str]] = None,
-                      retry_count: int = 1,
-                      retry_delay: float = 1.0
-                      ) -> Optional[aiohttp.ClientResponse]:
+    async def safe_get(
+        self,
+        url: str,
+        method: str = "GET",
+        timeout: Optional[float] = None,
+        headers: Optional[Dict[str, str]] = None,
+        retry_count: int = 1,
+        retry_delay: float = 1.0,
+    ) -> Optional[aiohttp.ClientResponse]:
         """
         Async version of safe_get with circuit breaker and rate limiting.
         """
@@ -384,15 +147,9 @@ class AsyncHttpClient:
             log.debug("Circuit breaker open for domain: %s", domain)
             self.stats["circuit_breaker_blocked"] += 1
             return None
-        
-        # Check for redirect loops (non-HEAD requests only)
+
         head_mode = method.upper() == "HEAD"
-        canon = canonicalise(url)
-        if not head_mode and canon in self._visited:
-            log.warning("Redirect loop detected – already visited %s", url)
-            self.stats["skipped_urls"] += 1
-            return None
-        
+
         # Use semaphore to limit concurrent requests
         async with self._semaphore:
             # Rate limiting
@@ -402,6 +159,18 @@ class AsyncHttpClient:
             
             # Get session for domain
             session = await self._session_manager.get_session(domain)
+            # Opportunistic stale session cleanup (time based)
+            now = time.time()
+            if (
+                now - self._last_session_cleanup
+            ) > self._session_cleanup_interval:
+                try:
+                    await self._session_manager.cleanup_stale_sessions(
+                        max_age=1800
+                    )
+                except Exception:
+                    pass
+                self._last_session_cleanup = now
             
             # Prepare headers
             request_headers = headers.copy() if headers else {}
@@ -411,79 +180,74 @@ class AsyncHttpClient:
             # Perform request with retries
             for attempt in range(retry_count + 1):
                 try:
-                    # Make the HTTP request
                     async with session.request(
                         method,
                         url,
                         headers=request_headers,
                         timeout=timeout or 30,
-                        allow_redirects=True
+                        allow_redirects=True,
                     ) as response:
-                        
-                        # Track in visited set for non-HEAD requests
-                        if not head_mode:
-                            self._visited.add(canon)
-                        
+                        # Buffer body inside context so downstream
+                        # await resp.text() works after the context
+                        try:
+                            body_text = await response.text()
+                        except Exception:
+                            body_text = ""
+                        content_type = response.headers.get(
+                            "Content-Type", ""
+                        )
+                        status = response.status
                         # Update stats
                         self.stats["total_requests"] += 1
-                        status_key = f"status_{response.status}"
-                        self.stats[status_key] += 1
-                        
-                        # Record circuit breaker success
+                        self.stats[f"status_{status}"] += 1
                         await self._circuit_breaker.record_success(domain)
-                        
                         log.debug(
-                            "Async %s %s -> %d (%d bytes)",
-                            method, url, response.status, 
-                            response.content_length or 0
+                            "Async %s %s -> %d (len=%d)",
+                            method,
+                            url,
+                            status,
+                            len(body_text),
                         )
                         
-                        # Return response (caller should handle reading)
-                        return response
-                
+                        class _BufferedResp:
+                            __slots__ = ("status", "_body", "headers")
+
+                            def __init__(self, st, body, ct):
+                                self.status = st
+                                self._body = body
+                                self.headers = {"Content-Type": ct}
+
+                            async def text(self):  # mimic aiohttp API
+                                return self._body
+                        return _BufferedResp(status, body_text, content_type)
+
                 except aiohttp.ClientError as e:
                     error_type = type(e).__name__
                     log.warning(
                         "Async request failed (attempt %d/%d): %s - %s",
-                        attempt + 1, retry_count + 1, url, e
+                        attempt + 1,
+                        retry_count + 1,
+                        url,
+                        e,
                     )
-                    
-                    # Record circuit breaker failure
-                    await self._circuit_breaker.record_failure(domain, error_type)
-                    
-                    # Update stats
+                    await self._circuit_breaker.record_failure(
+                        domain, error_type
+                    )
                     self.stats["failed_requests"] += 1
                     self.stats[f"error_{error_type}"] += 1
-                    
-                    # Retry with delay
                     if attempt < retry_count:
                         await asyncio.sleep(retry_delay * (2 ** attempt))
-                    
                 except Exception as e:
-                    log.error("Unexpected async request error: %s - %s", url, e)
+                    log.error(
+                        "Unexpected async request error: %s - %s", url, e
+                    )
                     await self._circuit_breaker.record_failure(
                         domain, "unexpected_error"
                     )
                     self.stats["unexpected_errors"] += 1
                     break
-            
+
             return None
-    
-    def _is_blocked_domain(self, host: str, path: str) -> bool:
-        """Check if domain or file extension is blocked."""
-        blocked = {
-            p.strip().lower()
-            for p in os.getenv("BLOCKED_DOMAINS", "").split(",")
-            if p.strip()
-        }
-        
-        for pat in blocked:
-            if not pat.startswith(".") and host.endswith(pat):
-                return True
-            if pat.startswith(".") and path.endswith(pat):
-                return True
-        
-        return False
     
     def _get_user_agent(self) -> str:
         """Get rotating User-Agent."""
@@ -491,12 +255,13 @@ class AsyncHttpClient:
             return random.choice(config.user_agents)
         return 'THE_Email_Scraper/1.0 Async'
     
-    async def batch_get(self,
-                       urls: List[str],
-                       method: str = "GET",
-                       timeout: Optional[float] = None,
-                       headers: Optional[Dict[str, str]] = None
-                       ) -> List[Tuple[str, Optional[aiohttp.ClientResponse]]]:
+    async def batch_get(
+        self,
+        urls: List[str],
+        method: str = "GET",
+        timeout: Optional[float] = None,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> List[Tuple[str, Optional[aiohttp.ClientResponse]]]:
         """
         Perform multiple HTTP requests concurrently.
         
@@ -509,7 +274,9 @@ class AsyncHttpClient:
         log.info("Starting async batch request for %d URLs", len(urls))
         start_time = time.time()
         
-        async def fetch_single(url: str) -> Tuple[str, Optional[aiohttp.ClientResponse]]:
+        async def fetch_single(
+            url: str,
+        ) -> Tuple[str, Optional[aiohttp.ClientResponse]]:
             """Fetch single URL and return tuple."""
             try:
                 response = await self.safe_get(
@@ -536,7 +303,9 @@ class AsyncHttpClient:
                 processed_results.append(result)
         
         elapsed = time.time() - start_time
-        successful = sum(1 for _, resp in processed_results if resp is not None)
+        successful = sum(
+            1 for _, resp in processed_results if resp is not None
+        )
         
         log.info(
             "Async batch request completed: %d/%d successful in %.2f seconds "
@@ -547,73 +316,59 @@ class AsyncHttpClient:
         
         return processed_results
     
-    async def probe_domain_access(self, domain: str) -> Optional[DomainPattern]:
+    async def probe_domain_access(
+        self, domain: str
+    ) -> Optional[DomainPattern]:
+        """Probe access methods sequentially.
+
+        Order: https -> http -> https_www -> http_www
         """
-        Async version of domain access probing.
-        Tests different access methods and caches the working pattern.
-        """
-        # Check cached pattern first
-        if domain in self.domain_patterns:
-            pattern = self.domain_patterns[domain]
-            # Refresh if pattern is old (24 hours)
-            if time.time() - pattern.last_checked < 86400:
-                log.debug(
-                    "Using cached domain pattern for %s: %s",
-                    domain, pattern.method.value
-                )
-                return pattern
-        
-        log.info("Async probing domain access methods for: %s", domain)
-        
-        # Methods to try in preference order
-        methods_to_try = [
+        existing = self.domain_patterns.get(domain)
+        if existing and (time.time() - existing.last_checked) < 86400:
+            log.debug(
+                "Using cached domain pattern for %s: %s",
+                domain,
+                existing.method.value,
+            )
+            return existing
+
+        log.info("Probing domain (sequential) for access method: %s", domain)
+        method_sequence: list[tuple[AccessMethod, str]] = [
             (AccessMethod.HTTPS, f"https://{domain}"),
-            (AccessMethod.HTTPS_WWW, f"https://www.{domain}"),
             (AccessMethod.HTTP, f"http://{domain}"),
+            (AccessMethod.HTTPS_WWW, f"https://www.{domain}"),
             (AccessMethod.HTTP_WWW, f"http://www.{domain}"),
         ]
-        
-        # Try all methods concurrently (with HEAD requests for speed)
-        async def test_method(method: AccessMethod, test_url: str) -> Optional[DomainPattern]:
+        for method_enum, test_url in method_sequence:
             try:
-                log.debug("Async testing %s: %s", method.value, test_url)
-                response = await self.safe_get(test_url, method="HEAD", timeout=10)
-                
+                log.debug(
+                    "Testing access method %s: %s", method_enum.value, test_url
+                )
+                response = await self.safe_get(
+                    test_url, method="HEAD", timeout=8
+                ) or await self.safe_get(test_url, method="GET", timeout=12)
                 if response and response.status < 400:
                     pattern = DomainPattern(
                         domain=domain,
-                        method=method,
+                        method=method_enum,
                         verified=True,
-                        last_checked=time.time()
+                        last_checked=time.time(),
                     )
+                    self.domain_patterns[domain] = pattern
                     log.info(
-                        "Found working access method for %s: %s",
-                        domain, method.value
+                        "Selected access method for %s: %s",
+                        domain,
+                        method_enum.value,
                     )
                     return pattern
-                    
             except Exception as e:
                 log.debug(
                     "Access method %s failed for %s: %s",
-                    method.value, domain, e
+                    method_enum.value,
+                    domain,
+                    e,
                 )
-            
-            return None
-        
-        # Test all methods concurrently
-        results = await asyncio.gather(
-            *[test_method(method, url) for method, url in methods_to_try],
-            return_exceptions=True
-        )
-        
-        # Find first successful pattern
-        for result in results:
-            if isinstance(result, DomainPattern):
-                # Cache successful pattern
-                self.domain_patterns[domain] = result
-                return result
-        
-        log.warning("No working access method found for domain: %s", domain)
+        log.warning("All access methods failed for domain: %s", domain)
         return None
     
     async def get_performance_stats(self) -> Dict[str, Any]:
@@ -633,7 +388,7 @@ class AsyncHttpClient:
             'rate_limiters': rate_limiter_stats,
             'concurrent_limit': self.max_concurrent_requests,
             'domains_cached': len(self.domain_patterns),
-            'urls_visited': len(self._visited)
+            'urls_visited': -1  # deprecated global metric
         }
 
 
@@ -642,15 +397,19 @@ async_http_client = AsyncHttpClient()
 
 
 # Convenience function for batch requests
-async def async_batch_get(urls: List[str],
-                         timeout: Optional[float] = None,
-                         headers: Optional[Dict[str, str]] = None
-                         ) -> List[Tuple[str, Optional[aiohttp.ClientResponse]]]:
+async def async_batch_get(
+    urls: List[str],
+    timeout: Optional[float] = None,
+    headers: Optional[Dict[str, str]] = None,
+) -> List[Tuple[str, Optional[aiohttp.ClientResponse]]]:
     """
     Convenience function for batch HTTP requests.
     
     Usage:
-        results = await async_batch_get(['http://example1.com', 'http://example2.com'])
+        results = await async_batch_get([
+            'http://example1.com',
+            'http://example2.com'
+        ])
     """
     async with AsyncHttpClient(max_concurrent_requests=20) as client:
         return await client.batch_get(urls, timeout=timeout, headers=headers)
@@ -661,7 +420,7 @@ if __name__ == "__main__":
     async def test_performance():
         test_urls = [
             "https://httpbin.org/status/200",
-            "https://httpbin.org/delay/1", 
+            "https://httpbin.org/delay/1",
             "https://httpbin.org/json",
             "https://httpbin.org/headers",
             "https://httpbin.org/user-agent"

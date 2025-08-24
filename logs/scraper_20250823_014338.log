@@ -1,0 +1,19 @@
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Email scraper starting
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Workers: 16
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Max pages: 50
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-23 01:43:38,783 | INFO    | scraper.cli          | Save domain only: False
+2025-08-23 01:43:38,797 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-23 01:43:38,981 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-23 01:43:39,182 | INFO    | scraper.regex_cache  | Precompiling 11 regex patterns
+2025-08-23 01:43:39,184 | INFO    | scraper.regex_cache  | Precompiled 11 common email extraction patterns
+2025-08-23 01:43:39,360 | INFO    | scraper.async_orchestrator | Starting streaming processing of 8 companies
+2025-08-23 01:43:39,360 | INFO    | scraper.async_orchestrator | [ORCHESTRATOR] About to start Google streaming generator
+2025-08-23 01:43:39,360 | INFO    | scraper.async_google_search | [ASYNC-GOOGLE] Streaming search start: 8 companies
+2025-08-23 01:43:39,360 | INFO    | scraper.async_google_search | [ASYNC-GOOGLE] Scheduled 8 search tasks (concurrency=10)
+2025-08-23 01:43:39,360 | INFO    | scraper.async_google_search | Async Google API session initialized (max_concurrent=10)
+2025-08-23 01:43:39,640 | INFO    | scraper.async_google_search | [ASYNC-GOOGLE] Completed search: walter schmidt chemie gmbh (results=10)
+2025-08-23 01:43:39,640 | INFO    | scraper.async_orchestrator | [ORCHESTRATOR] Got result from streaming: walter schmidt chemie gmbh

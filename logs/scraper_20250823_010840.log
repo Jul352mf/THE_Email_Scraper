@@ -1,0 +1,1026 @@
+2025-08-23 01:08:40,829 | DEBUG   | scraper.output_formatter | Output formatter initialized (verbose=True)
+2025-08-23 01:08:40,831 | INFO    | scraper.cli          | Email scraper starting
+2025-08-23 01:08:40,831 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-23 01:08:40,832 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-23 01:08:40,832 | INFO    | scraper.cli          | Workers: 16
+2025-08-23 01:08:40,832 | INFO    | scraper.cli          | Domain threshold: 65
+2025-08-23 01:08:40,832 | INFO    | scraper.cli          | Max pages: 50
+2025-08-23 01:08:40,846 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-23 01:08:40,846 | INFO    | scraper.cli          | Save domain only: False
+2025-08-23 01:08:40,846 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-23 01:08:41,054 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-23 01:08:41,268 | INFO    | scraper.regex_cache  | Precompiling 11 regex patterns
+2025-08-23 01:08:41,269 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: (?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@(?:[A-Z0-9-]+ (0.666ms)
+2025-08-23 01:08:41,269 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'email_basic'
+2025-08-23 01:08:41,269 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: mailto: (0.046ms)
+2025-08-23 01:08:41,269 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'mailto'
+2025-08-23 01:08:41,270 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: 
+            (?P<user>[A-Za-z0-9._%+-]+)           (0.585ms)
+2025-08-23 01:08:41,270 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'obfuscated_email'
+2025-08-23 01:08:41,270 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: noreply@ (0.044ms)
+2025-08-23 01:08:41,270 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'noreply'
+2025-08-23 01:08:41,270 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: donotreply@ (0.043ms)
+2025-08-23 01:08:41,271 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'donotreply'
+2025-08-23 01:08:41,271 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: no-reply@ (0.039ms)
+2025-08-23 01:08:41,271 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'no_reply'
+2025-08-23 01:08:41,271 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: webmaster@ (0.043ms)
+2025-08-23 01:08:41,271 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'webmaster'
+2025-08-23 01:08:41,271 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: hostmaster@ (0.042ms)
+2025-08-23 01:08:41,271 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hostmaster'
+2025-08-23 01:08:41,272 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: postmaster@ (0.045ms)
+2025-08-23 01:08:41,272 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'postmaster'
+2025-08-23 01:08:41,272 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: \.(?:png|jpe?g|gif)$ (0.086ms)
+2025-08-23 01:08:41,272 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'image_extensions'
+2025-08-23 01:08:41,272 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: ^[0-9a-f]{20,}$ (0.075ms)
+2025-08-23 01:08:41,272 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hex_local_parts'
+2025-08-23 01:08:41,272 | INFO    | scraper.regex_cache  | Precompiled 11 common email extraction patterns
+2025-08-23 01:08:41,274 | DEBUG   | asyncio              | Using proactor: IocpProactor
+2025-08-23 01:08:41,484 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-23 01:08:41,485 | DEBUG   | scraper.http_client  | Created optimized session template with connection pooling
+2025-08-23 01:08:41,485 | DEBUG   | scraper.http_client  | Created new session for domain: googleapis.com
+2025-08-23 01:08:41,485 | INFO    | scraper.google_search | Google API requests session initialized
+2025-08-23 01:08:41,486 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-23 01:08:41,486 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-23 01:08:41,486 | INFO    | scraper.async_orchestrator | Starting streaming processing of 8 companies
+2025-08-23 01:08:41,486 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: start with 8 companies
+2025-08-23 01:08:41,487 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: created 8 tasks
+2025-08-23 01:08:41,487 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:41,487 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for walter schmidt chemie gmbh
+2025-08-23 01:08:41,488 | DEBUG   | scraper.google_search | Google cache MISS for query: "walter schmidt chemie gmbh" contact email
+2025-08-23 01:08:41,488 | INFO    | scraper.async_google_search | Async Google API session initialized (max_concurrent=10)
+2025-08-23 01:08:41,488 | DEBUG   | scraper.async_google_search | Async Google API search: "walter schmidt chemie gmbh" contact email
+2025-08-23 01:08:41,489 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for henan xinlianxin fertilizer 
+2025-08-23 01:08:41,489 | DEBUG   | scraper.google_search | Google cache MISS for query: "henan xinlianxin fertilizer" contact email
+2025-08-23 01:08:41,489 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-23 01:08:41,489 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for mitsui toatsu chemicals 
+2025-08-23 01:08:41,490 | DEBUG   | scraper.google_search | Google cache MISS for query: "mitsui toatsu chemicals" contact email
+2025-08-23 01:08:41,490 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for daf trucks
+2025-08-23 01:08:41,490 | DEBUG   | scraper.google_search | Google cache MISS for query: "daf trucks" contact email
+2025-08-23 01:08:41,490 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for petrol rete 
+2025-08-23 01:08:41,490 | DEBUG   | scraper.google_search | Google cache MISS for query: "petrol rete" contact email
+2025-08-23 01:08:41,491 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for euro dam jas doo
+2025-08-23 01:08:41,491 | DEBUG   | scraper.google_search | Google cache MISS for query: "euro dam jas doo" contact email
+2025-08-23 01:08:41,491 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for Synsol
+2025-08-23 01:08:41,491 | DEBUG   | scraper.google_search | Google cache MISS for query: "Synsol" contact email
+2025-08-23 01:08:41,491 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for speedy fuels
+2025-08-23 01:08:41,492 | DEBUG   | scraper.google_search | Google cache MISS for query: "speedy fuels" contact email
+2025-08-23 01:08:41,714 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "walter schmidt chemie gmbh" contact email
+2025-08-23 01:08:41,714 | DEBUG   | scraper.google_search | Cached Google results for query: "walter schmidt chemie gmbh" contact email (10 results)
+2025-08-23 01:08:41,714 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for walter schmidt chemie gmbh
+2025-08-23 01:08:41,715 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for walter schmidt chemie gmbh
+2025-08-23 01:08:41,715 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: walter schmidt chemie gmbh
+2025-08-23 01:08:41,715 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: walter schmidt chemie gmbh
+2025-08-23 01:08:41,715 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: walter schmidt chemie gmbh
+2025-08-23 01:08:41,715 | DEBUG   | filelock             | Attempting to acquire lock 2133477063520 on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-23 01:08:41,716 | DEBUG   | filelock             | Lock 2133477063520 acquired on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-23 01:08:41,718 | DEBUG   | filelock             | Attempting to release lock 2133477063520 on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-23 01:08:41,718 | DEBUG   | filelock             | Lock 2133477063520 released on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-23 01:08:41,736 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and walter-schmidt-chemie.de: 89 (base: 89, penalty: 0)
+2025-08-23 01:08:41,736 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and rocketreach.co: 45 (base: 45, penalty: 0)
+2025-08-23 01:08:41,737 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and walter-schmidt-chemie.de: 89 (base: 89, penalty: 0)
+2025-08-23 01:08:41,737 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-23 01:08:41,737 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and carlroth.com: 50 (base: 50, penalty: 0)
+2025-08-23 01:08:41,737 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-23 01:08:41,737 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and noba-normteile.de: 42 (base: 42, penalty: 0)
+2025-08-23 01:08:41,737 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-23 01:08:41,738 | DEBUG   | scraper.domain_scorer | Applied penalty to linkedin.com (contains linkedin.com)
+2025-08-23 01:08:41,738 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and linkedin.com: 15 (base: 40, penalty: 25)
+2025-08-23 01:08:41,738 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-23 01:08:41,738 | DEBUG   | scraper.domain_scorer | Best domain for walter schmidt chemie gmbh: https://www.walter-schmidt-chemie.de/en/contact/imprint.html (score: 89)
+2025-08-23 01:08:41,738 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for walter schmidt chemie gmbh: https://www.walter-schmidt-chemie.de/en/contact/imprint.html
+2025-08-23 01:08:41,738 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:41,738 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: walter-schmidt-chemie.de (score: 89)
+2025-08-23 01:08:41,738 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: walter-schmidt-chemie.de
+2025-08-23 01:08:41,739 | DEBUG   | scraper.async_http_client | Testing access method https: https://walter-schmidt-chemie.de
+2025-08-23 01:08:42,292 | DEBUG   | scraper.async_google_search | Async Google API search: "henan xinlianxin fertilizer" contact email
+2025-08-23 01:08:42,293 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-23 01:08:42,437 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "henan xinlianxin fertilizer" contact email
+2025-08-23 01:08:42,437 | DEBUG   | scraper.google_search | Cached Google results for query: "henan xinlianxin fertilizer" contact email (10 results)
+2025-08-23 01:08:42,437 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for henan xinlianxin fertilizer 
+2025-08-23 01:08:42,438 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for henan xinlianxin fertilizer 
+2025-08-23 01:08:42,438 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: henan xinlianxin fertilizer 
+2025-08-23 01:08:42,438 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: henan xinlianxin fertilizer 
+2025-08-23 01:08:42,438 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: henan xinlianxin fertilizer 
+2025-08-23 01:08:42,439 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-23 01:08:42,439 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and facebook.com: 0 (base: 25, penalty: 25)
+2025-08-23 01:08:42,439 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and jet-inc.com: 42 (base: 42, penalty: 0)
+2025-08-23 01:08:42,439 | DEBUG   | scraper.domain_scorer | Applied penalty to linkedin.com (contains linkedin.com)
+2025-08-23 01:08:42,439 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and linkedin.com: 37 (base: 62, penalty: 25)
+2025-08-23 01:08:42,440 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and sinofert.com: 75 (base: 75, penalty: 0)
+2025-08-23 01:08:42,440 | DEBUG   | scraper.domain_scorer | Applied penalty to cn.linkedin.com (contains linkedin.com)
+2025-08-23 01:08:42,440 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and cn.linkedin.com: 37 (base: 62, penalty: 25)
+2025-08-23 01:08:42,441 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and methanol.org: 50 (base: 50, penalty: 0)
+2025-08-23 01:08:42,441 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and issuu.com: 22 (base: 22, penalty: 0)
+2025-08-23 01:08:42,441 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and airproducts.com: 36 (base: 36, penalty: 0)
+2025-08-23 01:08:42,441 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and cell.com: 33 (base: 33, penalty: 0)
+2025-08-23 01:08:42,442 | DEBUG   | scraper.domain_scorer | Domain score for henan xinlianxin fertilizer  and fertilizerpricing.com: 74 (base: 74, penalty: 0)
+2025-08-23 01:08:42,442 | DEBUG   | scraper.domain_scorer | Best domain for henan xinlianxin fertilizer : http://www.sinofert.com/en/s/5635-15034-47938.html (score: 75)
+2025-08-23 01:08:42,442 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for henan xinlianxin fertilizer : http://www.sinofert.com/en/s/5635-15034-47938.html
+2025-08-23 01:08:42,442 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:42,442 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: sinofert.com (score: 75)
+2025-08-23 01:08:42,443 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: sinofert.com
+2025-08-23 01:08:42,443 | DEBUG   | scraper.async_http_client | Testing access method https: https://sinofert.com
+2025-08-23 01:08:42,453 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-23 01:08:42,768 | DEBUG   | scraper.async_http_client | Async HEAD https://walter-schmidt-chemie.de -> 200 (len=0)
+2025-08-23 01:08:42,769 | INFO    | scraper.async_http_client | Selected access method for walter-schmidt-chemie.de: https
+2025-08-23 01:08:42,769 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://walter-schmidt-chemie.de
+2025-08-23 01:08:43,103 | DEBUG   | scraper.async_google_search | Async Google API search: "mitsui toatsu chemicals" contact email
+2025-08-23 01:08:43,104 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-23 01:08:43,263 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "mitsui toatsu chemicals" contact email
+2025-08-23 01:08:43,264 | DEBUG   | scraper.google_search | Cached Google results for query: "mitsui toatsu chemicals" contact email (10 results)
+2025-08-23 01:08:43,264 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for mitsui toatsu chemicals 
+2025-08-23 01:08:43,264 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for mitsui toatsu chemicals 
+2025-08-23 01:08:43,264 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: mitsui toatsu chemicals 
+2025-08-23 01:08:43,265 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: mitsui toatsu chemicals 
+2025-08-23 01:08:43,265 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: mitsui toatsu chemicals 
+2025-08-23 01:08:43,265 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and kuraray.com: 28 (base: 28, penalty: 0)
+2025-08-23 01:08:43,265 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and globaldata.com: 30 (base: 30, penalty: 0)
+2025-08-23 01:08:43,265 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and jp.mitsuichemicals.com: 88 (base: 88, penalty: 0)
+2025-08-23 01:08:43,266 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and www3.epa.gov: 33 (base: 33, penalty: 0)
+2025-08-23 01:08:43,266 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and bccresearch.com: 36 (base: 36, penalty: 0)
+2025-08-23 01:08:43,266 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and carlyle.com: 54 (base: 54, penalty: 0)
+2025-08-23 01:08:43,266 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and mc-croplifesolutions.com: 45 (base: 45, penalty: 0)
+2025-08-23 01:08:43,267 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and agc.com: 33 (base: 33, penalty: 0)
+2025-08-23 01:08:43,267 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and pubmed.ncbi.nlm.nih.gov: 40 (base: 40, penalty: 0)
+2025-08-23 01:08:43,267 | DEBUG   | scraper.domain_scorer | Domain score for mitsui toatsu chemicals  and andersondevelopment.com: 25 (base: 25, penalty: 0)
+2025-08-23 01:08:43,267 | DEBUG   | scraper.domain_scorer | Best domain for mitsui toatsu chemicals : https://jp.mitsuichemicals.com/en/corporate/number/index.htm (score: 88)
+2025-08-23 01:08:43,267 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for mitsui toatsu chemicals : https://jp.mitsuichemicals.com/en/corporate/number/index.htm
+2025-08-23 01:08:43,267 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:43,268 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: jp.mitsuichemicals.com (score: 88)
+2025-08-23 01:08:43,268 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: jp.mitsuichemicals.com
+2025-08-23 01:08:43,268 | DEBUG   | scraper.async_http_client | Testing access method https: https://jp.mitsuichemicals.com
+2025-08-23 01:08:43,288 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de -> 200 (len=20930)
+2025-08-23 01:08:43,303 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: 
+        (?P<user>[A-Za-z0-9._%+-]+)               (0.744ms)
+2025-08-23 01:08:43,304 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de (def from text)
+2025-08-23 01:08:43,313 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de (def from html)
+2025-08-23 01:08:43,462 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-23 01:08:43,463 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-23 01:08:43,516 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/en/ -> 200 (len=20193)
+2025-08-23 01:08:43,529 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from text)
+2025-08-23 01:08:43,538 | DEBUG   | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/en/ (def from html)
+2025-08-23 01:08:43,774 | DEBUG   | scraper.async_http_client | Async GET https://www.walter-schmidt-chemie.de/ -> 200 (len=20930)
+2025-08-23 01:08:43,786 | INFO    | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from text)
+2025-08-23 01:08:43,801 | DEBUG   | scraper.email_extractor |   0 emails on https://www.walter-schmidt-chemie.de/ (def from html)
+2025-08-23 01:08:43,866 | DEBUG   | scraper.async_http_client | Async HEAD https://jp.mitsuichemicals.com -> 200 (len=0)
+2025-08-23 01:08:43,866 | INFO    | scraper.async_http_client | Selected access method for jp.mitsuichemicals.com: https
+2025-08-23 01:08:43,866 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://jp.mitsuichemicals.com
+2025-08-23 01:08:43,911 | DEBUG   | scraper.async_google_search | Async Google API search: "daf trucks" contact email
+2025-08-23 01:08:43,912 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-23 01:08:44,110 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "daf trucks" contact email
+2025-08-23 01:08:44,110 | DEBUG   | scraper.google_search | Cached Google results for query: "daf trucks" contact email (10 results)
+2025-08-23 01:08:44,110 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for daf trucks
+2025-08-23 01:08:44,111 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for daf trucks
+2025-08-23 01:08:44,111 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: daf trucks
+2025-08-23 01:08:44,111 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: daf trucks
+2025-08-23 01:08:44,111 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: daf trucks
+2025-08-23 01:08:44,112 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and daf.com: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:44,112 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and daf.global: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:44,112 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and daf.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:44,112 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and rmi.daf.com: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:44,112 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and hereforddaftrucks.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:44,113 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and gloucesterdaftrucks.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:44,113 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and paccar.com: 36 (base: 36, penalty: 0)
+2025-08-23 01:08:44,113 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and gbdaf.com: 75 (base: 75, penalty: 0)
+2025-08-23 01:08:44,113 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and chassiscab.com: 30 (base: 30, penalty: 0)
+2025-08-23 01:08:44,114 | DEBUG   | scraper.domain_scorer | Domain score for daf trucks and suttondaftrucks.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:44,114 | DEBUG   | scraper.domain_scorer | Best domain for daf trucks: https://www.daf.com/en/contact (score: 100)
+2025-08-23 01:08:44,115 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for daf trucks: https://www.daf.com/en/contact
+2025-08-23 01:08:44,115 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:44,115 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: daf.com (score: 100)
+2025-08-23 01:08:44,115 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: daf.com
+2025-08-23 01:08:44,116 | DEBUG   | scraper.async_http_client | Testing access method https: https://daf.com
+2025-08-23 01:08:44,283 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/index.html -> 200 (len=20930)
+2025-08-23 01:08:44,297 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/index.html (def from text)
+2025-08-23 01:08:44,306 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/index.html (def from html)
+2025-08-23 01:08:44,365 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com -> 200 (len=149931)
+2025-08-23 01:08:44,408 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com (def from text)
+2025-08-23 01:08:44,447 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com (def from html)
+2025-08-23 01:08:44,533 | DEBUG   | scraper.async_http_client | Async HEAD https://daf.com -> 200 (len=0)
+2025-08-23 01:08:44,533 | INFO    | scraper.async_http_client | Selected access method for daf.com: https
+2025-08-23 01:08:44,533 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://daf.com
+2025-08-23 01:08:44,535 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-23 01:08:44,535 | DEBUG   | scraper.async_http_client | Testing access method http: http://sinofert.com
+2025-08-23 01:08:44,535 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): http://sinofert.com - Cannot connect to host sinofert.com:80 ssl:default [getaddrinfo failed]
+2025-08-23 01:08:44,536 | WARNING | scraper.async_components | Circuit breaker OPEN for sinofert.com (5)
+2025-08-23 01:08:44,716 | DEBUG   | scraper.async_http_client | Async GET https://daf.com -> 200 (len=85093)
+2025-08-23 01:08:44,754 | INFO    | scraper.email_extractor |   0 emails on https://daf.com (def from text)
+2025-08-23 01:08:44,795 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com (def from html)
+2025-08-23 01:08:44,837 | DEBUG   | scraper.async_google_search | Async Google API search: "petrol rete" contact email
+2025-08-23 01:08:44,838 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-23 01:08:44,839 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/index.htm -> 200 (len=149931)
+2025-08-23 01:08:44,887 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/index.htm (def from text)
+2025-08-23 01:08:44,928 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/index.htm (def from html)
+2025-08-23 01:08:45,028 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "petrol rete" contact email
+2025-08-23 01:08:45,028 | DEBUG   | scraper.google_search | Cached Google results for query: "petrol rete" contact email (10 results)
+2025-08-23 01:08:45,028 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for petrol rete 
+2025-08-23 01:08:45,029 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for petrol rete 
+2025-08-23 01:08:45,029 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: petrol rete 
+2025-08-23 01:08:45,029 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: petrol rete 
+2025-08-23 01:08:45,029 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: petrol rete 
+2025-08-23 01:08:45,029 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-23 01:08:45,029 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and facebook.com: 5 (base: 30, penalty: 25)
+2025-08-23 01:08:45,030 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and scribd.com: 19 (base: 19, penalty: 0)
+2025-08-23 01:08:45,030 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-23 01:08:45,030 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and facebook.com: 5 (base: 30, penalty: 25)
+2025-08-23 01:08:45,030 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and prezzibenzina.it: 46 (base: 46, penalty: 0)
+2025-08-23 01:08:45,030 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and alvolante.it: 53 (base: 53, penalty: 0)
+2025-08-23 01:08:45,030 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and piazzalucana.it: 23 (base: 23, penalty: 0)
+2025-08-23 01:08:45,031 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and geomonitorsnc.com: 40 (base: 40, penalty: 0)
+2025-08-23 01:08:45,031 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and alvolante.it: 53 (base: 53, penalty: 0)
+2025-08-23 01:08:45,031 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and gazzettadellavaldagri.it: 40 (base: 40, penalty: 0)
+2025-08-23 01:08:45,031 | DEBUG   | scraper.domain_scorer | Domain score for petrol rete  and oraridiapertura24.it: 42 (base: 42, penalty: 0)
+2025-08-23 01:08:45,031 | DEBUG   | scraper.domain_scorer | Best domain for petrol rete : https://www.alvolante.it/prezzo-carburante/basilicata/potenza/pompe-bianche-petrol-rete-59655 (score: 53)
+2025-08-23 01:08:45,031 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for petrol rete : https://www.alvolante.it/prezzo-carburante/basilicata/potenza/pompe-bianche-petrol-rete-59655
+2025-08-23 01:08:45,032 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:45,238 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/en/index.htm -> 200 (len=159107)
+2025-08-23 01:08:45,287 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/en/index.htm (def from text)
+2025-08-23 01:08:45,328 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/en/index.htm (def from html)
+2025-08-23 01:08:45,379 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/unternehmen/ -> 200 (len=16915)
+2025-08-23 01:08:45,387 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/ (def from text)
+2025-08-23 01:08:45,394 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/ (def from html)
+2025-08-23 01:08:45,471 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/ -> 200 (len=998274)
+2025-08-23 01:08:45,546 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/ (def from text)
+2025-08-23 01:08:45,561 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/ (def from html)
+2025-08-23 01:08:45,577 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): http://sinofert.com - Cannot connect to host sinofert.com:80 ssl:default [getaddrinfo failed]
+2025-08-23 01:08:45,577 | WARNING | scraper.async_components | Circuit breaker OPEN for sinofert.com (6)
+2025-08-23 01:08:45,577 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-23 01:08:45,577 | DEBUG   | scraper.async_http_client | Testing access method https_www: https://www.sinofert.com
+2025-08-23 01:08:45,578 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-23 01:08:45,578 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-23 01:08:45,578 | DEBUG   | scraper.async_http_client | Testing access method http_www: http://www.sinofert.com
+2025-08-23 01:08:45,578 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-23 01:08:45,578 | DEBUG   | scraper.async_http_client | Circuit breaker open for domain: sinofert.com
+2025-08-23 01:08:45,578 | WARNING | scraper.async_http_client | All access methods failed for domain: sinofert.com
+2025-08-23 01:08:45,578 | WARNING | scraper.async_orchestrator | Could not establish connection to domain: sinofert.com
+2025-08-23 01:08:45,642 | DEBUG   | scraper.async_google_search | Async Google API search: "euro dam jas doo" contact email
+2025-08-23 01:08:45,643 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-23 01:08:45,652 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html -> 200 (len=16915)
+2025-08-23 01:08:45,661 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from text)
+2025-08-23 01:08:45,669 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/unternehmensvorstellung.html (def from html)
+2025-08-23 01:08:45,816 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "euro dam jas doo" contact email
+2025-08-23 01:08:45,816 | DEBUG   | scraper.google_search | Cached Google results for query: "euro dam jas doo" contact email (10 results)
+2025-08-23 01:08:45,816 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for euro dam jas doo
+2025-08-23 01:08:45,817 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for euro dam jas doo
+2025-08-23 01:08:45,817 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: euro dam jas doo
+2025-08-23 01:08:45,817 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: euro dam jas doo
+2025-08-23 01:08:45,817 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: euro dam jas doo
+2025-08-23 01:08:45,817 | DEBUG   | scraper.domain_scorer | Applied penalty to ba.linkedin.com (contains linkedin.com)
+2025-08-23 01:08:45,817 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and ba.linkedin.com: 25 (base: 50, penalty: 25)
+2025-08-23 01:08:45,817 | DEBUG   | scraper.domain_scorer | Applied penalty to instagram.com (contains instagram.com)
+2025-08-23 01:08:45,817 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and instagram.com: 12 (base: 37, penalty: 25)
+2025-08-23 01:08:45,817 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and goodyear.eu: 42 (base: 42, penalty: 0)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and companywall.ba: 30 (base: 30, penalty: 0)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Applied penalty to linkedin.com (contains linkedin.com)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and linkedin.com: 5 (base: 30, penalty: 25)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and facebook.com: 21 (base: 46, penalty: 25)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and jpautoceste.ba: 35 (base: 35, penalty: 0)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Applied penalty to facebook.com (contains facebook.com)
+2025-08-23 01:08:45,818 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and facebook.com: 21 (base: 46, penalty: 25)
+2025-08-23 01:08:45,819 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and scribd.com: 40 (base: 40, penalty: 0)
+2025-08-23 01:08:45,819 | DEBUG   | scraper.domain_scorer | Domain score for euro dam jas doo and flek.ba: 40 (base: 40, penalty: 0)
+2025-08-23 01:08:45,819 | DEBUG   | scraper.domain_scorer | Best domain for euro dam jas doo: https://www.goodyear.eu/bs_ba/consumer/all-dealers/lukavac/euro-dam-jas-doo-30092243.html (score: 42)
+2025-08-23 01:08:45,819 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for euro dam jas doo: https://www.goodyear.eu/bs_ba/consumer/all-dealers/lukavac/euro-dam-jas-doo-30092243.html
+2025-08-23 01:08:45,819 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:45,826 | DEBUG   | scraper.async_http_client | Async GET https://eportal.daf.com/ -> 200 (len=1422)
+2025-08-23 01:08:45,827 | INFO    | scraper.email_extractor |   0 emails on https://eportal.daf.com/ (def from text)
+2025-08-23 01:08:45,827 | DEBUG   | scraper.email_extractor |   0 emails on https://eportal.daf.com/ (def from html)
+2025-08-23 01:08:45,951 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/unternehmen/standorte.html -> 200 (len=16398)
+2025-08-23 01:08:45,961 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/standorte.html (def from text)
+2025-08-23 01:08:45,972 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/standorte.html (def from html)
+2025-08-23 01:08:45,990 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/news-and-media -> 200 (len=104340)
+2025-08-23 01:08:46,041 | DEBUG   | scraper.email_extractor | Attempting to clean 'rutger.kerstiens@daftrucks.com'
+2025-08-23 01:08:46,041 | DEBUG   | scraper.email_extractor | Successfully cleaned 'rutger.kerstiens@daftrucks.com' → 'rutger.kerstiens@daftrucks.com'
+2025-08-23 01:08:46,041 | INFO    | scraper.email_extractor |   1 emails on https://daf.com/en/news-and-media (def from text)
+2025-08-23 01:08:46,042 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://daf.com/en/news-and-media
+2025-08-23 01:08:46,042 | DEBUG   | scraper.async_orchestrator | [CRAWL] https://daf.com/en/news-and-media +1 (total=1)
+2025-08-23 01:08:46,225 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/suppliers -> 200 (len=85945)
+2025-08-23 01:08:46,260 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/suppliers (def from text)
+2025-08-23 01:08:46,292 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/suppliers (def from html)
+2025-08-23 01:08:46,363 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/unternehmen/zertifizierungen/ -> 200 (len=17272)
+2025-08-23 01:08:46,375 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/zertifizierungen/ (def from text)
+2025-08-23 01:08:46,383 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/zertifizierungen/ (def from html)
+2025-08-23 01:08:46,449 | DEBUG   | scraper.async_google_search | Async Google API search: "Synsol" contact email
+2025-08-23 01:08:46,451 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-23 01:08:46,548 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/working-at-daf -> 200 (len=117333)
+2025-08-23 01:08:46,591 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/working-at-daf (def from text)
+2025-08-23 01:08:46,630 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/working-at-daf (def from html)
+2025-08-23 01:08:46,665 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "Synsol" contact email
+2025-08-23 01:08:46,666 | DEBUG   | scraper.google_search | Cached Google results for query: "Synsol" contact email (10 results)
+2025-08-23 01:08:46,666 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for Synsol
+2025-08-23 01:08:46,666 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for Synsol
+2025-08-23 01:08:46,666 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: Synsol
+2025-08-23 01:08:46,666 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: Synsol
+2025-08-23 01:08:46,666 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: Synsol
+2025-08-23 01:08:46,667 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and www1.mscdirect.com: 25 (base: 25, penalty: 0)
+2025-08-23 01:08:46,667 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and synsol.ch: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:46,667 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and www1.mscdirect.com: 25 (base: 25, penalty: 0)
+2025-08-23 01:08:46,667 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and contactout.com: 33 (base: 33, penalty: 0)
+2025-08-23 01:08:46,668 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and synsol.ch: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:46,668 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and mscdirect.com: 25 (base: 25, penalty: 0)
+2025-08-23 01:08:46,668 | DEBUG   | scraper.domain_scorer | Applied penalty to crunchbase.com (contains crunchbase.com)
+2025-08-23 01:08:46,668 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and crunchbase.com: 8 (base: 33, penalty: 25)
+2025-08-23 01:08:46,668 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and find-and-update.company-information.service.gov.uk: 50 (base: 50, penalty: 0)
+2025-08-23 01:08:46,668 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and metalloidcorp.com: 22 (base: 22, penalty: 0)
+2025-08-23 01:08:46,669 | DEBUG   | scraper.domain_scorer | Domain score for Synsol and find-and-update.company-information.service.gov.uk: 50 (base: 50, penalty: 0)
+2025-08-23 01:08:46,669 | DEBUG   | scraper.domain_scorer | Best domain for Synsol: https://synsol.ch/privacy-policy-of-synsol-ag/ (score: 100)
+2025-08-23 01:08:46,669 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for Synsol: https://synsol.ch/privacy-policy-of-synsol-ag/
+2025-08-23 01:08:46,669 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-23 01:08:46,669 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: synsol.ch (score: 100)
+2025-08-23 01:08:46,669 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: synsol.ch
+2025-08-23 01:08:46,669 | DEBUG   | scraper.async_http_client | Testing access method https: https://synsol.ch
+2025-08-23 01:08:46,804 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en -> 200 (len=127477)
+2025-08-23 01:08:46,859 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from text)
+2025-08-23 01:08:46,899 | DEBUG   | scraper.email_extractor |   0 emails on https://www.daf.com/en (def from html)
+2025-08-23 01:08:47,006 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/cn/ -> 200 (len=1834)
+2025-08-23 01:08:47,008 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/cn/ (def from text)
+2025-08-23 01:08:47,009 | DEBUG   | scraper.email_extractor | Attempting to clean 'information@mcs.mitsui-chem.com'
+2025-08-23 01:08:47,010 | DEBUG   | scraper.email_extractor | Successfully cleaned 'information@mcs.mitsui-chem.com' → 'information@mcs.mitsui-chem.com'
+2025-08-23 01:08:47,010 | DEBUG   | scraper.email_extractor |   1 emails on https://jp.mitsuichemicals.com/cn/ (def from html)
+2025-08-23 01:08:47,010 | DEBUG   | scraper.hybrid_email_extractor | HTML fallback hits: 1 on https://jp.mitsuichemicals.com/cn/
+2025-08-23 01:08:47,010 | DEBUG   | scraper.async_orchestrator | [CRAWL] https://jp.mitsuichemicals.com/cn/ +1 (total=1)
+2025-08-23 01:08:47,084 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/nl-nl -> 200 (len=125273)
+2025-08-23 01:08:47,132 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from text)
+2025-08-23 01:08:47,171 | DEBUG   | scraper.email_extractor |   0 emails on https://www.daf.com/nl-nl (def from html)
+2025-08-23 01:08:47,209 | DEBUG   | scraper.async_http_client | Async HEAD https://synsol.ch -> 200 (len=0)
+2025-08-23 01:08:47,210 | INFO    | scraper.async_http_client | Selected access method for synsol.ch: https
+2025-08-23 01:08:47,210 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://synsol.ch
+2025-08-23 01:08:47,252 | DEBUG   | scraper.async_google_search | Async Google API search: "speedy fuels" contact email
+2025-08-23 01:08:47,260 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch -> 200 (len=204915)
+2025-08-23 01:08:47,301 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:47,301 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:47,302 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch (def from text)
+2025-08-23 01:08:47,302 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch
+2025-08-23 01:08:47,302 | DEBUG   | scraper.async_orchestrator | Home candidates=1
+2025-08-23 01:08:47,332 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/contact/index.htm -> 200 (len=113294)
+2025-08-23 01:08:47,363 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/contact/index.htm (def from text)
+2025-08-23 01:08:47,395 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/contact/index.htm (def from html)
+2025-08-23 01:08:47,427 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/ -> 200 (len=204915)
+2025-08-23 01:08:47,467 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:47,467 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:47,467 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/ (def from text)
+2025-08-23 01:08:47,468 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/
+2025-08-23 01:08:47,500 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en -> 200 (len=127477)
+2025-08-23 01:08:47,671 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en (def from text)
+2025-08-23 01:08:47,711 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en (def from html)
+2025-08-23 01:08:47,752 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "speedy fuels" contact email
+2025-08-23 01:08:47,752 | DEBUG   | scraper.google_search | Cached Google results for query: "speedy fuels" contact email (10 results)
+2025-08-23 01:08:47,752 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for speedy fuels
+2025-08-23 01:08:47,752 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html -> 200 (len=19058)
+2025-08-23 01:08:47,761 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html (def from text)
+2025-08-23 01:08:47,774 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/unternehmen/wir-arbeiten-mit.html (def from html)
+2025-08-23 01:08:47,783 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/petrochemicals/ -> 200 (len=138808)
+2025-08-23 01:08:47,809 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:47,809 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:47,809 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/petrochemicals/ (def from text)
+2025-08-23 01:08:47,809 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/petrochemicals/
+2025-08-23 01:08:47,830 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/index.htm -> 200 (len=132043)
+2025-08-23 01:08:47,868 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/index.htm (def from text)
+2025-08-23 01:08:47,902 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/index.htm (def from html)
+2025-08-23 01:08:47,937 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for speedy fuels
+2025-08-23 01:08:47,937 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: speedy fuels
+2025-08-23 01:08:47,937 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: speedy fuels
+2025-08-23 01:08:47,937 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: speedy fuels
+2025-08-23 01:08:47,937 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:47,938 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and cdn.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:47,938 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:47,938 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and cdn.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:47,938 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:47,938 | DEBUG   | scraper.domain_scorer | Applied penalty to uk.linkedin.com (contains linkedin.com)
+2025-08-23 01:08:47,938 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and uk.linkedin.com: 25 (base: 50, penalty: 25)
+2025-08-23 01:08:47,939 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:47,939 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and zoominfo.com: 15 (base: 15, penalty: 0)
+2025-08-23 01:08:47,939 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and sustainability.speedyfuels.co.uk: 100 (base: 100, penalty: 0)
+2025-08-23 01:08:47,939 | DEBUG   | scraper.domain_scorer | Domain score for speedy fuels and crownoil.co.uk: 19 (base: 19, penalty: 0)
+2025-08-23 01:08:47,939 | DEBUG   | scraper.domain_scorer | Best domain for speedy fuels: https://www.speedyfuels.co.uk/contact-us/ (score: 100)
+2025-08-23 01:08:47,939 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for speedy fuels: https://www.speedyfuels.co.uk/contact-us/
+2025-08-23 01:08:47,940 | DEBUG   | scraper.async_orchestrator | 🌐 Processing domain: speedyfuels.co.uk (score: 100)
+2025-08-23 01:08:47,940 | INFO    | scraper.async_http_client | Probing domain (sequential) for access method: speedyfuels.co.uk
+2025-08-23 01:08:47,940 | DEBUG   | scraper.async_http_client | Testing access method https: https://speedyfuels.co.uk
+2025-08-23 01:08:47,941 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/base-oils-grp-i-ii-iii/ -> 200 (len=138999)
+2025-08-23 01:08:47,963 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:47,963 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:47,964 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/base-oils-grp-i-ii-iii/ (def from text)
+2025-08-23 01:08:47,964 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/base-oils-grp-i-ii-iii/
+2025-08-23 01:08:48,010 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/bitumen/ -> 200 (len=138393)
+2025-08-23 01:08:48,030 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:48,030 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:48,030 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/bitumen/ (def from text)
+2025-08-23 01:08:48,030 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/bitumen/
+2025-08-23 01:08:48,206 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/message/index.htm -> 200 (len=113674)
+2025-08-23 01:08:48,247 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/message/index.htm (def from text)
+2025-08-23 01:08:48,277 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/message/index.htm (def from html)
+2025-08-23 01:08:48,312 | DEBUG   | scraper.async_http_client | Async HEAD https://speedyfuels.co.uk -> 200 (len=0)
+2025-08-23 01:08:48,312 | INFO    | scraper.async_http_client | Selected access method for speedyfuels.co.uk: https
+2025-08-23 01:08:48,312 | DEBUG   | scraper.async_orchestrator | Using optimized URL pattern: https://speedyfuels.co.uk
+2025-08-23 01:08:48,314 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/dealer-locator-page -> 200 (len=57796)
+2025-08-23 01:08:48,332 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/dealer-locator-page (def from text)
+2025-08-23 01:08:48,350 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/dealer-locator-page (def from html)
+2025-08-23 01:08:48,367 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/coal/ -> 200 (len=138598)
+2025-08-23 01:08:48,390 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:48,390 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:48,390 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/coal/ (def from text)
+2025-08-23 01:08:48,391 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/coal/
+2025-08-23 01:08:48,572 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/overview/index.htm -> 200 (len=111330)
+2025-08-23 01:08:48,609 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/overview/index.htm (def from text)
+2025-08-23 01:08:48,641 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/overview/index.htm (def from html)
+2025-08-23 01:08:48,677 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk -> 200 (len=276481)
+2025-08-23 01:08:48,729 | INFO    | scraper.email_extractor |   0 emails on https://speedyfuels.co.uk (def from text)
+2025-08-23 01:08:48,760 | DEBUG   | scraper.email_extractor |   0 emails on https://speedyfuels.co.uk (def from html)
+2025-08-23 01:08:48,871 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/ -> 200 (len=276481)
+2025-08-23 01:08:48,927 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from text)
+2025-08-23 01:08:48,955 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/ (def from html)
+2025-08-23 01:08:48,988 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/management/index.htm -> 200 (len=116316)
+2025-08-23 01:08:49,022 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/management/index.htm (def from text)
+2025-08-23 01:08:49,050 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/management/index.htm (def from html)
+2025-08-23 01:08:49,085 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/ -> 200 (len=17804)
+2025-08-23 01:08:49,094 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/ (def from text)
+2025-08-23 01:08:49,107 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/ (def from html)
+2025-08-23 01:08:49,245 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/lithium-hydroxide/ -> 200 (len=138502)
+2025-08-23 01:08:49,279 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:49,280 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:49,280 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/lithium-hydroxide/ (def from text)
+2025-08-23 01:08:49,280 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/lithium-hydroxide/
+2025-08-23 01:08:49,320 | DEBUG   | scraper.async_http_client | Async GET https://sustainability.speedyfuels.co.uk/environment/ -> 200 (len=357269)
+2025-08-23 01:08:49,451 | INFO    | scraper.email_extractor |   0 emails on https://sustainability.speedyfuels.co.uk/environment/ (def from text)
+2025-08-23 01:08:49,718 | DEBUG   | scraper.email_extractor |   0 emails on https://sustainability.speedyfuels.co.uk/environment/ (def from html)
+2025-08-23 01:08:49,851 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/vision/index.htm -> 200 (len=35115)
+2025-08-23 01:08:49,863 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/vision/index.htm (def from text)
+2025-08-23 01:08:49,873 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/vision/index.htm (def from html)
+2025-08-23 01:08:49,885 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/produktsuche.html -> 200 (len=13412)
+2025-08-23 01:08:49,891 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/produktsuche.html (def from text)
+2025-08-23 01:08:49,896 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/produktsuche.html (def from html)
+2025-08-23 01:08:49,903 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com.au -> 200 (len=129510)
+2025-08-23 01:08:49,927 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.au (def from text)
+2025-08-23 01:08:49,954 | DEBUG   | scraper.email_extractor |   0 emails on https://www.daf.com.au (def from html)
+2025-08-23 01:08:49,977 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/emergency-delivery/ -> 200 (len=261584)
+2025-08-23 01:08:50,027 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/emergency-delivery/ (def from text)
+2025-08-23 01:08:50,051 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/emergency-delivery/ (def from html)
+2025-08-23 01:08:50,129 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/ -> 200 (len=262900)
+2025-08-23 01:08:50,183 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/ (def from text)
+2025-08-23 01:08:50,206 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/ (def from html)
+2025-08-23 01:08:50,232 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/group/domestic_01/index.htm -> 200 (len=167041)
+2025-08-23 01:08:50,296 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/group/domestic_01/index.htm (def from text)
+2025-08-23 01:08:50,352 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/group/domestic_01/index.htm (def from html)
+2025-08-23 01:08:50,414 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/premiumprodukte/ -> 200 (len=16969)
+2025-08-23 01:08:50,424 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/premiumprodukte/ (def from text)
+2025-08-23 01:08:50,431 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/premiumprodukte/ (def from html)
+2025-08-23 01:08:50,442 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/adblue/ -> 200 (len=262729)
+2025-08-23 01:08:50,491 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from text)
+2025-08-23 01:08:50,517 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/adblue/ (def from html)
+2025-08-23 01:08:50,542 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/heavy-alkylates/ -> 200 (len=138844)
+2025-08-23 01:08:50,565 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:50,565 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:50,565 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/heavy-alkylates/ (def from text)
+2025-08-23 01:08:50,565 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/heavy-alkylates/
+2025-08-23 01:08:50,592 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/biodiesel/ -> 200 (len=261657)
+2025-08-23 01:08:50,639 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/biodiesel/ (def from text)
+2025-08-23 01:08:50,667 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/biodiesel/ (def from html)
+2025-08-23 01:08:50,742 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/carbon-clean-kerosene/ -> 200 (len=260691)
+2025-08-23 01:08:50,799 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-clean-kerosene/ (def from text)
+2025-08-23 01:08:50,824 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-clean-kerosene/ (def from html)
+2025-08-23 01:08:51,140 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/group/group/index.htm -> 200 (len=209930)
+2025-08-23 01:08:51,219 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/group/group/index.htm (def from text)
+2025-08-23 01:08:51,289 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/group/group/index.htm (def from html)
+2025-08-23 01:08:51,360 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/winterprodukte/ -> 200 (len=21977)
+2025-08-23 01:08:51,371 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/winterprodukte/ (def from text)
+2025-08-23 01:08:51,381 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/winterprodukte/ (def from html)
+2025-08-23 01:08:51,417 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/n-paraffins/ -> 200 (len=138963)
+2025-08-23 01:08:51,439 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:51,439 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:51,439 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/n-paraffins/ (def from text)
+2025-08-23 01:08:51,439 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/n-paraffins/
+2025-08-23 01:08:51,486 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/carbon-offset-fuels/ -> 200 (len=273694)
+2025-08-23 01:08:51,539 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-offset-fuels/ (def from text)
+2025-08-23 01:08:51,784 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/carbon-offset-fuels/ (def from html)
+2025-08-23 01:08:51,814 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com.tw?MarketCode=TW -> 200 (len=22515)
+2025-08-23 01:08:51,821 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com.tw?MarketCode=TW (def from text)
+2025-08-23 01:08:51,825 | DEBUG   | scraper.email_extractor |   0 emails on https://www.daf.com.tw?MarketCode=TW (def from html)
+2025-08-23 01:08:52,095 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/sommerprodukte/ -> 200 (len=16511)
+2025-08-23 01:08:52,106 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/sommerprodukte/ (def from text)
+2025-08-23 01:08:52,114 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/sommerprodukte/ (def from html)
+2025-08-23 01:08:52,128 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/group/oversea_02/index.htm -> 200 (len=183677)
+2025-08-23 01:08:52,177 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/group/oversea_02/index.htm (def from text)
+2025-08-23 01:08:52,216 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/group/oversea_02/index.htm (def from html)
+2025-08-23 01:08:52,283 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/isoparaffins/ -> 200 (len=138797)
+2025-08-23 01:08:52,307 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:52,307 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:52,307 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/isoparaffins/ (def from text)
+2025-08-23 01:08:52,307 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/isoparaffins/
+2025-08-23 01:08:52,425 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/diesel/ -> 200 (len=264375)
+2025-08-23 01:08:52,479 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/diesel/ (def from text)
+2025-08-23 01:08:52,506 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/diesel/ (def from html)
+2025-08-23 01:08:52,534 | DEBUG   | scraper.async_http_client | Async GET https://readytogo.daf.com/en -> 200 (len=209367)
+2025-08-23 01:08:52,553 | INFO    | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from text)
+2025-08-23 01:08:52,564 | DEBUG   | scraper.email_extractor |   0 emails on https://readytogo.daf.com/en (def from html)
+2025-08-23 01:08:52,817 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/driver-information/driver-manuals -> 200 (len=98356)
+2025-08-23 01:08:52,849 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/driver-information/driver-manuals (def from text)
+2025-08-23 01:08:52,879 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/driver-information/driver-manuals (def from html)
+2025-08-23 01:08:53,035 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/autopflegeprodukte/ -> 200 (len=27058)
+2025-08-23 01:08:53,055 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/autopflegeprodukte/ (def from text)
+2025-08-23 01:08:53,068 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/autopflegeprodukte/ (def from html)
+2025-08-23 01:08:53,132 | DEBUG   | scraper.async_http_client | Async GET https://rmi.daf.com -> 200 (len=65704)
+2025-08-23 01:08:53,157 | INFO    | scraper.email_extractor |   0 emails on https://rmi.daf.com (def from text)
+2025-08-23 01:08:53,185 | DEBUG   | scraper.email_extractor |   0 emails on https://rmi.daf.com (def from html)
+2025-08-23 01:08:53,207 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/governance/index.htm -> 200 (len=183699)
+2025-08-23 01:08:53,263 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/governance/index.htm (def from text)
+2025-08-23 01:08:53,308 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/governance/index.htm (def from html)
+2025-08-23 01:08:53,385 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/cutback-asphalt/ -> 200 (len=138516)
+2025-08-23 01:08:53,404 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:53,405 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:53,405 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/cutback-asphalt/ (def from text)
+2025-08-23 01:08:53,405 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/cutback-asphalt/
+2025-08-23 01:08:53,459 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/storage-tanks/ -> 200 (len=258782)
+2025-08-23 01:08:53,510 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/storage-tanks/ (def from text)
+2025-08-23 01:08:53,539 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/storage-tanks/ (def from html)
+2025-08-23 01:08:53,636 | DEBUG   | scraper.async_http_client | Async GET https://pti.daf.com -> 200 (len=43464)
+2025-08-23 01:08:53,656 | INFO    | scraper.email_extractor |   0 emails on https://pti.daf.com (def from text)
+2025-08-23 01:08:53,670 | DEBUG   | scraper.email_extractor |   0 emails on https://pti.daf.com (def from html)
+2025-08-23 01:08:53,876 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf -> 200 (len=89287)
+2025-08-23 01:08:53,909 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf (def from text)
+2025-08-23 01:08:53,939 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf (def from html)
+2025-08-23 01:08:54,035 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ -> 200 (len=14983)
+2025-08-23 01:08:54,044 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ (def from text)
+2025-08-23 01:08:54,052 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/haus-garten-freizeit/ (def from html)
+2025-08-23 01:08:54,152 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/products-and-services -> 200 (len=154485)
+2025-08-23 01:08:54,204 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/products-and-services (def from text)
+2025-08-23 01:08:54,254 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/products-and-services (def from html)
+2025-08-23 01:08:54,297 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/policylist/index.htm -> 200 (len=144859)
+2025-08-23 01:08:54,339 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/policylist/index.htm (def from text)
+2025-08-23 01:08:54,377 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/policylist/index.htm (def from html)
+2025-08-23 01:08:54,444 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/urea/ -> 200 (len=138370)
+2025-08-23 01:08:54,476 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:54,476 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:54,476 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/urea/ (def from text)
+2025-08-23 01:08:54,476 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/urea/
+2025-08-23 01:08:54,704 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/contact -> 200 (len=122323)
+2025-08-23 01:08:54,747 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/contact (def from text)
+2025-08-23 01:08:54,809 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/contact (def from html)
+2025-08-23 01:08:54,858 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/hvo-fuel/ -> 200 (len=273163)
+2025-08-23 01:08:54,911 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/hvo-fuel/ (def from text)
+2025-08-23 01:08:54,937 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/hvo-fuel/ (def from html)
+2025-08-23 01:08:55,154 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/contact/pems-testing-service-contact-page -> 200 (len=75022)
+2025-08-23 01:08:55,187 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/contact/pems-testing-service-contact-page (def from text)
+2025-08-23 01:08:55,211 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/contact/pems-testing-service-contact-page (def from html)
+2025-08-23 01:08:55,233 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/desinfektion/ -> 200 (len=15052)
+2025-08-23 01:08:55,240 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/desinfektion/ (def from text)
+2025-08-23 01:08:55,246 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/desinfektion/ (def from html)
+2025-08-23 01:08:55,268 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/purchasing/index.htm -> 200 (len=109357)
+2025-08-23 01:08:55,303 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/purchasing/index.htm (def from text)
+2025-08-23 01:08:55,330 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/purchasing/index.htm (def from html)
+2025-08-23 01:08:55,361 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/aromatics-100-150/ -> 200 (len=138546)
+2025-08-23 01:08:55,381 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:55,382 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:55,382 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/aromatics-100-150/ (def from text)
+2025-08-23 01:08:55,382 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/aromatics-100-150/
+2025-08-23 01:08:55,421 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/legal/code-of-conduct -> 200 (len=76447)
+2025-08-23 01:08:55,455 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/legal/code-of-conduct (def from text)
+2025-08-23 01:08:55,480 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/legal/code-of-conduct (def from html)
+2025-08-23 01:08:55,506 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/speedy-flame-industrial-heating-oil/ -> 200 (len=263050)
+2025-08-23 01:08:55,558 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/speedy-flame-industrial-heating-oil/ (def from text)
+2025-08-23 01:08:55,585 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/speedy-flame-industrial-heating-oil/ (def from html)
+2025-08-23 01:08:55,775 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/working-at-daf/onboarding -> 200 (len=82932)
+2025-08-23 01:08:55,810 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/working-at-daf/onboarding (def from text)
+2025-08-23 01:08:55,841 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/working-at-daf/onboarding (def from html)
+2025-08-23 01:08:55,962 | DEBUG   | scraper.async_http_client | Async GET https://rmi.daf.com/ -> 200 (len=65704)
+2025-08-23 01:08:55,996 | INFO    | scraper.email_extractor |   0 emails on https://rmi.daf.com/ (def from text)
+2025-08-23 01:08:56,019 | DEBUG   | scraper.email_extractor |   0 emails on https://rmi.daf.com/ (def from html)
+2025-08-23 01:08:56,132 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/brand/index.htm -> 200 (len=27790)
+2025-08-23 01:08:56,141 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/brand/index.htm (def from text)
+2025-08-23 01:08:56,147 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/brand/index.htm (def from html)
+2025-08-23 01:08:56,236 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/en/sites-landing -> 200 (len=85093)
+2025-08-23 01:08:56,270 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from text)
+2025-08-23 01:08:56,304 | DEBUG   | scraper.email_extractor |   0 emails on https://www.daf.com/en/sites-landing (def from html)
+2025-08-23 01:08:56,331 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/bright-stock/ -> 200 (len=138380)
+2025-08-23 01:08:56,352 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:56,352 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:56,353 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/bright-stock/ (def from text)
+2025-08-23 01:08:56,353 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/bright-stock/
+2025-08-23 01:08:56,467 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/kerosene/ -> 200 (len=265884)
+2025-08-23 01:08:56,520 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/kerosene/ (def from text)
+2025-08-23 01:08:56,548 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/kerosene/ (def from html)
+2025-08-23 01:08:56,954 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/adblue/ -> 200 (len=14915)
+2025-08-23 01:08:56,965 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/adblue/ (def from text)
+2025-08-23 01:08:56,976 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/adblue/ (def from html)
+2025-08-23 01:08:57,017 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/legal/legal-notice -> 200 (len=74386)
+2025-08-23 01:08:57,042 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/legal/legal-notice (def from text)
+2025-08-23 01:08:57,066 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/legal/legal-notice (def from html)
+2025-08-23 01:08:57,127 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/number/index.htm -> 200 (len=55374)
+2025-08-23 01:08:57,153 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/number/index.htm (def from text)
+2025-08-23 01:08:57,174 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/number/index.htm (def from html)
+2025-08-23 01:08:57,249 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/white-spirit/ -> 200 (len=138462)
+2025-08-23 01:08:57,273 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:57,274 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:57,274 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/white-spirit/ (def from text)
+2025-08-23 01:08:57,274 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/white-spirit/
+2025-08-23 01:08:57,329 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/professional-reiniger/ -> 200 (len=23868)
+2025-08-23 01:08:57,344 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/professional-reiniger/ (def from text)
+2025-08-23 01:08:57,357 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/professional-reiniger/ (def from html)
+2025-08-23 01:08:57,417 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/45-gallon-drums-205-litre-barrels/ -> 200 (len=264979)
+2025-08-23 01:08:57,469 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/45-gallon-drums-205-litre-barrels/ (def from text)
+2025-08-23 01:08:57,494 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/45-gallon-drums-205-litre-barrels/ (def from html)
+2025-08-23 01:08:57,988 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/reiniger/ -> 200 (len=29008)
+2025-08-23 01:08:58,175 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/reiniger/ (def from text)
+2025-08-23 01:08:58,189 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/reiniger/ (def from html)
+2025-08-23 01:08:58,206 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/special/creation_palette/index.htm -> 200 (len=14252)
+2025-08-23 01:08:58,212 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/special/creation_palette/index.htm (def from text)
+2025-08-23 01:08:58,220 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/special/creation_palette/index.htm (def from html)
+2025-08-23 01:08:58,225 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/legal/privacy-statement -> 200 (len=93232)
+2025-08-23 01:08:58,262 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/legal/privacy-statement (def from text)
+2025-08-23 01:08:58,303 | DEBUG   | scraper.email_extractor | Attempting to clean 'dataprotectionofficer@daftrucks.com'
+2025-08-23 01:08:58,312 | DEBUG   | scraper.email_extractor | Successfully cleaned 'dataprotectionofficer@daftrucks.com' → 'dataprotectionofficer@daftrucks.com'
+2025-08-23 01:08:58,313 | DEBUG   | scraper.email_extractor |   1 emails on https://daf.com/en/legal/privacy-statement (def from html)
+2025-08-23 01:08:58,313 | DEBUG   | scraper.hybrid_email_extractor | HTML fallback hits: 1 on https://daf.com/en/legal/privacy-statement
+2025-08-23 01:08:58,313 | DEBUG   | scraper.async_orchestrator | [CRAWL] https://daf.com/en/legal/privacy-statement +1 (total=2)
+2025-08-23 01:08:58,365 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/ulsd-gasoil-en590/ -> 200 (len=138548)
+2025-08-23 01:08:58,386 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:58,387 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:58,387 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/ulsd-gasoil-en590/ (def from text)
+2025-08-23 01:08:58,387 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/ulsd-gasoil-en590/
+2025-08-23 01:08:58,435 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/products/red-diesel/ -> 200 (len=268064)
+2025-08-23 01:08:58,488 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/red-diesel/ (def from text)
+2025-08-23 01:08:58,519 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/products/red-diesel/ (def from html)
+2025-08-23 01:08:59,016 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/putztuchrollen/ -> 200 (len=17111)
+2025-08-23 01:08:59,026 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/putztuchrollen/ (def from text)
+2025-08-23 01:08:59,036 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/putztuchrollen/ (def from html)
+2025-08-23 01:08:59,044 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/legal/general-conditions -> 200 (len=69405)
+2025-08-23 01:08:59,071 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/legal/general-conditions (def from text)
+2025-08-23 01:08:59,094 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/legal/general-conditions (def from html)
+2025-08-23 01:08:59,138 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/corporate/25th-history/index.htm -> 200 (len=111794)
+2025-08-23 01:08:59,171 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/25th-history/index.htm (def from text)
+2025-08-23 01:08:59,210 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/corporate/25th-history/index.htm (def from html)
+2025-08-23 01:08:59,263 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/vgo/ -> 200 (len=138305)
+2025-08-23 01:08:59,288 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:08:59,288 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:08:59,288 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/vgo/ (def from text)
+2025-08-23 01:08:59,289 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/vgo/
+2025-08-23 01:08:59,420 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/ -> 200 (len=262461)
+2025-08-23 01:08:59,467 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/ (def from text)
+2025-08-23 01:08:59,491 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/ (def from html)
+2025-08-23 01:08:59,959 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/zubehoer/ -> 200 (len=15268)
+2025-08-23 01:08:59,974 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/zubehoer/ (def from text)
+2025-08-23 01:08:59,982 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/zubehoer/ (def from html)
+2025-08-23 01:09:00,061 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/legal/daf-and-cookies -> 200 (len=68981)
+2025-08-23 01:09:00,092 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/legal/daf-and-cookies (def from text)
+2025-08-23 01:09:00,120 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/legal/daf-and-cookies (def from html)
+2025-08-23 01:09:00,146 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/molp/index.htm -> 200 (len=30220)
+2025-08-23 01:09:00,166 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/molp/index.htm (def from text)
+2025-08-23 01:09:00,179 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/molp/index.htm (def from html)
+2025-08-23 01:09:00,246 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/naphtha-light-heavy/ -> 200 (len=138592)
+2025-08-23 01:09:00,268 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:09:00,269 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:09:00,269 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/naphtha-light-heavy/ (def from text)
+2025-08-23 01:09:00,269 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/naphtha-light-heavy/
+2025-08-23 01:09:00,387 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/hybrid-login -> 200 (len=1044)
+2025-08-23 01:09:00,388 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/hybrid-login (def from html)
+2025-08-23 01:09:00,413 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/agricultural-lubricants/ -> 200 (len=261146)
+2025-08-23 01:09:00,475 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/agricultural-lubricants/ (def from text)
+2025-08-23 01:09:00,515 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/agricultural-lubricants/ (def from html)
+2025-08-23 01:09:00,836 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/en-gb/request-account -> 200 (len=973130)
+2025-08-23 01:09:00,908 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/request-account (def from text)
+2025-08-23 01:09:00,917 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/request-account (def from html)
+2025-08-23 01:09:01,194 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/index.htm -> 200 (len=256848)
+2025-08-23 01:09:01,265 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/index.htm (def from text)
+2025-08-23 01:09:01,330 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/index.htm (def from html)
+2025-08-23 01:09:01,421 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/en-gb/webshop-merchandise-campaign -> 200 (len=998887)
+2025-08-23 01:09:01,496 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/webshop-merchandise-campaign (def from text)
+2025-08-23 01:09:01,506 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/webshop-merchandise-campaign (def from html)
+2025-08-23 01:09:01,518 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/crude-oil-blends/ -> 200 (len=138776)
+2025-08-23 01:09:01,546 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:09:01,546 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:09:01,546 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/crude-oil-blends/ (def from text)
+2025-08-23 01:09:01,546 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/crude-oil-blends/
+2025-08-23 01:09:01,566 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/automotive-lubricants/ -> 200 (len=259149)
+2025-08-23 01:09:01,619 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/automotive-lubricants/ (def from text)
+2025-08-23 01:09:01,646 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/automotive-lubricants/ (def from html)
+2025-08-23 01:09:01,979 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/en-gb/daf-original-parts -> 200 (len=1029882)
+2025-08-23 01:09:02,059 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/daf-original-parts (def from text)
+2025-08-23 01:09:02,079 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/daf-original-parts (def from html)
+2025-08-23 01:09:02,208 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/life_healthcare/index.htm -> 200 (len=114445)
+2025-08-23 01:09:02,255 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/life_healthcare/index.htm (def from text)
+2025-08-23 01:09:02,296 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/life_healthcare/index.htm (def from html)
+2025-08-23 01:09:02,370 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/paraffin-wax-synthetic-wax/ -> 200 (len=138739)
+2025-08-23 01:09:02,620 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:09:02,620 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:09:02,620 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/paraffin-wax-synthetic-wax/ (def from text)
+2025-08-23 01:09:02,620 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/paraffin-wax-synthetic-wax/
+2025-08-23 01:09:02,651 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/biodegradable-lubricants/ -> 200 (len=259283)
+2025-08-23 01:09:02,722 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/biodegradable-lubricants/ (def from text)
+2025-08-23 01:09:02,757 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/biodegradable-lubricants/ (def from html)
+2025-08-23 01:09:03,031 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/en-gb/paccar-power-solutions -> 200 (len=102001)
+2025-08-23 01:09:03,081 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/paccar-power-solutions (def from text)
+2025-08-23 01:09:03,125 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/paccar-power-solutions (def from html)
+2025-08-23 01:09:03,164 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/mobility/index.htm -> 200 (len=111457)
+2025-08-23 01:09:03,216 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/mobility/index.htm (def from text)
+2025-08-23 01:09:03,261 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/mobility/index.htm (def from html)
+2025-08-23 01:09:03,334 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/high-purity-hydrocarbons-c6-c7/ -> 200 (len=139170)
+2025-08-23 01:09:03,365 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:09:03,365 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:09:03,365 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/high-purity-hydrocarbons-c6-c7/ (def from text)
+2025-08-23 01:09:03,366 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/high-purity-hydrocarbons-c6-c7/
+2025-08-23 01:09:03,446 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/commercial-lubricants/ -> 200 (len=259310)
+2025-08-23 01:09:03,518 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/commercial-lubricants/ (def from text)
+2025-08-23 01:09:03,558 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/commercial-lubricants/ (def from html)
+2025-08-23 01:09:03,616 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/en-gb/general-information -> 200 (len=992497)
+2025-08-23 01:09:03,700 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/general-information (def from text)
+2025-08-23 01:09:03,710 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/general-information (def from html)
+2025-08-23 01:09:04,060 | DEBUG   | scraper.async_http_client | Async GET https://parts.daf.com/en-gb/loyalty-program -> 200 (len=985859)
+2025-08-23 01:09:04,154 | INFO    | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/loyalty-program (def from text)
+2025-08-23 01:09:04,166 | DEBUG   | scraper.email_extractor |   0 emails on https://parts.daf.com/en-gb/loyalty-program (def from html)
+2025-08-23 01:09:04,182 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/ict/index.htm -> 200 (len=115979)
+2025-08-23 01:09:04,232 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/ict/index.htm (def from text)
+2025-08-23 01:09:04,275 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/ict/index.htm (def from html)
+2025-08-23 01:09:04,352 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/refined-petroleum-products/ -> 200 (len=138937)
+2025-08-23 01:09:04,386 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@synsol.ch'
+2025-08-23 01:09:04,387 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@synsol.ch' → 'info@synsol.ch'
+2025-08-23 01:09:04,387 | INFO    | scraper.email_extractor |   1 emails on https://synsol.ch/refined-petroleum-products/ (def from text)
+2025-08-23 01:09:04,387 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://synsol.ch/refined-petroleum-products/
+2025-08-23 01:09:04,425 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/engine-oils-supplier/ -> 200 (len=265733)
+2025-08-23 01:09:04,500 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/engine-oils-supplier/ (def from text)
+2025-08-23 01:09:04,540 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/engine-oils-supplier/ (def from html)
+2025-08-23 01:09:04,583 | DEBUG   | scraper.async_http_client | Async GET https://www.daf.com/ -> 200 (len=85093)
+2025-08-23 01:09:04,627 | INFO    | scraper.email_extractor |   0 emails on https://www.daf.com/ (def from text)
+2025-08-23 01:09:04,668 | DEBUG   | scraper.email_extractor |   0 emails on https://www.daf.com/ (def from html)
+2025-08-23 01:09:04,899 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/choose-your-country -> 200 (len=112317)
+2025-08-23 01:09:04,953 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/choose-your-country (def from text)
+2025-08-23 01:09:05,007 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/choose-your-country (def from html)
+2025-08-23 01:09:05,155 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/basic/index.htm -> 200 (len=111010)
+2025-08-23 01:09:05,205 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/basic/index.htm (def from text)
+2025-08-23 01:09:05,246 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/basic/index.htm (def from html)
+2025-08-23 01:09:05,292 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/board-of-management -> 200 (len=88646)
+2025-08-23 01:09:05,335 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/board-of-management (def from text)
+2025-08-23 01:09:05,375 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/board-of-management (def from html)
+2025-08-23 01:09:05,412 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html -> 200 (len=66243)
+2025-08-23 01:09:05,453 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html (def from text)
+2025-08-23 01:09:05,495 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/produkte/sicherheitsdatenblaetter-und-inhaltstoffe.html (def from html)
+2025-08-23 01:09:05,563 | DEBUG   | scraper.async_http_client | Async GET https://synsol.ch/privacy-policy-of-synsol-ag/ -> 200 (len=108337)
+2025-08-23 01:09:05,581 | INFO    | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from text)
+2025-08-23 01:09:05,597 | DEBUG   | scraper.email_extractor |   0 emails on https://synsol.ch/privacy-policy-of-synsol-ag/ (def from html)
+2025-08-23 01:09:05,612 | DEBUG   | scraper.async_orchestrator | Summary synsol.ch raw=1 filtered=1 valid=1
+2025-08-23 01:09:05,612 | INFO    | scraper.async_orchestrator | ✅ Found 1 emails for Synsol (synsol.ch)
+2025-08-23 01:09:05,635 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/hydraulic-oils/ -> 200 (len=259708)
+2025-08-23 01:09:05,707 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/hydraulic-oils/ (def from text)
+2025-08-23 01:09:05,742 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/hydraulic-oils/ (def from html)
+2025-08-23 01:09:06,008 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-worldwide -> 200 (len=86985)
+2025-08-23 01:09:06,049 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide (def from text)
+2025-08-23 01:09:06,082 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide (def from html)
+2025-08-23 01:09:06,377 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-worldwide/production-locations -> 200 (len=84576)
+2025-08-23 01:09:06,423 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide/production-locations (def from text)
+2025-08-23 01:09:06,462 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide/production-locations (def from html)
+2025-08-23 01:09:06,498 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/new_business/index.htm -> 200 (len=129870)
+2025-08-23 01:09:06,550 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/new_business/index.htm (def from text)
+2025-08-23 01:09:06,606 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/new_business/index.htm (def from html)
+2025-08-23 01:09:06,659 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/industrial-lubricants/ -> 200 (len=263370)
+2025-08-23 01:09:06,742 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/industrial-lubricants/ (def from text)
+2025-08-23 01:09:06,797 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/industrial-lubricants/ (def from html)
+2025-08-23 01:09:07,123 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/beteiligungsgesellschaften/ -> 200 (len=14054)
+2025-08-23 01:09:07,129 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/ (def from text)
+2025-08-23 01:09:07,137 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/ (def from html)
+2025-08-23 01:09:07,152 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/search/index.htm -> 200 (len=727242)
+2025-08-23 01:09:07,551 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/search/index.htm (def from text)
+2025-08-23 01:09:07,877 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/search/index.htm (def from html)
+2025-08-23 01:09:08,347 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-worldwide/dealer-network -> 200 (len=88254)
+2025-08-23 01:09:08,383 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide/dealer-network (def from text)
+2025-08-23 01:09:08,423 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide/dealer-network (def from html)
+2025-08-23 01:09:08,456 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/marine-lubricants/ -> 200 (len=259602)
+2025-08-23 01:09:08,516 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/marine-lubricants/ (def from text)
+2025-08-23 01:09:08,547 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/marine-lubricants/ (def from html)
+2025-08-23 01:09:08,603 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/exhibition/index.htm -> 200 (len=129871)
+2025-08-23 01:09:08,667 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/exhibition/index.htm (def from text)
+2025-08-23 01:09:08,724 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/exhibition/index.htm (def from html)
+2025-08-23 01:09:08,792 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html -> 200 (len=14054)
+2025-08-23 01:09:08,802 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from text)
+2025-08-23 01:09:08,810 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-zement-gmbh.html (def from html)
+2025-08-23 01:09:08,819 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-worldwide/world-class-technology -> 200 (len=84911)
+2025-08-23 01:09:08,863 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide/world-class-technology (def from text)
+2025-08-23 01:09:08,900 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-worldwide/world-class-technology (def from html)
+2025-08-23 01:09:08,936 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricants/metalworking-fluids/ -> 200 (len=260524)
+2025-08-23 01:09:09,010 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/metalworking-fluids/ (def from text)
+2025-08-23 01:09:09,045 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricants/metalworking-fluids/ (def from html)
+2025-08-23 01:09:09,277 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/facts-and-figures -> 200 (len=91299)
+2025-08-23 01:09:09,310 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/facts-and-figures (def from text)
+2025-08-23 01:09:09,344 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/facts-and-figures (def from html)
+2025-08-23 01:09:09,404 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html -> 200 (len=15613)
+2025-08-23 01:09:09,413 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html (def from text)
+2025-08-23 01:09:09,423 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-cement-polska.html (def from html)
+2025-08-23 01:09:09,474 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/lubricant-health-check/ -> 200 (len=257026)
+2025-08-23 01:09:09,523 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricant-health-check/ (def from text)
+2025-08-23 01:09:09,545 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/lubricant-health-check/ (def from html)
+2025-08-23 01:09:09,615 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-history -> 200 (len=123871)
+2025-08-23 01:09:09,666 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history (def from text)
+2025-08-23 01:09:09,714 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history (def from html)
+2025-08-23 01:09:09,757 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html -> 200 (len=14762)
+2025-08-23 01:09:09,765 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html (def from text)
+2025-08-23 01:09:09,777 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/beteiligungsgesellschaften/walter-schmidt-logistik-gmbh.html (def from html)
+2025-08-23 01:09:09,789 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/service/sds/index.htm -> 200 (len=121307)
+2025-08-23 01:09:09,847 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/sds/index.htm (def from text)
+2025-08-23 01:09:09,894 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/service/sds/index.htm (def from html)
+2025-08-23 01:09:10,192 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-history/clever-solutions -> 200 (len=89533)
+2025-08-23 01:09:10,236 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history/clever-solutions (def from text)
+2025-08-23 01:09:10,274 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history/clever-solutions (def from html)
+2025-08-23 01:09:10,307 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/index.htm -> 200 (len=123513)
+2025-08-23 01:09:10,369 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/index.htm (def from text)
+2025-08-23 01:09:10,423 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/index.htm (def from html)
+2025-08-23 01:09:10,571 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/ -> 200 (len=265133)
+2025-08-23 01:09:10,653 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/ (def from text)
+2025-08-23 01:09:10,694 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/ (def from html)
+2025-08-23 01:09:11,048 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt/ -> 200 (len=17052)
+2025-08-23 01:09:11,060 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/ (def from text)
+2025-08-23 01:09:11,073 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/ (def from html)
+2025-08-23 01:09:11,116 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-history/past-and-present -> 200 (len=86449)
+2025-08-23 01:09:11,166 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history/past-and-present (def from text)
+2025-08-23 01:09:11,444 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history/past-and-present (def from html)
+2025-08-23 01:09:11,483 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/message/index.htm -> 200 (len=104477)
+2025-08-23 01:09:11,521 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/message/index.htm (def from text)
+2025-08-23 01:09:11,554 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/message/index.htm (def from html)
+2025-08-23 01:09:11,716 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/fuel-management/ -> 200 (len=260030)
+2025-08-23 01:09:11,780 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-management/ (def from text)
+2025-08-23 01:09:11,814 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-management/ (def from html)
+2025-08-23 01:09:11,850 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt/kontaktformular/ -> 200 (len=17052)
+2025-08-23 01:09:11,861 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from text)
+2025-08-23 01:09:11,871 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/kontaktformular/ (def from html)
+2025-08-23 01:09:12,096 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/daf-history/timeline -> 200 (len=126794)
+2025-08-23 01:09:12,145 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history/timeline (def from text)
+2025-08-23 01:09:12,186 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/daf-history/timeline (def from html)
+2025-08-23 01:09:12,218 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/information/2025/index.htm -> 200 (len=107177)
+2025-08-23 01:09:12,256 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/information/2025/index.htm (def from text)
+2025-08-23 01:09:12,285 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/information/2025/index.htm (def from html)
+2025-08-23 01:09:12,319 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt/impressum.html -> 200 (len=18491)
+2025-08-23 01:09:12,328 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@walter-schmidt-chemie.de'
+2025-08-23 01:09:12,329 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@walter-schmidt-chemie.de' → 'info@walter-schmidt-chemie.de'
+2025-08-23 01:09:12,329 | INFO    | scraper.email_extractor |   1 emails on https://walter-schmidt-chemie.de/kontakt/impressum.html (def from text)
+2025-08-23 01:09:12,329 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 1 on https://walter-schmidt-chemie.de/kontakt/impressum.html
+2025-08-23 01:09:12,329 | DEBUG   | scraper.async_orchestrator | [CRAWL] https://walter-schmidt-chemie.de/kontakt/impressum.html +1 (total=1)
+2025-08-23 01:09:12,434 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/fuel-polishing/ -> 200 (len=260063)
+2025-08-23 01:09:12,486 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-polishing/ (def from text)
+2025-08-23 01:09:12,516 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-polishing/ (def from html)
+2025-08-23 01:09:12,713 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html -> 200 (len=29253)
+2025-08-23 01:09:12,736 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from text)
+2025-08-23 01:09:12,759 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/inhaltsverzeichnis.html (def from html)
+2025-08-23 01:09:13,129 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/strategy/index.htm -> 200 (len=107593)
+2025-08-23 01:09:13,177 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/strategy/index.htm (def from text)
+2025-08-23 01:09:13,215 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/strategy/index.htm (def from html)
+2025-08-23 01:09:13,259 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/sustainability -> 200 (len=88408)
+2025-08-23 01:09:13,302 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability (def from text)
+2025-08-23 01:09:13,351 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability (def from html)
+2025-08-23 01:09:13,421 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ -> 200 (len=7453)
+2025-08-23 01:09:13,424 | INFO    | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from text)
+2025-08-23 01:09:13,425 | DEBUG   | scraper.email_extractor |   0 emails on https://walter-schmidt-chemie.de/kontakt/meldeplattform-hinschg/ (def from html)
+2025-08-23 01:09:13,491 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/fuel-testing-and-sampling/ -> 200 (len=258752)
+2025-08-23 01:09:13,559 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-testing-and-sampling/ (def from text)
+2025-08-23 01:09:13,591 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-testing-and-sampling/ (def from html)
+2025-08-23 01:09:13,734 | DEBUG   | scraper.async_http_client | Async GET https://walter-schmidt-chemie.de/kontakt/datenschutzerklaerung.html -> 200 (len=34282)
+2025-08-23 01:09:13,758 | DEBUG   | scraper.email_extractor | Attempting to clean 'info@walter-schmidt-chemie.de'
+2025-08-23 01:09:13,758 | DEBUG   | scraper.email_extractor | Successfully cleaned 'info@walter-schmidt-chemie.de' → 'info@walter-schmidt-chemie.de'
+2025-08-23 01:09:13,759 | DEBUG   | scraper.email_extractor | Attempting to clean 'Datenschutz@walter-schmidt-chemie.de'
+2025-08-23 01:09:13,759 | DEBUG   | scraper.email_extractor | Successfully cleaned 'Datenschutz@walter-schmidt-chemie.de' → 'datenschutz@walter-schmidt-chemie.de'
+2025-08-23 01:09:13,759 | DEBUG   | scraper.email_extractor | Attempting to clean 'datenschutz@schmidt-zement.de'
+2025-08-23 01:09:13,759 | DEBUG   | scraper.email_extractor | Successfully cleaned 'datenschutz@schmidt-zement.de' → 'datenschutz@schmidt-zement.de'
+2025-08-23 01:09:13,760 | INFO    | scraper.email_extractor |   3 emails on https://walter-schmidt-chemie.de/kontakt/datenschutzerklaerung.html (def from text)
+2025-08-23 01:09:13,760 | DEBUG   | scraper.hybrid_email_extractor | Static text hits: 3 on https://walter-schmidt-chemie.de/kontakt/datenschutzerklaerung.html
+2025-08-23 01:09:13,760 | DEBUG   | scraper.async_orchestrator | [CRAWL] https://walter-schmidt-chemie.de/kontakt/datenschutzerklaerung.html +2 (total=3)
+2025-08-23 01:09:13,773 | DEBUG   | scraper.async_orchestrator | Summary walter-schmidt-chemie.de raw=3 filtered=3 valid=3
+2025-08-23 01:09:13,773 | INFO    | scraper.async_orchestrator | ✅ Found 3 emails for walter schmidt chemie gmbh (walter-schmidt-chemie.de)
+2025-08-23 01:09:14,028 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/sustainability/environment-emission-reduction -> 200 (len=93534)
+2025-08-23 01:09:14,066 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability/environment-emission-reduction (def from text)
+2025-08-23 01:09:14,105 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability/environment-emission-reduction (def from html)
+2025-08-23 01:09:14,135 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/labo/index.htm -> 200 (len=151858)
+2025-08-23 01:09:14,183 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/labo/index.htm (def from text)
+2025-08-23 01:09:14,225 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/labo/index.htm (def from html)
+2025-08-23 01:09:14,424 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/fuel-uplift/ -> 200 (len=259510)
+2025-08-23 01:09:14,513 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-uplift/ (def from text)
+2025-08-23 01:09:14,555 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/fuel-uplift/ (def from html)
+2025-08-23 01:09:15,084 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/sustainability/environment-circularity -> 200 (len=91023)
+2025-08-23 01:09:15,149 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability/environment-circularity (def from text)
+2025-08-23 01:09:15,217 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability/environment-circularity (def from html)
+2025-08-23 01:09:15,264 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/core_technology/precision_synthesis/index.htm -> 200 (len=122376)
+2025-08-23 01:09:15,320 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/core_technology/precision_synthesis/index.htm (def from text)
+2025-08-23 01:09:15,366 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/core_technology/precision_synthesis/index.htm (def from html)
+2025-08-23 01:09:15,764 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/nationwide-fuel-delivery/ -> 200 (len=263937)
+2025-08-23 01:09:15,833 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/nationwide-fuel-delivery/ (def from text)
+2025-08-23 01:09:15,859 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/nationwide-fuel-delivery/ (def from html)
+2025-08-23 01:09:16,154 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/open/index.htm -> 200 (len=99347)
+2025-08-23 01:09:16,204 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/open/index.htm (def from text)
+2025-08-23 01:09:16,247 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/open/index.htm (def from html)
+2025-08-23 01:09:16,290 | DEBUG   | scraper.async_http_client | Async GET https://daf.com/en/about-daf/sustainability/care-for-people -> 200 (len=93438)
+2025-08-23 01:09:16,334 | INFO    | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability/care-for-people (def from text)
+2025-08-23 01:09:16,388 | DEBUG   | scraper.email_extractor |   0 emails on https://daf.com/en/about-daf/sustainability/care-for-people (def from html)
+2025-08-23 01:09:16,428 | DEBUG   | scraper.async_orchestrator | Summary daf.com raw=2 filtered=2 valid=2
+2025-08-23 01:09:16,429 | INFO    | scraper.async_orchestrator | ✅ Found 2 emails for daf trucks (daf.com)
+2025-08-23 01:09:16,533 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/priority-contracts/ -> 200 (len=261284)
+2025-08-23 01:09:16,592 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/priority-contracts/ (def from text)
+2025-08-23 01:09:16,629 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/priority-contracts/ (def from html)
+2025-08-23 01:09:17,133 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/prize/past_2023/index.htm -> 200 (len=114899)
+2025-08-23 01:09:17,168 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/prize/past_2023/index.htm (def from text)
+2025-08-23 01:09:17,204 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/prize/past_2023/index.htm (def from html)
+2025-08-23 01:09:17,420 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/environment/alternative-fuels/ -> 200 (len=244732)
+2025-08-23 01:09:17,473 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/environment/alternative-fuels/ (def from text)
+2025-08-23 01:09:17,494 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/environment/alternative-fuels/ (def from html)
+2025-08-23 01:09:18,126 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/csa/index.htm -> 200 (len=113846)
+2025-08-23 01:09:18,162 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/csa/index.htm (def from text)
+2025-08-23 01:09:18,203 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/csa/index.htm (def from html)
+2025-08-23 01:09:18,418 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/waste-fuels-removal/ -> 200 (len=258067)
+2025-08-23 01:09:18,468 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/waste-fuels-removal/ (def from text)
+2025-08-23 01:09:18,492 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/waste-fuels-removal/ (def from html)
+2025-08-23 01:09:19,159 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/ip/index.htm -> 200 (len=108127)
+2025-08-23 01:09:19,191 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/ip/index.htm (def from text)
+2025-08-23 01:09:19,217 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/ip/index.htm (def from html)
+2025-08-23 01:09:19,415 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/tank-services/ -> 200 (len=259845)
+2025-08-23 01:09:19,471 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/tank-services/ (def from text)
+2025-08-23 01:09:19,493 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/tank-services/ (def from html)
+2025-08-23 01:09:20,133 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/techno/feature/index.htm -> 200 (len=117334)
+2025-08-23 01:09:20,178 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/feature/index.htm (def from text)
+2025-08-23 01:09:20,221 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/techno/feature/index.htm (def from html)
+2025-08-23 01:09:20,420 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/industrial-tank-cleaning/ -> 200 (len=259202)
+2025-08-23 01:09:20,471 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/industrial-tank-cleaning/ (def from text)
+2025-08-23 01:09:20,496 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/industrial-tank-cleaning/ (def from html)
+2025-08-23 01:09:21,135 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/index.htm -> 200 (len=194480)
+2025-08-23 01:09:21,197 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/index.htm (def from text)
+2025-08-23 01:09:21,233 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/index.htm (def from html)
+2025-08-23 01:09:21,419 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/industrial-tank-foam-filling/ -> 200 (len=259296)
+2025-08-23 01:09:21,474 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/industrial-tank-foam-filling/ (def from text)
+2025-08-23 01:09:21,497 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/industrial-tank-foam-filling/ (def from html)
+2025-08-23 01:09:22,143 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/message/index.htm -> 200 (len=124066)
+2025-08-23 01:09:22,178 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/message/index.htm (def from text)
+2025-08-23 01:09:22,208 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/message/index.htm (def from html)
+2025-08-23 01:09:22,527 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/industrial-tank-lining/ -> 200 (len=258730)
+2025-08-23 01:09:22,575 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/industrial-tank-lining/ (def from text)
+2025-08-23 01:09:22,597 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/industrial-tank-lining/ (def from html)
+2025-08-23 01:09:23,133 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/information/2025/index.htm -> 200 (len=113376)
+2025-08-23 01:09:23,174 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/information/2025/index.htm (def from text)
+2025-08-23 01:09:23,203 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/information/2025/index.htm (def from html)
+2025-08-23 01:09:23,423 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/services/oil-tank-telemetry/ -> 200 (len=261340)
+2025-08-23 01:09:23,506 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/oil-tank-telemetry/ (def from text)
+2025-08-23 01:09:23,549 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/services/oil-tank-telemetry/ (def from html)
+2025-08-23 01:09:24,139 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/mci_sustainability/index.htm -> 200 (len=108415)
+2025-08-23 01:09:24,171 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/mci_sustainability/index.htm (def from text)
+2025-08-23 01:09:24,200 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/mci_sustainability/index.htm (def from html)
+2025-08-23 01:09:24,420 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/resources/ -> 200 (len=262612)
+2025-08-23 01:09:24,496 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/resources/ (def from text)
+2025-08-23 01:09:24,532 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/resources/ (def from html)
+2025-08-23 01:09:25,149 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/risk_compliance/index.htm -> 200 (len=106674)
+2025-08-23 01:09:25,189 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/risk_compliance/index.htm (def from text)
+2025-08-23 01:09:25,216 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/risk_compliance/index.htm (def from html)
+2025-08-23 01:09:25,415 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/faqs/ -> 200 (len=259245)
+2025-08-23 01:09:25,473 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/faqs/ (def from text)
+2025-08-23 01:09:25,508 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/faqs/ (def from html)
+2025-08-23 01:09:26,131 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/rc/index.htm -> 200 (len=112868)
+2025-08-23 01:09:26,178 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/rc/index.htm (def from text)
+2025-08-23 01:09:26,259 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/rc/index.htm (def from html)
+2025-08-23 01:09:26,443 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/guides/ -> 200 (len=259352)
+2025-08-23 01:09:26,542 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/ (def from text)
+2025-08-23 01:09:26,584 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/ (def from html)
+2025-08-23 01:09:27,146 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/society/index.htm -> 200 (len=106866)
+2025-08-23 01:09:27,195 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/society/index.htm (def from text)
+2025-08-23 01:09:27,234 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/society/index.htm (def from html)
+2025-08-23 01:09:27,435 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/guides/fuel-storage-regulations/ -> 200 (len=275077)
+2025-08-23 01:09:27,518 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/fuel-storage-regulations/ (def from text)
+2025-08-23 01:09:27,563 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/guides/fuel-storage-regulations/ (def from html)
+2025-08-23 01:09:28,159 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/esg_performance/environment/index.htm -> 200 (len=199008)
+2025-08-23 01:09:28,272 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/esg_performance/environment/index.htm (def from text)
+2025-08-23 01:09:28,391 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/esg_performance/environment/index.htm (def from html)
+2025-08-23 01:09:28,594 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/downloads/ -> 200 (len=263795)
+2025-08-23 01:09:28,680 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/downloads/ (def from text)
+2025-08-23 01:09:28,720 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/downloads/ (def from html)
+2025-08-23 01:09:29,140 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/others/index.htm -> 200 (len=99496)
+2025-08-23 01:09:29,176 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/others/index.htm (def from text)
+2025-08-23 01:09:29,426 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/others/index.htm (def from html)
+2025-08-23 01:09:29,556 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/news/ -> 200 (len=262197)
+2025-08-23 01:09:29,603 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/ (def from text)
+2025-08-23 01:09:29,627 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/news/ (def from html)
+2025-08-23 01:09:30,426 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/resources/tank-size-calculator/ -> 200 (len=260778)
+2025-08-23 01:09:30,481 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/resources/tank-size-calculator/ (def from text)
+2025-08-23 01:09:30,505 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/resources/tank-size-calculator/ (def from html)
+2025-08-23 01:09:30,648 | DEBUG   | scraper.async_http_client | Async GET https://jp.mitsuichemicals.com/jp/sustainability/beplayer-replayer/index.htm -> 200 (len=28146)
+2025-08-23 01:09:30,663 | INFO    | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/beplayer-replayer/index.htm (def from text)
+2025-08-23 01:09:30,678 | DEBUG   | scraper.email_extractor |   0 emails on https://jp.mitsuichemicals.com/jp/sustainability/beplayer-replayer/index.htm (def from html)
+2025-08-23 01:09:30,690 | DEBUG   | scraper.async_orchestrator | Summary jp.mitsuichemicals.com raw=1 filtered=1 valid=1
+2025-08-23 01:09:30,691 | INFO    | scraper.async_orchestrator | ✅ Found 1 emails for mitsui toatsu chemicals  (jp.mitsuichemicals.com)
+2025-08-23 01:09:30,715 | DEBUG   | scraper.async_http_client | Async GET https://sustainability.speedyfuels.co.uk/carbon-calculator/ -> 200 (len=184651)
+2025-08-23 01:09:30,798 | INFO    | scraper.email_extractor |   0 emails on https://sustainability.speedyfuels.co.uk/carbon-calculator/ (def from text)
+2025-08-23 01:09:30,870 | DEBUG   | scraper.email_extractor |   0 emails on https://sustainability.speedyfuels.co.uk/carbon-calculator/ (def from html)
+2025-08-23 01:09:31,412 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/about-us/ -> 200 (len=264989)
+2025-08-23 01:09:31,466 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from text)
+2025-08-23 01:09:31,491 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/about-us/ (def from html)
+2025-08-23 01:09:32,424 | DEBUG   | scraper.async_http_client | Async GET https://www.speedyfuels.co.uk/environment/ -> 200 (len=265817)
+2025-08-23 01:09:32,493 | INFO    | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/environment/ (def from text)
+2025-08-23 01:09:32,524 | DEBUG   | scraper.email_extractor |   0 emails on https://www.speedyfuels.co.uk/environment/ (def from html)
+2025-08-23 01:09:33,454 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk -> 200 (len=276481)
+2025-08-23 01:09:33,454 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-23 01:09:35,467 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/kontakt -> 404 (len=258057)
+2025-08-23 01:09:35,857 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contacts -> 404 (len=258193)
+2025-08-23 01:09:35,906 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contact/ -> 404 (len=258040)
+2025-08-23 01:09:35,960 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contact -> 404 (len=258074)
+2025-08-23 01:09:35,975 | DEBUG   | scraper.async_http_client | Async GET https://speedyfuels.co.uk/contacts/ -> 404 (len=258210)
+2025-08-23 01:09:35,976 | INFO    | scraper.async_http_client | Async batch request completed: 5/5 successful in 2.52 seconds (1.98 requests/sec)
+2025-08-23 01:09:36,665 | INFO    | scraper.async_browser_service | AsyncBrowserService started (headless=True, concurrent=8)
+2025-08-23 01:09:41,242 | DEBUG   | scraper.async_orchestrator | Async JS render failed for speedyfuels.co.uk: module 'scraper.email_extractor' has no attribute 'extract_emails_from_content'
+2025-08-23 01:09:41,243 | DEBUG   | scraper.async_orchestrator | Summary speedyfuels.co.uk raw=0 filtered=0 valid=0
+2025-08-23 01:09:41,243 | DEBUG   | scraper.async_orchestrator | No emails found for speedy fuels (speedyfuels.co.uk)
+2025-08-23 01:09:41,250 | INFO    | scraper.async_http_client | Async HTTP client closed
+2025-08-23 01:09:41,250 | DEBUG   | scraper.async_google_search | Async Google API session closed
+2025-08-23 01:09:41,295 | ERROR   | scraper.cli          | Failed final Excel write: [WinError 5] Zugriff verweigert: 'C:\\Users\\julia\\AppData\\Local\\Temp\\tmpt018rqa6.xlsx' -> 'results.xlsx'
+2025-08-23 01:09:41,302 | WARNING | scraper.cli          | Wrote fallback CSV instead: results.csv
+2025-08-23 01:09:41,304 | INFO    | scraper.browser_service | BrowserService shutdown complete
+2025-08-23 01:09:41,304 | INFO    | scraper.cli          | BrowserService: shutdown complete

@@ -1,0 +1,106 @@
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Domain threshold: 50
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Max pages: 50
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 21:42:24,801 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 21:42:24,815 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-22 21:42:24,990 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 21:42:24,990 | INFO    | scraper.orchestrator | Reset orchestrator stats and cleared domain tracking cache
+2025-08-22 21:42:25,178 | INFO    | scraper.async_google_search | Async Google API session initialized (max_concurrent=10)
+2025-08-22 21:42:25,504 | INFO    | scraper.async_http_client | Async probing domain access methods for: walter-schmidt-chemie.de
+2025-08-22 21:42:26,132 | INFO    | scraper.async_http_client | Found working access method for walter-schmidt-chemie.de: http_www
+2025-08-22 21:42:26,175 | INFO    | scraper.async_http_client | Found working access method for walter-schmidt-chemie.de: https_www
+2025-08-22 21:42:26,181 | INFO    | scraper.async_http_client | Async probing domain access methods for: sinofert.com
+2025-08-22 21:42:26,322 | INFO    | scraper.async_http_client | Found working access method for walter-schmidt-chemie.de: https
+2025-08-22 21:42:26,337 | INFO    | scraper.async_http_client | Found working access method for walter-schmidt-chemie.de: http
+2025-08-22 21:42:26,683 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:26,683 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): http://sinofert.com - Cannot connect to host sinofert.com:80 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:27,001 | INFO    | scraper.async_http_client | Async probing domain access methods for: jp.mitsuichemicals.com
+2025-08-22 21:42:27,024 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): https://www.jp.mitsuichemicals.com - Cannot connect to host www.jp.mitsuichemicals.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:27,024 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): http://www.jp.mitsuichemicals.com - Cannot connect to host www.jp.mitsuichemicals.com:80 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:27,271 | WARNING | scraper.async_http_client | Async request failed (attempt 1/2): https://www.sinofert.com - Cannot connect to host www.sinofert.com:443 ssl:default [[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)]
+2025-08-22 21:42:27,539 | INFO    | scraper.async_http_client | Found working access method for sinofert.com: http_www
+2025-08-22 21:42:27,699 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): https://sinofert.com - Cannot connect to host sinofert.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:27,699 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): http://sinofert.com - Cannot connect to host sinofert.com:80 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:27,743 | INFO    | scraper.async_http_client | Found working access method for jp.mitsuichemicals.com: https
+2025-08-22 21:42:27,933 | INFO    | scraper.async_http_client | Async probing domain access methods for: daf.com
+2025-08-22 21:42:28,038 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): https://www.jp.mitsuichemicals.com - Cannot connect to host www.jp.mitsuichemicals.com:443 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:28,038 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): http://www.jp.mitsuichemicals.com - Cannot connect to host www.jp.mitsuichemicals.com:80 ssl:default [getaddrinfo failed]
+2025-08-22 21:42:28,141 | INFO    | scraper.async_http_client | Found working access method for daf.com: https_www
+2025-08-22 21:42:28,376 | INFO    | scraper.async_http_client | Found working access method for daf.com: https
+2025-08-22 21:42:28,388 | INFO    | scraper.async_http_client | Found working access method for daf.com: http
+2025-08-22 21:42:28,415 | INFO    | scraper.async_http_client | Found working access method for jp.mitsuichemicals.com: http
+2025-08-22 21:42:28,585 | INFO    | scraper.async_http_client | Found working access method for daf.com: http_www
+2025-08-22 21:42:28,662 | INFO    | scraper.async_http_client | Async probing domain access methods for: alvolante.it
+2025-08-22 21:42:28,775 | INFO    | scraper.async_http_client | Found working access method for alvolante.it: https_www
+2025-08-22 21:42:28,807 | WARNING | scraper.async_http_client | Async request failed (attempt 2/2): https://www.sinofert.com - Cannot connect to host www.sinofert.com:443 ssl:default [[SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1028)]
+2025-08-22 21:42:28,808 | WARNING | scraper.async_components | Circuit breaker OPEN for sinofert.com (5)
+2025-08-22 21:42:28,808 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 21:42:28,808 | INFO    | scraper.async_http_client | Async batch request completed: 0/5 successful in 0.00 seconds (39718.79 requests/sec)
+2025-08-22 21:42:28,927 | INFO    | scraper.async_http_client | Found working access method for alvolante.it: http_www
+2025-08-22 21:42:28,930 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://walter-schmidt-chemie.de
+2025-08-22 21:42:28,930 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 21:42:28,932 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://walter-schmidt-chemie.de/contact
+2025-08-22 21:42:28,933 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://walter-schmidt-chemie.de/contact/
+2025-08-22 21:42:28,933 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://walter-schmidt-chemie.de/contacts
+2025-08-22 21:42:28,933 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://walter-schmidt-chemie.de/contacts/
+2025-08-22 21:42:28,933 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://walter-schmidt-chemie.de/kontakt
+2025-08-22 21:42:28,933 | INFO    | scraper.async_http_client | Async batch request completed: 0/5 successful in 0.00 seconds (1647.54 requests/sec)
+2025-08-22 21:42:29,197 | INFO    | scraper.async_http_client | Found working access method for alvolante.it: https
+2025-08-22 21:42:29,197 | INFO    | scraper.async_http_client | Found working access method for alvolante.it: http
+2025-08-22 21:42:29,542 | INFO    | scraper.async_browser_service | AsyncBrowserService started (headless=True, concurrent=8)
+2025-08-22 21:42:30,244 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://jp.mitsuichemicals.com
+2025-08-22 21:42:30,244 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 21:42:30,244 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://jp.mitsuichemicals.com/contact
+2025-08-22 21:42:30,244 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://jp.mitsuichemicals.com/contact/
+2025-08-22 21:42:30,244 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://jp.mitsuichemicals.com/contacts
+2025-08-22 21:42:30,244 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://jp.mitsuichemicals.com/contacts/
+2025-08-22 21:42:30,244 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://jp.mitsuichemicals.com/kontakt
+2025-08-22 21:42:30,245 | INFO    | scraper.async_http_client | Async batch request completed: 0/5 successful in 0.00 seconds (7358.43 requests/sec)
+2025-08-22 21:42:30,288 | INFO    | scraper.async_http_client | Async probing domain access methods for: synsol.ch
+2025-08-22 21:42:30,701 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://alvolante.it
+2025-08-22 21:42:30,701 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 21:42:30,701 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://alvolante.it/contact
+2025-08-22 21:42:30,701 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://alvolante.it/contact/
+2025-08-22 21:42:30,702 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://alvolante.it/contacts
+2025-08-22 21:42:30,702 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://alvolante.it/contacts/
+2025-08-22 21:42:30,702 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://alvolante.it/kontakt
+2025-08-22 21:42:30,702 | INFO    | scraper.async_http_client | Async batch request completed: 0/5 successful in 0.00 seconds (5864.52 requests/sec)
+2025-08-22 21:42:30,836 | INFO    | scraper.async_http_client | Found working access method for synsol.ch: https
+2025-08-22 21:42:30,902 | INFO    | scraper.async_http_client | Found working access method for synsol.ch: http
+2025-08-22 21:42:30,902 | INFO    | scraper.async_http_client | Found working access method for synsol.ch: http_www
+2025-08-22 21:42:30,914 | INFO    | scraper.async_http_client | Found working access method for synsol.ch: https_www
+2025-08-22 21:42:30,969 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://daf.com
+2025-08-22 21:42:30,969 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 21:42:30,969 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://daf.com/contact
+2025-08-22 21:42:30,969 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://daf.com/contact/
+2025-08-22 21:42:30,969 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://daf.com/contacts
+2025-08-22 21:42:30,969 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://daf.com/contacts/
+2025-08-22 21:42:30,970 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://daf.com/kontakt
+2025-08-22 21:42:30,970 | INFO    | scraper.async_http_client | Async batch request completed: 0/5 successful in 0.00 seconds (12740.90 requests/sec)
+2025-08-22 21:42:31,089 | INFO    | scraper.async_http_client | Async probing domain access methods for: speedyfuels.co.uk
+2025-08-22 21:42:31,256 | INFO    | scraper.async_http_client | Found working access method for speedyfuels.co.uk: https_www
+2025-08-22 21:42:31,286 | INFO    | scraper.async_http_client | Found working access method for speedyfuels.co.uk: http_www
+2025-08-22 21:42:31,292 | INFO    | scraper.async_http_client | Found working access method for speedyfuels.co.uk: https
+2025-08-22 21:42:31,308 | INFO    | scraper.async_http_client | Found working access method for speedyfuels.co.uk: http
+2025-08-22 21:42:31,451 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://synsol.ch/contacts/
+2025-08-22 21:42:31,835 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://synsol.ch
+2025-08-22 21:42:31,836 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 21:42:31,836 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://synsol.ch/contact
+2025-08-22 21:42:31,836 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://synsol.ch/contact/
+2025-08-22 21:42:31,836 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://synsol.ch/contacts
+2025-08-22 21:42:31,836 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://synsol.ch/contacts/
+2025-08-22 21:42:31,836 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://synsol.ch/kontakt
+2025-08-22 21:42:31,836 | INFO    | scraper.async_http_client | Async batch request completed: 0/5 successful in 0.00 seconds (10366.54 requests/sec)
+2025-08-22 21:42:32,472 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://speedyfuels.co.uk/contacts/
+2025-08-22 21:42:33,109 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://speedyfuels.co.uk
+2025-08-22 21:42:33,110 | INFO    | scraper.async_http_client | Starting async batch request for 5 URLs
+2025-08-22 21:42:33,110 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://speedyfuels.co.uk/contact
+2025-08-22 21:42:33,110 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://speedyfuels.co.uk/contact/
+2025-08-22 21:42:33,110 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://speedyfuels.co.uk/contacts
+2025-08-22 21:42:33,110 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://speedyfuels.co.uk/contacts/
+2025-08-22 21:42:33,110 | WARNING | scraper.async_http_client | Redirect loop detected – already visited https://speedyfuels.co.uk/kontakt
+2025-08-22 21:42:33,110 | INFO    | scraper.async_http_client | Async batch request completed: 0/5 successful in 0.00 seconds (9523.85 requests/sec)

@@ -51,6 +51,8 @@ class SitemapParser:
         hosts = {naked} if len(parts) > 2 else {naked, f"www.{naked}"}
         found = False
         start = time.time()
+        
+        log.debug("Sitemap izz daaa")
 
         # standard sitemap filenames
         for host in hosts:

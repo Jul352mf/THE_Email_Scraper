@@ -76,7 +76,7 @@ scraper companies.csv results.xlsx
 
 # With performance options
 scraper input.xlsx output.xlsx --workers 8 --verbose
-```
+```text
 
 ### Batch Processing (New!)
 ```bash
@@ -88,7 +88,7 @@ scraper --batch --input-dir data --output-dir results --log-dir logs --workers 8
 
 # Verbose batch processing with detailed logs
 scraper --batch --verbose
-```
+```text
 
 ### Environment Overrides
 ```bash
@@ -99,17 +99,31 @@ MAX_WORKERS=8 scraper companies.xlsx results.xlsx
 $env:MAX_WORKERS=8; scraper companies.xlsx results.xlsx
 ```
 
-## 📁 File Organization
+## 📁 File & Module Organization (Async Streaming Architecture)
 
-The scraper automatically organizes files into directories:
+Active runtime structure:
 
 ```
-THE_Email_Scraper/
-├── input/              # Place your .xlsx, .xls, .csv files here
-├── output/             # Results with timestamps (auto-generated)
-├── logs/               # Processing logs with timestamps (auto-generated)
-└── .env                # Your configuration file
+scraper/
+    cli.py                  # Entry point / argument parsing, streaming writes
+    config.py               # Configuration & env parsing
+    async_orchestrator.py   # Streaming company -> domain pipeline
+    async_google_search.py  # Parallel & streaming Google queries
+    async_http_client.py    # HTTP layer (pooling, rate limit, breaker)
+    async_components.py     # Circuit breaker, token bucket, session manager
+    async_browser_service.py# Playwright non-blocking rendering
+    domain_scorer.py        # Domain scoring heuristic
+    email_extractor.py      # Regex extraction
+    hybrid_email_extractor.py# Sync cache + fallback reuse
+    smart_discovery.py      # Priority URL generation & filtering
 ```
+
+Data dirs (created as needed):
+```
+input/   output/   logs/
+```
+
+Removed: legacy `archive/` modules (deprecated sync prototypes).
 
 ## 🧠 Smart Discovery Features
 
@@ -131,9 +145,14 @@ THE_Email_Scraper/
 - Prioritizes business emails from same domain
 - Improves accuracy over time
 
-## 🆕 Latest Improvements (2024)
+## 🆕 Latest Improvements (2025 Async Wave)
 
-### Smart Retry Logic & Circuit Breaker (TASK-039)
+### Async Streaming Orchestrator (TASK-045)
+- Streams Google results and launches domain tasks immediately
+- Row-level streaming to disk → constant memory footprint
+- Per-domain concurrency semaphore prevents overload
+
+### Smart Retry Logic & Circuit Breaker (Earlier TASK-039)
 - **Circuit Breaker Pattern**: Automatically stops requesting from consistently failing domains
 - **Exponential Backoff**: Intelligent retry delays with jitter to prevent thundering herd
 - **Selective Retry Logic**: Doesn't retry client errors (4xx), focuses on server errors (5xx)
@@ -156,6 +175,8 @@ THE_Email_Scraper/
 ## ⚡ Performance Features
 
 ### Concurrent Processing
+- Streaming pipeline (no full prefetch barrier)
+- Domain dedupe & tracking prevents redundant work
 - **Batch domain probing**: Multiple domains processed simultaneously
 - **3-phase pipeline**: Domain collection → Batch probing → Parallel processing
 - **Smart worker allocation**: Adapts to available resources
@@ -170,13 +191,15 @@ THE_Email_Scraper/
 - **HTTP/2 ready**: Optimized for modern web servers
 - **Retry logic**: Handles temporary failures gracefully
 
-## Expected Processing Flow
+## Updated Processing Flow (Streaming)
 
-1. **Input Processing**: Read Excel/CSV → Extract company names → Clean data
-2. **Domain Discovery**: Google search → Domain scoring → Best match selection
-3. **Smart Processing**: Priority page identification → Batch probing → Concurrent extraction
-4. **Email Discovery**: Homepage → Priority pages → Fallback crawling (if needed)
-5. **Result Generation**: Email filtering → Deduplication → Timestamped output
+1. Input load → company list
+2. Streaming Google query emission
+3. Domain scoring on arrival; schedule domain task if new
+4. Probe + base fetch + discovery pages (bounded per-domain)
+5. Hybrid async fallback (render) if empty
+6. Filter & stream rows to CSV (callback)
+7. Final dedupe + Excel export
 
 Playwright note
 
@@ -285,12 +308,15 @@ scraper --batch --verbose
 - Add unit tests with `pytest`
 - For debugging: Set `LOGLEVEL=DEBUG` or use single-row test files
 
-### Key Files
-- `scraper/config.py` - All configuration settings and defaults
-- `scraper/orchestrator.py` - Main processing coordination
-- `scraper/smart_discovery.py` - Intelligent page prioritization
-- `scraper/batch_processor.py` - Automated batch processing
-- `scraper/performance_optimizer.py` - Performance optimization framework
+### Key Modules (Current)
+* `scraper/cli.py` – CLI + streaming sink
+* `scraper/async_orchestrator.py` – core pipeline
+* `scraper/async_http_client.py` & `async_components.py` – networking primitives
+* `scraper/async_google_search.py` – search batching/streaming
+* `scraper/smart_discovery.py` – URL heuristics & email filtering aid
+* `scraper/hybrid_email_extractor.py` – cached multi-strategy fallback
+* `scraper/domain_scorer.py` – domain relevance scoring
+* (Removed) legacy sync orchestrator & archive modules
 
 ### Testing
 ```bash
@@ -308,9 +334,10 @@ scraper --batch --verbose
 
 ## 📚 Additional Resources
 
-- `IMPROVEMENTS_SUMMARY.md` - Detailed performance improvements documentation
-- `google_ip_automation.md` - Google API IP management solutions
-- `CLAUDE.md` - Project guidelines and architecture notes
+* `ARCHITECTURE.md` – Detailed async streaming architecture
+* `IMPROVEMENTS_SUMMARY.md` – Historical performance improvements
+* `google_ip_automation.md` – Google API IP management
+* `CLAUDE.md` – Guidelines & notes
 
 ## 🆘 Support
 

@@ -1,0 +1,156 @@
+2025-08-22 23:30:37,817 | DEBUG   | scraper.output_formatter | Output formatter initialized (verbose=True)
+2025-08-22 23:30:37,817 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 23:30:37,817 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 23:30:37,817 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 23:30:37,817 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 23:30:37,818 | INFO    | scraper.cli          | Domain threshold: 50
+2025-08-22 23:30:37,818 | INFO    | scraper.cli          | Max pages: 50
+2025-08-22 23:30:37,831 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 23:30:37,831 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 23:30:37,832 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-22 23:30:38,021 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 23:30:38,212 | INFO    | scraper.regex_cache  | Precompiling 11 regex patterns
+2025-08-22 23:30:38,213 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: (?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@(?:[A-Z0-9-]+ (1.018ms)
+2025-08-22 23:30:38,213 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'email_basic'
+2025-08-22 23:30:38,214 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: mailto: (0.033ms)
+2025-08-22 23:30:38,214 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'mailto'
+2025-08-22 23:30:38,214 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: 
+            (?P<user>[A-Za-z0-9._%+-]+)           (0.551ms)
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'obfuscated_email'
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: noreply@ (0.031ms)
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'noreply'
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: donotreply@ (0.051ms)
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'donotreply'
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: no-reply@ (0.047ms)
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'no_reply'
+2025-08-22 23:30:38,215 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: webmaster@ (0.033ms)
+2025-08-22 23:30:38,216 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'webmaster'
+2025-08-22 23:30:38,216 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: hostmaster@ (0.050ms)
+2025-08-22 23:30:38,216 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hostmaster'
+2025-08-22 23:30:38,216 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: postmaster@ (0.051ms)
+2025-08-22 23:30:38,216 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'postmaster'
+2025-08-22 23:30:38,216 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: \.(?:png|jpe?g|gif)$ (0.098ms)
+2025-08-22 23:30:38,217 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'image_extensions'
+2025-08-22 23:30:38,217 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: ^[0-9a-f]{20,}$ (0.057ms)
+2025-08-22 23:30:38,217 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hex_local_parts'
+2025-08-22 23:30:38,217 | INFO    | scraper.regex_cache  | Precompiled 11 common email extraction patterns
+2025-08-22 23:30:38,217 | DEBUG   | asyncio              | Using proactor: IocpProactor
+2025-08-22 23:30:38,395 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 23:30:38,396 | DEBUG   | scraper.http_client  | Created optimized session template with connection pooling
+2025-08-22 23:30:38,396 | DEBUG   | scraper.http_client  | Created new session for domain: googleapis.com
+2025-08-22 23:30:38,396 | INFO    | scraper.google_search | Google API requests session initialized
+2025-08-22 23:30:38,396 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 23:30:38,397 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 23:30:38,397 | INFO    | scraper.async_orchestrator | Starting streaming processing of 8 companies
+2025-08-22 23:30:38,397 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: start with 8 companies
+2025-08-22 23:30:38,397 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: created 8 tasks
+2025-08-22 23:30:38,397 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:38,397 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for walter schmidt chemie gmbh
+2025-08-22 23:30:38,398 | DEBUG   | scraper.google_search | Google cache MISS for query: "walter schmidt chemie gmbh" contact email
+2025-08-22 23:30:38,398 | INFO    | scraper.async_google_search | Async Google API session initialized (max_concurrent=10)
+2025-08-22 23:30:38,398 | DEBUG   | scraper.async_google_search | Async Google API search: "walter schmidt chemie gmbh" contact email
+2025-08-22 23:30:38,399 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for henan xinlianxin fertilizer 
+2025-08-22 23:30:38,399 | DEBUG   | scraper.google_search | Google cache MISS for query: "henan xinlianxin fertilizer" contact email
+2025-08-22 23:30:38,399 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:30:38,399 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for mitsui toatsu chemicals 
+2025-08-22 23:30:38,399 | DEBUG   | scraper.google_search | Google cache MISS for query: "mitsui toatsu chemicals" contact email
+2025-08-22 23:30:38,400 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for daf trucks
+2025-08-22 23:30:38,400 | DEBUG   | scraper.google_search | Google cache MISS for query: "daf trucks" contact email
+2025-08-22 23:30:38,400 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for petrol rete 
+2025-08-22 23:30:38,400 | DEBUG   | scraper.google_search | Google cache MISS for query: "petrol rete" contact email
+2025-08-22 23:30:38,400 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for euro dam jas doo
+2025-08-22 23:30:38,400 | DEBUG   | scraper.google_search | Google cache MISS for query: "euro dam jas doo" contact email
+2025-08-22 23:30:38,401 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for Synsol
+2025-08-22 23:30:38,401 | DEBUG   | scraper.google_search | Google cache MISS for query: "Synsol" contact email
+2025-08-22 23:30:38,401 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for speedy fuels
+2025-08-22 23:30:38,401 | DEBUG   | scraper.google_search | Google cache MISS for query: "speedy fuels" contact email
+2025-08-22 23:30:38,656 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "walter schmidt chemie gmbh" contact email
+2025-08-22 23:30:38,657 | DEBUG   | scraper.google_search | Cached Google results for query: "walter schmidt chemie gmbh" contact email (10 results)
+2025-08-22 23:30:38,657 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for walter schmidt chemie gmbh
+2025-08-22 23:30:38,657 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for walter schmidt chemie gmbh
+2025-08-22 23:30:38,657 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: walter schmidt chemie gmbh
+2025-08-22 23:30:38,658 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: walter schmidt chemie gmbh
+2025-08-22 23:30:38,658 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for walter schmidt chemie gmbh: name 'inspect' is not defined
+2025-08-22 23:30:38,658 | DEBUG   | scraper.async_orchestrator | Domain scoring error walter schmidt chemie gmbh: module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:38,658 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:39,210 | DEBUG   | scraper.async_google_search | Async Google API search: "henan xinlianxin fertilizer" contact email
+2025-08-22 23:30:39,211 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:30:39,378 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "henan xinlianxin fertilizer" contact email
+2025-08-22 23:30:39,378 | DEBUG   | scraper.google_search | Cached Google results for query: "henan xinlianxin fertilizer" contact email (10 results)
+2025-08-22 23:30:39,379 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for henan xinlianxin fertilizer 
+2025-08-22 23:30:39,379 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for henan xinlianxin fertilizer 
+2025-08-22 23:30:39,379 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: henan xinlianxin fertilizer 
+2025-08-22 23:30:39,382 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: henan xinlianxin fertilizer 
+2025-08-22 23:30:39,382 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for henan xinlianxin fertilizer : name 'inspect' is not defined
+2025-08-22 23:30:39,383 | DEBUG   | scraper.async_orchestrator | Domain scoring error henan xinlianxin fertilizer : module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:39,383 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:40,019 | DEBUG   | scraper.async_google_search | Async Google API search: "mitsui toatsu chemicals" contact email
+2025-08-22 23:30:40,020 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:30:40,199 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "mitsui toatsu chemicals" contact email
+2025-08-22 23:30:40,199 | DEBUG   | scraper.google_search | Cached Google results for query: "mitsui toatsu chemicals" contact email (10 results)
+2025-08-22 23:30:40,199 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for mitsui toatsu chemicals 
+2025-08-22 23:30:40,200 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for mitsui toatsu chemicals 
+2025-08-22 23:30:40,200 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: mitsui toatsu chemicals 
+2025-08-22 23:30:40,200 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: mitsui toatsu chemicals 
+2025-08-22 23:30:40,200 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for mitsui toatsu chemicals : name 'inspect' is not defined
+2025-08-22 23:30:40,201 | DEBUG   | scraper.async_orchestrator | Domain scoring error mitsui toatsu chemicals : module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:40,201 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:40,833 | DEBUG   | scraper.async_google_search | Async Google API search: "daf trucks" contact email
+2025-08-22 23:30:40,834 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:30:41,045 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "daf trucks" contact email
+2025-08-22 23:30:41,046 | DEBUG   | scraper.google_search | Cached Google results for query: "daf trucks" contact email (10 results)
+2025-08-22 23:30:41,046 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for daf trucks
+2025-08-22 23:30:41,046 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for daf trucks
+2025-08-22 23:30:41,046 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: daf trucks
+2025-08-22 23:30:41,047 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: daf trucks
+2025-08-22 23:30:41,047 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for daf trucks: name 'inspect' is not defined
+2025-08-22 23:30:41,047 | DEBUG   | scraper.async_orchestrator | Domain scoring error daf trucks: module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:41,047 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:41,641 | DEBUG   | scraper.async_google_search | Async Google API search: "petrol rete" contact email
+2025-08-22 23:30:41,643 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:30:41,808 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "petrol rete" contact email
+2025-08-22 23:30:41,808 | DEBUG   | scraper.google_search | Cached Google results for query: "petrol rete" contact email (10 results)
+2025-08-22 23:30:41,809 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for petrol rete 
+2025-08-22 23:30:41,809 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for petrol rete 
+2025-08-22 23:30:41,809 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: petrol rete 
+2025-08-22 23:30:41,809 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: petrol rete 
+2025-08-22 23:30:41,810 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for petrol rete : name 'inspect' is not defined
+2025-08-22 23:30:41,810 | DEBUG   | scraper.async_orchestrator | Domain scoring error petrol rete : module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:41,810 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:42,452 | DEBUG   | scraper.async_google_search | Async Google API search: "euro dam jas doo" contact email
+2025-08-22 23:30:42,454 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:30:42,673 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "euro dam jas doo" contact email
+2025-08-22 23:30:42,674 | DEBUG   | scraper.google_search | Cached Google results for query: "euro dam jas doo" contact email (10 results)
+2025-08-22 23:30:42,674 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for euro dam jas doo
+2025-08-22 23:30:42,674 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for euro dam jas doo
+2025-08-22 23:30:42,674 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: euro dam jas doo
+2025-08-22 23:30:42,674 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: euro dam jas doo
+2025-08-22 23:30:42,674 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for euro dam jas doo: name 'inspect' is not defined
+2025-08-22 23:30:42,674 | DEBUG   | scraper.async_orchestrator | Domain scoring error euro dam jas doo: module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:42,675 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:43,260 | DEBUG   | scraper.async_google_search | Async Google API search: "Synsol" contact email
+2025-08-22 23:30:43,262 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:30:43,432 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "Synsol" contact email
+2025-08-22 23:30:43,432 | DEBUG   | scraper.google_search | Cached Google results for query: "Synsol" contact email (10 results)
+2025-08-22 23:30:43,432 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for Synsol
+2025-08-22 23:30:43,433 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for Synsol
+2025-08-22 23:30:43,433 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: Synsol
+2025-08-22 23:30:43,433 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: Synsol
+2025-08-22 23:30:43,433 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for Synsol: name 'inspect' is not defined
+2025-08-22 23:30:43,434 | DEBUG   | scraper.async_orchestrator | Domain scoring error Synsol: module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:43,434 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:30:44,073 | DEBUG   | scraper.async_google_search | Async Google API search: "speedy fuels" contact email
+2025-08-22 23:30:44,247 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "speedy fuels" contact email
+2025-08-22 23:30:44,247 | DEBUG   | scraper.google_search | Cached Google results for query: "speedy fuels" contact email (10 results)
+2025-08-22 23:30:44,247 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for speedy fuels
+2025-08-22 23:30:44,248 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for speedy fuels
+2025-08-22 23:30:44,248 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: speedy fuels
+2025-08-22 23:30:44,248 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: speedy fuels
+2025-08-22 23:30:44,248 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start exception for speedy fuels: name 'inspect' is not defined
+2025-08-22 23:30:44,248 | DEBUG   | scraper.async_orchestrator | Domain scoring error speedy fuels: module 'scraper.domain_scorer' has no attribute 'find_best_domain'
+2025-08-22 23:30:44,250 | INFO    | scraper.async_http_client | Async HTTP client closed
+2025-08-22 23:30:44,264 | DEBUG   | scraper.async_google_search | Async Google API session closed
+2025-08-22 23:30:44,292 | INFO    | scraper.cli          | Async streaming run complete in 6.3s (0 rows)
+2025-08-22 23:30:44,292 | INFO    | scraper.cli          | Saved output -> results.xlsx
+2025-08-22 23:30:44,294 | INFO    | scraper.browser_service | BrowserService shutdown complete
+2025-08-22 23:30:44,294 | INFO    | scraper.cli          | BrowserService: shutdown complete

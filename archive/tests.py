@@ -15,7 +15,7 @@ from scraper.google_search import google_client
 from scraper.domain_scorer import domain_scorer
 from scraper.sitemap import sitemap_parser
 from scraper.crawler import crawler
-from scraper.orchestrator import orchestrator
+from scraper.async_orchestrator import orchestrator
 from scraper.cache import google_cache, domain_score_cache
 from scraper.worker import WorkerPool, BatchProcessor
 from scraper.progress import ProgressTracker

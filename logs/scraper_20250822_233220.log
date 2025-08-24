@@ -1,0 +1,127 @@
+2025-08-22 23:32:20,568 | DEBUG   | scraper.output_formatter | Output formatter initialized (verbose=True)
+2025-08-22 23:32:20,569 | INFO    | scraper.cli          | Email scraper starting
+2025-08-22 23:32:20,569 | INFO    | scraper.cli          | Input file: test_input.xlsx
+2025-08-22 23:32:20,570 | INFO    | scraper.cli          | Output file: results.xlsx
+2025-08-22 23:32:20,571 | INFO    | scraper.cli          | Workers: 16
+2025-08-22 23:32:20,571 | INFO    | scraper.cli          | Domain threshold: 50
+2025-08-22 23:32:20,571 | INFO    | scraper.cli          | Max pages: 50
+2025-08-22 23:32:20,576 | INFO    | scraper.cli          | Process PDFs: False
+2025-08-22 23:32:20,576 | INFO    | scraper.cli          | Save domain only: False
+2025-08-22 23:32:20,576 | INFO    | scraper.config       | Updated max workers to 16
+2025-08-22 23:32:20,794 | INFO    | scraper.cli          | Loaded 8 companies from test_input.xlsx
+2025-08-22 23:32:21,013 | INFO    | scraper.regex_cache  | Precompiling 11 regex patterns
+2025-08-22 23:32:21,014 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: (?i)(?<![A-Z0-9._%+-])[A-Z0-9._%+-]+@(?:[A-Z0-9-]+ (0.724ms)
+2025-08-22 23:32:21,015 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'email_basic'
+2025-08-22 23:32:21,015 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: mailto: (0.046ms)
+2025-08-22 23:32:21,015 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'mailto'
+2025-08-22 23:32:21,016 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: 
+            (?P<user>[A-Za-z0-9._%+-]+)           (0.599ms)
+2025-08-22 23:32:21,016 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'obfuscated_email'
+2025-08-22 23:32:21,016 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: noreply@ (0.045ms)
+2025-08-22 23:32:21,016 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'noreply'
+2025-08-22 23:32:21,016 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: donotreply@ (0.047ms)
+2025-08-22 23:32:21,016 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'donotreply'
+2025-08-22 23:32:21,017 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: no-reply@ (0.045ms)
+2025-08-22 23:32:21,017 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'no_reply'
+2025-08-22 23:32:21,017 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: webmaster@ (0.041ms)
+2025-08-22 23:32:21,017 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'webmaster'
+2025-08-22 23:32:21,017 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: hostmaster@ (0.047ms)
+2025-08-22 23:32:21,017 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hostmaster'
+2025-08-22 23:32:21,018 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: postmaster@ (0.050ms)
+2025-08-22 23:32:21,018 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'postmaster'
+2025-08-22 23:32:21,018 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: \.(?:png|jpe?g|gif)$ (0.101ms)
+2025-08-22 23:32:21,018 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'image_extensions'
+2025-08-22 23:32:21,018 | DEBUG   | scraper.regex_cache  | Compiled and cached regex pattern: ^[0-9a-f]{20,}$ (0.071ms)
+2025-08-22 23:32:21,018 | DEBUG   | scraper.regex_cache  | Precompiled pattern 'hex_local_parts'
+2025-08-22 23:32:21,019 | INFO    | scraper.regex_cache  | Precompiled 11 common email extraction patterns
+2025-08-22 23:32:21,019 | DEBUG   | asyncio              | Using proactor: IocpProactor
+2025-08-22 23:32:21,216 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 23:32:21,216 | DEBUG   | scraper.http_client  | Created optimized session template with connection pooling
+2025-08-22 23:32:21,217 | DEBUG   | scraper.http_client  | Created new session for domain: googleapis.com
+2025-08-22 23:32:21,217 | INFO    | scraper.google_search | Google API requests session initialized
+2025-08-22 23:32:21,217 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 23:32:21,218 | DEBUG   | scraper.google_search | Google search cache persistence enabled
+2025-08-22 23:32:21,218 | INFO    | scraper.async_orchestrator | Starting streaming processing of 8 companies
+2025-08-22 23:32:21,218 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: start with 8 companies
+2025-08-22 23:32:21,218 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: created 8 tasks
+2025-08-22 23:32:21,218 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: awaiting next completed task
+2025-08-22 23:32:21,219 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for walter schmidt chemie gmbh
+2025-08-22 23:32:21,219 | DEBUG   | scraper.google_search | Google cache MISS for query: "walter schmidt chemie gmbh" contact email
+2025-08-22 23:32:21,220 | INFO    | scraper.async_google_search | Async Google API session initialized (max_concurrent=10)
+2025-08-22 23:32:21,220 | DEBUG   | scraper.async_google_search | Async Google API search: "walter schmidt chemie gmbh" contact email
+2025-08-22 23:32:21,221 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for henan xinlianxin fertilizer 
+2025-08-22 23:32:21,221 | DEBUG   | scraper.google_search | Google cache MISS for query: "henan xinlianxin fertilizer" contact email
+2025-08-22 23:32:21,221 | DEBUG   | scraper.async_google_search | Async rate limiting: waiting 0.80 seconds
+2025-08-22 23:32:21,222 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for mitsui toatsu chemicals 
+2025-08-22 23:32:21,222 | DEBUG   | scraper.google_search | Google cache MISS for query: "mitsui toatsu chemicals" contact email
+2025-08-22 23:32:21,222 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for daf trucks
+2025-08-22 23:32:21,222 | DEBUG   | scraper.google_search | Google cache MISS for query: "daf trucks" contact email
+2025-08-22 23:32:21,223 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for petrol rete 
+2025-08-22 23:32:21,223 | DEBUG   | scraper.google_search | Google cache MISS for query: "petrol rete" contact email
+2025-08-22 23:32:21,223 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for euro dam jas doo
+2025-08-22 23:32:21,224 | DEBUG   | scraper.google_search | Google cache MISS for query: "euro dam jas doo" contact email
+2025-08-22 23:32:21,224 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for Synsol
+2025-08-22 23:32:21,224 | DEBUG   | scraper.google_search | Google cache MISS for query: "Synsol" contact email
+2025-08-22 23:32:21,224 | DEBUG   | scraper.async_google_search | [TRACE] run: starting search for speedy fuels
+2025-08-22 23:32:21,225 | DEBUG   | scraper.google_search | Google cache MISS for query: "speedy fuels" contact email
+2025-08-22 23:32:21,509 | DEBUG   | scraper.async_google_search | Async Google search returned 10 results for: "walter schmidt chemie gmbh" contact email
+2025-08-22 23:32:21,509 | DEBUG   | scraper.google_search | Cached Google results for query: "walter schmidt chemie gmbh" contact email (10 results)
+2025-08-22 23:32:21,509 | DEBUG   | scraper.async_google_search | [TRACE] run: finished search for walter schmidt chemie gmbh
+2025-08-22 23:32:21,510 | DEBUG   | scraper.async_google_search | [TRACE] search_companies_streaming: got results for walter schmidt chemie gmbh
+2025-08-22 23:32:21,510 | DEBUG   | scraper.async_orchestrator | [TRACE] Pulled company from google search: walter schmidt chemie gmbh
+2025-08-22 23:32:21,510 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start called for: walter schmidt chemie gmbh
+2025-08-22 23:32:21,510 | DEBUG   | scraper.async_orchestrator | [TRACE] on_company_start awaited for: walter schmidt chemie gmbh
+2025-08-22 23:32:21,511 | DEBUG   | filelock             | Attempting to acquire lock 2957919336304 on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 23:32:21,512 | DEBUG   | filelock             | Lock 2957919336304 acquired on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 23:32:21,515 | DEBUG   | filelock             | Attempting to release lock 2957919336304 on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 23:32:21,516 | DEBUG   | filelock             | Lock 2957919336304 released on C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\.venv\Lib\site-packages\tldextract\.suffix_cache\publicsuffix.org-tlds\de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-22 23:32:21,538 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and walter-schmidt-chemie.de: 89 (base: 89, penalty: 0)
+2025-08-22 23:32:21,538 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and rocketreach.co: 45 (base: 45, penalty: 0)
+2025-08-22 23:32:21,539 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and walter-schmidt-chemie.de: 89 (base: 89, penalty: 0)
+2025-08-22 23:32:21,539 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 23:32:21,539 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and carlroth.com: 50 (base: 50, penalty: 0)
+2025-08-22 23:32:21,539 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 23:32:21,539 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and noba-normteile.de: 42 (base: 42, penalty: 0)
+2025-08-22 23:32:21,540 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 23:32:21,540 | DEBUG   | scraper.domain_scorer | Applied penalty to linkedin.com (contains linkedin.com)
+2025-08-22 23:32:21,540 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and linkedin.com: 15 (base: 40, penalty: 25)
+2025-08-22 23:32:21,540 | DEBUG   | scraper.domain_scorer | Domain score for walter schmidt chemie gmbh and schmidt-zement.de: 74 (base: 74, penalty: 0)
+2025-08-22 23:32:21,540 | DEBUG   | scraper.domain_scorer | Best domain for walter schmidt chemie gmbh: https://www.walter-schmidt-chemie.de/en/contact/imprint.html (score: 89)
+2025-08-22 23:32:21,540 | DEBUG   | scraper.async_orchestrator | [TRACE] Domain scored for walter schmidt chemie gmbh: https://www.walter-schmidt-chemie.de/en/contact/imprint.html
+2025-08-22 23:32:21,541 | INFO    | scraper.async_http_client | Async HTTP client closed
+2025-08-22 23:32:21,541 | DEBUG   | scraper.async_google_search | Async Google API session closed
+2025-08-22 23:32:21,542 | INFO    | scraper.browser_service | BrowserService shutdown complete
+2025-08-22 23:32:21,542 | INFO    | scraper.cli          | BrowserService: shutdown complete
+2025-08-22 23:32:21,543 | ERROR   | scraper.cli          | Unhandled exception: module 'scraper.config' has no attribute 'domain_score_threshold'
+Traceback (most recent call last):
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 720, in run
+    success = self.scrape_companies(parsed_args)
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 510, in scrape_companies
+    return self._scrape_companies_async(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        args, companies, browser_service, start_time, logfile
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 673, in _scrape_companies_async
+    return asyncio.run(run_async())
+           ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\cli.py", line 581, in run_async
+    stats_counter, _ = await async_orch.\
+                       ^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+  File "C:\Dev\Projects\Scraping_directory\THE_Email_Scraper\scraper\async_orchestrator.py", line 600, in process_companies_streaming
+    if score < config.domain_score_threshold:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scraper.config' has no attribute 'domain_score_threshold'
